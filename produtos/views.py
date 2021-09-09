@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import redirect, render, get_object_or_404
 from .models import Produto
 from .forms import ProdutoForm
 
@@ -11,5 +11,11 @@ def viewProduto(request, id):
     return render(request, 'produto.html', {'produto' : produto})
 
 def addProduto(request):
-    form = ProdutoForm()
-    return render(request, 'addProduto.html', {'form' : form})
+    formProduto = ProdutoForm(request.POST or None)
+    if request.method == "POST":
+        if formProduto.is_valid():
+            formProduto.save()
+
+            return redirect('/produtos')
+            
+    return render(request, 'addProduto.html')

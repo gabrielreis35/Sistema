@@ -4,72 +4,65 @@
 
 {% block content %}
 
-    <div class="offset-1 col-10 list-div">
-
-    </div>
-
-
-
-
-
-
-    <div class="container-fluid" id="FormGerarProduto">
-        <form>
-            <div class="mb-3">
-                <label for="TipoProduto" class="form-label"> Qual o tipo de produto?</label>
-                <select type="form-select form-select-sm" class="form-select">
-                    <option value=" "> </option>
-                    <option value="AC">Acessório</option>
-                    <option value="CC">Carregadeira</option>
-                    <option value="CD">Chapa de desgaste</option>
-                    <option value="CB">Chock Bar</option>
-                    <option value="DF">Dispositivos e ferramentas</option>
-                    <option value="ER">Engate Rápido</option>
-                    <option value="CE">Escavadeira</option>
-                    <option value="FP">Ferramenta de penetração de solo</option>
-                    <option value="GA">Garfo</option>
-                    <option value="CG">Graniteira</option>
-                    <option value="LA">Lâmina</option>
-                    <option value="LN">Lança</option>
-                    <option value="RI">RIpper</option>
-                    <option value="SG">Segmento</option>
-                    <option value="VA">Vala</option>
-                    <option value="SE">Serviço</option>
-                </select>
-            </div>
-            <div class="mb-3">
-                <label for="NomeProduto" class="form-label">Nome do produto:</label>
-                <input type="text" class="form-control" id="NomeProduto">
-            </div>
-            <div class="mb-3">
-                <label for="Equipamento" class="form-label">Equipamento:</label>
-                <input type="text" class="form-control" id="Equipamento">
-            </div>
-            <div class="mb-3">
-                <label for="Volume" class="form-label">Volume:</label>
-                <input type="text" class="form-control" id="Volume">
-            </div>
-            <div class="mb-3">
-                <label for="Largura" class="form-label">Largura:</label>
-                <input type="number" class="form-control" id="Largura">
-            </div>
-            <div class="mb-3">
-                <label for="Lamina" class="form-label">Lâmina:</label>
-                <input type="number" class="form-control" id="Lamina">
-            </div>
-            <div class="mb-3">
-                <label for="Peso" class="form-label">Peso</label>
-                <input type="number" class="form-control">
-            </div>
-            <div class="mb-3">
-                <label for="CodigoProduto">Código do produto:</label>
-                <input type="number" class="form-control" id="CodigoProduto" onkeyup="toLimit(this)">
-            </div>
-            <div>
-                <button type="submit" class="btn btn-primary" id="BtnGerarProduto">Criar</button>
+    <div class="offset-1 col-6 list-div">
+        <form class = "form-horizontal" action = "." method = "POST">
+            {% csrf_token %}
+            <div class = "col-sm-6">
+                <div class = "form-group">
+                    <label for = "idProduto" class = "required">Tipo do Produto:</label>
+                    <select class="custom-select mr-sm-2" name = "produto" id = "idProduto">
+                        <option selected> </option>
+                        <option value = "AC">Acessório</option>
+                        <option value = "CC">Carregadeira</option>
+                        <option value = "CD">Chapa de desgaste</option>
+                        <option value = "CB">Chock bar</option>
+                        <option value = "DF">Dispositivos e ferramentas</option>
+                        <option value = "ER">Engate rápido</option>
+                        <option value = "CE">Escavadeira</option>
+                        <option value = "FP">Ferramenta de penetração de solo</option>
+                        <option value = "GA">Garfo</option>
+                        <option value = "CG">Graniteira</option>
+                        <option value = "LA">Lâmina</option>
+                        <option value = "LN">Lança</option>
+                        <option value = "RI">Ripper</option>
+                        <option value = "SG">Segmento</option>
+                        <option value = "VA">Vala</option>
+                        <option value = "SE">Serviço</option>        
+                    </select>
+                </div>
+                <div class = "form-group">
+                    <label for = "idNomeProduto" class = "required">Nome do Produto:</label>
+                    <input type = "text" name = "nomeProduto" id = "idNomeProduto">
+                </div >
+                <div class = "form-group">
+                    <label for = "idEquipamento" class = "required">Equipamento:</label>
+                    <input type = "text" name = "equipamento" id = "idEquipamento">
+                </div>
+                <div class = "form-group">
+                    <label for = "idVolume" class = "required">Volume (m³):</label>
+                    <input type = "number" name = "volume" id = "idVolume">    
+                </div>
+                <div class = "form-group">
+                    <label for="idLargura" class = "required">Largura (mm):</label>
+                    <input type = "number" name = "largura" id = "idLargura">
+                </div>
+                <div class = "form-group">
+                    <label for = "idLamina" class = "required">Lâmina (mm):</label>
+                    <input type = "number" name = "lamina" id = "idLamina">
+                </div>
+                <div class = "form-group">
+                    <label for = "idPeso" class = "required">Peso (kg):</label>
+                    <input type = "number" name = "peso" id = "idPeso">
+                </div>
+                <div class = "form-group">
+                    <label for = "idCodigoProduto" class = "required">Código do Produto:</label>
+                    <input type = "number" name = "codigoProduto" id = "idCodigoProduto">
+                </div>
+                <div class = "form-group">
+                    <input type = "submit" class = "btn btn-success" value = "Criar Produto">
+                </div>
             </div>
         </form>
     </div>
-
 
 {% endblock %}

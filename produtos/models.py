@@ -20,7 +20,7 @@ class Produto(models.Model):
         ('VA', 'Vala'),
         ('SE', 'Serviço'),
     )
-    title = models.CharField(max_length = 30)
+    nomeProduto = models.CharField(max_length = 30)
     equipamento = models.CharField(max_length = 10)
     volume = models.IntegerField()
     largura = models.FloatField()
