@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block title %}Adicionar Produtos{% endblock %}
+
+{% block content %}
+
+    <div class="offset-1 col-10 list-div">
+
+    </div>
+
+
+
+
+
+
+    <div class="container-fluid" id="FormGerarProduto">
+        <form>
+            <div class="mb-3">
+                <label for="TipoProduto" class="form-label"> Qual o tipo de produto?</label>
+                <select type="form-select form-select-sm" class="form-select">
+                    <option value=" "> </option>
+                    <option value="AC">Acessório</option>
+                    <option value="CC">Carregadeira</option>
+                    <option value="CD">Chapa de desgaste</option>
+                    <option value="CB">Chock Bar</option>
+                    <option value="DF">Dispositivos e ferramentas</option>
+                    <option value="ER">Engate Rápido</option>
+                    <option value="CE">Escavadeira</option>
+                    <option value="FP">Ferramenta de penetração de solo</option>
+                    <option value="GA">Garfo</option>
+                    <option value="CG">Graniteira</option>
+                    <option value="LA">Lâmina</option>
+                    <option value="LN">Lança</option>
+                    <option value="RI">RIpper</option>
+                    <option value="SG">Segmento</option>
+                    <option value="VA">Vala</option>
+                    <option value="SE">Serviço</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="NomeProduto" class="form-label">Nome do produto:</label>
+                <input type="text" class="form-control" id="NomeProduto">
+            </div>
+            <div class="mb-3">
+                <label for="Equipamento" class="form-label">Equipamento:</label>
+                <input type="text" class="form-control" id="Equipamento">
+            </div>
+            <div class="mb-3">
+                <label for="Volume" class="form-label">Volume:</label>
+                <input type="text" class="form-control" id="Volume">
+            </div>
+            <div class="mb-3">
+                <label for="Largura" class="form-label">Largura:</label>
+                <input type="number" class="form-control" id="Largura">
+            </div>
+            <div class="mb-3">
+                <label for="Lamina" class="form-label">Lâmina:</label>
+                <input type="number" class="form-control" id="Lamina">
+            </div>
+            <div class="mb-3">
+                <label for="Peso" class="form-label">Peso</label>
+                <input type="number" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label for="CodigoProduto">Código do produto:</label>
+                <input type="number" class="form-control" id="CodigoProduto" onkeyup="toLimit(this)">
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary" id="BtnGerarProduto">Criar</button>
+            </div>
+        </form>
+    </div>
+
+
+{% endblock %}
