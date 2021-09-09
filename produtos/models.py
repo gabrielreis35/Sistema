@@ -1,5 +1,6 @@
 from django.db.models.fields import DateTimeField, IntegerField
 from django.db import models
+from django.shortcuts import redirect
 
 class Produto(models.Model):
     tipoProduto = (
@@ -30,3 +31,6 @@ class Produto(models.Model):
     codigoProduto = IntegerField()
     dateCriacao = DateTimeField(auto_now_add = True)
     dateUpdate = DateTimeField(auto_now = True)
+
+    def __str__(self):
+        return self.nomeProduto

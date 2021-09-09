@@ -3,8 +3,8 @@ from .models import Produto
 from .forms import ProdutoForm
 
 def Produtos(request):
-    products = Produto.objects.all()
-    return render(request, 'Produtos.html', {'produtos' : products})
+    produtos = Produto.objects.all()
+    return render(request, 'Produtos.html', {'produtos' : produtos})
 
 def viewProduto(request, id):
     produto = get_object_or_404(Produto, pk = id)
@@ -17,5 +17,5 @@ def addProduto(request):
             formProduto.save()
 
             return redirect('/produtos')
-            
+
     return render(request, 'addProduto.html')
