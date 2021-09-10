@@ -67,12 +67,16 @@
     padding-left: 0;
 }
 
-.product.item {
+.product-item {
     list-style: none;
     font-size: 20px;
     height: 50px;
     padding-top: 10px;
     border-bottom: 1px #202020;
+}
+
+.product-item a {
+    text-decoration: none;
 }
 
 .fas.fa-edit {
@@ -81,6 +85,7 @@
     font-size: 20px;
     float: right;
 }
+
 
 /* Fim da Lista de produtos */
 
