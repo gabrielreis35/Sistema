@@ -49,12 +49,6 @@
     display: inline-block;
 }
 
-.fas.fa-search {
-    position: absolute;
-    top: 16px;
-    right: 26px;
-}
-
 /* Fim do search */
 
 /* Lista de produtos */
@@ -69,10 +63,10 @@
 
 .product-item {
     list-style: none;
-    font-size: 20px;
+    font-size: 16px;
     height: 50px;
     padding-top: 10px;
-    border-bottom: 1px #202020;
+    border-bottom: 2px #202020;
 }
 
 .product-item a {
@@ -82,15 +76,23 @@
 .fas.fa-edit {
     cursor: pointer;
     margin: 5px;
-    font-size: 20px;
+    font-size: 16px;
     float: right;
 }
 
 
 /* Fim da Lista de produtos */
 
+/* Adicionar Produtos */
+
+
+
+/* Fim de Adicionar Produtos */
+
+
 /* Footer */
 
+/*
 footer {
     margin-top: 150px;
     background-color: #76777B;
@@ -105,3 +107,4 @@ footer p {
     top: 40%;
     position: relative;
 }
+*/

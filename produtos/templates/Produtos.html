@@ -11,13 +11,13 @@
                 <i class="fas fa-plus"></i> Adicionar Produto
             </div>
         </a>
-        <div class="col-9 search-div">
+        <div class="col-3 search-div">
             <input class="form-control" type="text" id="search" name="search" placeholder="Digite o nome do produto">
             <!-- <i class="fas fa-search"></i> -->
         </div>
         <ul class="product-list">
             {% for produto in produtos %}
-            <li class="produtct-item">
+            <li class="product-item">
                 <span><a href = "produto/{{produto.id}}">{{produto.nomeProduto}}</a></span>
                 <span><i class="fas fa-edit"></i></span>
             </li>
