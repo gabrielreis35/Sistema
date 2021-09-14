@@ -12,12 +12,13 @@ def viewProduto(request, id):
     return render(request, 'produto.html', {'produto' : produto})
 
 def addProduto(request):
+    producForm = ProdutoForm()    
     if request.method == 'POST':
-        formProduto = ProdutoForm(request.POST or None)
-        if formProduto.is_valid():
-            formProduto.save()
+        form = producForm(request.POST)
+        if form.is_valid():
+            form.save()
             return redirect('/produtos')
         else:
-            print(forms.ValidationError)
+            form = ProdutoForm()
 
-    return render(request, 'addProduto.html', {'formProduto' : formProduto})
+    return render(request, 'addProduto.html', {'productForm' : producForm})
