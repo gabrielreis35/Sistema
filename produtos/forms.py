@@ -1,15 +1,19 @@
 from django import forms
 from .models import Produto
 
-class ProdutoForm(forms.Form):
+class ProdutoForm(forms.ModelForm):
     class Meta:
         model = Produto
         fields = (
+            'segmentoProduto',
             'nomeProduto',
             'equipamento',
-            'volume',
-            'largura',
-            'lamina',
-            'peso',
-            'produto',
-            'codigoProduto')
+            'capacidadeProduto',
+            'larguraProduto',
+            'laminaProduto',
+            'pesoProduto',
+            'codigoProduto',
+            'classeProduto',
+            'partNumber',
+            'numDentes',
+            'durezaProduto')

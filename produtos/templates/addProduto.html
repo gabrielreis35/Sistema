@@ -5,12 +5,55 @@
 {% block content %}
 
     <div class="offset-1 col-6 list-div">
-        <form class = "form-horizontal" action = "." method = "POST">
+        <form method = "POST">
             {% csrf_token %}
             <div class = "col-sm-6">
                 <div class = "form-group">
-                    <label for = "idProduto" class = "required">Tipo do Produto:</label>
-                    <select class="custom-select mr-sm-2" name = "produto" id = "idProduto">
+                    <label for = "idSegmentoProduto" class = "required">Segmento do produto</label>
+                    <select class="custom-select mr-sm-2" name="segmentoProduto" id = "idSegmentoProduto">
+                        <option selected> </option>
+                        <option value="A">Agrícola</option>
+                        <option value="C">Construção</option>
+                        <option value="F">Florestal</option>
+                        <option value="I">Industrial</option>
+                        <option value="U">Automotiva</option>
+                        <option value="M">Mineração</option>
+                    </select>
+                </div>
+
+                <div class = "form-group">
+                    <label for = "idNomeProduto" class = "required">Nome do Produto:</label>
+                    <input type = "text" name = "nomeProduto" id = "idNomeProduto">
+                </div >
+
+                <div class = "form-group">
+                    <label for = "idEquipamento" class = "required">Equipamento:</label>
+                    <input type = "text" name = "equipamento" id = "idEquipamento">
+                </div>
+                
+                <div class = "form-group">
+                    <label for = "idCapacidade" class = "required">Capacidade (m³):</label>
+                    <input type = "number" name = "capacidade" id = "idCapacidade">    
+                </div>
+
+                <div class = "form-group">
+                    <label for="idLargura" class = "required">Largura (mm):</label>
+                    <input type = "number" name = "largura" id = "idLargura">
+                </div>
+
+                <div class = "form-group">
+                    <label for = "idLamina" class = "required">Lâmina (mm):</label>
+                    <input type = "number" name = "lamina" id = "idLamina">
+                </div>
+
+                <div class = "form-group">
+                    <label for = "idPeso" class = "required">Peso (kg):</label>
+                    <input type = "number" name = "peso" id = "idPeso">
+                </div>
+
+                <div class = "form-group">
+                    <label for = "idCodigoProduto" class = "required">Código do Produto:</label>
+                    <select class="custom-select mr-sm-2" name = "codigoProduto" id = "idCodigoProduto">
                         <option selected> </option>
                         <option value = "AC">Acessório</option>
                         <option value = "CC">Carregadeira</option>
@@ -30,37 +73,46 @@
                         <option value = "SE">Serviço</option>        
                     </select>
                 </div>
+
                 <div class = "form-group">
-                    <label for = "idNomeProduto" class = "required">Nome do Produto:</label>
-                    <input type = "text" name = "nomeProduto" id = "idNomeProduto">
-                </div >
-                <div class = "form-group">
-                    <label for = "idEquipamento" class = "required">Equipamento:</label>
-                    <input type = "text" name = "equipamento" id = "idEquipamento">
+                    <label for = "idClasseProduto" class="required">Classe do Produto</label>
+                    <select class = "custom-select mr-sm-2" name = "classeProduto" id = "idClasseProduto">
+                        <option selected> </option>
+                        <option value = "6 SW">Classe 6 SW</option>
+                        <option value = "6 LH">Classe 6 LH</option>
+                        <option value = "7 SW">Classe 7 SW</option>
+                        <option value = "7 LH">Classe 7 LH</option>
+                        <option value = "7S SW">Classe 7S SW</option>
+                    </select>
                 </div>
+
                 <div class = "form-group">
-                    <label for = "idVolume" class = "required">Volume (m³):</label>
-                    <input type = "number" name = "volume" id = "idVolume">    
+                    <label for = "idDente" class= "required">Número de dentes:</label>
+                    <input type = "number" name = "dente" id = "idDente">
                 </div>
+
                 <div class = "form-group">
-                    <label for="idLargura" class = "required">Largura (mm):</label>
-                    <input type = "number" name = "largura" id = "idLargura">
+                    <label for = "idDurezaProduto">Dureza do Produto</label>
+                    <select class = "custom-select mr-sm-2" name = "durezaProduto" id = "idDurezaProduto">
+                        <option selected> </option>
+                        <option value = "GD">Geral</option>
+                        <option value = "HD">Pesado</option>
+                        <option value = "SD">Severo</option>
+                        <option value = "XD">Extremo</option>
+                    </select>
                 </div>
+
                 <div class = "form-group">
-                    <label for = "idLamina" class = "required">Lâmina (mm):</label>
-                    <input type = "number" name = "lamina" id = "idLamina">
+                    <label for = "idPartNumber" class= "required">PartNumber:</label>
+                    <input type = "text" name = "partNumber" id = "idPartNumber">
                 </div>
-                <div class = "form-group">
-                    <label for = "idPeso" class = "required">Peso (kg):</label>
-                    <input type = "number" name = "peso" id = "idPeso">
+
+                <div class = "mb-3">
+                    <label for = "formFile" class = "form-label">Default file input</label>
+                    <input class="form-control" type="file" id="formFile">
                 </div>
-                <div class = "form-group">
-                    <label for = "idCodigoProduto" class = "required">Código do Produto:</label>
-                    <input type = "number" name = "codigoProduto" id = "idCodigoProduto">
-                </div>
-                <div class = "form-group">
-                    <input type = "submit" class = "btn btn-success" value = "Criar Produto">
-                </div>
+
+                <input type = "submit" class = "btn btn-success" value = "Criar Produto">
             </div>
         </form>
     </div>

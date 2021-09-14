@@ -12,8 +12,8 @@ def viewProduto(request, id):
     return render(request, 'produto.html', {'produto' : produto})
 
 def addProduto(request):
-    formProduto = ProdutoForm(request.POST or None)
-    if request.method == "POST":
+    if request.method == 'POST':
+        formProduto = ProdutoForm(request.POST or None)
         if formProduto.is_valid():
             formProduto.save()
             return redirect('/produtos')

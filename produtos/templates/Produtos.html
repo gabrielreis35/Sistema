@@ -3,7 +3,7 @@
 {% block title %}Produtos{% endblock %}
 
 {% block content %}
-
+    
     <div class="offset-1 col-10 product-div">
         <h1>Produtos</h1>
         <a href="./addproduto" id = "add-product"> 
@@ -14,14 +14,62 @@
         <div class="col-3 search-div">
             <input class="form-control" type="text" id="search" name="search" placeholder="Digite o nome do produto">
             <!-- <i class="fas fa-search"></i> -->
-        </div>
-        <ul class="product-list">
+        </div>    
+        <table class="table table-striped table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Segmento</th>
+                    <th scope="col">Produto</th>
+                    <th scope="col">Equipamento</th>
+                    <th scope="col">Codigo</th>
+                    <th scope="col">Classe</th>
+                    <th scope="col">Volume</th>
+                    <th scope="col">Largura</th>
+                    <th scope="col">Lâmina</th>
+                    <th scope="col">Peso</th>
+                    <th scope="col">PartNumber</th>
+                </tr>
+            </thead>
             {% for produto in produtos %}
-            <li class="product-item">
-                <span><a href = "produto/{{produto.id}}">{{produto.nomeProduto}}</a></span>
-                <span><i class="fas fa-edit"></i></span>
-            </li>
+            <tbody id = "product-table">
+                <tr scope="row">
+                </tr>
+                <td>
+                    {{produto.id}}
+                </td>
+                <td>
+                    {{produto.segmentoProduto}}
+                </td>
+                <td>
+                    {{produto.nomeProduto}}
+                </td>
+                <td>
+                    {{produto.equipamento}}
+                </td>
+                <td>
+                    {{produto.codigoProduto}}
+                </td>
+                <td>
+                    {{produto.classeProduto}}
+                </td>
+                <td>
+                    {{produto.capacidadeProduto}}
+                </td>
+                <td>
+                    {{produto.larguraProduto}}
+                </td>
+                <td>
+                    {{produto.laminaProduto}}
+                </td>
+                <td>
+                    {{produto.pesoProduto}}
+                </td>
+                <td>
+                    {{produto.partNumber}}
+                </td>
+            </tbody>
             {% endfor %}
-        </ul>
+        </table>
     </div>
 {% endblock %}
