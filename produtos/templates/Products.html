@@ -6,7 +6,7 @@
     
     <div class="offset-1 col-10 product-div">
         <h1>Produtos</h1>
-        <a href="./addproduto" class="add-product"> 
+        <a href="./newproduct" class="add-product"> 
             <div class="col-2 add-div">
                 <i class="fas fa-plus"></i>Adicionar Produto
             </div>
@@ -33,42 +33,42 @@
                     <th scope="col">Editar</th>
                 </tr>
             </thead>
-            {% for produto in produtos %}
+            {% for product in products %}
             <tbody id="product-table">
                 <tr scope="row">
                 </tr>
                 <td>
-                    {{produto.id}}
+                    {{product.id}}
                 </td>
                 <td>
-                    {{produto.segmentoProduto}}
+                    {{product.segmentoProduto}}
                 </td>
                 <td>
-                    {{produto.nomeProduto}}
+                    {{product.nomeProduto}}
                 </td>
                 <td>
-                    {{produto.equipamento}}
+                    {{product.equipamento}}
                 </td>
                 <td>
-                    {{produto.codigoProduto}}
+                    {{product.codigoProduto}}
                 </td>
                 <td>
-                    {{produto.classeProduto}}
+                    {{product.classeProduto}}
                 </td>
                 <td>
-                    {{produto.capacidadeProduto}}
+                    {{product.capacidadeProduto}}
                 </td>
                 <td>
-                    {{produto.larguraProduto}}
+                    {{product.larguraProduto}}
                 </td>
                 <td>
-                    {{produto.laminaProduto}}
+                    {{product.laminaProduto}}
                 </td>
                 <td>
-                    {{produto.pesoProduto}}
+                    {{product.pesoProduto}}
                 </td>
                 <td>
-                    {{produto.partNumber}}
+                    {{product.partNumber}}
                 </td>
                 <td>
                     <a href="#" class="icon view-product">
