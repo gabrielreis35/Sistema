@@ -18,6 +18,6 @@ def NewProduct(request):
         if producForm.is_valid():
             producForm.save()
             return redirect('/products')
-    else:
-        producForm = ProdutoForm()
-        return render(request, 'NewProduct.html', {'productForm' : producForm})
+
+    producForm = ProdutoForm()
+    return render(request, 'NewProduct.html', {'productForm' : producForm})
