@@ -6,7 +6,7 @@
     
     <div class="offset-1 col-10 product-div">
         <h1>Produtos</h1>
-        <a href="./addproduto" id = "add-product"> 
+        <a href="./addproduto" class="add-product"> 
             <div class="col-2 add-div">
                 <i class="fas fa-plus"></i> Adicionar Produto
             </div>
@@ -29,10 +29,11 @@
                     <th scope="col">Lâmina</th>
                     <th scope="col">Peso</th>
                     <th scope="col">PartNumber</th>
+                    <th scope="col">Editar</th>
                 </tr>
             </thead>
             {% for produto in produtos %}
-            <tbody id = "product-table">
+            <tbody id="product-table">
                 <tr scope="row">
                 </tr>
                 <td>
@@ -67,6 +68,13 @@
                 </td>
                 <td>
                     {{produto.partNumber}}
+                </td>
+                <td>
+                    <a href="./editProduto.html" class="edit-product">
+                        <div class="col-8">
+                            <i class="fas fa-edit"></i>
+                        </div>
+                    </a>
                 </td>
             </tbody>
             {% endfor %}

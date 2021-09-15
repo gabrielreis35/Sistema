@@ -74,18 +74,20 @@
     text-decoration: none;
 }
 
+.edit-product {
+    color: #000;
+}
+
 .fas.fa-edit {
     cursor: pointer;
     margin: 5px;
     font-size: 16px;
-    float: right;
+    position: center;
 }
-
 
 /* Fim da Lista de produtos */
 
 /* Adicionar Produtos */
-
 
 
 /* Fim de Adicionar Produtos */
