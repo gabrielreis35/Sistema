@@ -8,7 +8,7 @@
         <h1>Produtos</h1>
         <a href="./addproduto" class="add-product"> 
             <div class="col-2 add-div">
-                <i class="fas fa-plus"></i> Adicionar Produto
+                <i class="fas fa-plus"></i>Adicionar Produto
             </div>
         </a>
         <div class="col-3 search-div">
@@ -29,6 +29,7 @@
                     <th scope="col">Lâmina</th>
                     <th scope="col">Peso</th>
                     <th scope="col">PartNumber</th>
+                    <th scope="col">Visualizar</th>
                     <th scope="col">Editar</th>
                 </tr>
             </thead>
@@ -70,8 +71,15 @@
                     {{produto.partNumber}}
                 </td>
                 <td>
-                    <a href="./editProduto.html" class="edit-product">
-                        <div class="col-8">
+                    <a href="#" class="icon view-product">
+                        <div class="col">
+                            <i class="far fa-eye"></i>  
+                        </div>
+                    </a>
+                </td>
+                <td>
+                    <a href="#" class="icon edit-product">
+                        <div class="col">
                             <i class="fas fa-edit"></i>
                         </div>
                     </a>

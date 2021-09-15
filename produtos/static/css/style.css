@@ -6,16 +6,7 @@
     margin: center; 
 }
 
-/* Produtos */
-
-#FormGerarProduto {
-    width: 25%;
-}
-
-#BtnGerarProduto {
-    margin-top: 30px;
-    margin-bottom: 30px;
-}
+/* Página Produtos */
 
 /* Botão de adicionar */
 
@@ -35,11 +26,10 @@
     margin-left: 5px;
 }
 
-#add-product {
+.add-product {
     text-decoration: none;
+    margin-right: 30px;
 }
-
-/* Fim do botão de adicionar */
 
 /* Search */
 
@@ -50,64 +40,27 @@
     display: inline-block;
 }
 
-/* Fim do search */
-
-/* Lista de produtos */
+/* .fas.fa-search {
+    position: absolute;
+    right: 26px;
+} */
 
 .product-div {
     padding: 0;
 }
 
-.product-list {
-    padding-left: 0;
+.table {
+    text-align: center;
 }
 
-.product-item {
-    list-style: none;
-    font-size: 16px;
-    height: 50px;
-    padding-top: 10px;
-    border-bottom: 2px #202020;
-}
-
-.product-item a {
-    text-decoration: none;
-}
-
-.edit-product {
+.icon.view-product, .edit-product {
     color: #000;
 }
 
-.fas.fa-edit {
-    cursor: pointer;
-    margin: 5px;
-    font-size: 16px;
-    position: center;
-}
+/* Fim da página Produtos */
 
-/* Fim da Lista de produtos */
-
-/* Adicionar Produtos */
+/* Página Add Produtos */
 
 
-/* Fim de Adicionar Produtos */
 
-
-/* Footer */
-
-/*
-footer {
-    margin-top: 150px;
-    background-color: #76777B;
-    height: 100px;
-    border-top: 2px solid #202020;
-    bottom: 0;    
-}
-
-footer p {
-    color: #f5f5f5;
-    text-align: center;
-    top: 40%;
-    position: relative;
-}
-*/
+/* Fim da página Add Produtos */

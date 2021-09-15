@@ -19,6 +19,6 @@ def addProduto(request):
             form.save()
             return redirect('/produtos')
         else:
-            form = ProdutoForm()
+            form = producForm()
 
     return render(request, 'addProduto.html', {'productForm' : producForm})
