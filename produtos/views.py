@@ -14,7 +14,7 @@ def ViewProduct(request, id):
 def NewProduct(request):
     producForm = ProdutoForm()
     if request.method == 'POST':
-        producForm(request.POST)
+        producForm(request.POST or None)
         if producForm.is_valid():
             producForm.save()
             return redirect('/products')

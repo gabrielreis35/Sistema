@@ -1,11 +1,12 @@
 from django import forms
+from django.forms import ModelForm
 from django.db import models
 from .models import Produto
 
-class ProdutoForm(forms.ModelForm):
+class ProdutoForm(ModelForm):
     class Meta:
         model = Produto
-        fields = (
+        fields = [
             'segmentoProduto',
             'nomeProduto',
             'equipamento',
@@ -17,4 +18,4 @@ class ProdutoForm(forms.ModelForm):
             'classeProduto',
             'partNumber',
             'numDentes',
-            'durezaProduto')
+            'durezaProduto']
