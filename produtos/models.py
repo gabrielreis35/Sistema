@@ -1,6 +1,6 @@
-from django.db.models.fields import  DateTimeField
+from django.db.models.base import Model
+from django.db.models.fields import  CharField, DateTimeField, IntegerField, FloatField
 from django.db import models
-from django.http import request
 
 class Produto(models.Model):
     segmento = (
@@ -53,18 +53,18 @@ class Produto(models.Model):
         ('XD', 'Extrema'),
     )
 
-    segmentoProduto = models.CharField(max_length = 30, choices = segmento)
-    nomeProduto = models.CharField(max_length = 30)
-    equipamento = models.CharField(max_length = 10)
-    capacidadeProduto = models.FloatField()
-    larguraProduto = models.IntegerField()
-    laminaProduto = models.IntegerField()
-    pesoProduto = models.IntegerField()
-    codigoProduto = models.CharField(max_length = 2, choices = tipoProduto)
-    classeProduto = models.CharField(max_length = 5, choices = classeProduto)
-    partNumber = models.CharField(max_length = 16)
-    numDentes = models.IntegerField()
-    durezaProduto = models.CharField(max_length = 2, choices = dureza)
+    segmentoProduto = CharField(max_length = 30, choices = segmento)
+    nomeProduto = CharField(max_length = 30)
+    equipamento = CharField(max_length = 10)
+    capacidadeProduto = FloatField()
+    larguraProduto = IntegerField()
+    laminaProduto = IntegerField()
+    pesoProduto = IntegerField()
+    codigoProduto = CharField(max_length = 2, choices = tipoProduto)
+    classeProduto = CharField(max_length = 5, choices = classeProduto)
+    numDentes = IntegerField()
+    durezaProduto = CharField(max_length = 2, choices = dureza)
+    tipoFabricacao = CharField(max_length = 20)
 
     dateCriacao = DateTimeField(auto_now_add = True)
     dateUpdate = DateTimeField(auto_now = True)
@@ -72,3 +72,8 @@ class Produto(models.Model):
     
     def __str__(self):
         return self.nomeProduto
+
+class Item(models.Model):
+    nomeItem = CharField(max_length = 30)
+    tipoItem = CharField(max_length = 20)
+    partNumber = CharField(max_length = 16)
