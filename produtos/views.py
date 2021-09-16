@@ -1,21 +1,24 @@
 from django import forms
 from django.shortcuts import redirect, render, get_object_or_404
-from .models import Produto
-from .forms import ProdutoForm
+from produtos.models import Produto
+from produtos.forms import ProdutoForm
 
 def Products(request):
     products = Produto.objects.all().order_by('-dateCriacao')
     return render(request, 'Products.html', {'products' : products})
 
 def NewProduct(request):
-    data = {}
-    producForm = ProdutoForm(request.POST or None)
-    if producForm.is_valid():
-        producForm.save()
-        return redirect('/products')
-
-    data ['productForm'] = producForm
-    return render(request, 'NewProduct.html', data)
+    productForm = ProdutoForm()
+    if request.method == 'POST':
+        productForm = ProdutoForm(request.POST or None)
+        if productForm.is_valid():
+            productForm.save()
+            return redirect('/products')
+        
+    else:
+        producForm = ProdutoForm()
+        
+    return render(request, 'NewProduct.html', {'productForm' : productForm})
     
 def ViewProduct(request, id):
     product = get_object_or_404(Produto, pk = id)
