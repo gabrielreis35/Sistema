@@ -1,6 +1,5 @@
 from django.db.models.fields import CharField, DateTimeField, IntegerField
 from django.db import models
-from django.shortcuts import redirect
 
 class Produto(models.Model):
     segmento = (
