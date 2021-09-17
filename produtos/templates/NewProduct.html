@@ -7,7 +7,7 @@
     <div class="offset-1 col-6 list-div">
         <form method="POST">
             {% csrf_token %}
-            {{ productForm }}
+            {{ productForm.as_p }}
             <input type="submit" class="btn btn-success" value="Criar Produto">
         </form>
     </div>

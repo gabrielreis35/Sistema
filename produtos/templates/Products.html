@@ -29,8 +29,8 @@
                     <th scope="col">Lâmina</th>
                     <th scope="col">Peso</th>
                     <!-- <th scope="col">PartNumber</th> -->
-                    <th scope="col">Visualizar</th>
-                    <th scope="col">Editar</th>
+                    <th scope="col" class="col-sm-1">Visualizar</th>
+                    <!-- <th scope="col">Editar</th> -->
                 </tr>
             </thead>
             {% for product in products %}
@@ -76,13 +76,13 @@
                         </div>
                     </a>
                 </td>
-                <td>
+                <!-- <td>
                     <a href="{% url 'Update_Product' product.id %}" class="icon edit-product">
                         <div class="col">
                             <i class="fas fa-edit"></i>
                         </div>
                     </a>
-                </td>
+                </td> -->
             </tbody>
             {% endfor %}
         </table>

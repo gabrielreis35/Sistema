@@ -20,7 +20,7 @@ def NewProduct(request):
             return redirect('/products')
         
     else:
-        producForm = ProdutoForm()
+        productForm = ProdutoForm()
         
     return render(request, 'NewProduct.html', {'productForm' : productForm})
     
