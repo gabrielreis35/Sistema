@@ -53,27 +53,27 @@ class Produto(models.Model):
         ('XD', 'Extrema'),
     )
 
-    segmentoProduto = CharField(max_length = 30, choices = segmento)
-    nomeProduto = CharField(max_length = 30)
-    equipamento = CharField(max_length = 10)
-    capacidadeProduto = FloatField()
-    larguraProduto = IntegerField()
-    laminaProduto = IntegerField()
-    pesoProduto = IntegerField()
-    codigoProduto = CharField(max_length = 2, choices = tipoProduto)
-    classeProduto = CharField(max_length = 5, choices = classeProduto)
-    numDentes = IntegerField()
-    durezaProduto = CharField(max_length = 2, choices = dureza)
-    tipoFabricacao = CharField(max_length = 20)
+    segmento = CharField(max_length=30, choices=segmento, null=True)
+    nome = CharField(max_length=30, null=True)
+    equipamento = CharField(max_length=10, null=True)
+    capacidade = FloatField(null=True)
+    largura = IntegerField(null=True)
+    lamina = IntegerField(null=True)
+    peso = IntegerField(null=True)
+    codigo = CharField(max_length=2, choices=tipoProduto, null=True)
+    classe = CharField(max_length=5, choices=classeProduto, null=True)
+    numDentes = IntegerField(null=True)
+    dureza = CharField(max_length=2, choices=dureza, null=True)
 
-    dateCriacao = DateTimeField(auto_now_add = True)
-    dateUpdate = DateTimeField(auto_now = True)
+    dateCriacao = DateTimeField(auto_now_add=True)
+    dateUpdate = DateTimeField(auto_now=True)
 
     
     def __str__(self):
         return self.nomeProduto
 
 class Item(models.Model):
-    nomeItem = CharField(max_length = 30)
-    tipoItem = CharField(max_length = 20)
+    nome = CharField(max_length = 30)
+    tipo = CharField(max_length = 20)
     partNumber = CharField(max_length = 16)
+    tipoFabricacao = CharField(max_length=20)

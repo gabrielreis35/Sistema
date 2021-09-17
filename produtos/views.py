@@ -1,11 +1,15 @@
 from django import forms
+from django.core.paginator import Paginator
 from django.shortcuts import redirect, render, get_object_or_404
 from produtos.models import Produto
 from produtos.forms import ProdutoForm
 
 def Products(request):
-    products = Produto.objects.all().order_by('-dateCriacao')
-    return render(request, 'Products.html', {'products' : products})
+    productsList = Produto.objects.all().order_by('-dateCriacao')
+    paginator = Paginator(productsList, 20)
+    page = request.GET.get('page')
+    produtcs = paginator.get_page(page)
+    return render(request, 'Products.html', {'products' : produtcs})
 
 def NewProduct(request):
     productForm = ProdutoForm()

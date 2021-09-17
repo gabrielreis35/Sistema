@@ -28,7 +28,7 @@
                     <th scope="col">Largura</th>
                     <th scope="col">Lâmina</th>
                     <th scope="col">Peso</th>
-                    <th scope="col">PartNumber</th>
+                    <!-- <th scope="col">PartNumber</th> -->
                     <th scope="col">Visualizar</th>
                     <th scope="col">Editar</th>
                 </tr>
@@ -41,37 +41,36 @@
                     {{product.id}}
                 </td>
                 <td>
-                    {{product.segmentoProduto}}
+                    {{product.segmento}}
                 </td>
                 <td>
-                    {{product.nomeProduto}}
+                    {{product.nome}}
                 </td>
                 <td>
                     {{product.equipamento}}
                 </td>
                 <td>
-                    {{product.codigoProduto}}
+                    {{product.codigo}}
                 </td>
                 <td>
-                    {{product.classeProduto}}
+                    {{product.classe}}
                 </td>
                 <td>
-                    {{product.capacidadeProduto}}
+                    {{product.capacidade}}
                 </td>
                 <td>
-                    {{product.larguraProduto}}
+                    {{product.largura}}
                 </td>
                 <td>
-                    {{product.laminaProduto}}
+                    {{product.lamina}}
                 </td>
                 <td>
-                    {{product.pesoProduto}}
+                    {{product.peso}}
                 </td>
+                <!-- <td>
+                </td> -->
                 <td>
-                    {{product.partNumber}}
-                </td>
-                <td>
-                    <a href="#" class="icon view-product">
+                    <a href="{% url 'View_Product' product.id %}" class="icon view-product">
                         <div class="col">
                             <i class="far fa-eye"></i>
                         </div>
@@ -87,5 +86,20 @@
             </tbody>
             {% endfor %}
         </table>
+        <div class="pagination">
+            <span class="step-links">
+                {% if products.has_previous %}
+                    <a href="?page={{products.previous_page_number}}" class="fas fa-arrow-left"></a>
+                {% endif %}
+                
+                <span class="current">
+                    {{products.number}} de {{products.paginator.number_pages}}
+                </span>
+
+                {% if products.has_next %}
+                    <a href="?page={{products.next_page_number}}" class="fas fa-arrow-right"></a>
+                {% endif %}
+            </span>
+        </div>
     </div>
 {% endblock %}

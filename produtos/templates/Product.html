@@ -4,6 +4,46 @@
 
 {% block content %}
 
-    <h1>{{produto.title}}</h1>
+    <div class="title-product">
+        <h1>{{product.nome}}</h1>
+    </div>
+    <div class="container product-single">
+        <div class="row">
+            <div class="col">
+                {{product.id}}
+            </div>
+            <div class="col">
+                {{product.segmento}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                {{product.nome}}
+            </div>
+            <div class="col">
+                {{product.equipamento}}
+            </div>
+            <div class="col">
+                {{product.codigo}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                {{product.classe}}
+            </div>
+            <div class="col">
+                {{product.capacidade}}
+            </div>
+            <div class="col">
+                {{product.Largura}}
+            </div>
+            <div class="col">
+                {{product.lamina}}
+            </div>
+            <div class="col">
+                {{product.peso}}
+            </div>
+        </div>
+    </div>
 
 {% endblock %}

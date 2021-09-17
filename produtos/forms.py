@@ -5,15 +5,14 @@ class ProdutoForm(ModelForm):
     class Meta:
         model = Produto
         fields = [
-            'segmentoProduto',
-            'nomeProduto',
+            'segmento',
+            'nome',
             'equipamento',
-            'capacidadeProduto',
-            'larguraProduto',
-            'laminaProduto',
-            'pesoProduto',
-            'codigoProduto',
-            'classeProduto',
-            'partNumber',
+            'capacidade',
+            'largura',
+            'lamina',
+            'peso',
+            'codigo',
+            'classe',
             'numDentes',
-            'durezaProduto']
+            'dureza']
