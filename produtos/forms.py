@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from .models import Produto
+from .models import Item, Produto, Arquivo
 
 class ProdutoForm(ModelForm):
     class Meta:
@@ -31,3 +31,21 @@ class ProdutoForm(ModelForm):
             'numDentes': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Número de dentes da caçamba'}),
             'dureza': forms.Select(attrs={'class': 'form-control', 'placeholder' : 'Qual código de dureza o produto se encontra'}),
         }
+
+class ItemForm(ModelForm):
+    class Meta:
+        model = Item
+        fields = [
+            'nome',
+            'tipo',
+            'partNumber',
+            'tipoFabricacao'
+        ]
+
+class ArquivoForm(ModelForm):
+    class Meta:
+        model = Arquivo
+        fields = [
+            'nome',
+            'tipo',
+        ]

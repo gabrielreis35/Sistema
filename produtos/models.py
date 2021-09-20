@@ -74,10 +74,26 @@ class Produto(models.Model):
     responsavel = ForeignKey(User, null=True, on_delete=SET_NULL)
     
     def __str__(self):
-        return self.nomeProduto
+        return self.nome
 
 class Item(models.Model):
     nome = CharField(max_length = 30)
     tipo = CharField(max_length = 20)
-    partNumber = CharField(max_length = 16)
+    partNumber = CharField(max_length = 16, null=True)
     tipoFabricacao = CharField(max_length=20)
+
+    dateCriacao = DateTimeField(auto_now_add=True)
+    dateUpdate = DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.nome
+
+class Arquivo(models.Model):
+    nome = CharField(max_length=30)
+    tipo = CharField(max_length=20)
+
+    dateCriacao = DateTimeField(auto_now_add=True)
+    dateUpdate = DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.nome

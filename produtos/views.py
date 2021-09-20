@@ -42,3 +42,6 @@ def DeleteProduct(request, id):
     product = Produto.objects.get(id = id)
     product.delete()
     return redirect('/products')
+
+def NewItem(request):
+    return render(request, 'NewItem.html')

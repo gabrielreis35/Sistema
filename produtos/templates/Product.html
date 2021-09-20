@@ -7,43 +7,140 @@
     <div class="title-product">
         <h1>{{product.nome}}</h1>
     </div>
-    <div class="container product-single">
+    <div class="container product-table">
         <div class="row">
-            <div class="col">
+            <div class="col-sm-2 product-title">
+                ID:
+            </div>
+            <div class="col product-single">
                 {{product.id}}
             </div>
-            <div class="col">
-                {{product.segmento}}
+            <div class="col-sm-2 product-title">
+                Segmento:
+            </div>
+            <div class="col product-single">
+                {% if product.segmento == 'A' %}
+                    Agrícola
+                {% elif product.segmento == 'C' %}
+                    Construção
+                {% elif product.segmento == 'F' %}
+                    Florestal
+                {% elif product.segmento == 'I' %}
+                    Indústria
+                {% elif product.segmento == 'U' %}
+                    Indústria Automotiva
+                {% elif product.segmento == 'M' %}
+                    Mineiração
+                {% endif %}
             </div>
         </div>
         <div class="row">
-            <div class="col">
+            <div class="col-sm-2 product-title">
+                Nome:
+            </div>
+            <div class="col product-single">
                 {{product.nome}}
             </div>
-            <div class="col">
-                {{product.equipamento}}
+            <div class="col-sm-2 product-title">
+                Equipamento:
             </div>
-            <div class="col">
-                {{product.codigo}}
+            <div class="col product-single">
+                {{product.equipamento}}
             </div>
         </div>
         <div class="row">
-            <div class="col">
+            <div class="col-sm-2 product-title">
+                Acessório:
+            </div>
+            <div class="col product-single">
+                {% if product.codigo == 'AC' %}
+                    Acessório
+                {% elif product.codigo == 'CC' %}
+                    Carregadeira
+                {% elif product.codigo == 'CD' %}
+                    Chapa de desgaste
+                {% elif product.codigo == 'CB' %}
+                    Chock Bar
+                {% elif product.codigo == 'DF' %}
+                    Dispositivos e ferramentas
+                {% elif product.codigo == 'ER' %}
+                    Engate rápido
+                {% elif product.codigo == 'CE' %}
+                    Escavadeira
+                {% elif product.codigo == 'FP' %}
+                    Ferramenta de penetração de solo
+                {% elif product.codigo == 'GA' %}
+                    Garfo
+                {% elif product.codigo == 'CG' %}
+                    Graniteira
+                {% elif product.codigo == 'LA' %}
+                    Lâmina
+                {% elif product.codigo == 'LN' %}
+                    Lança
+                {% elif product.codigo == 'RI' %}
+                    Ripper
+                {% elif product.codigo == 'SG' %}
+                    Segmento
+                {% elif product.codigo == 'VA' %}
+                    Vala
+                {% elif product.codigo == 'SE' %}
+                    Serviço
+                {% endif %}
+            </div>
+            <div class="col-sm-2 product-title">
+                Classe:
+            </div>
+            <div class="col product-single">
                 {{product.classe}}
             </div>
-            <div class="col">
+        </div>
+        <div class="row">
+            <div class="col-sm-2 product-title">
+                Capacidade:
+            </div>
+            <div class="col product-single">
                 {{product.capacidade}}
             </div>
-            <div class="col">
-                {{product.Largura}}
+            <div class="col-sm-2 product-title">
+                Largura:
             </div>
-            <div class="col">
+            <div class="col product-single">
+                {{product.largura}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2 product-title">
+                Lâmina:
+            </div>
+            <div class="col product-single">
                 {{product.lamina}}
             </div>
-            <div class="col">
+            <div class="col-sm-2 product-title">
+                Peso:
+            </div>
+            <div class="col product-single">
                 {{product.peso}}
             </div>
         </div>
     </div>
+
+    <div class="offset-1 col-10 add-all">
+        <div class="container">
+            <a href="../newitem" class="add-item">
+                <div class="col-2 item-div">
+                    <i class="fas fa-plus"></i>Adicionar Item
+                </div>
+            </a>
+        </div>  
+
+        <div class="container">
+            <a href="../arquivo" class="add-arquivo"> 
+                <div class="col-2 add-arquivo">
+                    <i class="fas fa-plus add-product"></i>Adicionar Arquivo
+                </div>
+            </a>
+        </div>
+    </div>
+    
 
 {% endblock %}
