@@ -3,6 +3,7 @@
 # Utilities Library
   - Django
   - Bootstrap
+  - Crispy-Forms
  
 # Requisitos
   - Aba Adicionar Produtos:
