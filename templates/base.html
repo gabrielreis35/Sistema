@@ -1,0 +1,101 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title%}{% endblock%}</title>
+    <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bs/bootstrap.css' %}"></li>
+
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo_content">
+            <div class="logo">
+                <i class="fas fa-balance-scale"></i>
+                <div class="logo_name">Innova</div>
+            </div>
+            <i class="fas fa-bars" id="btn-menu"></i>
+        </div>
+        <ul class="nav_list">
+            <li>
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Pesquisar...">
+            </li>
+            <li>
+                <a href="{% url 'Home' %}">
+                    <i class="fas fa-grip-vertical"></i>
+                    <span class="link_name">Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fas fa-user"></i>
+                    <span class="link_name">Usuários</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fas fa-cog"></i>
+                    <span class="link_name">Configurações</span>
+                </a>
+            </li>
+        </ul>
+        <div class="profile_content">
+            <div class="profile">
+                <div class="profile_details">
+                    <div class="name_job">
+                        <div class="name">{{user.nome}}</div>
+                        <div class="job">{{department.nome}}</div>
+                    </div>
+                </div>
+                <i class="fas fa-sign-out-alt" id="logout"></i>
+            </div>
+        </div>
+    </div>
+
+
+
+
+<!-- 
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{% url 'Home'%}">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{% url 'Products'%}">Produtos</a>
+                    </li>
+                    <li class="nav-item logout">
+                        <a href="{% url 'logout' %}">Logout</a>
+                    </li>
+                </div>
+            </div>
+        </nav>
+    </header> 
+ -->
+
+
+{% block content %}
+    {% endblock %}
+<!--     
+    <footer>
+        <p>Suporte: Chame o TI :D</p>
+    </footer>
+-->
+
+    <script scr="{% static 'js/script.js' %}"></script>
+    <script src="{% static 'js/bs/bootstrap.js' %}"></script>
+    <script src="https://kit.fontawesome.com/8f8a4bcfa0.js" crossorigin="anonymous"></script>
+</body>
+</html>
