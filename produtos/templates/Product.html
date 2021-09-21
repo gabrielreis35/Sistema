@@ -123,10 +123,17 @@
             </div>
         </div>
     </div>
+    <div class="container">
+        <a href="{% url 'Update_Product' product.id %}" class="edit-product">
+            <div class="edit-div">
+                <i class="fas fa-edit"></i>Editar
+            </div>
+        </a>
+    </div>
 
     <div class="offset-1 col-10 add-all">
         <div class="container">
-            <a href="../newitem" class="add-item">
+            <a href="{% url 'New_Item' %}" class="add-item">
                 <div class="col-2 item-div">
                     <i class="fas fa-plus"></i>Adicionar Item
                 </div>
@@ -134,8 +141,8 @@
         </div>  
 
         <div class="container">
-            <a href="../arquivo" class="add-arquivo"> 
-                <div class="col-2 add-arquivo">
+            <a href="{% url 'New_File' %}" class="add-file">
+                <div class="col-2 file-div">
                     <i class="fas fa-plus add-product"></i>Adicionar Arquivo
                 </div>
             </a>

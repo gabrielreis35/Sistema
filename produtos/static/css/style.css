@@ -20,7 +20,7 @@
     margin-right: 25px;
 }
 
-.fas.fa-plus {
+.fas.fa-plus.products {
     color: #fff;
     margin-right: 10px;
     margin-left: 5px;
@@ -77,25 +77,36 @@
     border: 0.1em solid #111;
 }
 
+.edit-product {
+    text-decoration: none;
+    margin-right: 2em;
+}
+
+.edit-div {
+    background-color: #44EB27;
+    cursor: pointer;
+    color: #fff;
+    margin-right: 10px;
+    margin-left: 5px;    
+}
+
+.fas.fa-edit {
+    color: #fff;
+    margin-right: 10px;
+    margin-left: 5px;
+}
+
 .add-all {
     margin-top: 2em;
 }
 
-.add-item, .add-arquivo {
+.item-div, .file-div {
     background-color: #3476e2;
     cursor: pointer;
     color: #fff;
     display: inline-block;
-    padding: 8px;
-    border-radius: 5px;
+    padding: 0.5em;
+    border-radius: 0.3em;
 }
 
 /* Fim da página Produto */
-
-/* Fim da página Produtos */
-
-/* Página Add Produtos */
-
-
-
-/* Fim da página Add Produtos */

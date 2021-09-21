@@ -45,3 +45,6 @@ def DeleteProduct(request, id):
 
 def NewItem(request):
     return render(request, 'NewItem.html')
+
+def NewFile(request):
+    return render(request, 'NewFile.html')
