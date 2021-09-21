@@ -36,7 +36,7 @@ def UpdateProduct(request, id):
         formProduct.save()
         return redirect('/products')
     data ['product'] = product
-    return render(request, 'NewProduct.html', data)
+    return render(request, 'UpdateProduct.html', data)
 
 def DeleteProduct(request, id):
     product = Produto.objects.get(id = id)

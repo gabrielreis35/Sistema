@@ -1,11 +1,18 @@
 {% extends 'base.html' %}
 
-{% block title %} {{product.nome}} {% endblock %}
+{% block title %}{{product.nome}}{% endblock %}
 
 {% block content %}
 
     <div class="title-product">
         <h1>{{product.nome}}</h1>
+    </div>
+    <div class="container">
+        <a href="{% url 'Update_Product' product.id %}" class="edit-product">
+            <div class="edit-div">
+                <i class="fas fa-edit"></i>Editar
+            </div>
+        </a>
     </div>
     <div class="container product-table">
         <div class="row">
@@ -123,31 +130,23 @@
             </div>
         </div>
     </div>
+    
+    <div class="container add">
+        <a href="{% url 'New_Item' %}" class="add-item">
+            <div class="col-2 item-div">
+                <i class="fas fa-plus add-item-button"></i>Adicionar Item
+            </div>
+        </a>
+    </div>  
+
     <div class="container">
-        <a href="{% url 'Update_Product' product.id %}" class="edit-product">
-            <div class="edit-div">
-                <i class="fas fa-edit"></i>Editar
+        <a href="{% url 'New_File' %}" class="add-file">
+            <div class="col-2 file-div">
+                <i class="fas fa-plus add-file-button"></i>Adicionar Arquivo
             </div>
         </a>
     </div>
 
-    <div class="offset-1 col-10 add-all">
-        <div class="container">
-            <a href="{% url 'New_Item' %}" class="add-item">
-                <div class="col-2 item-div">
-                    <i class="fas fa-plus"></i>Adicionar Item
-                </div>
-            </a>
-        </div>  
-
-        <div class="container">
-            <a href="{% url 'New_File' %}" class="add-file">
-                <div class="col-2 file-div">
-                    <i class="fas fa-plus add-product"></i>Adicionar Arquivo
-                </div>
-            </a>
-        </div>
-    </div>
     
 
 {% endblock %}

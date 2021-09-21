@@ -9,6 +9,11 @@
 /* Página Produtos */
 
 /* Botão de adicionar */
+.add-product {
+    text-decoration: none;
+    margin-right: 30px;
+    width: 5em;
+}
 
 .add-div {
     background-color: #3476e2;
@@ -24,11 +29,6 @@
     color: #fff;
     margin-right: 10px;
     margin-left: 5px;
-}
-
-.add-product {
-    text-decoration: none;
-    margin-right: 30px;
 }
 
 .search-div {
@@ -77,36 +77,61 @@
     border: 0.1em solid #111;
 }
 
-.edit-product {
+a.edit-product {
+    
+    display: block;
+    width: 6.5em;
+}
+
+a.edit-product:hover {
     text-decoration: none;
-    margin-right: 2em;
 }
 
 .edit-div {
-    background-color: #44EB27;
+    background-color: #039444;
     cursor: pointer;
     color: #fff;
-    margin-right: 10px;
-    margin-left: 5px;    
+    width: 6.5em;
+
+    
+    border: 0.2em solid #fff;
+    border-radius: 1em;
 }
 
 .fas.fa-edit {
     color: #fff;
-    margin-right: 10px;
-    margin-left: 5px;
+    margin-right: 5px;
+    margin-left: 10px;
 }
 
-.add-all {
+.add {  
     margin-top: 2em;
 }
 
-.item-div, .file-div {
-    background-color: #3476e2;
+.item-div {
+    background-color: #7F7F7F;
     cursor: pointer;
     color: #fff;
-    display: inline-block;
     padding: 0.5em;
-    border-radius: 0.3em;
+    margin-bottom: 0.5em;
+    border-radius: 1em;
+    display: inline-block;
+}
+
+.file-div {
+    background-color: #7F7F7F;
+    cursor: pointer;
+    color: #fff;
+    padding: 0.5em;
+    margin-bottom: 0.9em;
+    border-radius: 1em;
+    display: inline-block;
+}
+
+.fas.fa-plus.add-item-button, .fas.fa-plus.add-file-button {
+    color: #fff;
+    margin-right: 5px;
+    margin-left: 5px;
 }
 
 /* Fim da página Produto */
