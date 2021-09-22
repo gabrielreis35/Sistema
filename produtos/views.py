@@ -2,7 +2,7 @@ from django import forms
 from django.core.paginator import Paginator
 from django.shortcuts import redirect, render, get_object_or_404
 from produtos.models import Produto
-from produtos.forms import ProdutoForm
+from produtos.forms import ItemForm, ProdutoForm
 
 def Products(request):
     productsList = Produto.objects.all().order_by('-dateCriacao')
@@ -44,7 +44,18 @@ def DeleteProduct(request, id):
     return redirect('/products')
 
 def NewItem(request):
-    return render(request, 'produtos/NewItem.html')
+    itemForm = ItemForm()
+    if request.method == 'POST':
+        itemForm = ItemForm(request.POST or None)
+        if itemForm.is_valid():
+            itemForm.save()
+            return redirect('/product/<int:id>')
+        
+    else:
+        itemForm = ItemForm()
+        
+    return render(request, 'produtos/NewItem.html', {'itemForm' : itemForm})
+
 
 def NewFile(request):
-    return render(request, 'NewFile.html')
+    return render(request, 'produtos/NewFile.html')

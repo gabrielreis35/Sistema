@@ -79,6 +79,7 @@ class Produto(models.Model):
 class Item(models.Model):
     nome = CharField(max_length = 30)
     tipo = CharField(max_length = 20)
+    revisao = IntegerField(null=True)
     partNumber = CharField(max_length = 16, null=True)
     tipoFabricacao = CharField(max_length=20)
 
