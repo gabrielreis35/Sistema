@@ -8,10 +8,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title%}{% endblock%}</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/bs/bootstrap.css' %}"></li>
 
 </head>
 <body>
+    <div class="sidebar">
+        <div class="logo_content">
+            <div class="logo">
+                <i class="fas fa-balance-scale"></i>
+                <div class="logo_name">Innova</div>
+            </div>
+            <i class="fas fa-bars" id="btn-menu"></i>
+        </div>
+        <ul class="nav_list">
+            <li>
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Pesquisar...">
+            </li>
+            <li>
+                <a href="{% url 'Home' %}">
+                    <i class="fas fa-grip-vertical"></i>
+                    <span class="link_name">Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fas fa-user"></i>
+                    <span class="link_name">Usuários</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fas fa-cog"></i>
+                    <span class="link_name">Configurações</span>
+                </a>
+            </li>
+        </ul>
+        <div class="profile_content">
+            <div class="profile">
+                <div class="profile_details">
+                    <div class="name_job">
+                        <div class="name">{{user.nome}}</div>
+                        <div class="job">{{department.nome}}</div>
+                    </div>
+                </div>
+                <i class="fas fa-sign-out-alt" id="logout"></i>
+            </div>
+        </div>
+    </div>
+
+
+
+
+<!-- 
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
@@ -33,8 +82,11 @@
                 </div>
             </div>
         </nav>
-    </header>
-    {% block content %}
+    </header> 
+ -->
+
+
+{% block content %}
     {% endblock %}
 <!--     
     <footer>
@@ -43,7 +95,7 @@
 -->
 
     <script scr="{% static 'js/script.js' %}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <script src="{% static 'js/bs/bootstrap.js' %}"></script>
     <script src="https://kit.fontawesome.com/8f8a4bcfa0.js" crossorigin="anonymous"></script>
 </body>
 </html>

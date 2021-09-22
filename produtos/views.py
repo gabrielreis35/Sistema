@@ -9,7 +9,7 @@ def Products(request):
     paginator = Paginator(productsList, 20)
     page = request.GET.get('page')
     produtcs = paginator.get_page(page)
-    return render(request, 'Products.html', {'products' : produtcs})
+    return render(request, 'produtos/Products.html', {'products' : produtcs})
 
 def NewProduct(request):
     productForm = ProdutoForm()
@@ -22,11 +22,11 @@ def NewProduct(request):
     else:
         productForm = ProdutoForm()
         
-    return render(request, 'NewProduct.html', {'productForm' : productForm})
+    return render(request, 'produtos/NewProduct.html', {'productForm' : productForm})
     
 def ViewProduct(request, id):
     product = get_object_or_404(Produto, pk = id)
-    return render(request, 'Product.html', {'product' : product})
+    return render(request, 'produtos/Product.html', {'product' : product})
 
 def UpdateProduct(request, id):
     data = {}
@@ -36,7 +36,7 @@ def UpdateProduct(request, id):
         formProduct.save()
         return redirect('/products')
     data ['product'] = product
-    return render(request, 'UpdateProduct.html', data)
+    return render(request, 'produtos/UpdateProduct.html', data)
 
 def DeleteProduct(request, id):
     product = Produto.objects.get(id = id)
@@ -44,7 +44,7 @@ def DeleteProduct(request, id):
     return redirect('/products')
 
 def NewItem(request):
-    return render(request, 'NewItem.html')
+    return render(request, 'produtos/NewItem.html')
 
 def NewFile(request):
-    return render(request, 'NewFile.html')
+    return render(request, 'produtos/NewFile.html')
