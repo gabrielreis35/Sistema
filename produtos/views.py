@@ -47,4 +47,4 @@ def NewItem(request):
     return render(request, 'produtos/NewItem.html')
 
 def NewFile(request):
-    return render(request, 'produtos/NewFile.html')
+    return render(request, 'NewFile.html')
