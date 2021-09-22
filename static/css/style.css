@@ -48,12 +48,12 @@ body {
     position: absolute;
     color: #fff;
     left: 90%;
-    top: 0.38em;
+    top: 0.37em;
     font-size: 1.25em;
     height: 3.13em;
     width: 3.13em;
     text-align: center;
-    line-height: 3.13em;
+    line-height: 2.5em;
     transform: translateX(-50%);
 }
 
@@ -178,6 +178,7 @@ body {
 
 /* Botão de adicionar */
 .add-product {
+    position: relative;
     text-decoration: none !important;
     margin-right: -0.3em;
     width: 5em;
@@ -206,7 +207,7 @@ h1 {
 .search-div {
     padding: 0px;
     margin-top: 15px;
-    margin-left: 0.7em;
+    margin-left: 37em;
     margin-bottom: 15px;
     display: inline-block;
 }
@@ -243,6 +244,7 @@ h1 {
     position: relative;
     text-align: center;
 }
+
 .product-single {
     border: 0.1em solid #bbb;
 }
@@ -265,6 +267,7 @@ a.edit-product:hover {
     background-color: #039444;
     cursor: pointer;
     color: #fff;
+    height: 2.2em;
     width: 6.5em;
 
     
@@ -308,4 +311,15 @@ a.edit-product:hover {
     margin-left: 5px;
 }
 
-/* Fim da página Produto */
+/* Página de Adicionar Item */
+
+.title-new-item {
+    font-size: 1.5em !important;
+    padding: 30px;
+    position: relative;
+    text-align: center;
+}
+
+.btn-new-tem {
+    text-align: center;
+}
