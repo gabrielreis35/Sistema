@@ -157,7 +157,7 @@ body {
 .home_content {
     top: 2em;
     position: absolute;
-    height: 100%;
+    height: 95%;
     width: 84%;
     left: 15em;
 }
@@ -170,6 +170,13 @@ body {
 }
 
 /* Página Produtos */
+
+.title-products {
+    font-size: 1.5em !important;
+    padding: 30px;
+    position: relative;
+    text-align: center;
+}
 
 .product-div {
     padding: 0;
@@ -207,7 +214,7 @@ h1 {
 .search-div {
     padding: 0px;
     margin-top: 15px;
-    margin-left: 37em;
+    margin-left: 45em;
     margin-bottom: 15px;
     display: inline-block;
 }
@@ -245,12 +252,17 @@ h1 {
     text-align: center;
 }
 
-.product-single {
-    border: 0.1em solid #bbb;
+.product-table {
+    position: relative;
+    margin-left: 6em;
+    width: 90%;
+    border: solid 4px #555;
+    border-collapse: collapse;
+    border-radius: 6%;
 }
 
-.product-title {
-    border: 0.1em solid #111;
+.product-item {
+    border: solid 2px #ddd;
 }
 
 a.edit-product {
@@ -311,6 +323,19 @@ a.edit-product:hover {
     margin-left: 5px;
 }
 
+/* Itens comuns nas páginas de Adicionar */
+
+.btn.btn-success{
+    margin-bottom: 3em;
+}
+
+/* Página de Adicionar Produto */
+
+.title-new-product {
+    font-size: 1.5em !important;
+    text-align: center;
+}
+
 /* Página de Adicionar Item */
 
 .title-new-item {
@@ -320,6 +345,26 @@ a.edit-product:hover {
     text-align: center;
 }
 
-.btn-new-tem {
+
+/* Página de Adicionar Arquivo */
+
+.title-new-file {
+    font-size: 1.5em !important;
+    padding: 30px;
+    position: relative;
     text-align: center;
+}
+
+/* Página de Colaborador */
+
+.title-user {
+    font-size: 1.5em !important;
+    padding: 30px;
+    position: relative;
+    text-align: center;
+}
+
+.list-user {
+    list-style: none;
+    padding: 0.5em;
 }

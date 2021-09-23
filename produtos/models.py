@@ -3,7 +3,7 @@ from django.db.models.deletion import PROTECT, SET_NULL
 from django.db.models.fields import  CharField, DateTimeField, IntegerField, FloatField
 from django.db import models
 from django.db.models.fields.related import ForeignKey
-from users.models import User
+from colaborator.models import Colaborador
 
 class Produto(models.Model):
     segmento = (
@@ -71,7 +71,7 @@ class Produto(models.Model):
     dateCriacao = DateTimeField(auto_now_add=True)
     dateUpdate = DateTimeField(auto_now=True)
 
-    responsavel = ForeignKey(User, null=True, on_delete=SET_NULL)
+    responsavel = ForeignKey(Colaborador, null=True, on_delete=SET_NULL)
     
     def __str__(self):
         return self.nome

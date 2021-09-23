@@ -16,7 +16,8 @@ class ProdutoForm(ModelForm):
             'codigo',
             'classe',
             'numDentes',
-            'dureza']
+            'dureza'
+        ]
         
 
 class ItemForm(ModelForm):
@@ -29,7 +30,7 @@ class ItemForm(ModelForm):
             'tipoFabricacao'
         ]
 
-class ArquivoForm(ModelForm):
+class FileForm(ModelForm):
     class Meta:
         model = Arquivo
         fields = [

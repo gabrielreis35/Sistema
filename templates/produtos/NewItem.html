@@ -9,10 +9,13 @@
     <div class="title-new-item">
         <h1>Novo Item</h1>
     </div>
-    <form action="." method="POST">
-        {% csrf_token %}
-        {{ itemForm|crispy }}
-        <input type="submit" class="btn btn-success btn-new-tem" value="Criar Produto">
-    </form>
+    <div class="offset-1 col-3 list-div">
 
+        <form method="POST">
+            {% csrf_token %}
+            {{ itemForm|crispy }}
+            <input type="submit" class="btn btn-success" value="Criar item">
+        </form>
+    </div>
+    
 {% endblock %}

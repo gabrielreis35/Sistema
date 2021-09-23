@@ -3,9 +3,12 @@
 {% block title %}Produtos{% endblock %}
 
 {% block content %}
+        
+    <div class="container title-products">
+        <h1>Produtos</h1>
+    </div>
     
     <div class="offset-1 col-10 product-div">
-        <h1>Produtos</h1>
         <a href="{% url 'New_Products' %}" class="add-product"> 
             <div class="col-2 add-div">
                 <i class="fas fa-plus products"></i>Adicionar Produto
@@ -76,13 +79,6 @@
                         </div>
                     </a>
                 </td>
-                <!-- <td>
-                    <a href="{% url 'Update_Product' product.id %}" class="icon edit-product">
-                        <div class="col">
-                            <i class="fas fa-edit"></i>
-                        </div>
-                    </a>
-                </td> -->
             </tbody>
             {% endfor %}
         </table>

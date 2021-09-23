@@ -1,9 +1,19 @@
 {% extends 'base.html' %}
 
+{% load crispy_forms_tags %}
+
 {% block title %}Novo Item{% endblock %}
 
 {% block content %}
 
-    <h1>Novo Arquivo</h1>
+    <div class="title-new-file">
+        <h1>Adicionar novo arquivo</h1>
+    </div>
+    <div class="offset-1 col-3 list-div">
+        <form method="POST">
+            {% csrf_token %}
+            {{ fileForm|crispy }}
+            <input type="submit" class="btn btn-success" value="Criar arquivo">
+        </form>
 
 {% endblock %}

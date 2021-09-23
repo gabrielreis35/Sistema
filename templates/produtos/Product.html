@@ -14,123 +14,126 @@
             </div>
         </a>
     </div>
-    <div class="container product-table">
-        <div class="row">
-            <div class="col-sm-2 product-title">
-                ID:
-            </div>
-            <div class="col product-single">
-                {{product.id}}
-            </div>
-            <div class="col-sm-2 product-title">
-                Segmento:
-            </div>
-            <div class="col product-single">
-                {% if product.segmento == 'A' %}
-                    Agrícola
-                {% elif product.segmento == 'C' %}
-                    Construção
-                {% elif product.segmento == 'F' %}
-                    Florestal
-                {% elif product.segmento == 'I' %}
-                    Indústria
-                {% elif product.segmento == 'U' %}
-                    Indústria Automotiva
-                {% elif product.segmento == 'M' %}
-                    Mineiração
-                {% endif %}
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-2 product-title">
-                Nome:
-            </div>
-            <div class="col product-single">
-                {{product.nome}}
-            </div>
-            <div class="col-sm-2 product-title">
-                Equipamento:
-            </div>
-            <div class="col product-single">
-                {{product.equipamento}}
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-2 product-title">
-                Acessório:
-            </div>
-            <div class="col product-single">
-                {% if product.codigo == 'AC' %}
-                    Acessório
-                {% elif product.codigo == 'CC' %}
-                    Carregadeira
-                {% elif product.codigo == 'CD' %}
-                    Chapa de desgaste
-                {% elif product.codigo == 'CB' %}
-                    Chock Bar
-                {% elif product.codigo == 'DF' %}
-                    Dispositivos e ferramentas
-                {% elif product.codigo == 'ER' %}
-                    Engate rápido
-                {% elif product.codigo == 'CE' %}
-                    Escavadeira
-                {% elif product.codigo == 'FP' %}
-                    Ferramenta de penetração de solo
-                {% elif product.codigo == 'GA' %}
-                    Garfo
-                {% elif product.codigo == 'CG' %}
-                    Graniteira
-                {% elif product.codigo == 'LA' %}
-                    Lâmina
-                {% elif product.codigo == 'LN' %}
-                    Lança
-                {% elif product.codigo == 'RI' %}
-                    Ripper
-                {% elif product.codigo == 'SG' %}
+
+    <table class="product-table">
+        <tbody>
+            <tr>
+                <td class=" col-2 product-item-title">
+                    ID:
+                </td>
+                <td class="col-3 product-item">
+                    {{product.id}}
+                </td>
+                <td class="col-2 product-item">
                     Segmento
-                {% elif product.codigo == 'VA' %}
-                    Vala
-                {% elif product.codigo == 'SE' %}
-                    Serviço
-                {% endif %}
-            </div>
-            <div class="col-sm-2 product-title">
-                Classe:
-            </div>
-            <div class="col product-single">
-                {{product.classe}}
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-2 product-title">
-                Capacidade:
-            </div>
-            <div class="col product-single">
-                {{product.capacidade}}
-            </div>
-            <div class="col-sm-2 product-title">
-                Largura:
-            </div>
-            <div class="col product-single">
-                {{product.largura}}
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-2 product-title">
-                Lâmina:
-            </div>
-            <div class="col product-single">
-                {{product.lamina}}
-            </div>
-            <div class="col-sm-2 product-title">
-                Peso:
-            </div>
-            <div class="col product-single">
-                {{product.peso}}
-            </div>
-        </div>
-    </div>
-    
+                </td>
+                <td class="col-3 product-item">
+                    {% if product.segmento == 'A' %}
+                        Agrícola
+                    {% elif product.segmento == 'C' %}
+                        Construção
+                    {% elif product.segmento == 'F' %}
+                        Florestal
+                    {% elif product.segmento == 'I' %}
+                        Indústria
+                    {% elif product.segmento == 'U' %}
+                        Indústria Automotiva
+                    {% elif product.segmento == 'M' %}
+                        Mineiração
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td class="col-2 product-item">
+                    Nome:
+                </td>
+                <td class="col-3 product-item">
+                    {{product.nome}}
+                </td>
+                <td class="col-2 product-item">
+                    Equipamento:
+                </td>
+                <td class="col-3 product-item">
+                    {{product.equipamento}}
+                </td>
+            </tr>
+            <tr>
+                <td class="col-2 product-item">
+                    Acessório:
+                </td>
+                <td class="col-3 product-item">
+                    {% if product.codigo == 'AC' %}
+                        Acessório
+                    {% elif product.codigo == 'CC' %}
+                        Carregadeira
+                    {% elif product.codigo == 'CD' %}
+                        Chapa de desgaste
+                    {% elif product.codigo == 'CB' %}
+                        Chock Bar
+                    {% elif product.codigo == 'DF' %}
+                        Dispositivos e ferramentas
+                    {% elif product.codigo == 'ER' %}
+                        Engate rápido
+                    {% elif product.codigo == 'CE' %}
+                        Escavadeira
+                    {% elif product.codigo == 'FP' %}
+                        Ferramenta de penetração de solo
+                    {% elif product.codigo == 'GA' %}
+                        Garfo
+                    {% elif product.codigo == 'CG' %}
+                        Graniteira
+                    {% elif product.codigo == 'LA' %}
+                        Lâmina
+                    {% elif product.codigo == 'LN' %}
+                        Lança
+                    {% elif product.codigo == 'RI' %}
+                        Ripper
+                    {% elif product.codigo == 'SG' %}
+                        Segmento
+                    {% elif product.codigo == 'VA' %}
+                        Vala
+                    {% elif product.codigo == 'SE' %}
+                        Serviço
+                    {% endif %}
+                </td>
+                <td class="col-2 product-item">
+                    Classe:
+                </td>
+                <td class="col-3 product-item">
+                    {{product.classe}}
+                </td>
+            </tr>
+            <tr>
+                <td class="col-2 product-item">
+                    Capacidade:
+                </td>
+                <td class="col-2 product-item">
+                    {{product.capacidade}}
+                </td>
+                <td class="col-2 product-item">
+                    Largura:
+                </td>
+                <td class="col-2 product-item">
+                    {{product.largura}}
+                </td>
+            </tr>
+            <tr>
+                <td class="col-2 product-item">
+                    Lâmina:
+                </td>
+                <td class="col-2 product-item">
+                    {{product.lamina}}
+                </td>
+                <td class="col-2 product-item">
+                    Peso:
+                </td>
+                <td class="col-2 product-item">
+                    {{product.peso}}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
     <div class="container add">
         <a href="{% url 'New_Item' %}" class="add-item">
             <div class="col-2 item-div">

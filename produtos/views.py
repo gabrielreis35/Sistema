@@ -1,8 +1,9 @@
 from django import forms
+from django.core.files.base import File
 from django.core.paginator import Paginator
 from django.shortcuts import redirect, render, get_object_or_404
 from produtos.models import Produto
-from produtos.forms import ItemForm, ProdutoForm
+from produtos.forms import ItemForm, ProdutoForm, FileForm
 
 def Products(request):
     productsList = Produto.objects.all().order_by('-dateCriacao')
@@ -58,4 +59,14 @@ def NewItem(request):
 
 
 def NewFile(request):
-    return render(request, 'produtos/NewFile.html')
+    fileForm = FileForm()
+    if request.method == 'POST':
+        fileForm = FileForm(request.POST or None)
+        if fileForm.is_valid():
+            fileForm.save()
+            return redirect('/product/<int:id>')
+        
+    else:
+        fileForm = FileForm()
+        
+    return render(request, 'produtos/NewFile.html', {'fileForm' : fileForm})
