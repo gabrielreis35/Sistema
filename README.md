@@ -1,8 +1,9 @@
 # Requisitos & observações.
 
 # Utilities Library
-  - Django
-  - Bootstrap
+  - Python 3.9.7
+  - Django 3.2.7
+  - Bootstrap 4
   - Crispy-Forms
  
 # Requisitos
