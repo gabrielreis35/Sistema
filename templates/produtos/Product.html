@@ -150,6 +150,32 @@
         </a>
     </div>
 
+    <div class="container table-items">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Tipo</th>
+                    <th scope="col">Revisao</th>
+                    <th scope="col">PartNumber</th>
+                    <th scope="col">Tipo de fabricação</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">{{item.id}}</th>
+                    <td>{{item.nome}}</td>
+                    <td>{{item.tipo}}</td>
+                    <td>{{item.revisao}}</td>
+                    <td>{{item.partNumber}}</td>
+                    <td>{{item.tipoFabricacao}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
     
 
 {% endblock %}

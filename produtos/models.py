@@ -65,7 +65,6 @@ class Produto(models.Model):
     peso = IntegerField(null=True)
     codigo = CharField(max_length=2, choices=tipoProduto, null=True)
     classe = CharField(max_length=5, choices=classeProduto, null=True)
-    numDentes = IntegerField(null=True)
     dureza = CharField(max_length=2, choices=dureza, null=True)
 
     dateCriacao = DateTimeField(auto_now_add=True)

@@ -15,7 +15,6 @@ class ProdutoForm(ModelForm):
             'peso',
             'codigo',
             'classe',
-            'numDentes',
             'dureza'
         ]
         
@@ -26,6 +25,7 @@ class ItemForm(ModelForm):
         fields = [
             'nome',
             'tipo',
+            'revisao',
             'partNumber',
             'tipoFabricacao'
         ]
