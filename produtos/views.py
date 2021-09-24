@@ -26,9 +26,9 @@ def NewProduct(request):
     return render(request, 'produtos/NewProduct.html', {'productForm' : productForm})
     
 def ViewProduct(request, id):
-    item = Item.objects.all()
+    items = Item.objects.all()
     product = get_object_or_404(Produto, pk = id)
-    return render(request, 'produtos/Product.html', {'product' : product}, {'item' : item})
+    return render(request, 'produtos/Product.html', {'product' : product}, {'items' : items})
 
 def UpdateProduct(request, id):
     data = {}
@@ -51,7 +51,7 @@ def NewItem(request):
         itemForm = ItemForm(request.POST or None)
         if itemForm.is_valid():
             itemForm.save()
-            return redirect('/product/<int:id>')
+            return redirect('/products/')
         
     else:
         itemForm = ItemForm()
