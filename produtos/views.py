@@ -2,7 +2,7 @@ from django import forms
 from django.core.files.base import File
 from django.core.paginator import Paginator
 from django.shortcuts import redirect, render, get_object_or_404
-from produtos.models import Produto
+from produtos.models import Produto, Item
 from produtos.forms import ItemForm, ProdutoForm, FileForm
 
 def Products(request):
@@ -26,8 +26,9 @@ def NewProduct(request):
     return render(request, 'produtos/NewProduct.html', {'productForm' : productForm})
     
 def ViewProduct(request, id):
+    item = Item.objects.all()
     product = get_object_or_404(Produto, pk = id)
-    return render(request, 'produtos/Product.html', {'product' : product})
+    return render(request, 'produtos/Product.html', {'product' : product}, {'item' : item})
 
 def UpdateProduct(request, id):
     data = {}
