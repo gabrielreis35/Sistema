@@ -2,15 +2,20 @@ from django import forms
 from django.core.files.base import File
 from django.core.paginator import Paginator
 from django.shortcuts import redirect, render, get_object_or_404
-from produtos.models import Produto, Item
+from produtos.models import Produto, Item, Arquivo
 from produtos.forms import ItemForm, ProdutoForm, FileForm
 
 def Products(request):
-    productsList = Produto.objects.all().order_by('-dateCriacao')
-    paginator = Paginator(productsList, 20)
-    page = request.GET.get('page')
-    produtcs = paginator.get_page(page)
-    return render(request, 'produtos/Products.html', {'products' : produtcs})
+    search = request.GET.get('search')
+    
+    if search:
+        products = Produto.objects.filter(nome__icontains = search, codigo__icontains = search)
+    else:
+        productsList = Produto.objects.all().order_by('-dateCriacao')
+        paginator = Paginator(productsList, 20)
+        page = request.GET.get('page')
+        products = paginator.get_page(page)
+    return render(request, 'produtos/Products.html', {'products' : products})
 
 def NewProduct(request):
     productForm = ProdutoForm()
@@ -27,8 +32,9 @@ def NewProduct(request):
     
 def ViewProduct(request, id):
     items = Item.objects.all()
+    files = Arquivo.objects.all()
     product = get_object_or_404(Produto, pk = id)
-    return render(request, 'produtos/Product.html', {'product' : product}, {'items' : items})
+    return render(request, 'produtos/Product.html', {'product' : product, 'items' : items, 'files' : files})
 
 def UpdateProduct(request, id):
     data = {}

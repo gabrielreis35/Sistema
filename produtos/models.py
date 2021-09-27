@@ -1,5 +1,5 @@
 from django.db.models.base import Model
-from django.db.models.deletion import PROTECT, SET_NULL
+from django.db.models.deletion import CASCADE, PROTECT, SET_NULL
 from django.db.models.fields import  CharField, DateTimeField, IntegerField, FloatField
 from django.db import models
 from django.db.models.fields.related import ForeignKey
@@ -85,6 +85,8 @@ class Item(models.Model):
     dateCriacao = DateTimeField(auto_now_add=True)
     dateUpdate = DateTimeField(auto_now=True)
 
+    #produto = ForeignKey(Produto, null=True, on_delete=CASCADE)
+
     def __str__(self):
         return self.nome
 
@@ -94,6 +96,8 @@ class Arquivo(models.Model):
 
     dateCriacao = DateTimeField(auto_now_add=True)
     dateUpdate = DateTimeField(auto_now=True)
+
+    #produto = ForeignKey(Produto, null=True, on_delete=CASCADE)
 
     def __str__(self):
         return self.nome

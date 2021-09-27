@@ -1,3 +1,8 @@
-let btn = document.querySelector("#btn-menu");
-let sidebar = document.querySelector(".sidebar");
-let searchBtn = document.querySelector(".fas.fa-search");
+$(document).ready(function(){ 
+    var searchBtn = $('#search-button');
+    var searchForm = $('#search-form');
+
+    $(searchBtn).on('click', function() {
+        searchForm.submit();
+    });
+});

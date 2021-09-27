@@ -70,30 +70,6 @@ body {
     line-height: 3.13em;
 }
 
-.sidebar ul li input {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    left: 0;
-    top: 0;
-    border-radius: 1.75em;
-    outline: none;
-    border: none;
-    background: #ADADAD;
-    padding-left: 3.13em;
-    font-size: 18px;
-    color: #fff;
-}
-
-.sidebar ul li .fas.fa-search {
-    position: absolute;
-    z-index: 99;
-    color: #fff;
-    top: 0.6em;
-    left: 0.6em;
-    font-size: 1.38em;
-}
-
 .sidebar ul li a {
     color: #fff;
     display: flex;
@@ -211,16 +187,19 @@ h1 {
     margin-left: 5px;
 }
 
+.fas.fa-search {
+    position: absolute;
+    cursor: pointer;
+    top:0.6em;
+    right: 1.5em;
+}
+
 .search-div {
     padding: 0px;
     margin-top: 15px;
     margin-left: 45em;
     margin-bottom: 15px;
     display: inline-block;
-}
-
-.search-div .search {
-    text-align: center;
 }
 
 .table {
@@ -298,7 +277,7 @@ a.edit-product:hover {
 }
 
 .item-div {
-    background-color: #7F7F7F;
+    background-color: #3476e2;
     cursor: pointer;
     color: #fff;
     padding: 0.5em;
@@ -308,7 +287,7 @@ a.edit-product:hover {
 }
 
 .file-div {
-    background-color: #7F7F7F;
+    background-color: #3476e2;
     cursor: pointer;
     color: #fff;
     padding: 0.5em;
@@ -317,10 +296,36 @@ a.edit-product:hover {
     display: inline-block;
 }
 
-.fas.fa-plus.add-item-button, .fas.fa-plus.add-file-button {
-    color: #fff;
+.fas.fa-plus.add-item-button, .fas.fa-plus.add-file-button, .fas.fa-trash.del-product-button {
     margin-right: 5px;
     margin-left: 5px;
+}
+
+.download-div {
+    color: #3476e2;
+}
+
+a.download-item, a.download-file {
+    color: #3476e2;
+}
+
+.del-div {
+    color: #ff0000;
+}
+
+.del-item-div, .del-file-div {
+    text-align: center;
+    cursor: pointer;
+    color: #ff0000;
+}
+
+.del-product-div {
+    background-color: #ff0000;
+    cursor: pointer;
+    color: #fff;
+    padding: 0.5em;
+    margin-bottom: 0.9em;
+    border-radius: 1em;
 }
 
 /* Itens comuns nas páginas de Adicionar */

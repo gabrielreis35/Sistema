@@ -15,8 +15,10 @@
             </div>
         </a>
         <div class="col-3 search-div">
-            <input class="form-control" type="text" id="search" name="search" placeholder="Digite o nome do produto">
-            <!-- <i class="fas fa-search"></i> -->
+            <form method="GET" id="search-form">
+                <input class="form-control" type="text" id="search" name="search" placeholder="Digite o nome do produto">
+                <i class="fas fa-search" id="search-button"></i>
+            </form>
         </div>    
         <table class="table table-striped table-hover table-bordered">
             <thead>
@@ -36,61 +38,63 @@
                     <!-- <th scope="col">Editar</th> -->
                 </tr>
             </thead>
-            {% for product in products %}
             <tbody id="product-table">
+                {% for product in products %}
                 <tr scope="row">
+                
+                    <td>
+                        {{product.id}}
+                    </td>
+                    <td>
+                        {{product.segmento}}
+                    </td>
+                    <td>
+                        {{product.nome}}
+                    </td>
+                    <td>
+                        {{product.equipamento}}
+                    </td>
+                    <td>
+                        {{product.codigo}}
+                    </td>
+                    <td>
+                        {{product.classe}}
+                    </td>
+                    <td>
+                        {{product.capacidade}}
+                    </td>
+                    <td>
+                        {{product.largura}}
+                    </td>
+                    <td>
+                        {{product.lamina}}
+                    </td>
+                    <td>
+                        {{product.peso}}
+                    </td>
+                    <td>
+                        <a href="{% url 'View_Product' product.id %}" class="icon view-product">
+                            <div class="col">
+                                <i class="far fa-eye"></i>
+                            </div>
+                        </a>
+                    </td>
                 </tr>
-                <td>
-                    {{product.id}}
-                </td>
-                <td>
-                    {{product.segmento}}
-                </td>
-                <td>
-                    {{product.nome}}
-                </td>
-                <td>
-                    {{product.equipamento}}
-                </td>
-                <td>
-                    {{product.codigo}}
-                </td>
-                <td>
-                    {{product.classe}}
-                </td>
-                <td>
-                    {{product.capacidade}}
-                </td>
-                <td>
-                    {{product.largura}}
-                </td>
-                <td>
-                    {{product.lamina}}
-                </td>
-                <td>
-                    {{product.peso}}
-                </td>
-                <!-- <td>
-                </td> -->
-                <td>
-                    <a href="{% url 'View_Product' product.id %}" class="icon view-product">
-                        <div class="col">
-                            <i class="far fa-eye"></i>
-                        </div>
-                    </a>
-                </td>
+                {% endfor %}
             </tbody>
-            {% endfor %}
         </table>
+
         <div class="pagination">
             <span class="step-links">
                 {% if products.has_previous %}
                     <a href="?page={{products.previous_page_number}}" class="fas fa-arrow-left"></a>
                 {% endif %}
                 
+                {% if products.paginator.num_pages %}
                 <span class="current">
                     {{products.number}} de {{products.paginator.num_pages}}
                 </span>
+                {% endif %}
 
                 {% if products.has_next %}
                     <a href="?page={{products.next_page_number}}" class="fas fa-arrow-right"></a>
