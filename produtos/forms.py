@@ -1,4 +1,3 @@
-from django import forms
 from django.forms import ModelForm
 from .models import Item, Produto, Arquivo
 
@@ -7,6 +6,7 @@ class ProdutoForm(ModelForm):
         model = Produto
         fields = [
             'segmento',
+            'numeroSerie',
             'nome',
             'equipamento',
             'capacidade',
@@ -17,7 +17,20 @@ class ProdutoForm(ModelForm):
             'classe',
             'dureza'
         ]
-        
+
+        labels = {
+            'segmento': ('Segmento'),
+            'numeroSerie': ('Número de Série:'),
+            'nome': ('Nome'),
+            'equipamento': ('Equipamento'),
+            'capacidade': ('Capacidade'),
+            'largura': ('Largura'),
+            'lamina': ('Lâmina'),
+            'peso': ('Peso'),
+            'codigo': ('Código'),
+            'classe': ('Classe'),
+            'dureza': ('Dureza'),
+        }
 
 class ItemForm(ModelForm):
     class Meta:

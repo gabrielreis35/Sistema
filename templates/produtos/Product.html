@@ -19,10 +19,10 @@
         <tbody>
             <tr>
                 <td class=" col-2 product-item-title">
-                    ID:
+                    Número de Série
                 </td>
                 <td class="col-3 product-item">
-                    {{product.id}}
+                    {{product.numeroSerie}}
                 </td>
                 <td class="col-2 product-item">
                     Segmento
@@ -164,6 +164,16 @@
         </a>
     </div>
 
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li {% if message.tags %} class="alert alert-{{message.tags}}"{% endif %}>
+                    {{message}}
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
     <div class="container table-items">
         <table class="table table-striped table-hover table-bordered">
             <thead>
@@ -189,83 +199,83 @@
             </thead>
             <tbody>
                 {% for item in items %}
-                <tr scope="row">
-                    <td>
-                        {{items.id}}
-                    </td>
-                    <td>
-                        {{items.nome}}
-                    </td>
-                    <td>
-                        {{items.tipo}}
-                    </td>
-                    <td>
-                        {{items.revisao}}
-                    </td>
-                    <td>
-                        {{items.partNumber}}
-                    </td>
-                    <td>
-                        {{items.tipoFabricacao}}
-                    </td>
-                    <td>
-                        {{items.dateCriacao}}
-                    </td>
-                    <td>
-                        <a href="#" class="download-item">
-                            <div class="col download-item-div">
-                                <i class="fas fa-download download-button"></i>
-                            </div>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="#" class="del-item">
-                            <div class="col del-item-div">
-                                <i class="fas fa-trash del-item-button"></i>
-                            </div>
-                        </a>
-                    </td>
-                </tr>
+                    <tr scope="row">
+                        <td>
+                            {{items.id}}
+                        </td>
+                        <td>
+                            {{items.nome}}
+                        </td>
+                        <td>
+                            {{items.tipo}}
+                        </td>
+                        <td>
+                            {{items.revisao}}
+                        </td>
+                        <td>
+                            {{items.partNumber}}
+                        </td>
+                        <td>
+                            {{items.tipoFabricacao}}
+                        </td>
+                        <td>
+                            {{items.dateCriacao}}
+                        </td>
+                        <td>
+                            <a href="#" class="download-item">
+                                <div class="col download-item-div">
+                                    <i class="fas fa-download download-button"></i>
+                                </div>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="{% url 'Delete_Item' item.id %}" class="del-item">
+                                <div class="col del-item-div">
+                                    <i class="fas fa-trash del-item-button"></i>
+                                </div>
+                            </a>
+                        </td>
+                    </tr>
                 {% endfor %}
 
                 {% for file in files %}
-                <tr scope="row">
-                    <td>
-                        {{files.id}}
-                    </td>
-                    <td>
-                        {{files.nome}}
-                    </td>
-                    <td>
-                        {{files.tipo}}
-                    </td>
-                    <td>
-                        {{files.revisao}}
-                    </td>
-                    <td>
-                        {{files.partNumber}}
-                    </td>
-                    <td>
-                        {{files.tipoFabricacao}}
-                    </td>
-                    <td>
-                        {{files.dateCriacao}}
-                    </td>
-                    <td>
-                        <a href="#" class="download-file">
-                            <div class="col download-file-div">
-                                <i class="fas fa-download download-button"></i>
-                            </div>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="#" class="del-file">
-                            <div class="col del-file-div">
-                                <i class="fas fa-trash del-file-button"></i>
-                            </div>
-                        </a>
-                    </td>
-                </tr>
+                    <tr scope="row">
+                        <td>
+                            {{files.id}}
+                        </td>
+                        <td>
+                            {{files.nome}}
+                        </td>
+                        <td>
+                            {{files.tipo}}
+                        </td>
+                        <td>
+                            {{files.revisao}}
+                        </td>
+                        <td>
+                            {{files.partNumber}}
+                        </td>
+                        <td>
+                            {{files.tipoFabricacao}}
+                        </td>
+                        <td>
+                            {{files.dateCriacao}}
+                        </td>
+                        <td>
+                            <a href="#" class="download-file">
+                                <div class="col download-file-div">
+                                    <i class="fas fa-download download-button"></i>
+                                </div>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="{% url 'Delete_file' file.id %}" class="del-file">
+                                <div class="col del-file-div">
+                                    <i class="fas fa-trash del-file-button"></i>
+                                </div>
+                            </a>
+                        </td>
+                    </tr>
                 {% endfor %}
             </tbody>
             
@@ -273,7 +283,7 @@
     </div>
 
     <div class="container del">
-        <a href="#" class="del-product">
+        <a href="{% url 'Delete_Product' product.id %}" class="del-product">
             <div class="col-2 del-product-div">
                 <i class="fas fa-trash del-product-button"></i>Deletar Produto
             </div>

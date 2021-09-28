@@ -145,6 +145,20 @@ body {
     padding: 0;
 }
 
+/* Comum de todas as páginas */
+
+.asteriskField {
+    display: none;
+}
+
+ul.messages {
+    padding: 0;
+}
+
+li.messages li {
+    list-style: none;
+}
+
 /* Página Produtos */
 
 .title-products {
@@ -328,6 +342,11 @@ a.download-item, a.download-file {
     border-radius: 1em;
 }
 
+a.del-product:hover {
+    text-decoration: none;
+
+}
+
 /* Itens comuns nas páginas de Adicionar */
 
 .btn.btn-success{
@@ -337,6 +356,13 @@ a.download-item, a.download-file {
 /* Página de Adicionar Produto */
 
 .title-new-product {
+    font-size: 1.5em !important;
+    text-align: center;
+}
+
+/* Página de Atualizar Produto */
+
+.title-update-product {
     font-size: 1.5em !important;
     text-align: center;
 }

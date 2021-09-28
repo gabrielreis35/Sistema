@@ -2,6 +2,7 @@ from django import forms
 from django.core.files.base import File
 from django.core.paginator import Paginator
 from django.shortcuts import redirect, render, get_object_or_404
+from django.contrib import messages
 from produtos.models import Produto, Item, Arquivo
 from produtos.forms import ItemForm, ProdutoForm, FileForm
 
@@ -37,18 +38,23 @@ def ViewProduct(request, id):
     return render(request, 'produtos/Product.html', {'product' : product, 'items' : items, 'files' : files})
 
 def UpdateProduct(request, id):
-    data = {}
-    product = Produto.objects.get(id = id)
-    formProduct = ProdutoForm(request.POST or None, instance = product)
-    if formProduct.is_valid():
-        formProduct.save()
-        return redirect('/products')
-    data ['product'] = product
-    return render(request, 'produtos/UpdateProduct.html', data)
+    product = get_object_or_404(Produto, id = id)
+    productForm = ProdutoForm(instance = product)
+    if request.method == 'POST':
+        productForm = ProdutoForm(request.POST or None, instance = product)
+        if productForm.is_valid():
+            productForm.save()
+            return redirect('../')
+        else:
+            return render(request, 'produtos/UpdateProduct.html', {'productForm' : productForm, 'product' : product})
+
+    else:    
+        return render(request, 'produtos/UpdateProduct.html', {'productForm' : productForm, 'product' : product})
 
 def DeleteProduct(request, id):
-    product = Produto.objects.get(id = id)
+    product = get_object_or_404(Produto, id = id)
     product.delete()
+    messages.info(request, 'Produto excluído')
     return redirect('/products')
 
 def NewItem(request):
@@ -64,6 +70,11 @@ def NewItem(request):
         
     return render(request, 'produtos/NewItem.html', {'itemForm' : itemForm})
 
+def DeleteItem(request, id):
+    item = get_object_or_404(Item, id = id)
+    item.delete()
+    messages.info(request, 'Item excluído')
+    return redirect('/products')
 
 def NewFile(request):
     fileForm = FileForm()
@@ -77,3 +88,9 @@ def NewFile(request):
         fileForm = FileForm()
         
     return render(request, 'produtos/NewFile.html', {'fileForm' : fileForm})
+
+def DeleteFile(request, id):
+    file = get_object_or_404(Arquivo, id = id)
+    file.delete()
+    messages.info(request, 'Arquivo excluído')
+    return redirect('/products')

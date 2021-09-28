@@ -1,9 +1,22 @@
 {% extends 'base.html' %}
 
+{% load crispy_forms_tags %}
+
 {% block title %}Edição {{product.nome}}{% endblock %}
 
 {% block content %}
 
-    <h1>Teste Editar produto</h1>
+    <div class="container title-update-product">
+        <h1>Editar {{product.nome}}</h1>
+    </div>
+
+    <div class="offset-1 col-3 list-div">
+        <form method="POST">
+            {% csrf_token %}
+            {{ productForm|crispy }}
+            <input type="submit" class="btn btn-success" value="Editar produto">
+        </form>
+    </div>
+
 
 {% endblock %}

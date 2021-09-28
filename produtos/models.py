@@ -57,6 +57,7 @@ class Produto(models.Model):
     )
 
     segmento = CharField(max_length=30, choices=segmento, null=True)
+    numeroSerie = CharField(max_length=30, null=True)
     nome = CharField(max_length=30, null=True)
     equipamento = CharField(max_length=10, null=True)
     capacidade = FloatField(null=True)
