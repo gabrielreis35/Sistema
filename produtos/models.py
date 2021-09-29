@@ -77,28 +77,74 @@ class Produto(models.Model):
         return self.nome
 
 class Item(models.Model):
-    nome = CharField(max_length = 30)
-    tipo = CharField(max_length = 20)
+    tipoArquivo = (
+        ('Peça', 'Peça' ),
+        ('Montagem', 'Montagem'),
+        ('Drawing', 'Drawing'),
+    )
+    
+    tipoFabricacaoChoice = (
+        ('Montagem Geral', 'Montagem Geral'),
+        ('Montagem', 'Montagem'),
+        ('Usinagem', 'Usinagem'),
+        ('Soldado', 'Conjunto Soldado'),
+        ('CNC', 'Corte CNC'),
+        ('CNC / Dobra', 'Corte CNC com Dobra'),
+        ('CNC / Usinagem', 'Corte CNC com Usinagem'),
+        ('CNC / Dobra / Usinagem', 'Corte CNC com Dobra e Usinagem'),
+        ('Manual', 'Corte Manual'),
+        ('Manual / Dobra', 'Corte Manual com Dobra'),
+        ('Manual / Usinagem', 'Corte Manual com Usinagem'),
+        ('Manual / Dobra / Usinagem', 'Corte Manual com Dobra e Usinagem')
+    )
+
     revisao = IntegerField(null=True)
-    partNumber = CharField(max_length = 16, null=True)
-    tipoFabricacao = CharField(max_length=20)
+    nome = CharField(max_length=30)
+    tipo = CharField(max_length=8, choices=tipoArquivo)
+    partNumber = CharField(max_length=16, null=True)
+    tipoFabricacao = CharField(max_length=25, choices=tipoFabricacaoChoice)
 
     dateCriacao = DateTimeField(auto_now_add=True)
     dateUpdate = DateTimeField(auto_now=True)
 
-    #produto = ForeignKey(Produto, null=True, on_delete=CASCADE)
+    produto = ForeignKey(Produto, null=True, blank=True, on_delete=CASCADE)
 
     def __str__(self):
         return self.nome
 
 class Arquivo(models.Model):
+    tipoArquivo = (
+        ('DWG', 'DWG' ),
+        ('DXF', 'DXF'),
+        ('eDRA', 'eDrawing'),
+        ('PDF', 'PDF')
+    )
+    
+    tipoFabricacaoChoice = (
+        ('Montagem Geral', 'Montagem Geral'),
+        ('Montagem', 'Montagem'),
+        ('Usinagem', 'Usinagem'),
+        ('Soldado', 'Conjunto Soldado'),
+        ('CNC', 'Corte CNC'),
+        ('CNC / Dobra', 'Corte CNC com Dobra'),
+        ('CNC / Usinagem', 'Corte CNC com Usinagem'),
+        ('CNC / Dobra / Usinagem', 'Corte CNC com Dobra e Usinagem'),
+        ('Manual', 'Corte Manual'),
+        ('Manual / Dobra', 'Corte Manual com Dobra'),
+        ('Manual / Usinagem', 'Corte Manual com Usinagem'),
+        ('Manual / Dobra / Usinagem', 'Corte Manual com Dobra e Usinagem')
+    )
+
+    revisao = IntegerField(null=True)
     nome = CharField(max_length=30)
-    tipo = CharField(max_length=20)
+    tipo = CharField(max_length=4, choices=tipoArquivo)
+    partNumber = CharField(max_length=16, null=True)
+    tipoFabricacao = CharField(max_length=25, choices=tipoFabricacaoChoice)
 
     dateCriacao = DateTimeField(auto_now_add=True)
     dateUpdate = DateTimeField(auto_now=True)
 
-    #produto = ForeignKey(Produto, null=True, on_delete=CASCADE)
+    produto = ForeignKey(Produto, on_delete=CASCADE)
 
     def __str__(self):
         return self.nome

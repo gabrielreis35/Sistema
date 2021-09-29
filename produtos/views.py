@@ -32,8 +32,8 @@ def NewProduct(request):
     return render(request, 'produtos/NewProduct.html', {'productForm' : productForm})
     
 def ViewProduct(request, id):
-    items = Item.objects.all()
-    files = Arquivo.objects.all()
+    items = Item.objects.all().filter(produto_id = id).order_by('-revisao')
+    files = Arquivo.objects.all().filter(produto_id = id).order_by('-revisao')
     product = get_object_or_404(Produto, pk = id)
     return render(request, 'produtos/Product.html', {'product' : product, 'items' : items, 'files' : files})
 
@@ -57,11 +57,13 @@ def DeleteProduct(request, id):
     messages.info(request, 'Produto excluído')
     return redirect('/products')
 
-def NewItem(request):
+def NewItem(request, id):
     itemForm = ItemForm()
     if request.method == 'POST':
         itemForm = ItemForm(request.POST or None)
         if itemForm.is_valid():
+            #itemForm.save(commit=False)
+            #Item.produto_id = Produto.id
             itemForm.save()
             return redirect('/products/')
         
@@ -82,7 +84,7 @@ def NewFile(request):
         fileForm = FileForm(request.POST or None)
         if fileForm.is_valid():
             fileForm.save()
-            return redirect('/product/<int:id>')
+            return redirect('/products/')
         
     else:
         fileForm = FileForm()

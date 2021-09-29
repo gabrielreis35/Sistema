@@ -8,8 +8,8 @@
  
 # Requisitos
   - Aba Adicionar Produtos:
-    - Adicionar projeto (Part, Asembly, Drawing) .zip
+    - Adicionar projeto (Part, Asembly, Drawing)
     - Adicionar eDrawing .dwg
-    - Adicionar Dxf .zip
-    - Adicionar PDF .zip
+    - Adicionar Dxf
+    - Adicionar PDF
     - Adicionar Lista de Materiais (BOM) .xlsx

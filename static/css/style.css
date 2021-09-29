@@ -190,15 +190,15 @@ h1 {
     cursor: pointer;
     display: inline-block;
     color: #fff;
-    padding: 8px;
-    border-radius: 5px;
+    padding: 0.5em;
+    border-radius: 0.31em;
 }
 
 
 .fas.fa-plus.products {
     color: #fff;
-    margin-right: 10px;
-    margin-left: 5px;
+    margin-right: 0.63em;
+    margin-left: 0.31em;
 }
 
 .fas.fa-search {
@@ -209,10 +209,10 @@ h1 {
 }
 
 .search-div {
-    padding: 0px;
-    margin-top: 15px;
+    padding: 0;
+    margin-top: 1em;
     margin-left: 45em;
-    margin-bottom: 15px;
+    margin-bottom: 1em;
     display: inline-block;
 }
 
@@ -247,11 +247,9 @@ h1 {
 
 .product-table {
     position: relative;
-    margin-left: 6em;
+    margin-left: 4.5em;
     width: 90%;
     border: solid 4px #555;
-    border-collapse: collapse;
-    border-radius: 6%;
 }
 
 .product-item {
@@ -272,10 +270,8 @@ a.edit-product:hover {
     background-color: #039444;
     cursor: pointer;
     color: #fff;
-    height: 2.2em;
-    width: 6.5em;
-
-    
+    display: inline-block;
+    padding: 0.5em;
     border: 0.2em solid #fff;
     border-radius: 1em;
 }
@@ -286,26 +282,50 @@ a.edit-product:hover {
     margin-left: 10px;
 }
 
+.del-product-div {
+    background-color: #ff0000;
+    cursor: pointer;
+    color: #fff;
+    
+    padding: 0.5em;
+    bottom: 2.7em;
+    margin-left: 60em;
+    border-radius: 1em;
+}
+
+a.del-product:hover {
+    text-decoration: none;
+}
+
 .add {  
     margin-top: 2em;
+}
+
+.product-item-title {
+    background-color: #efefef;
+    border: solid 2px #ddd;
+}
+
+a.download-div:hover {
+    text-decoration: none;
 }
 
 .item-div {
     background-color: #3476e2;
     cursor: pointer;
+    display: inline-block;
     color: #fff;
     padding: 0.5em;
-    margin-bottom: 0.5em;
     border-radius: 1em;
-    display: inline-block;
 }
 
 .file-div {
     background-color: #3476e2;
     cursor: pointer;
     color: #fff;
+    bottom: 2.5em;
     padding: 0.5em;
-    margin-bottom: 0.9em;
+    margin-left: 12em;
     border-radius: 1em;
     display: inline-block;
 }
@@ -319,10 +339,6 @@ a.edit-product:hover {
     color: #3476e2;
 }
 
-a.download-item, a.download-file {
-    color: #3476e2;
-}
-
 .del-div {
     color: #ff0000;
 }
@@ -333,18 +349,8 @@ a.download-item, a.download-file {
     color: #ff0000;
 }
 
-.del-product-div {
-    background-color: #ff0000;
-    cursor: pointer;
-    color: #fff;
-    padding: 0.5em;
-    margin-bottom: 0.9em;
-    border-radius: 1em;
-}
-
-a.del-product:hover {
-    text-decoration: none;
-
+a.download-item, a.download-file {
+    color: #3476e2;
 }
 
 /* Itens comuns nas páginas de Adicionar */

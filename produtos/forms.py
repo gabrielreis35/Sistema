@@ -43,10 +43,29 @@ class ItemForm(ModelForm):
             'tipoFabricacao'
         ]
 
+        labels = {
+            'nome': 'Nome',
+            'tipo': 'Tipo',
+            'revisao': 'Revisão',
+            'partNumber': 'PartNumber',
+            'tipoFabricacao': 'Tipo de Fabricação'
+        }
+
 class FileForm(ModelForm):
     class Meta:
         model = Arquivo
         fields = [
             'nome',
             'tipo',
+            'revisao',
+            'partNumber',
+            'tipoFabricacao'
         ]
+
+        labels = {
+            'nome': 'Nome',
+            'tipo': 'Tipo',
+            'revisao': 'Revisão',
+            'partNumber': 'PartNumber',
+            'tipoFabricacao': 'Tipo de Fabricação'
+        }

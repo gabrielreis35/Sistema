@@ -15,6 +15,14 @@
         </a>
     </div>
 
+    <div class="container del">
+        <a href="{% url 'Delete_Product' product.id %}" class="del-product">
+            <div class="col-2 del-product-div">
+                <i class="fas fa-trash del-product-button"></i>Deletar Produto
+            </div>
+        </a>
+    </div>
+
     <table class="product-table">
         <tbody>
             <tr>
@@ -24,7 +32,7 @@
                 <td class="col-3 product-item">
                     {{product.numeroSerie}}
                 </td>
-                <td class="col-2 product-item">
+                <td class="col-2 product-item-title">
                     Segmento
                 </td>
                 <td class="col-3 product-item">
@@ -44,13 +52,13 @@
                 </td>
             </tr>
             <tr>
-                <td class="col-2 product-item">
+                <td class="col-2 product-item-title">
                     Nome:
                 </td>
                 <td class="col-3 product-item">
                     {{product.nome}}
                 </td>
-                <td class="col-2 product-item">
+                <td class="col-2 product-item-title">
                     Equipamento:
                 </td>
                 <td class="col-3 product-item">
@@ -58,7 +66,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="col-2 product-item">
+                <td class="col-2 product-item-title">
                     Acessório:
                 </td>
                 <td class="col-3 product-item">
@@ -96,7 +104,7 @@
                         Serviço
                     {% endif %}
                 </td>
-                <td class="col-2 product-item">
+                <td class="col-2 product-item-title">
                     Classe:
                 </td>
                 <td class="col-3 product-item">
@@ -104,13 +112,13 @@
                 </td>
             </tr>
             <tr>
-                <td class="col-2 product-item">
+                <td class="col-2 product-item-title">
                     Capacidade:
                 </td>
                 <td class="col-2 product-item">
                     {{product.capacidade}}
                 </td>
-                <td class="col-2 product-item">
+                <td class="col-2 product-item-title ">
                     Largura:
                 </td>
                 <td class="col-2 product-item">
@@ -118,13 +126,13 @@
                 </td>
             </tr>
             <tr>
-                <td class="col-2 product-item">
+                <td class="col-2 product-item-title">
                     Lâmina:
                 </td>
                 <td class="col-2 product-item">
                     {{product.lamina}}
                 </td>
-                <td class="col-2 product-item">
+                <td class="col-2 product-item-title">
                     Peso:
                 </td>
                 <td class="col-2 product-item">
@@ -132,13 +140,13 @@
                 </td>
             </tr>
             <tr>
-                <td class="col-2 product-item">
+                <td class="col-2 product-item-title">
                     Data de criação:
                 </td>
                 <td class="col-2 product-item">
                     {{product.dateCriacao}}
                 </td>
-                <td class="col-2 product-item">
+                <td class="col-2 product-item-title">
                     Última modificação:
                 </td>
                 <td class="col-2 product-item">
@@ -174,14 +182,21 @@
         </ul>
     {% endif %}
 
+    <!-- <div class="container download">
+        <a href="#" class="download-all">
+            <div class="col download-all-div">
+                <i class="fas fa-download download-all-button"></i>
+            </div>
+        </a>
+    </div> -->
+
     <div class="container table-items">
         <table class="table table-striped table-hover table-bordered">
             <thead>
                 <tr>
-                    <th scope="col">Id</th>
+                    <th scope="col">Revisao</th>
                     <th scope="col">Nome</th>
                     <th scope="col">Tipo</th>
-                    <th scope="col">Revisao</th>
                     <th scope="col">PartNumber</th>
                     <th scope="col">Tipo de fabricação</th>
                     <th scope="col">Data de Criação</th>
@@ -201,25 +216,22 @@
                 {% for item in items %}
                     <tr scope="row">
                         <td>
-                            {{items.id}}
+                            {{item.revisao}}
                         </td>
                         <td>
-                            {{items.nome}}
+                            {{item.nome}}
                         </td>
                         <td>
-                            {{items.tipo}}
+                            {{item.tipo}}
                         </td>
                         <td>
-                            {{items.revisao}}
+                            {{item.partNumber}}
                         </td>
                         <td>
-                            {{items.partNumber}}
+                            {{item.tipoFabricacao}}
                         </td>
                         <td>
-                            {{items.tipoFabricacao}}
-                        </td>
-                        <td>
-                            {{items.dateCriacao}}
+                            {{item.dateCriacao}}
                         </td>
                         <td>
                             <a href="#" class="download-item">
@@ -241,25 +253,22 @@
                 {% for file in files %}
                     <tr scope="row">
                         <td>
-                            {{files.id}}
+                            {{file.revisao}}
                         </td>
                         <td>
-                            {{files.nome}}
+                            {{file.nome}}
                         </td>
                         <td>
-                            {{files.tipo}}
+                            {{file.tipo}}
                         </td>
                         <td>
-                            {{files.revisao}}
+                            {{file.partNumber}}
                         </td>
                         <td>
-                            {{files.partNumber}}
+                            {{file.tipoFabricacao}}
                         </td>
                         <td>
-                            {{files.tipoFabricacao}}
-                        </td>
-                        <td>
-                            {{files.dateCriacao}}
+                            {{file.dateCriacao}}
                         </td>
                         <td>
                             <a href="#" class="download-file">
@@ -282,12 +291,6 @@
         </table>
     </div>
 
-    <div class="container del">
-        <a href="{% url 'Delete_Product' product.id %}" class="del-product">
-            <div class="col-2 del-product-div">
-                <i class="fas fa-trash del-product-button"></i>Deletar Produto
-            </div>
-        </a>
-    </div>
+
 
 {% endblock %}
