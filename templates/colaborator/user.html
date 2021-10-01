@@ -5,17 +5,49 @@
 {% block content %}
 
     <div class="container title-user">
-        <h1>Minha conta</h1>
+        <h1>Usuários</h1>
     </div>
-    <div>
-        <div class="offset-1 col-10 user-div">
-            <ul class="list-user">
-                <li class="list-user-name">Nome:</li>
-                <li class="list-user-matricula">Matrucula:</li>
-                <li class="list-user-role">Cargo:</li>
-                <li class="list-user-departament">Departamento:</li>
-            </ul>
-        </div>
+
+    <div class="container">
+        <a href="{% url 'Register_Colaborator' %}" class="add-colaborator">
+            <div class="col-2 add-colaborator-div">
+                <i class="fas fa-plus add-colaborator-button"></i>Adicionar Usuário
+            </div>
+        </a>
     </div>
+
+    <div class="container table-users">
+        <table class="table table-striped table-hover table-bordered">
+            <thead>
+                <th scope="col">Nome</th>
+                <th scope="col">Sobrenome</th>
+                <th scope="col">E-mail</th>
+                <th scope="col">Cargo</th>
+                <th scope="col">departamento</th>
+            </thead>
+            <tbody>
+                {% for colaborator in colaborators %}
+                    <tr scope="row">
+                        <td>
+                            {{colaborator.nome}}
+                        </td>
+                        <td>
+                            {{colaborator.sobrenome}}
+                        </td>
+                        <td>
+                            {{colaborator.email}}
+                        </td>
+                        <td>
+                            {{colaborator.cargo}}
+                        </td>
+                        <td>
+                            {{colaborator.departamento}}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
 
 {% endblock %}

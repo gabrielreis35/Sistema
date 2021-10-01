@@ -1,8 +1,10 @@
+import os
 from django import forms
 from django.core.files.base import File
 from django.core.paginator import Paginator
 from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib import messages
+from django.core.files.storage import FileSystemStorage
 from produtos.models import Produto, Item, Arquivo
 from produtos.forms import ItemForm, ProdutoForm, FileForm
 
@@ -57,20 +59,21 @@ def DeleteProduct(request, id):
     messages.info(request, 'Produto excluído')
     return redirect('/products')
 
-def NewItem(request, id):
+def NewItem(request):
     itemForm = ItemForm()
     if request.method == 'POST':
-        itemForm = ItemForm(request.POST or None)
+        itemForm = ItemForm(request.POST, request.FILES)
         if itemForm.is_valid():
-            #itemForm.save(commit=False)
-            #Item.produto_id = Produto.id
             itemForm.save()
             return redirect('/products/')
-        
     else:
         itemForm = ItemForm()
-        
     return render(request, 'produtos/NewItem.html', {'itemForm' : itemForm})
+
+# def DownloadItem(request, id):
+#     item = Item()
+#     product = Produto()
+#     filePath = '/media/produtos' + product.nome
 
 def DeleteItem(request, id):
     item = get_object_or_404(Item, id = id)
@@ -81,7 +84,7 @@ def DeleteItem(request, id):
 def NewFile(request):
     fileForm = FileForm()
     if request.method == 'POST':
-        fileForm = FileForm(request.POST or None)
+        fileForm = FileForm(request.POST, request.FILES)
         if fileForm.is_valid():
             fileForm.save()
             return redirect('/products/')

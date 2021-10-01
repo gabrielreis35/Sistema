@@ -10,7 +10,7 @@
         <h1>Adicionar novo arquivo</h1>
     </div>
     <div class="offset-1 col-3 list-div">
-        <form method="POST">
+        <form method="POST", enctype="multipart/form-data">
             {% csrf_token %}
             {{ fileForm|crispy }}
             <input type="submit" class="btn btn-success" value="Criar arquivo">

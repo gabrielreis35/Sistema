@@ -6,8 +6,8 @@ from django.db.models.fields.reverse_related import ManyToManyRel, ManyToOneRel
 from departments.models import Departamento
 
 class Colaborador(models.Model):
-    nomeCompleto = CharField(max_length=30)
-    apelido = CharField(max_length=20)
+    nome = CharField(max_length=30)
+    sobrenome = CharField(max_length=30)
     cargo = CharField(max_length=30)
     user = OneToOneField(User, on_delete=models.CASCADE)
     departamento = ManyToManyField(Departamento)

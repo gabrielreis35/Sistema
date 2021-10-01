@@ -159,6 +159,15 @@ li.messages li {
     list-style: none;
 }
 
+/* Página inicial */
+
+.title-home {
+    font-size: 1.5em !important;
+    padding: 30px;
+    position: relative;
+    text-align: center;
+}
+
 /* Página Produtos */
 
 .title-products {
@@ -171,6 +180,10 @@ li.messages li {
 .product-div {
     padding: 0;
     left: -3em;
+}
+
+ul .messages li {
+    text-decoration: none;
 }
 
 /* Botão de adicionar */
@@ -245,19 +258,12 @@ h1 {
     text-align: center;
 }
 
-.product-table {
-    position: relative;
-    margin-left: 4.5em;
-    width: 90%;
-    border: solid 4px #555;
-}
-
-.product-item {
-    border: solid 2px #ddd;
-}
+/* .back-products {
+    display: block;
+    max-width: 1em;
+} */
 
 a.edit-product {
-    
     display: block;
     width: 6.5em;
 }
@@ -280,6 +286,17 @@ a.edit-product:hover {
     color: #fff;
     margin-right: 5px;
     margin-left: 10px;
+}
+
+.product-table {
+    position: relative;
+    margin-left: 4.5em;
+    width: 90%;
+    border: solid 4px #555;
+}
+
+.product-item {
+    border: solid 2px #ddd;
 }
 
 .del-product-div {
@@ -382,6 +399,11 @@ a.download-item, a.download-file {
     text-align: center;
 }
 
+.document {
+    margin-bottom: 1.5em;
+    margin-top: 0.5em;
+}
+
 
 /* Página de Adicionar Arquivo */
 
@@ -404,4 +426,26 @@ a.download-item, a.download-file {
 .list-user {
     list-style: none;
     padding: 0.5em;
+}
+
+/* Página de Usuário */
+
+.add-colaborator {
+    position: relative;
+    text-decoration: none !important;
+    margin-right: -0.3em;
+    width: 5em;
+}
+
+.add-colaborator-div {
+    background-color: #3476e2;
+    cursor: pointer;
+    display: inline-block;
+    color: #fff;
+    padding: 0.5em;
+    border-radius: 0.31em;
+}
+
+.table-users {
+    margin-top: 2em;
 }

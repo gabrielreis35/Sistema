@@ -40,7 +40,8 @@ class ItemForm(ModelForm):
             'tipo',
             'revisao',
             'partNumber',
-            'tipoFabricacao'
+            'tipoFabricacao',
+            'file'
         ]
 
         labels = {
@@ -48,7 +49,8 @@ class ItemForm(ModelForm):
             'tipo': 'Tipo',
             'revisao': 'Revisão',
             'partNumber': 'PartNumber',
-            'tipoFabricacao': 'Tipo de Fabricação'
+            'tipoFabricacao': 'Tipo de Fabricação',
+            'file': 'Arquivo'
         }
 
 class FileForm(ModelForm):
@@ -59,7 +61,8 @@ class FileForm(ModelForm):
             'tipo',
             'revisao',
             'partNumber',
-            'tipoFabricacao'
+            'tipoFabricacao',
+            'file'
         ]
 
         labels = {
@@ -67,5 +70,6 @@ class FileForm(ModelForm):
             'tipo': 'Tipo',
             'revisao': 'Revisão',
             'partNumber': 'PartNumber',
-            'tipoFabricacao': 'Tipo de Fabricação'
+            'tipoFabricacao': 'Tipo de Fabricação',
+            'file': 'Arquivo'
         }

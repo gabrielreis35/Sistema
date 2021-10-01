@@ -7,6 +7,15 @@
     <div class="title-product">
         <h1>{{product.nome}}</h1>
     </div>
+
+    <!-- <div class="container">
+        <a href="{% url 'Products' %}" class="back-products">
+            <div class="back-products-div">
+                <i class="fas fa-arrow-left"></i>
+            </div>
+        </a>
+    </div> -->
+
     <div class="container">
         <a href="{% url 'Update_Product' product.id %}" class="edit-product">
             <div class="edit-div">
@@ -234,7 +243,7 @@
                             {{item.dateCriacao}}
                         </td>
                         <td>
-                            <a href="#" class="download-item">
+                            <a href="#" class="download-item" download="{{item.nome}}">
                                 <div class="col download-item-div">
                                     <i class="fas fa-download download-button"></i>
                                 </div>
@@ -271,7 +280,7 @@
                             {{file.dateCriacao}}
                         </td>
                         <td>
-                            <a href="#" class="download-file">
+                            <a href="#" class="download-file" download="{{file.nome}}">
                                 <div class="col download-file-div">
                                     <i class="fas fa-download download-button"></i>
                                 </div>

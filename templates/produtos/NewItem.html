@@ -9,11 +9,13 @@
     <div class="title-new-item">
         <h1>Novo Item</h1>
     </div>
-    <div class="offset-1 col-3 list-div">
+    <div class="offset-1 col-4 list-div">
 
-        <form method="POST">
+        <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             {{ itemForm|crispy }}
+
+            <!-- <input type="file" class="document" name="documentItem"> -->
             <input type="submit" class="btn btn-success" value="Criar item">
         </form>
     </div>

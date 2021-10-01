@@ -1,3 +1,4 @@
+import os
 from django.db.models.base import Model
 from django.db.models.deletion import CASCADE, PROTECT, SET_NULL
 from django.db.models.fields import  CharField, DateTimeField, IntegerField, FloatField
@@ -77,6 +78,10 @@ class Produto(models.Model):
         return self.nome
 
 class Item(models.Model):
+
+    def filePath(produto, file):
+        return os.path.join('produtos', produto.nome, file)
+
     tipoArquivo = (
         ('Peça', 'Peça' ),
         ('Montagem', 'Montagem'),
@@ -104,8 +109,9 @@ class Item(models.Model):
     partNumber = CharField(max_length=16, null=True)
     tipoFabricacao = CharField(max_length=25, choices=tipoFabricacaoChoice)
 
+    file = models.FileField(upload_to=filePath)
+
     dateCriacao = DateTimeField(auto_now_add=True)
-    dateUpdate = DateTimeField(auto_now=True)
 
     produto = ForeignKey(Produto, null=True, blank=True, on_delete=CASCADE)
 
@@ -113,6 +119,9 @@ class Item(models.Model):
         return self.nome
 
 class Arquivo(models.Model):
+    def filePath(produto, file):
+        return os.path.join('produtos', produto.nome, file)
+
     tipoArquivo = (
         ('DWG', 'DWG' ),
         ('DXF', 'DXF'),
@@ -140,11 +149,11 @@ class Arquivo(models.Model):
     tipo = CharField(max_length=4, choices=tipoArquivo)
     partNumber = CharField(max_length=16, null=True)
     tipoFabricacao = CharField(max_length=25, choices=tipoFabricacaoChoice)
+    file = models.FileField(upload_to=filePath)
 
     dateCriacao = DateTimeField(auto_now_add=True)
-    dateUpdate = DateTimeField(auto_now=True)
 
-    produto = ForeignKey(Produto, on_delete=CASCADE)
+    produto = ForeignKey(Produto, null=True, blank=True, on_delete=CASCADE)
 
     def __str__(self):
         return self.nome
