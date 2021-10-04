@@ -4,10 +4,12 @@ from django.core.files.base import File
 from django.core.paginator import Paginator
 from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.core.files.storage import FileSystemStorage
 from produtos.models import Produto, Item, Arquivo
 from produtos.forms import ItemForm, ProdutoForm, FileForm
 
+@login_required
 def Products(request):
     search = request.GET.get('search')
     

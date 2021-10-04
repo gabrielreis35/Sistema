@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}Registrar usuário{% endblock %}
+
+{% block content %}
+
+    <div class="title-new-user">
+        <h1>Adicionar novo usuário</h1>
+    </div>
+    <div class="offset-1 col-3 list-div">
+    
+        <form method='POST'>
+            {% csrf_token %}
+            {{ signupForm|crispy }}
+            <button type="submit" class="btn btn-success">Criar usuário</button>
+        
+        </form>
+    </div>
+
+{% endblock %}

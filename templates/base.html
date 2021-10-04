@@ -6,12 +6,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title%}{% endblock%}</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link rel="stylesheet" href="{% static 'css/bs/bootstrap.css' %}">
+    <title>{%block title%}{%endblock%}</title>
+    <link rel="stylesheet" href="{%static 'css/style.css'%}">
+    <link rel="stylesheet" href="{%static 'css/bs/bootstrap.css'%}">
 
 </head>
 <body>
+    {%if user.is_authenticated%}
     <div class="sidebar">
         <div class="logo_content">
             <div class="logo">
@@ -22,21 +23,27 @@
         </div>
         <ul class="nav_list">
             <li>
-                <a href="{% url 'Home' %}">
+                <a href="{%url 'Home'%}">
                     <i class="fas fa-grip-vertical"></i>
                     <span class="link_name">Dashboard</span>
                 </a>
             </li>
             <li>
-                <a href="{% url 'Products' %}">
+                <a href="{%url 'Products'%}">
                     <i class="fas fa-archive"></i>
                     <span class="link_name">Produtos</span>
                 </a>
             </li> 
             <li>
-                <a href="{% url 'Colaborator' %}">
+                <a href="{%url 'Colaborator'%}">
                     <i class="fas fa-user"></i>
                     <span class="link_name">Usuários</span>
+                </a>
+            </li>
+            <li>
+                <a href="{%url 'Departments'%}">
+                    <i class="fas fa-building"></i>
+                    <span class="link_name">Departamentos</span>
                 </a>
             </li>
             <li>
@@ -46,18 +53,22 @@
                 </a>
             </li>
         </ul>
+        
         <div class="profile_content">
             <div class="profile">
                 <div class="profile_details">
                     <div class="name_job">
-                        <div class="name">{{ .nome}}</div>
+                        <div class="name">{{colaborator.nome}}</div>
                         <div class="job">{{department.nome}}</div>
                     </div>
                 </div>
-                <i class="fas fa-sign-out-alt" id="logout"></i>
+                <a href="{%url 'logout'%}">
+                    <i class="fas fa-sign-out-alt" id="logout"></i>
+                </a>
             </div>
         </div>
     </div>
+    {%endif%}
 
     <div class="home_content">
         {% block content %}

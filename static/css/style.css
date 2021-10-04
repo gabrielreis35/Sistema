@@ -449,3 +449,12 @@ a.download-item, a.download-file {
 .table-users {
     margin-top: 2em;
 }
+
+/* Página de Departamentos */
+
+.title-departments {
+    font-size: 1.5em !important;
+    padding: 30px;
+    position: relative;
+    text-align: center;
+}
