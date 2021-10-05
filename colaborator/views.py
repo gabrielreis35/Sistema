@@ -1,13 +1,14 @@
+from typing import List
 from django.contrib.auth.models import User
 from django.forms.widgets import Textarea
 from django.views.generic import CreateView
-from django.views.generic.detail import DetailView
+#from django.views.generic.detail import DetailView
+from django.views.generic.list import ListView
 from colaborator.models import Colaborador
 from django.forms import Textarea
 
-class ColaboratorView(DetailView):
+class ColaboratorView(ListView):
     model = Colaborador
-    fields = ['nome', 'sobrenome', 'cargo', 'user', 'departamento']
 
     def get_queryset(self):
         return Colaborador.objects.all
