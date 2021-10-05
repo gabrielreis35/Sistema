@@ -113,7 +113,7 @@ class Item(models.Model):
 
     dateCriacao = DateTimeField(auto_now_add=True)
 
-    produto = ForeignKey(Produto, null=True, blank=True, on_delete=CASCADE)
+    produto = ForeignKey(Produto, null=True, on_delete=CASCADE)
 
     def __str__(self):
         return self.nome

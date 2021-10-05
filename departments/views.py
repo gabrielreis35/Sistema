@@ -1,4 +1,19 @@
-from django.shortcuts import render
+from django.views.generic.edit import CreateView
+from django.views.generic.list import ListView
+from departments.models import Departamento
 
-def Departments(request):
-    return render(request, 'departments/Departments.html')
+
+class Department(ListView):
+    model = Departamento
+    fields = ['nome']
+
+    def get_queryset(self):
+        return Departamento.objects.all
+
+class CreateDepartment(CreateView):
+    model = Departamento
+    fields = ['nome']
+
+    def form_valid(self, form):
+        form.save(commit = True)
+        return super(CreateDepartment, self).form_valid(form)

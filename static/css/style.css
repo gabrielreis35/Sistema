@@ -428,8 +428,6 @@ a.download-item, a.download-file {
     padding: 0.5em;
 }
 
-/* Página de Usuário */
-
 .add-colaborator {
     position: relative;
     text-decoration: none !important;
@@ -448,6 +446,15 @@ a.download-item, a.download-file {
 
 .table-users {
     margin-top: 2em;
+}
+
+/* Página de Adicionar Colaborador */
+
+.title-new-user  {
+    font-size: 1.5em !important;
+    padding: 30px;
+    position: relative;
+    text-align: center;
 }
 
 /* Página de Departamentos */
