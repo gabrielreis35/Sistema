@@ -1,7 +1,7 @@
+from django.contrib.auth.decorators import login_required
 from django.views.generic.edit import CreateView
 from django.views.generic.list import ListView
 from departments.models import Departamento
-
 
 class Department(ListView):
     model = Departamento
@@ -9,6 +9,7 @@ class Department(ListView):
 
     def get_queryset(self):
         return Departamento.objects.all
+
 
 class CreateDepartment(CreateView):
     model = Departamento

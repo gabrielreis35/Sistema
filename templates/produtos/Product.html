@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 
-{% block title %}{{product.nome}}{% endblock %}
+{% block title %}{{ product.nome }}{% endblock %}
 
 {% block content %}
 
     <div class="title-product">
-        <h1>{{product.nome}}</h1>
+        <h1>{{ product.nome }}</h1>
     </div>
 
     <!-- <div class="container">
@@ -17,7 +17,7 @@
     </div> -->
 
     <div class="container">
-        <a href="{% url 'Update_Product' product.id %}" class="edit-product">
+        <a href="{% url 'products:Update_Product' product.id %}" class="edit-product">
             <div class="edit-div">
                 <i class="fas fa-edit"></i>Editar
             </div>
@@ -25,7 +25,7 @@
     </div>
 
     <div class="container del">
-        <a href="{% url 'Delete_Product' product.id %}" class="del-product">
+        <a href="{% url 'products:Delete_Product' product.id %}" class="del-product">
             <div class="col-2 del-product-div">
                 <i class="fas fa-trash del-product-button"></i>Deletar Produto
             </div>
@@ -39,7 +39,7 @@
                     Número de Série
                 </td>
                 <td class="col-3 product-item">
-                    {{product.numeroSerie}}
+                    {{ product.numeroSerie }}
                 </td>
                 <td class="col-2 product-item-title">
                     Segmento
@@ -65,13 +65,13 @@
                     Nome:
                 </td>
                 <td class="col-3 product-item">
-                    {{product.nome}}
+                    {{ product.nome }}
                 </td>
                 <td class="col-2 product-item-title">
                     Equipamento:
                 </td>
                 <td class="col-3 product-item">
-                    {{product.equipamento}}
+                    {{ product.equipamento }}
                 </td>
             </tr>
             <tr>
@@ -117,7 +117,7 @@
                     Classe:
                 </td>
                 <td class="col-3 product-item">
-                    {{product.classe}}
+                    {{ product.classe }}
                 </td>
             </tr>
             <tr>
@@ -125,13 +125,13 @@
                     Capacidade:
                 </td>
                 <td class="col-2 product-item">
-                    {{product.capacidade}}
+                    {{ product.capacidade }}
                 </td>
                 <td class="col-2 product-item-title ">
                     Largura:
                 </td>
                 <td class="col-2 product-item">
-                    {{product.largura}}
+                    {{ product.largura }}
                 </td>
             </tr>
             <tr>
@@ -139,13 +139,13 @@
                     Lâmina:
                 </td>
                 <td class="col-2 product-item">
-                    {{product.lamina}}
+                    {{ product.lamina }}
                 </td>
                 <td class="col-2 product-item-title">
                     Peso:
                 </td>
                 <td class="col-2 product-item">
-                    {{product.peso}}
+                    {{ product.peso }}
                 </td>
             </tr>
             <tr>
@@ -153,20 +153,20 @@
                     Data de criação:
                 </td>
                 <td class="col-2 product-item">
-                    {{product.dateCriacao}}
+                    {{ product.dateCriacao }}
                 </td>
                 <td class="col-2 product-item-title">
                     Última modificação:
                 </td>
                 <td class="col-2 product-item">
-                    {{product.dateUpdate }}
+                    {{ product.dateUpdate }}
                 </td>
             </tr>
         </tbody>
     </table>
 
     <div class="container add">
-        <a href="{% url 'New_Item' %}" class="add-item">
+        <a href="{% url 'products:New_Item' %}" class="add-item">
             <div class="col-2 item-div">
                 <i class="fas fa-plus add-item-button"></i>Adicionar Item
             </div>
@@ -174,7 +174,7 @@
     </div>  
 
     <div class="container">
-        <a href="{% url 'New_File' %}" class="add-file">
+        <a href="{% url 'products:New_File' %}" class="add-file">
             <div class="col-2 file-div">
                 <i class="fas fa-plus add-file-button"></i>Adicionar Arquivo
             </div>
@@ -185,7 +185,7 @@
         <ul class="messages">
             {% for message in messages %}
                 <li {% if message.tags %} class="alert alert-{{message.tags}}"{% endif %}>
-                    {{message}}
+                    {{ message }}
                 </li>
             {% endfor %}
         </ul>
@@ -225,32 +225,32 @@
                 {% for item in items %}
                     <tr scope="row">
                         <td>
-                            {{item.revisao}}
+                            {{ item.revisao }}
                         </td>
                         <td>
-                            {{item.nome}}
+                            {{ item.nome }}
                         </td>
                         <td>
-                            {{item.tipo}}
+                            {{ item.tipo }}
                         </td>
                         <td>
-                            {{item.partNumber}}
+                            {{ item.partNumber }}
                         </td>
                         <td>
-                            {{item.tipoFabricacao}}
+                            {{ item.tipoFabricacao }}
                         </td>
                         <td>
-                            {{item.dateCriacao}}
+                            {{ item.dateCriacao }}
                         </td>
                         <td>
-                            <a href="#" class="download-item" download="{{item.nome}}">
+                            <a href="#" class="download-item" download="{{ item.nome }}">
                                 <div class="col download-item-div">
                                     <i class="fas fa-download download-button"></i>
                                 </div>
                             </a>
                         </td>
                         <td>
-                            <a href="{% url 'Delete_Item' item.id %}" class="del-item">
+                            <a href="{% url 'products:Delete_Item' item.id %}" class="del-item">
                                 <div class="col del-item-div">
                                     <i class="fas fa-trash del-item-button"></i>
                                 </div>
@@ -262,32 +262,32 @@
                 {% for file in files %}
                     <tr scope="row">
                         <td>
-                            {{file.revisao}}
+                            {{ file.revisao }}
                         </td>
                         <td>
-                            {{file.nome}}
+                            {{ file.nome }}
                         </td>
                         <td>
-                            {{file.tipo}}
+                            {{ file.tipo }}
                         </td>
                         <td>
-                            {{file.partNumber}}
+                            {{ file.partNumber }}
                         </td>
                         <td>
-                            {{file.tipoFabricacao}}
+                            {{ file.tipoFabricacao }}
                         </td>
                         <td>
-                            {{file.dateCriacao}}
+                            {{ file.dateCriacao }}
                         </td>
                         <td>
-                            <a href="#" class="download-file" download="{{file.nome}}">
+                            <a href="#" class="download-file" download="{{ file.nome }}">
                                 <div class="col download-file-div">
                                     <i class="fas fa-download download-button"></i>
                                 </div>
                             </a>
                         </td>
                         <td>
-                            <a href="{% url 'Delete_file' file.id %}" class="del-file">
+                            <a href="{% url 'products:Delete_file' file.id %}" class="del-file">
                                 <div class="col del-file-div">
                                     <i class="fas fa-trash del-file-button"></i>
                                 </div>

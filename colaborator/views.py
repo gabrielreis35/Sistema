@@ -1,4 +1,5 @@
 from typing import List
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.forms.widgets import Textarea
 from django.views.generic import CreateView

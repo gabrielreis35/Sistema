@@ -1,9 +1,7 @@
 from django.urls import path
-from django.views.generic.base import TemplateView
-
-from main.views import Home
 from .views import Department, CreateDepartment
 
+app_name = 'departments'
 
 urlpatterns = [
     path('', Department.as_view(template_name= 'departments/departments.html'), name = 'Home_Departments'),

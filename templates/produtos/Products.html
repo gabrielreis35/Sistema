@@ -9,7 +9,7 @@
     </div>
     
     <div class="offset-1 col-10 product-div">
-        <a href="{% url 'New_Products' %}" class="add-product"> 
+        <a href="{% url 'products:New_Products' %}" class="add-product"> 
             <div class="col-2 add-div">
                 <i class="fas fa-plus products"></i>Adicionar Produto
             </div>
@@ -75,7 +75,7 @@
                         {{product.lamina}}
                     </td>
                     <td>
-                        <a href="{% url 'View_Product' product.id %}" class="icon view-product">
+                        <a href="{% url 'products:View_Product' product.id %}" class="icon view-product">
                             <div class="col">
                                 <i class="far fa-eye"></i>
                             </div>

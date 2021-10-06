@@ -9,7 +9,7 @@ from django.core.files.storage import FileSystemStorage
 from produtos.models import Produto, Item, Arquivo
 from produtos.forms import ItemForm, ProdutoForm, FileForm
 
-@login_required
+
 def Products(request):
     search = request.GET.get('search')
     
@@ -34,12 +34,18 @@ def NewProduct(request):
         productForm = ProdutoForm()
         
     return render(request, 'produtos/NewProduct.html', {'productForm' : productForm})
-    
+
 def ViewProduct(request, id):
+    context = []
     items = Item.objects.all().filter(produto_id = id).order_by('-revisao')
     files = Arquivo.objects.all().filter(produto_id = id).order_by('-revisao')
-    product = get_object_or_404(Produto, pk = id)
-    return render(request, 'produtos/Product.html', {'product' : product, 'items' : items, 'files' : files})
+    product = get_object_or_404(Produto, id = id)
+    context = {
+        'product': product,
+        'items': items,
+        'files': files,
+    }
+    return render(request, 'produtos/Product.html', context)
 
 def UpdateProduct(request, id):
     product = get_object_or_404(Produto, id = id)
@@ -55,11 +61,13 @@ def UpdateProduct(request, id):
     else:    
         return render(request, 'produtos/UpdateProduct.html', {'productForm' : productForm, 'product' : product})
 
+
 def DeleteProduct(request, id):
     product = get_object_or_404(Produto, id = id)
     product.delete()
     messages.info(request, 'Produto excluído')
     return redirect('/products')
+
 
 def NewItem(request):
     itemForm = ItemForm()
@@ -77,11 +85,13 @@ def NewItem(request):
 #     product = Produto()
 #     filePath = '/media/produtos' + product.nome
 
+
 def DeleteItem(request, id):
     item = get_object_or_404(Item, id = id)
     item.delete()
     messages.info(request, 'Item excluído')
     return redirect('/products')
+
 
 def NewFile(request):
     fileForm = FileForm()
@@ -95,6 +105,7 @@ def NewFile(request):
         fileForm = FileForm()
         
     return render(request, 'produtos/NewFile.html', {'fileForm' : fileForm})
+
 
 def DeleteFile(request, id):
     file = get_object_or_404(Arquivo, id = id)
