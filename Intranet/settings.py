@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'jquery',
+    'django-static-jquery',
     'crispy_forms',
     'debug_toolbar',
     'produtos',
