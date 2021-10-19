@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-bzaj4fh7c_t6_r7dnnnjx$om*m#%i0%&gzkp)#mh%h+)vp)h9n'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -90,24 +90,24 @@ WSGI_APPLICATION = 'Intranet.wsgi.application'
 #     }
 # }
 
-if not DEBUG:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME':'innova',
-            'USER': 'gabriel',
-            'PASSWORD': 'gabriel',
-            'HOST': 'db_database',
-            'PORT': '5432',
-        }
+# if not DEBUG:
+#     DATABASES = {
+#         'default': {
+#             'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#             'NAME':'innova',
+#             'USER': 'gabriel',
+#             'PASSWORD': 'gabriel',
+#             'HOST': 'db_innova',
+#             'PORT': '5432',
+#         }
+#     }
+# else:
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
-    }
+}
 
 
 # Password validation
