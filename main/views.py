@@ -9,6 +9,3 @@ from .models import Informacoes
 def Home(request):
     # colaborator = Informacoes()
     return render(request, 'main/Home.html')
-
-def Login(request):
-    return render(request, 'main/Login.html')

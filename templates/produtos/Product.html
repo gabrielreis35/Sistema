@@ -4,301 +4,292 @@
 
 {% block content %}
 
-    <div class="title-product">
-        <h1>{{ product.nome }}</h1>
-    </div>
+<div class="title-product">
+    <h1>{{ product.nome }}</h1>
+</div>
+<div class="container">
+    <a href="{% url 'products:Update_Product' product.id %}" class="edit-product">
+        <div class="edit-div">
+            <i class="fas fa-edit"></i>Editar
+        </div>
+    </a>
+</div>
 
-    <!-- <div class="container">
-        <a href="{% url 'Products' %}" class="back-products">
-            <div class="back-products-div">
-                <i class="fas fa-arrow-left"></i>
-            </div>
-        </a>
-    </div> -->
+<div class="container del">
+    <a href="{% url 'products:Delete_Product' product.id %}" class="del-product">
+        <div class="col-2 del-product-div">
+            <i class="fas fa-trash del-product-button"></i>Deletar Produto
+        </div>
+    </a>
+</div>
 
-    <div class="container">
-        <a href="{% url 'products:Update_Product' product.id %}" class="edit-product">
-            <div class="edit-div">
-                <i class="fas fa-edit"></i>Editar
-            </div>
-        </a>
-    </div>
-
-    <div class="container del">
-        <a href="{% url 'products:Delete_Product' product.id %}" class="del-product">
-            <div class="col-2 del-product-div">
-                <i class="fas fa-trash del-product-button"></i>Deletar Produto
-            </div>
-        </a>
-    </div>
-
-    <table class="product-table">
-        <tbody>
-            <tr>
-                <td class=" col-2 product-item-title">
-                    Número de Série
-                </td>
-                <td class="col-3 product-item">
-                    {{ product.numeroSerie }}
-                </td>
-                <td class="col-2 product-item-title">
+<table class="product-table">
+    <tbody>
+        <tr>
+            <td class=" col-2 product-item-title">
+                Número de Série
+            </td>
+            <td class="col-3 product-item">
+                {{ product.numeroSerie }}
+            </td>
+            <td class="col-2 product-item-title">
+                Segmento
+            </td>
+            <td class="col-3 product-item">
+                {% if product.segmento == 'A' %}
+                    Agrícola
+                {% elif product.segmento == 'C' %}
+                    Construção
+                {% elif product.segmento == 'F' %}
+                    Florestal
+                {% elif product.segmento == 'I' %}
+                    Indústria
+                {% elif product.segmento == 'U' %}
+                    Indústria Automotiva
+                {% elif product.segmento == 'M' %}
+                    Mineiração
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <td class="col-2 product-item-title">
+                Nome:
+            </td>
+            <td class="col-3 product-item">
+                {{ product.nome }}
+            </td>
+            <td class="col-2 product-item-title">
+                Equipamento:
+            </td>
+            <td class="col-3 product-item">
+                {{ product.equipamento }}
+            </td>
+        </tr>
+        <tr>
+            <td class="col-2 product-item-title">
+                Acessório:
+            </td>
+            <td class="col-3 product-item">
+                {% if product.codigo == 'AC' %}
+                    Acessório
+                {% elif product.codigo == 'CC' %}
+                    Carregadeira
+                {% elif product.codigo == 'CD' %}
+                    Chapa de desgaste
+                {% elif product.codigo == 'CB' %}
+                    Chock Bar
+                {% elif product.codigo == 'DF' %}
+                    Dispositivos e ferramentas
+                {% elif product.codigo == 'ER' %}
+                    Engate rápido
+                {% elif product.codigo == 'CE' %}
+                    Escavadeira
+                {% elif product.codigo == 'FP' %}
+                    Ferramenta de penetração de solo
+                {% elif product.codigo == 'GA' %}
+                    Garfo
+                {% elif product.codigo == 'CG' %}
+                    Graniteira
+                {% elif product.codigo == 'LA' %}
+                    Lâmina
+                {% elif product.codigo == 'LN' %}
+                    Lança
+                {% elif product.codigo == 'RI' %}
+                    Ripper
+                {% elif product.codigo == 'SG' %}
                     Segmento
-                </td>
-                <td class="col-3 product-item">
-                    {% if product.segmento == 'A' %}
-                        Agrícola
-                    {% elif product.segmento == 'C' %}
-                        Construção
-                    {% elif product.segmento == 'F' %}
-                        Florestal
-                    {% elif product.segmento == 'I' %}
-                        Indústria
-                    {% elif product.segmento == 'U' %}
-                        Indústria Automotiva
-                    {% elif product.segmento == 'M' %}
-                        Mineiração
-                    {% endif %}
-                </td>
-            </tr>
-            <tr>
-                <td class="col-2 product-item-title">
-                    Nome:
-                </td>
-                <td class="col-3 product-item">
-                    {{ product.nome }}
-                </td>
-                <td class="col-2 product-item-title">
-                    Equipamento:
-                </td>
-                <td class="col-3 product-item">
-                    {{ product.equipamento }}
-                </td>
-            </tr>
-            <tr>
-                <td class="col-2 product-item-title">
-                    Acessório:
-                </td>
-                <td class="col-3 product-item">
-                    {% if product.codigo == 'AC' %}
-                        Acessório
-                    {% elif product.codigo == 'CC' %}
-                        Carregadeira
-                    {% elif product.codigo == 'CD' %}
-                        Chapa de desgaste
-                    {% elif product.codigo == 'CB' %}
-                        Chock Bar
-                    {% elif product.codigo == 'DF' %}
-                        Dispositivos e ferramentas
-                    {% elif product.codigo == 'ER' %}
-                        Engate rápido
-                    {% elif product.codigo == 'CE' %}
-                        Escavadeira
-                    {% elif product.codigo == 'FP' %}
-                        Ferramenta de penetração de solo
-                    {% elif product.codigo == 'GA' %}
-                        Garfo
-                    {% elif product.codigo == 'CG' %}
-                        Graniteira
-                    {% elif product.codigo == 'LA' %}
-                        Lâmina
-                    {% elif product.codigo == 'LN' %}
-                        Lança
-                    {% elif product.codigo == 'RI' %}
-                        Ripper
-                    {% elif product.codigo == 'SG' %}
-                        Segmento
-                    {% elif product.codigo == 'VA' %}
-                        Vala
-                    {% elif product.codigo == 'SE' %}
-                        Serviço
-                    {% endif %}
-                </td>
-                <td class="col-2 product-item-title">
-                    Classe:
-                </td>
-                <td class="col-3 product-item">
-                    {{ product.classe }}
-                </td>
-            </tr>
-            <tr>
-                <td class="col-2 product-item-title">
-                    Capacidade:
-                </td>
-                <td class="col-2 product-item">
-                    {{ product.capacidade }}
-                </td>
-                <td class="col-2 product-item-title ">
-                    Largura:
-                </td>
-                <td class="col-2 product-item">
-                    {{ product.largura }}
-                </td>
-            </tr>
-            <tr>
-                <td class="col-2 product-item-title">
-                    Lâmina:
-                </td>
-                <td class="col-2 product-item">
-                    {{ product.lamina }}
-                </td>
-                <td class="col-2 product-item-title">
-                    Peso:
-                </td>
-                <td class="col-2 product-item">
-                    {{ product.peso }}
-                </td>
-            </tr>
-            <tr>
-                <td class="col-2 product-item-title">
-                    Data de criação:
-                </td>
-                <td class="col-2 product-item">
-                    {{ product.dateCriacao }}
-                </td>
-                <td class="col-2 product-item-title">
-                    Última modificação:
-                </td>
-                <td class="col-2 product-item">
-                    {{ product.dateUpdate }}
-                </td>
-            </tr>
-        </tbody>
-    </table>
+                {% elif product.codigo == 'VA' %}
+                    Vala
+                {% elif product.codigo == 'SE' %}
+                    Serviço
+                {% endif %}
+            </td>
+            <td class="col-2 product-item-title">
+                Classe:
+            </td>
+            <td class="col-3 product-item">
+                {{ product.classe }}
+            </td>
+        </tr>
+        <tr>
+            <td class="col-2 product-item-title">
+                Capacidade:
+            </td>
+            <td class="col-2 product-item">
+                {{ product.capacidade }}
+            </td>
+            <td class="col-2 product-item-title ">
+                Largura:
+            </td>
+            <td class="col-2 product-item">
+                {{ product.largura }}
+            </td>
+        </tr>
+        <tr>
+            <td class="col-2 product-item-title">
+                Lâmina:
+            </td>
+            <td class="col-2 product-item">
+                {{ product.lamina }}
+            </td>
+            <td class="col-2 product-item-title">
+                Peso:
+            </td>
+            <td class="col-2 product-item">
+                {{ product.peso }}
+            </td>
+        </tr>
+        <tr>
+            <td class="col-2 product-item-title">
+                Data de criação:
+            </td>
+            <td class="col-2 product-item">
+                {{ product.dateCriacao }}
+            </td>
+            <td class="col-2 product-item-title">
+                Última modificação:
+            </td>
+            <td class="col-2 product-item">
+                {{ product.dateUpdate }}
+            </td>
+        </tr>
+    </tbody>
+</table>
 
-    <div class="container add">
-        <a href="{% url 'products:New_Item' %}" class="add-item">
-            <div class="col-2 item-div">
-                <i class="fas fa-plus add-item-button"></i>Adicionar Item
-            </div>
-        </a>
-    </div>  
+<div class="container add">
+    <a href="{% url 'products:New_Item' %}" class="add-item">
+        <div class="col-2 item-div">
+            <i class="fas fa-plus add-item-button"></i>Adicionar Pack
+        </div>
+    </a>
+</div>  
 
-    <div class="container">
-        <a href="{% url 'products:New_File' %}" class="add-file">
-            <div class="col-2 file-div">
-                <i class="fas fa-plus add-file-button"></i>Adicionar Arquivo
-            </div>
-        </a>
-    </div>
+<div class="container">
+    <a href="{% url 'products:New_File' %}" class="add-file">
+        <div class="col-2 file-div">
+            <i class="fas fa-plus add-file-button"></i>Adicionar Arquivo
+        </div>
+    </a>
+</div>
 
-    {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-                <li {% if message.tags %} class="alert alert-{{message.tags}}"{% endif %}>
-                    {{ message }}
-                </li>
-            {% endfor %}
-        </ul>
-    {% endif %}
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li {% if message.tags %} class="alert alert-{{message.tags}}"{% endif %}>
+                {{ message }}
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}
 
-    <!-- <div class="container download">
-        <a href="#" class="download-all">
-            <div class="col download-all-div">
-                <i class="fas fa-download download-all-button"></i>
-            </div>
-        </a>
-    </div> -->
+<!-- <div class="container download">
+    <a href="#" class="download-all">
+        <div class="col download-all-div">
+            <i class="fas fa-download download-all-button"></i>
+        </div>
+    </a>
+</div> -->
 
-    <div class="container table-items">
-        <table class="table table-striped table-hover table-bordered">
-            <thead>
-                <tr>
-                    <th scope="col">Revisao</th>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Tipo</th>
-                    <th scope="col">PartNumber</th>
-                    <th scope="col">Tipo de fabricação</th>
-                    <th scope="col">Data de Criação</th>
-                    <th scope="col">
-                        <div class="col download-div">
-                            <i class="fas fa-download download-button"></i>
-                        </div>
-                    </th>
-                    <th scope="col">
-                        <div class="col del-div">
-                            <i class="fas fa-trash del-button"></i>
-                        </div>
-                    </th>
+<div class="container table-items">
+    <table class="table table-striped table-hover table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Revisao</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Tipo</th>
+                <th scope="col">PartNumber</th>
+                <th scope="col">Tipo de fabricação</th>
+                <th scope="col">Data de Criação</th>
+                <th scope="col">
+                    <div class="col download-div">
+                        <i class="fas fa-download download-button"></i>
+                    </div>
+                </th>
+                <th scope="col">
+                    <div class="col del-div">
+                        <i class="fas fa-trash del-button"></i>
+                    </div>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in items %}
+                <tr scope="row">
+                    <td>
+                        {{ item.revisao }}
+                    </td>
+                    <td>
+                        {{ item.nome }}
+                    </td>
+                    <td>
+                        {{ item.tipo }}
+                    </td>
+                    <td>
+                        {{ item.partNumber }}
+                    </td>
+                    <td>
+                        {{ item.tipoFabricacao }}
+                    </td>
+                    <td>
+                        {{ item.dateCriacao }}
+                    </td>
+                    <td>
+                        <a href="#" class="download-item" download="{{ item.nome }}">
+                            <div class="col download-item-div">
+                                <i class="fas fa-download download-button"></i>
+                            </div>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{% url 'products:Delete_Item' item.id %}" class="del-item">
+                            <div class="col del-item-div">
+                                <i class="fas fa-trash del-item-button"></i>
+                            </div>
+                        </a>
+                    </td>
                 </tr>
-            </thead>
-            <tbody>
-                {% for item in items %}
-                    <tr scope="row">
-                        <td>
-                            {{ item.revisao }}
-                        </td>
-                        <td>
-                            {{ item.nome }}
-                        </td>
-                        <td>
-                            {{ item.tipo }}
-                        </td>
-                        <td>
-                            {{ item.partNumber }}
-                        </td>
-                        <td>
-                            {{ item.tipoFabricacao }}
-                        </td>
-                        <td>
-                            {{ item.dateCriacao }}
-                        </td>
-                        <td>
-                            <a href="#" class="download-item" download="{{ item.nome }}">
-                                <div class="col download-item-div">
-                                    <i class="fas fa-download download-button"></i>
-                                </div>
-                            </a>
-                        </td>
-                        <td>
-                            <a href="{% url 'products:Delete_Item' item.id %}" class="del-item">
-                                <div class="col del-item-div">
-                                    <i class="fas fa-trash del-item-button"></i>
-                                </div>
-                            </a>
-                        </td>
-                    </tr>
-                {% endfor %}
+            {% endfor %}
 
-                {% for file in files %}
-                    <tr scope="row">
-                        <td>
-                            {{ file.revisao }}
-                        </td>
-                        <td>
-                            {{ file.nome }}
-                        </td>
-                        <td>
-                            {{ file.tipo }}
-                        </td>
-                        <td>
-                            {{ file.partNumber }}
-                        </td>
-                        <td>
-                            {{ file.tipoFabricacao }}
-                        </td>
-                        <td>
-                            {{ file.dateCriacao }}
-                        </td>
-                        <td>
-                            <a href="#" class="download-file" download="{{ file.nome }}">
-                                <div class="col download-file-div">
-                                    <i class="fas fa-download download-button"></i>
-                                </div>
-                            </a>
-                        </td>
-                        <td>
-                            <a href="{% url 'products:Delete_file' file.id %}" class="del-file">
-                                <div class="col del-file-div">
-                                    <i class="fas fa-trash del-file-button"></i>
-                                </div>
-                            </a>
-                        </td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-            
-        </table>
-    </div>
+            {% for file in files %}
+                <tr scope="row">
+                    <td>
+                        {{ file.revisao }}
+                    </td>
+                    <td>
+                        {{ file.nome }}
+                    </td>
+                    <td>
+                        {{ file.tipo }}
+                    </td>
+                    <td>
+                        {{ file.partNumber }}
+                    </td>
+                    <td>
+                        {{ file.tipoFabricacao }}
+                    </td>
+                    <td>
+                        {{ file.dateCriacao }}
+                    </td>
+                    <td>
+                        <a href="#" class="download-file" download="{{ file.nome }}">
+                            <div class="col download-file-div">
+                                <i class="fas fa-download download-button"></i>
+                            </div>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{% url 'products:Delete_file' file.id %}" class="del-file">
+                            <div class="col del-file-div">
+                                <i class="fas fa-trash del-file-button"></i>
+                            </div>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+        
+    </table>
+</div>
 
 
 

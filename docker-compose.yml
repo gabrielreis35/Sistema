@@ -10,8 +10,8 @@ services:
     command: bash -c "cd /code && python manage.py migrate && python manage.py collectstatic --noinput && python manage.py runserver 0.0.0.0:8000"
     restart: unless-stopped
     volumes:
-      - ./Sistema/.env:/code/.env
-      - ./Sistema/static:/static/
+      - ./.env:/code/.env
+      - ./static:/static/
     networks:
       - sistema-network
   webserver:
