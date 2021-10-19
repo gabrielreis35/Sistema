@@ -1,0 +1,59 @@
+version: '3.7'
+
+services:
+  django:
+    container_name: django
+    # image: ogabrielreis35/innova
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    command: bash -c "cd /code && python manage.py migrate && python manage.py collectstatic --noinput && python manage.py runserver 0.0.0.0:8000"
+    restart: unless-stopped
+    volumes:
+      - ./Sistema/.env:/code/.env
+      - ./Sistema/static:/static/
+    networks:
+      - sistema-network
+  webserver:
+    image: nginx:mainline-alpine
+    container_name: webserver
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx-conf/nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./Sistema/static:/opt/services/django/static/  # Syncing your current static directory to the Docker
+    depends_on:
+      - django
+    networks:
+      - sistema-network
+  db_database:
+    container_name: database
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: gabriel
+      POSTGRES_USER: gabriel
+      POSTGRES_DB: innova
+    ports:
+      - "5432:5432"
+    volumes:
+      - database_db:/var/lib/postgresql
+    networks:
+      - sistema-network
+volumes:
+  web-server-root:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/${USER}/app/server/
+      o: bind
+  # database:
+  #   driver: local
+  #   driver_opts:
+  #     type: none
+  #     device: /home/${USER}/app/dbsouledu/
+  #     o: bind
+networks:
+  sistema-network:
+    driver: bridge
