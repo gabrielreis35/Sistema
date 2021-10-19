@@ -90,24 +90,24 @@ WSGI_APPLICATION = 'Intranet.wsgi.application'
 #     }
 # }
 
-# if not DEBUG:
-#     DATABASES = {
-#         'default': {
-#             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#             'NAME':'innova',
-#             'USER': 'gabriel',
-#             'PASSWORD': 'gabriel',
-#             'HOST': 'db_innova',
-#             'PORT': '5432',
-#         }
-#     }
-# else:
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if not DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME':'innova',
+            'USER': 'gabriel',
+            'PASSWORD': 'gabriel',
+            'HOST': 'db_innova',
+            'PORT': '5432',
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 
 # Password validation
