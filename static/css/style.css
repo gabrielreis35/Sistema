@@ -249,6 +249,13 @@ h1 {
     margin-left: 5px;
 }
 
+.sem-produtos {
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode';
+    text-align: center;
+    margin-top: 1em;
+    margin-bottom: 2em;
+}
+
 /* Página Produto */
 
 .title-product {

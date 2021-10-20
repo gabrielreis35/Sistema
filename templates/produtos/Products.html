@@ -14,12 +14,17 @@
                 <i class="fas fa-plus products"></i>Adicionar Produto
             </div>
         </a>
+
+        {% if product in products %}
+
         <div class="col-3 search-div">
             <form method="GET" id="search-form">
                 <input class="form-control" type="text" id="search" name="search" placeholder="Digite o nome do produto">
                 <i class="fas fa-search" id="search-button"></i>
             </form>
         </div>
+
+        {% endif %}
 
         {% if messages %}
             <ul class="messages">
@@ -31,6 +36,8 @@
             </ul>
         {% endif %}
         
+        {% if product in products %}
+
         <table class="table table-striped table-hover table-bordered">
             <thead>
                 <tr>
@@ -85,6 +92,14 @@
                 {% endfor %}
             </tbody>
         </table>
+
+        {% else %}
+
+            <div class="sem-produtos">
+                Nenhum produto cadastrado!
+            </div>
+
+        {% endif %}
 
         <div class="pagination">
             <span class="step-links">
