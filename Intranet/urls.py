@@ -5,12 +5,12 @@ from django.conf.urls.static import static
 from django.urls import path, include
 
 urlpatterns = [
-    path('', include('main.urls')),
+    path('', include('main.urls', namespace='main:Home_Main')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('admin/', admin.site.urls),
     path('products/', include('produtos.urls', namespace='products')),
-    path('colaborator/', include('colaborator.urls')),
-    path('departments/', include('departments.urls'))
+    path('colaborator/', include('colaborator.urls', namespace='colaborators')),
+    path('departments/', include('departments.urls', namespace='departments'))
 ]
 
 if settings.DEBUG:
