@@ -74,7 +74,9 @@ def NewItem(request):
     if request.method == 'POST':
         itemForm = ItemForm(request.POST, request.FILES)
         if itemForm.is_valid():
-            itemForm.save()
+            item = itemForm.save(commit=False)
+            item.tipo = 'Zip'
+            item.save()
             return redirect('/products/')
     else:
         itemForm = ItemForm()

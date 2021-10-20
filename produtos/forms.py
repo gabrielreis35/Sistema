@@ -50,7 +50,6 @@ class ItemForm(ModelForm):
         fields = [
             'produto',
             'nome',
-            'tipo',
             'revisao',
             'partNumber',
             'tipoFabricacao',
@@ -72,6 +71,7 @@ class FileForm(ModelForm):
     class Meta:
         model = Arquivo
         fields = [
+            'produto',
             'nome',
             'tipo',
             'revisao',
@@ -81,6 +81,7 @@ class FileForm(ModelForm):
         ]
 
         labels = {
+            'produto': 'Produto relacionado',
             'nome': 'Nome',
             'tipo': 'Tipo',
             'revisao': 'Revisão',

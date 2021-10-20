@@ -81,12 +81,6 @@ class Item(models.Model):
 
     def filePath(produto, file):
         return os.path.join('produtos', produto.nome, file)
-
-    tipoArquivo = (
-        ('Peça', 'Peça' ),
-        ('Montagem', 'Montagem'),
-        ('Drawing', 'Drawing'),
-    )
     
     tipoFabricacaoChoice = (
         ('Montagem Geral', 'Montagem Geral'),
@@ -105,7 +99,7 @@ class Item(models.Model):
 
     revisao = IntegerField(null=True)
     nome = CharField(max_length=30)
-    tipo = CharField(max_length=8, choices=tipoArquivo)
+    tipo = CharField(max_length=8)
     partNumber = CharField(max_length=16, null=True)
     tipoFabricacao = CharField(max_length=25, choices=tipoFabricacaoChoice)
 
