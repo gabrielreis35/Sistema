@@ -1,5 +1,6 @@
 import os
-from django import forms
+# from django import forms
+# from django.conf import settings
 from django.core.files.base import File
 from django.core.paginator import Paginator
 from django.shortcuts import redirect, render, get_object_or_404
@@ -8,7 +9,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.files.storage import FileSystemStorage
 from produtos.models import Produto, Item, Arquivo
 from produtos.forms import ItemForm, ProdutoForm, FileForm
-
+# from django.http import HttpResponse, Http404
 
 def Products(request):
     search = request.GET.get('search')
@@ -82,10 +83,12 @@ def NewItem(request):
         itemForm = ItemForm()
     return render(request, 'produtos/NewItem.html', {'itemForm' : itemForm})
 
-# def DownloadItem(request, id):
-#     item = Item()
-#     product = Produto()
-#     filePath = '/media/produtos' + product.nome
+# def DownloadItem(request, path):
+#     filePath = os.path.join(settings.MEDIA_ROOT, path)
+#     if os.path.exists(filePath):
+#         with open(filePath, 'rb') as fh:
+#             response = HttpResponse(mimetype='application/force-download')
+    #filePath = '/media/produtos'
 
 
 def DeleteItem(request, id):
