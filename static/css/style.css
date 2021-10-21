@@ -34,8 +34,8 @@ body {
     align-items: center;
 }
 
-.logo_content .logo i {
-    font-size: 1.75em;
+.logo_content .img-base {
+    border-radius: 50%;
     margin-right: 0.31em;
 }
 
@@ -375,6 +375,10 @@ a.download-div:hover {
 
 a.download-item, a.download-file {
     color: #3476e2;
+}
+
+.table-items {
+    padding-bottom: 1em;
 }
 
 /* Itens comuns nas páginas de Adicionar */

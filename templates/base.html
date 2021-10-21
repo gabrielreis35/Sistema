@@ -9,14 +9,17 @@
     <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/bs/bootstrap.css' %}">
-
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'img/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/favicon-32x32.png' %}"%>
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/favicon-16x16.png' %}%">
+    <link rel="manifest" href="{% static 'img/site.webmanifest' %}">
 </head>
 <body>
     {% if user.is_authenticated %}
     <div class="sidebar">
         <div class="logo_content">
             <div class="logo">
-                <i class="fas fa-balance-scale"></i>
+                <img src="{% static 'img/logo-base.png' %}" class="img-base"/>
                 <div class="logo_name">Innova</div>
             </div>
             <i class="fas fa-bars" id="btn-menu"></i>
@@ -75,7 +78,7 @@
         {% endblock %}
     </div>
 
-    <script scr="{% static 'js/script.js' %}"></script>
+    <script scr="{% static 'js/scripts.js' %}"></script>
     <script
         src="https://code.jquery.com/jquery-2.1.2.js"
         integrity="sha256-B8sHvfukDO/4abMp60ju7eQXQLps6DPdODC9CvSeSJg="

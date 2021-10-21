@@ -15,7 +15,7 @@
             </div>
         </a>
 
-        {% if product in products %}
+        {% if products|length > 0 %}
 
         <div class="col-3 search-div">
             <form method="GET" id="search-form">
@@ -35,10 +35,10 @@
                 {% endfor %}
             </ul>
         {% endif %}
-        
-        {% if product in products %}
 
-        <table class="table table-striped table-hover table-bordered">
+        {% if products|length > 0 %}
+
+        <table class="table table-striped table-hover table-bordered tab-products">
             <thead>
                 <tr>
                     <th scope="col">Num. Série</th>
@@ -94,7 +94,7 @@
         </table>
 
         {% else %}
-
+            
             <div class="sem-produtos">
                 Nenhum produto cadastrado!
             </div>
