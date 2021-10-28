@@ -270,8 +270,16 @@ h1 {
     max-width: 1em;
 } */
 
+#edit-container {
+    width: 100% !important;
+    text-align: center;
+}
+
+a.edit-product a.del-product {
+    display: inline-block !important;
+}
+
 a.edit-product {
-    display: block;
     width: 6.5em;
 }
 
@@ -295,18 +303,8 @@ a.edit-product:hover {
     margin-left: 10px;
 }
 
-.product-table {
-    position: relative;
-    margin-left: 4.5em;
-    width: 90%;
-    border: solid 4px #555;
-}
-
-.product-item {
-    border: solid 2px #ddd;
-}
-
 .del-product-div {
+    display: inline-block;
     background-color: #ff0000;
     cursor: pointer;
     color: #fff;
@@ -319,6 +317,17 @@ a.edit-product:hover {
 
 a.del-product:hover {
     text-decoration: none;
+}
+
+.product-table {
+    position: relative;
+    margin-left: 4.5em;
+    width: 90%;
+    border: solid 4px #555;
+}
+
+.product-item {
+    border: solid 2px #ddd;
 }
 
 .add {  

@@ -1,18 +1,25 @@
-from typing import List
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.core.paginator import Paginator
+from django.shortcuts import render, get_list_or_404
 from django.forms.widgets import Textarea
 from django.views.generic import CreateView
-#from django.views.generic.detail import DetailView
-from django.views.generic.list import ListView
 from colaborator.models import Colaborador
 from django.forms import Textarea
 
-class ColaboratorView(ListView):
-    model = Colaborador
-
-    def get_queryset(self):
-        return Colaborador.objects.all
+@login_required
+def ColaboratorView(request):
+    search = request.GET.get('search')
+    
+    if search:
+        colaborators = Colaborador.objects.filter(nome__icontains = search)
+    else:
+        # colaboratorsList = Colaborador
+        # paginator = Paginator(colaboratorsList, 20)
+        # page = request.GET.get('page')
+        # paginator.get_page(page)
+        colaborators = Colaborador.objects.all().order_by('-dateCriacao')
+    return render(request, 'colaborator/User.html', {'colaborators' : colaborators}) 
 
 class ColaboratorRegister(CreateView):
     model = Colaborador

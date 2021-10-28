@@ -16,8 +16,8 @@ def Products(request):
     
     if search:
         products = Produto.objects.filter(nome__icontains = search)
-    else:
-        productsList = Produto.objects.all().order_by('-dateCriacao')
+    else:        
+        productsList = Produto.objects.all()
         paginator = Paginator(productsList, 20)
         page = request.GET.get('page')
         products = paginator.get_page(page)

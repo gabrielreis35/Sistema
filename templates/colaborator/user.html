@@ -25,19 +25,19 @@
                 <th scope="col">departamento</th>
             </thead>
             <tbody>
-                {% for colaborador in object_list %}
+                {% for colaborator in colaborators %}
                     <tr scope="row">
                         <td>
-                            {{colaborador.nome}}
+                            {{colaborator.nome}}
                         </td>
                         <td>
-                            {{colaborador.email}}
+                            {{colaborator.email}}
                         </td>
                         <td>
-                            {{colaborador.cargo}}
+                            {{colaborator.cargo}}
                         </td>
                         <td>
-                            {{colaborador.departamento}}
+                            {{colaborator.departamento}}
                         </td>
                     </tr>
                 {% endfor %}

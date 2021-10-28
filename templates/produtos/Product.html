@@ -7,15 +7,13 @@
 <div class="title-product">
     <h1>{{ product.nome }}</h1>
 </div>
-<div class="container">
+<div class="container" id="edit-container">
     <a href="{% url 'products:Update_Product' product.id %}" class="edit-product">
         <div class="edit-div">
             <i class="fas fa-edit"></i>Editar
         </div>
     </a>
-</div>
 
-<div class="container del">
     <a href="{% url 'products:Delete_Product' product.id %}" class="del-product">
         <div class="col-2 del-product-div">
             <i class="fas fa-trash del-product-button"></i>Deletar Produto

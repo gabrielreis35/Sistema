@@ -38,6 +38,17 @@
 
         {% if products|length > 0 %}
 
+        <label for="filter">Ordenar por:</label>
+
+        <select id="filter">
+            <option label="Produto">Produto</option>
+            <option label="Equipamento">Equipamento</option>
+            <option label="codigo">Código</option>
+            <option label="Segmento">Segmento</option>
+            <option label="numSerie">Número de Série</option>
+        </select>
+
+
         <table class="table table-striped table-hover table-bordered tab-products">
             <thead>
                 <tr>
