@@ -38,16 +38,18 @@
 
         {% if products|length > 0 %}
 
-        <label for="filter">Ordenar por:</label>
+        <form method="GET">
+            <label for="filter">Ordenar por:</label>
 
-        <select id="filter">
-            <option label="Produto">Produto</option>
-            <option label="Equipamento">Equipamento</option>
-            <option label="codigo">Código</option>
-            <option label="Segmento">Segmento</option>
-            <option label="numSerie">Número de Série</option>
-        </select>
-
+            <select id="filter">
+                <option label="Produto">Produto</option>
+                <option label="Equipamento">Equipamento</option>
+                <option label="Código">Codigo</option>
+                <option label="Segmento">Segmento</option>
+                <option label="Número de Série">numSerie</option>
+            </select>
+            <input type="submit" class="btn btn-success ordenar" id="order" value="Ordenar">
+        </form>
 
         <table class="table table-striped table-hover table-bordered tab-products">
             <thead>

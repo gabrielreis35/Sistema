@@ -16,9 +16,9 @@
 
 # Notes:
   - 28/10/2021:  
-    - Incluir label na aba de Produtos para que seja possível ter as escolhas de Ordenar;
-    - "Classe" -> "Categoria";
-    - "Dureza" -> "Classe de aplicação";
+    - Incluir label na aba de Produtos para que seja possível ter as escolhas de Ordenar; OK
+    - "Classe" -> "Categoria"; OK
+    - "Dureza" -> "Classe de aplicação"; OK
     - Criar novo módulo: Número de Série
       - Botão de pesquisa de Produto;
       - Botão de Gerar Número de Série;

@@ -66,8 +66,8 @@ class Produto(models.Model):
     lamina = IntegerField(null=True)
     peso = IntegerField(null=True)
     codigo = CharField(max_length=2, choices=tipoProduto, null=True)
-    classe = CharField(max_length=5, choices=classeProduto, null=True)
-    dureza = CharField(max_length=2, choices=dureza, null=True)
+    categoria = CharField(max_length=5, choices=classeProduto, null=True)
+    classeAplicacao = CharField(max_length=2, choices=dureza, null=True)
 
     dateCriacao = DateTimeField(auto_now_add=True)
     dateUpdate = DateTimeField(auto_now=True)

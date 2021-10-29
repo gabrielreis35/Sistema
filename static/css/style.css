@@ -229,6 +229,10 @@ h1 {
     display: inline-block;
 }
 
+.ordenar {
+    margin-bottom: 0.31em !important;
+}
+
 .table {
     text-align: center;
     margin-right: 0;

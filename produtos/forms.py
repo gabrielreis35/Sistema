@@ -24,8 +24,8 @@ class ProdutoForm(ModelForm):
             'lamina',
             'peso',
             'codigo',
-            'classe',
-            'dureza'
+            'categoria',
+            'classeAplicacao'
         ]
 
         labels = {
@@ -38,8 +38,8 @@ class ProdutoForm(ModelForm):
             'lamina': ('Lâmina'),
             'peso': ('Peso'),
             'codigo': ('Código'),
-            'classe': ('Classe'),
-            'dureza': ('Dureza'),
+            'categoria': ('Categoria'),
+            'classeAplicacao': ('Classe se Aplicação'),
 
         }
 
