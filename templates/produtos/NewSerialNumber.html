@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}Geração de Número de Série{% endblock %}
+
+{% block content %}
+
+    <div class="container title">
+        <h1> Gerar Número de Série</h1>
+    </div>
+
+    <div class="offset-1 col-3">
+        <form method="GET">
+            <input class="form-control" type="text" id="generate" name="generate" placeholder="Digite o nome do produto">
+            <i class="fas fa-search" id="search-button"></i>
+        </form>
+        
+        {% if products|length > 0 %}
+
+        <table class="table table-striped table-hover table-bordered tab-generate">
+            <thead>
+                <tr>
+                    <th scope="col">Produto</th>
+                    <th scope="col">Equipamento</th>
+                    <th scope="col">Código</th>
+                    <th scope="col">Segmento</th>
+                    <th scope="col">Volume</th>
+                    <th scope="col">Largura</th>
+                    <th scope="col">Lâmina</th>
+                </th>
+            </thead>
+            <tbody>
+                {% for product in products %}
+                    <tr scope="row">
+                        <td>
+                            {{product.nome}}
+                        </td>
+                        <td>
+                            {{product.equipamento}}
+                        </td>
+                        <td>
+                            {{product.codigo}}
+                        </td>
+                        <td>
+                            {{product.segmento}}
+                        </td>
+                        <td>
+                            {{product.volume}}
+                        </td>
+                        <td>
+                            {{product.largura}}
+                        </td>
+                        <td>
+                            {{product.lamina}}
+                        </td>
+                        <td>
+                            <a href="" class="icon generate-serial">
+                                <div class="col">
+                                    <i class="fas fa-key numberSerie"></i>
+                                </div>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        {% else %}
+            
+            <div class="sem-produtos">
+                Nenhum produto cadastrado!
+            </div>
+
+        {% endif %}
+
+
+        <form method="GET">
+
+        </forms>
+
+        {% comment %} <input type="submit" class="btn btn-success generate" value="Gerar Número de Séire"> {% endcomment %}
+
+    </div>
+
+{% endblock %}

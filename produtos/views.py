@@ -131,3 +131,16 @@ def DeleteFile(request, id):
     file.delete()
     messages.info(request, 'Arquivo excluído')
     return redirect('/products')
+
+def SerialNumber(request):
+    return render(request, 'produtos/SerialNumber.html')
+
+def GenerateSerial(request):
+    generate = request.GET.get('generate')
+    if generate:
+        productsList = Produto.objects.filter(nome__icontains = generate)
+    productsList = Produto.objects.all()
+    
+    
+    # return redirect('/products/serialNumber/')
+    return render(request, 'produtos/NewSerialNumber.html', {'products': productsList})

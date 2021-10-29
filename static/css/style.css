@@ -159,9 +159,9 @@ li.messages li {
     list-style: none;
 }
 
-/* Página inicial */
+/* Comum */
 
-.title-home {
+.title {
     font-size: 1.5em !important;
     padding: 30px;
     position: relative;
@@ -169,13 +169,6 @@ li.messages li {
 }
 
 /* Página Produtos */
-
-.title-products {
-    font-size: 1.5em !important;
-    padding: 30px;
-    position: relative;
-    text-align: center;
-}
 
 .product-div {
     padding: 0;
@@ -187,6 +180,7 @@ ul .messages li {
 }
 
 /* Botão de adicionar */
+
 .add-product {
     position: relative;
     text-decoration: none !important;
@@ -262,18 +256,6 @@ h1 {
 
 /* Página Produto */
 
-.title-product {
-    font-size: 1.5em !important;
-    padding: 30px;
-    position: relative;
-    text-align: center;
-}
-
-/* .back-products {
-    display: block;
-    max-width: 1em;
-} */
-
 #edit-container {
     width: 100% !important;
     text-align: center;
@@ -338,11 +320,6 @@ a.del-product:hover {
     margin-top: 2em;
 }
 
-.product-item-title {
-    background-color: #efefef;
-    border: solid 2px #ddd;
-}
-
 a.download-div:hover {
     text-decoration: none;
 }
@@ -400,52 +377,14 @@ a.download-item, a.download-file {
     margin-bottom: 3em;
 }
 
-/* Página de Adicionar Produto */
-
-.title-new-product {
-    font-size: 1.5em !important;
-    text-align: center;
-}
-
-/* Página de Atualizar Produto */
-
-.title-update-product {
-    font-size: 1.5em !important;
-    text-align: center;
-}
-
 /* Página de Adicionar Item */
-
-.title-new-item {
-    font-size: 1.5em !important;
-    padding: 30px;
-    position: relative;
-    text-align: center;
-}
 
 .document {
     margin-bottom: 1.5em;
     margin-top: 0.5em;
 }
 
-
-/* Página de Adicionar Arquivo */
-
-.title-new-file {
-    font-size: 1.5em !important;
-    padding: 30px;
-    position: relative;
-    text-align: center;
-}
-
 /* Página de Colaborador */
-
-.title-user {
-    font-size: 1.5em !important;
-    padding: 30px;
-    position: relative;
-    text-align: center;
-}
 
 .list-user {
     list-style: none;
@@ -472,20 +411,37 @@ a.download-item, a.download-file {
     margin-top: 2em;
 }
 
-/* Página de Adicionar Colaborador */
+/* Página de Número de Série */
 
-.title-new-user  {
-    font-size: 1.5em !important;
-    padding: 30px;
-    position: relative;
+
+.fas.fa-binoculars {
+    color: #fff;
+    margin-right: 0.63em;
+    margin-left: 0.31em;
+}
+
+.buttons-numberserie{
+    width: 100%;
     text-align: center;
 }
 
-/* Página de Departamentos */
+.fas.fa-key.numberSerie {
+    color: #fff;
+    margin-right: 0.63em;
+    margin-left: 0.31em;
+}
 
-.title-departments {
-    font-size: 1.5em !important;
-    padding: 30px;
-    position: relative;
-    text-align: center;
+.div-serie-generate {
+    background-color: #3476e2;
+    cursor: pointer;
+    display: inline-block;
+    color: #fff;
+    padding: 0.5em;
+    border-radius: 0.31em;
+}
+
+/* Página de Gerar Número de Série */
+
+.btn.btn-success.generate {
+    margin-top: 1em;
 }

@@ -1,6 +1,7 @@
 from os import name
 from typing import Optional
 from django import forms
+from django.db.models import fields
 from django.forms import ModelForm, widgets
 from .models import Item, Produto, Arquivo
 
@@ -16,7 +17,6 @@ class ProdutoForm(ModelForm):
         model = Produto
         fields = [
             'segmento',
-            'numeroSerie',
             'nome',
             'equipamento',
             'capacidade',
@@ -30,7 +30,6 @@ class ProdutoForm(ModelForm):
 
         labels = {
             'segmento': ('Segmento'),
-            'numeroSerie': ('Número de Série'),
             'nome': ('Nome'),
             'equipamento': ('Equipamento'),
             'capacidade': ('Capacidade'),
@@ -57,13 +56,13 @@ class ItemForm(ModelForm):
         ]
 
         labels = {
-            'produto': 'Produto relacionado',
-            'nome': 'Nome',
-            'tipo': 'Tipo',
-            'revisao': 'Revisão',
-            'partNumber': 'PartNumber',
-            'tipoFabricacao': 'Tipo de Fabricação',
-            'file': 'Arquivo'
+            'produto': ('Produto relacionado'),
+            'nome': ('Nome'),
+            'tipo': ('Tipo'),
+            'revisao': ('Revisão'),
+            'partNumber': ('PartNumber'),
+            'tipoFabricacao': ('Tipo de Fabricação'),
+            'file': ('Arquivo')
         }        
         
 
@@ -81,11 +80,22 @@ class FileForm(ModelForm):
         ]
 
         labels = {
-            'produto': 'Produto relacionado',
-            'nome': 'Nome',
-            'tipo': 'Tipo',
-            'revisao': 'Revisão',
-            'partNumber': 'PartNumber',
-            'tipoFabricacao': 'Tipo de Fabricação',
-            'file': 'Arquivo'
+            'produto': ('Produto relacionado'),
+            'nome': ('Nome'),
+            'tipo': ('Tipo'),
+            'revisao': ('Revisão'),
+            'partNumber': ('PartNumber'),
+            'tipoFabricacao': ('Tipo de Fabricação'),
+            'file': ('Arquivo')
         }
+        
+# class SerialNumberForm(ModelForm):
+#     class Meta:
+#         model = Produto
+#         fields = [
+#             'nome'
+#         ]
+        
+#         labels = {
+#             'nome': ('Escolha o produto:')
+#         }

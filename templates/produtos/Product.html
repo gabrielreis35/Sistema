@@ -4,7 +4,7 @@
 
 {% block content %}
 
-<div class="title-product">
+<div class="title">
     <h1>{{ product.nome }}</h1>
 </div>
 <div class="container" id="edit-container">
@@ -25,13 +25,13 @@
     <tbody>
         <tr>
             <td class=" col-2 product-item-title">
-                Número de Série
+                Número de Série:
             </td>
             <td class="col-3 product-item">
                 {{ product.numeroSerie }}
             </td>
             <td class="col-2 product-item-title">
-                Segmento
+                Segmento:
             </td>
             <td class="col-3 product-item">
                 {% if product.segmento == 'A' %}
@@ -103,10 +103,10 @@
                 {% endif %}
             </td>
             <td class="col-2 product-item-title">
-                Classe:
+                Categoria:
             </td>
             <td class="col-3 product-item">
-                {{ product.classe }}
+                {{ product.categoria }}
             </td>
         </tr>
         <tr>

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Número de Série{% endblock %}
+
+{% block content %}
+
+    <div class="container title">
+        <h1>Número de Série</h1>
+    </div>
+
+    <div class="offset-1 col-10">
+        <div class="buttons-numberserie">
+            <a href="{% url 'products:Generate_SerialNumber' %}" class="serie-generate">
+                <div class="div-serie-generate">
+                    <i class="fas fa-key numberSerie"></i>Gerar Número de Série
+                </div>
+            </a>
+        </div>
+
+        {% comment %} One table for Serial Number relation product & OS {% endcomment %}
+    </div>
+
+{% endblock %}

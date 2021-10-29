@@ -17,4 +17,6 @@ urlpatterns = [
     path('deleteitem/<int:id>', views.DeleteItem, name = 'Delete_Item'),
     path('newfile', views.NewFile, name = 'New_File'),
     path('deletefile/<int:id>', views.DeleteFile, name = 'Delete_file'),
+    path('serialNumber/', views.SerialNumber, name = 'Serial_Number'),
+    path('newSerialNumber/', views.GenerateSerial, name = 'Generate_SerialNumber')
 ]
