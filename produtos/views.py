@@ -140,7 +140,5 @@ def GenerateSerial(request):
     if generate:
         productsList = Produto.objects.filter(nome__icontains = generate)
     productsList = Produto.objects.all()
-    
-    
     # return redirect('/products/serialNumber/')
     return render(request, 'produtos/NewSerialNumber.html', {'products': productsList})
