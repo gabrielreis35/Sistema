@@ -445,3 +445,12 @@ a.download-item, a.download-file {
 .btn.btn-success.generate {
     margin-top: 1em;
 }
+
+.search-generate {
+    right: 0.8em;
+    margin-bottom: 1em;
+}
+
+.fas.fa-key.numberSerie{
+    color: #000;
+}

@@ -7,6 +7,10 @@ $(document).ready(function(){
     });
 });
 
+function confirmButton() {
+    confirm("Tem certeza?");
+}
+
 // function searchFunction() {
 //     var input, filter, table, tr, td, i, txtValue;
 //     input = document.getElementById('search');

@@ -18,5 +18,6 @@ urlpatterns = [
     path('newfile', views.NewFile, name = 'New_File'),
     path('deletefile/<int:id>', views.DeleteFile, name = 'Delete_file'),
     path('serialNumber/', views.SerialNumber, name = 'Serial_Number'),
-    path('newSerialNumber/', views.GenerateSerial, name = 'Generate_SerialNumber')
+    path('newSerialNumber/', views.GenerateSerial, name = 'Generate_SerialNumber'),
+    path("serialNumberid/<int:id>", views.GenerateSerialSingle , name="Generate_Single_SerialNumber")    
 ]

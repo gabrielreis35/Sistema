@@ -3,7 +3,8 @@ from typing import Optional
 from django import forms
 from django.db.models import fields
 from django.forms import ModelForm, widgets
-from .models import Item, Produto, Arquivo
+from .models import Item, NumeroSerie, Produto, Arquivo
+from workOrder.models import OrdemServico
 
 class produtoSelect(forms.Select):
     def create_option(self, name, value, label, selected, index, subindex = None, attrs = None):
@@ -63,8 +64,8 @@ class ItemForm(ModelForm):
             'partNumber': ('PartNumber'),
             'tipoFabricacao': ('Tipo de Fabricação'),
             'file': ('Arquivo')
-        }        
-        
+        }
+
 
 class FileForm(ModelForm):
     class Meta:
@@ -88,14 +89,21 @@ class FileForm(ModelForm):
             'tipoFabricacao': ('Tipo de Fabricação'),
             'file': ('Arquivo')
         }
-        
-# class SerialNumberForm(ModelForm):
-#     class Meta:
-#         model = Produto
-#         fields = [
-#             'nome'
-#         ]
-        
-#         labels = {
-#             'nome': ('Escolha o produto:')
-#         }
+
+class SerialNumberForm(ModelForm):
+    class Meta:
+        model = NumeroSerie
+        fields = [
+            'serialNumber',
+        ]
+
+        # labels = {
+        #     'os': ('Vincular à OS:')
+        # }
+
+class WorkOrderForm(ModelForm):
+    class Meta:
+        model = OrdemServico
+        fields = [
+            'OS'
+        ]

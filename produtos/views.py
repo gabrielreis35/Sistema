@@ -1,4 +1,5 @@
 import os
+import datetime
 # from django import forms
 # from django.conf import settings
 from django.core.files.base import File
@@ -7,8 +8,8 @@ from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.files.storage import FileSystemStorage
-from produtos.models import Produto, Item, Arquivo
-from produtos.forms import ItemForm, ProdutoForm, FileForm
+from produtos.models import NumeroSerie, Produto, Item, Arquivo
+from produtos.forms import ItemForm, ProdutoForm, FileForm, SerialNumberForm, WorkOrderForm
 # from django.http import HttpResponse, Http404
 
 def Products(request):
@@ -23,7 +24,7 @@ def Products(request):
         if order == 'Produto':
             productsList = Produto.objects.all().order_by('-nome')
         elif order == 'Equipamento':
-            productsList = Produto.objects.all().order_by('-equipamento')
+            productsList = Produto.objects.all().order_by('equipamento')
         elif order == 'Codigo':
             productsList = Produto.objects.all().order_by('-codigo')
         elif order == 'Segmento':
@@ -140,5 +141,29 @@ def GenerateSerial(request):
     if generate:
         productsList = Produto.objects.filter(nome__icontains = generate)
     productsList = Produto.objects.all()
-    # return redirect('/products/serialNumber/')
+    
+    paginator = Paginator(productsList, 10)
+    page = request.GET.get('page')
+    productsList = paginator.get_page(page)
     return render(request, 'produtos/NewSerialNumber.html', {'products': productsList})
+
+def GenerateSerialSingle(request, id):
+    data = {}
+    if request.method == 'POST':
+        data['os'] = WorkOrderForm(request.POST or None)
+        if data['os'].is_valid():
+            os = data['os'].save(commit=False)
+            Produto.numeroSerie = NumeroSerie.id
+            os.numeroSerie = id
+            prefix = datetime.strftime("%y")
+            fix = Produto.nome[3, 4, 5, 6]
+            if NumeroSerie.id == 0:
+                sufix = 0000
+            else:
+                sufix =+ 1
+            NumeroSerie.serialNumber = prefix + fix + sufix
+            
+    else:
+        data['os'] = WorkOrderForm()
+    
+    return render(request, 'produtos/SerialNumberid.html', data)

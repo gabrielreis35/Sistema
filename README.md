@@ -14,6 +14,9 @@
     - Adicionar PDF;
     - Adicionar Lista de Materiais (BOM) .xlsx;
 
+# Serial Number:
+  - 21cg3021001
+  - Ano - produto - lamina - código numeral
 # Notes:
   - 28/10/2021:  
     - Incluir label na aba de Produtos para que seja possível ter as escolhas de Ordenar; OK

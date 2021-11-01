@@ -6,6 +6,12 @@ from django.db import models
 from django.db.models.fields.related import ForeignKey
 from colaborator.models import Colaborador
 
+class NumeroSerie(models.Model):
+    serialNumber = CharField(max_length=15)
+    
+    def __str__(self):
+        return self.serialNumber
+    
 class Produto(models.Model):
     segmento = (
         ('A', 'Agrícola'),
@@ -58,7 +64,6 @@ class Produto(models.Model):
     )
 
     segmento = CharField(max_length=30, choices=segmento, null=True)
-    numeroSerie = CharField(max_length=30, null=True)
     nome = CharField(max_length=30, null=True)
     equipamento = CharField(max_length=10, null=True)
     capacidade = FloatField(null=True)
@@ -68,10 +73,11 @@ class Produto(models.Model):
     codigo = CharField(max_length=2, choices=tipoProduto, null=True)
     categoria = CharField(max_length=5, choices=classeProduto, null=True)
     classeAplicacao = CharField(max_length=2, choices=dureza, null=True)
-
+    
     dateCriacao = DateTimeField(auto_now_add=True)
     dateUpdate = DateTimeField(auto_now=True)
 
+    numeroSerie = ForeignKey(NumeroSerie, null = True, on_delete=CASCADE)
     responsavel = ForeignKey(Colaborador, null=True, on_delete=SET_NULL)
     
     def __str__(self):

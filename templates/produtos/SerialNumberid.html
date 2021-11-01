@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}Relação SN - OS{% endblock %}
+
+{% block content %}
+
+    <div class="container title">
+        <h1>Adicionar novo produto</h1>
+    </div>
+    <div class="offset-1 col-3 list-div">
+        <form method="POST">
+            {% csrf_token %}
+            {{ WorkOrderForm.os|crispy }}
+            <input type="submit" class="btn btn-success" value="Criar produto">
+        </form>
+    </div>
+
+
+{% endblock %}

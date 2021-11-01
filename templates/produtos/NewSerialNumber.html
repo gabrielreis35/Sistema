@@ -10,8 +10,8 @@
         <h1> Gerar Número de Série</h1>
     </div>
 
-    <div class="offset-1 col-3">
-        <form method="GET">
+    <div class="offset-1 col-6 body-generate">
+        <form method="GET" class="col-5 search-generate">
             <input class="form-control" type="text" id="generate" name="generate" placeholder="Digite o nome do produto">
             <i class="fas fa-search" id="search-button"></i>
         </form>
@@ -23,11 +23,12 @@
                 <tr>
                     <th scope="col">Produto</th>
                     <th scope="col">Equipamento</th>
-                    <th scope="col">Código</th>
-                    <th scope="col">Segmento</th>
+                    {% comment %} <th scope="col">Código</th>
+                    <th scope="col">Segmento</th> {% endcomment %}
                     <th scope="col">Volume</th>
                     <th scope="col">Largura</th>
                     <th scope="col">Lâmina</th>
+                    <th scope="col">Gerar</th>
                 </th>
             </thead>
             <tbody>
@@ -39,14 +40,14 @@
                         <td>
                             {{product.equipamento}}
                         </td>
-                        <td>
+                        {% comment %} <td>
                             {{product.codigo}}
                         </td>
                         <td>
                             {{product.segmento}}
-                        </td>
+                        </td> {% endcomment %}
                         <td>
-                            {{product.volume}}
+                            {{product.capacidade}}
                         </td>
                         <td>
                             {{product.largura}}
@@ -55,7 +56,7 @@
                             {{product.lamina}}
                         </td>
                         <td>
-                            <a href="" class="icon generate-serial">
+                            <a href="" class="icon generate-serial" onclick="confirmButton()">
                                 <div class="col">
                                     <i class="fas fa-key numberSerie"></i>
                                 </div>
@@ -74,13 +75,31 @@
 
         {% endif %}
 
+        <div class="pagination">
+            <span class="step-links">
+                {% if products.has_previous %}
+                    <a href="?page={{products.previous_page_number}}" class="fas fa-arrow-left"></a>
+                {% endif %}
+                
+                {% if products.paginator.num_pages %}
+                <span class="current">
+                    {{products.number}} de {{products.paginator.num_pages}}
+                </span>
+                {% endif %}
+
+                {% if products.has_next %}
+                    <a href="?page={{products.next_page_number}}" class="fas fa-arrow-right"></a>
+                {% endif %}
+                </span>
+            </div>
+        </div>
+
 
         <form method="GET">
 
         </forms>
 
         {% comment %} <input type="submit" class="btn btn-success generate" value="Gerar Número de Séire"> {% endcomment %}
-
     </div>
 
 {% endblock %}
