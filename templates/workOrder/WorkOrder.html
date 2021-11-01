@@ -16,6 +16,29 @@
                 </div>
             </a>
         </div>
+
+        <table class="table table-striped table-hover table-bordered col-6">
+            <thead>
+                <th scope="col">Número de Série</th>
+                <th scope="col">Produto Relacionado</th>
+            </thead>
+             <tbody>
+                <tr scope="row">
+                    <td>
+                        2021CG301501
+                    </td>
+                    <td>
+                        0
+                    </td>
+                </tr>
+                {% comment %} {% for department in object_list %}
+                        <td>
+                            {{ department.nome }}
+                        </td>
+                {% endfor %} {% endcomment %}
+            </tbody>
+        </table>
+
     </div>
     
 {% endblock %}
