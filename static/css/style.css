@@ -407,9 +407,41 @@ a.download-item, a.download-file {
     border-radius: 0.31em;
 }
 
+.add-colaborator-icon {
+    margin-right: 0.3em;
+}
+
 .table-users {
     margin-top: 2em;
 }
+
+/* Página de Departamentos */
+
+.add-department-full {
+    margin-bottom: 1em;
+}
+
+.add-department {
+    position: relative;
+    text-decoration: none !important;
+    margin-right: -0.3em;
+    width: 5em;
+}
+
+.add-department-div {
+    text-align: center;
+    background-color: #3476e2;
+    cursor: pointer;
+    display: inline-block;
+    color: #fff;
+    padding: 0.5em;
+    border-radius: 0.31em;
+}
+
+.add-department-icon {
+    margin-right: 0.3em;
+}
+
 
 /* Página de Número de Série */
 
@@ -451,6 +483,33 @@ a.download-item, a.download-file {
     margin-bottom: 1em;
 }
 
-.fas.fa-key.numberSerie{
+.fas.fa-key.generate-numberSerie{
     color: #000;
+}
+
+/* Páginar de Ordem de Serviços */
+
+.add-workorder-full {
+    margin-bottom: 1em;
+}
+
+.add-workorder {
+    position: relative;
+    text-decoration: none !important;
+    margin-right: -0.3em;
+    width: 5em;
+}
+
+.add-workorder-div {
+    text-align: center;
+    background-color: #3476e2;
+    cursor: pointer;
+    display: inline-block;
+    color: #fff;
+    padding: 0.5em;
+    border-radius: 0.31em;
+}
+
+.add-workorder-icon {
+    margin-right: 0.3em;
 }

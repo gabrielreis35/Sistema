@@ -149,6 +149,7 @@ def GenerateSerial(request):
 
 def GenerateSerialSingle(request, id):
     data = {}
+    product = Produto()
     if request.method == 'POST':
         data['os'] = WorkOrderForm(request.POST or None)
         if data['os'].is_valid():
@@ -157,13 +158,10 @@ def GenerateSerialSingle(request, id):
             os.numeroSerie = id
             prefix = datetime.strftime("%y")
             fix = Produto.nome[3, 4, 5, 6]
-            if NumeroSerie.id == 0:
-                sufix = 0000
-            else:
-                sufix =+ 1
+            sufix = Produto.id
             NumeroSerie.serialNumber = prefix + fix + sufix
             
     else:
         data['os'] = WorkOrderForm()
     
-    return render(request, 'produtos/SerialNumberid.html', data)
+    return render(request, 'produtos/SerialNumberid.html', data, {'product':product})

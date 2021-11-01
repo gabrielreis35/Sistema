@@ -10,7 +10,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('products/', include('produtos.urls', namespace='products')),
     path('colaborator/', include('colaborator.urls', namespace='colaborators')),
-    path('departments/', include('departments.urls', namespace='departments'))
+    path('departments/', include('departments.urls', namespace='departments')),
+    path("workOrder/", include('workOrder.urls', namespace="workOrder"))
 ]
 
 if settings.DEBUG:

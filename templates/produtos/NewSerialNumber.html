@@ -56,9 +56,9 @@
                             {{product.lamina}}
                         </td>
                         <td>
-                            <a href="" class="icon generate-serial" onclick="confirmButton()">
+                            <a href="{% url 'products:Generate_Single_SerialNumber' product.id %}" class="icon generate-serial" onclick="confirmButton()">
                                 <div class="col">
-                                    <i class="fas fa-key numberSerie"></i>
+                                    <i class="fas fa-key generate-numberSerie"></i>
                                 </div>
                             </a>
                         </td>
