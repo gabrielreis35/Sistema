@@ -137,19 +137,20 @@ def SerialNumber(request):
     return render(request, 'produtos/SerialNumber.html')
 
 def GenerateSerial(request):
+    productsList = Produto()
     generate = request.GET.get('generate')
     if generate:
         productsList = Produto.objects.filter(nome__icontains = generate)
     productsList = Produto.objects.all()
     
-    paginator = Paginator(productsList, 10)
-    page = request.GET.get('page')
-    productsList = paginator.get_page(page)
+    # paginator = Paginator(productsList, 10)
+    # page = request.GET.get('page')
+    # productsList = paginator.get_page(page)
     return render(request, 'produtos/NewSerialNumber.html', {'products': productsList})
 
 def GenerateSerialSingle(request, id):
     data = {}
-    product = Produto()
+    products = Produto()
     if request.method == 'POST':
         data['os'] = WorkOrderForm(request.POST or None)
         if data['os'].is_valid():
@@ -175,4 +176,4 @@ def GenerateSerialSingle(request, id):
     else:
         data['os'] = WorkOrderForm()
     
-    return render(request, 'produtos/SerialNumberid.html', data, {'product':product})
+    return render(request, 'produtos/SerialNumberid.html', data, {'products':products})
