@@ -10,7 +10,7 @@ class NumeroSerie(models.Model):
     serialNumber = CharField(max_length=15, unique=True)
     
     def __str__(self):
-        return self.serialNumber
+        return self.serialNumber or ''
     
 class Produto(models.Model):
     segmento = (
