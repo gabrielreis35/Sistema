@@ -97,10 +97,6 @@ class SerialNumberForm(ModelForm):
             'serialNumber',
         ]
 
-        # labels = {
-        #     'os': ('Vincular à OS:')
-        # }
-
 class WorkOrderForm(ModelForm):
     class Meta:
         model = OrdemServico

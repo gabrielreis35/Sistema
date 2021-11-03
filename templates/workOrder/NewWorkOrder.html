@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}Nova Ordem de Serviço{% endblock %}
+
+{% block content %}
+
+    <div class="title">
+        <h1>Adicionar nova Ordem de Serviço</h1>
+    </div>
+
+    <div class="offset-1 col-3 list-div">
+        <form method="POST", enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ workOrderForm|crispy }}
+            {{ productforWorkOrderForm|crispy }}
+            <input type="submit" class="btn btn-success" value="Adicionar Ordem de Serviço">
+        </form>
+
+{% endblock %}

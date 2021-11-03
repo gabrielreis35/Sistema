@@ -7,7 +7,7 @@ from django.db.models.fields.related import ForeignKey
 from colaborator.models import Colaborador
 
 class NumeroSerie(models.Model):
-    serialNumber = CharField(max_length=15)
+    serialNumber = CharField(max_length=15, unique=True)
     
     def __str__(self):
         return self.serialNumber

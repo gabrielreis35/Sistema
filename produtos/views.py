@@ -156,10 +156,21 @@ def GenerateSerialSingle(request, id):
             os = data['os'].save(commit=False)
             Produto.numeroSerie = NumeroSerie.id
             os.numeroSerie = id
-            prefix = datetime.strftime("%y")
-            fix = Produto.nome[3, 4, 5, 6]
-            sufix = Produto.id
-            NumeroSerie.serialNumber = prefix + fix + sufix
+            filter = Produto.objects.filter(id__icontains = id)
+            lastProduct = filter.last(Produto.numeroSerie.serialNumber)
+            
+            if lastProduct[0, 1, 2, 3] != datetime.today().year:
+                prefix = datetime.today().year
+                fix = Produto.nome[3, 4, 5, 6]
+                sufix = Produto.id
+                var = 101
+                NumeroSerie.serialNumber = prefix + fix + sufix + var
+            else:
+                prefix = datetime.today().year
+                fix = Produto.nome[3, 4, 5, 6]
+                sufix = Produto.id
+                var = (lastProduct) =+ 1
+                NumeroSerie.serialNumber = prefix + fix + sufix + var
             
     else:
         data['os'] = WorkOrderForm()

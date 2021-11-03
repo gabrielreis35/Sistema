@@ -10,32 +10,29 @@
 
     <div class="offset-1 col-9">
         <div class="container add-workorder-full">
-            <a href="#" class="add-workorder">
+            <a href="{% url 'workOrder:New_WorkOrder' %}" class="add-workorder">
                 <div class="col-3 add-workorder-div">
-                    <i class="fas fa-plus add-workorder-icon"></i>Adicionar Usuário
+                    <i class="fas fa-plus add-workorder-icon"></i>Adicionar Ordem de Serviço
                 </div>
             </a>
         </div>
 
         <table class="table table-striped table-hover table-bordered col-6">
             <thead>
-                <th scope="col">Número de Série</th>
-                <th scope="col">Produto Relacionado</th>
+                <th scope="col">Ordem de Serviço</th>
+                <th scope="col">Data de Criação</th>
             </thead>
              <tbody>
-                <tr scope="row">
-                    <td>
-                        2021CG301501
-                    </td>
-                    <td>
-                        0
-                    </td>
-                </tr>
-                {% comment %} {% for department in object_list %}
+                {% for workOrder in workOrders %}
+                    <tr scope="row">
                         <td>
-                            {{ department.nome }}
+                            {{ workOrder.OS }}
                         </td>
-                {% endfor %} {% endcomment %}
+                        <td>
+                            {{ workOrder.dateCriacao }}
+                        </td>
+                    </tr>
+                {% endfor %}
             </tbody>
         </table>
 
