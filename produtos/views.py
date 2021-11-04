@@ -1,7 +1,5 @@
 import os
 import datetime
-# from django import forms
-# from django.conf import settings
 from django.core.files.base import File
 from django.core.paginator import Paginator
 from django.shortcuts import redirect, render, get_object_or_404
@@ -10,7 +8,6 @@ from django.contrib.auth.decorators import login_required
 from django.core.files.storage import FileSystemStorage
 from produtos.models import NumeroSerie, Produto, Item, Arquivo
 from produtos.forms import ItemForm, ProdutoForm, FileForm, SerialNumberForm, WorkOrderForm
-# from django.http import HttpResponse, Http404
 
 def Products(request):
     search = request.GET.get('search')
@@ -19,19 +16,17 @@ def Products(request):
         products = Produto.objects.filter(nome__icontains = search)
     else:
         productsList = Produto.objects.all().order_by('-dateCriacao')
-        
         order = request.GET.get('order')
-        if order == 'Produto':
-            productsList = Produto.objects.all().order_by('-nome')
-        elif order == 'Equipamento':
-            productsList = Produto.objects.all().order_by('equipamento')
-        elif order == 'Codigo':
-            productsList = Produto.objects.all().order_by('-codigo')
-        elif order == 'Segmento':
-            productsList = Produto.objects.all().order_by('-segmento')
-        elif order == 'numSerie':
-            productsList = Produto.objects.all().order_by('-numeroSerie')
         
+        if order:
+            if order == 'Produto':
+                productsList = Produto.objects.all().order_by('nome')
+            elif order == 'Equipamento':
+                productsList = Produto.objects.all().order_by('equipamento')
+            elif order == 'Codigo':
+                productsList = Produto.objects.all().order_by('codigo')
+            elif order == 'Segmento':
+                productsList = Produto.objects.all().order_by('segmento')
         
         paginator = Paginator(productsList, 20)
         page = request.GET.get('page')
@@ -149,16 +144,15 @@ def GenerateSerial(request):
     return render(request, 'produtos/NewSerialNumber.html', {'products': productsList})
 
 def GenerateSerialSingle(request, id):
-    data = {}
-    products = Produto()
+    workOrderForm = SerialNumberForm()
     if request.method == 'POST':
-        data['os'] = WorkOrderForm(request.POST or None)
-        if data['os'].is_valid():
-            os = data['os'].save(commit=False)
+        workOrderForm = SerialNumberForm(request.POST or None)
+        if workOrderForm.is_valid():
+            os = workOrderForm.save(commit=False)
             Produto.numeroSerie = NumeroSerie.id
             os.numeroSerie = id
             filter = Produto.objects.filter(id__icontains = id)
-            lastProduct = filter.last(Produto.numeroSerie.serialNumber)
+            lastProduct = filter.last(NumeroSerie.serialNumber)
             
             if lastProduct[0, 1, 2, 3] != datetime.today().year:
                 prefix = datetime.today().year
@@ -174,6 +168,6 @@ def GenerateSerialSingle(request, id):
                 NumeroSerie.serialNumber = prefix + fix + sufix + var
             
     else:
-        data['os'] = WorkOrderForm()
+        workOrderForm = SerialNumberForm()
     
-    return render(request, 'produtos/SerialNumberid.html', data, {'products':products})
+    return render(request, 'produtos/SerialNumberid.html', {'workOrderForm': workOrderForm})

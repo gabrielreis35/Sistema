@@ -24,7 +24,7 @@ class ProdutoForm(ModelForm):
             'largura',
             'lamina',
             'peso',
-            'codigo',
+            'tipoProduto',
             'categoria',
             'classeAplicacao'
         ]
@@ -37,7 +37,7 @@ class ProdutoForm(ModelForm):
             'largura': ('Largura'),
             'lamina': ('Lâmina'),
             'peso': ('Peso'),
-            'codigo': ('Código'),
+            'tipoProduto': ('Tipo de Produto'),
             'categoria': ('Categoria'),
             'classeAplicacao': ('Classe se Aplicação'),
 
@@ -94,8 +94,14 @@ class SerialNumberForm(ModelForm):
     class Meta:
         model = NumeroSerie
         fields = [
-            'serialNumber',
+            'os',
+            'produto',
         ]
+        
+        labels = {
+            'os': ('Ordem de Serviço relacionada:'),
+            'produto': ('Produto relacionado:')
+        }
 
 class WorkOrderForm(ModelForm):
     class Meta:

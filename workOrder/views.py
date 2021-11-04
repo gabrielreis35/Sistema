@@ -4,7 +4,7 @@ from produtos.forms import WorkOrderForm
 from workOrder.models import OrdemServico
 
 def WorkOrderHome(request):
-    workOrders = OrdemServico.objects.all()
+    workOrders = OrdemServico.objects.all().order_by('-dateCriacao')
     return render(request, 'workOrder/WorkOrder.html', {'workOrders' : workOrders})
 
 def NewWorkOrder(request):

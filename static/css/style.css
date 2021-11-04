@@ -426,6 +426,7 @@ a.download-item, a.download-file {
     text-decoration: none !important;
     margin-right: -0.3em;
     width: 5em;
+    right: 3.5em;
 }
 
 .add-department-div {

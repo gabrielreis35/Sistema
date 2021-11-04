@@ -12,8 +12,8 @@
     <div class="offset-1 col-3 list-div">
         <form method="POST">
             {% csrf_token %}
-            {{ WorkOrderForm|crispy }}
-            <input type="submit" class="btn btn-success" value="Criar produto">
+            {{ workOrderForm|crispy }}
+            <input type="submit" class="btn btn-success" value="Gerar Número de Série">
         </form>
     </div>
 

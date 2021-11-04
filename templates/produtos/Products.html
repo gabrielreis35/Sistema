@@ -39,14 +39,13 @@
         {% if products|length > 0 %}
 
         <form method="GET">
-            <label for="filter">Ordenar por:</label>
+            <label for="order">Ordenar por:</label>
 
-            <select id="filter">
+            <select id="order">
                 <option label="Produto">Produto</option>
                 <option label="Equipamento">Equipamento</option>
                 <option label="Código">Codigo</option>
                 <option label="Segmento">Segmento</option>
-                <option label="Número de Série">numSerie</option>
             </select>
             <input type="submit" class="btn btn-success ordenar" id="order" value="Ordenar">
         </form>
@@ -62,9 +61,7 @@
                     <th scope="col">Volume</th>
                     <th scope="col">Largura</th>
                     <th scope="col">Lâmina</th>
-                    <!-- <th scope="col">PartNumber</th> -->
                     <th scope="col" class="col-sm-1">Visualizar</th>
-                    <!-- <th scope="col">Editar</th> -->
                 </tr>
             </thead>
             <tbody id="product-table">
@@ -132,4 +129,5 @@
             </span>
         </div>
     </div>
+
 {% endblock %}
