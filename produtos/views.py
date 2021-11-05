@@ -196,11 +196,11 @@ def GenerateSerial(request):
     return render(request, 'produtos/NewSerialNumber.html', {'products': productsList})
 
 def GenerateSerialSingle(request, id):
-    workOrderForm = SerialNumberForm()
+    serialNumberForm = SerialNumberForm()
     if request.method == 'POST':
-        workOrderForm = SerialNumberForm(request.POST or None)
-        if workOrderForm.is_valid():
-            os = workOrderForm.save(commit=False)
+        serialNumberForm = SerialNumberForm(request.POST or None)
+        if serialNumberForm.is_valid():
+            os = serialNumberForm.save(commit=False)
             Produto.numeroSerie = NumeroSerie.id
             os.numeroSerie = id
             filter = Produto.objects.filter(id__icontains = id)
@@ -220,6 +220,6 @@ def GenerateSerialSingle(request, id):
                 NumeroSerie.serialNumber = prefix + fix + sufix + var
             
     else:
-        workOrderForm = SerialNumberForm()
+        serialNumberForm = SerialNumberForm()
     
-    return render(request, 'produtos/SerialNumberid.html', {'workOrderForm': workOrderForm})
+    return render(request, 'produtos/SerialNumberid.html', {'serialNumberForm': serialNumberForm})
