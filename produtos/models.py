@@ -9,68 +9,33 @@ from workOrder.models import OrdemServico
 
 class Segmento(models.Model):
     nome = CharField(max_length=20, unique=True)
+    sigla = CharField(max_length=20, unique=True)
     
     def __str__(self):
         return self.nome
     
 class TipoProduto(models.Model):
     nome = CharField(max_length=40, unique=True)
-    
+    sigla = CharField(max_length=3, unique=True)
+        
     def __str__(self):
         return self.nome
 
 class CategoriaProduto(models.Model):
     nome = CharField(max_length=10, unique=True)
-
+    sigla = CharField(max_length=5, unique=True)
+    
     def __str__(self):
         return self.nome
     
 class ClasseProduto(models.Model):
     nome = CharField(max_length=10, unique=True)
+    sigla = CharField(max_length=3, unique=True)
     
     def __str__(self):
         return self.nome
 
 class Produto(models.Model):
-    # tipoProduto = (
-    #     ('AC', 'Acessório'),
-    #     ('CC', 'Carregadeira'),
-    #     ('CD', 'Chapa de desgaste'),
-    #     ('CB', 'Chock bar'),
-    #     ('DF', 'Dispositivos e ferramentas'),
-    #     ('ER', 'Engate rápido'),
-    #     ('CE', 'Escavadeira'),
-    #     ('FP', 'Ferramenta de penetração de solo'),
-    #     ('GA', 'Garfo'),
-    #     ('CG', 'Graniteira'),
-    #     ('LA', 'Lâmina'),
-    #     ('LN', 'Lança'),
-    #     ('RI', 'Ripper'),
-    #     ('SG', 'Segmento'),
-    #     ('VA', 'Vala'),
-    #     ('SE', 'Serviço'),
-    # )        
-    # classeProduto = (
-    #     ('6 SW', '6 SW'),
-    #     ('6 LH', '6 LH'),
-    #     ('7 SW', '7 SW'),
-    #     ('7 LH', '7 LH'),
-    #     ('7S SW', '7S SW'),
-    #     ('7S LH', '7S LH'),
-    #     ('8 SW', '8 SW'),
-    #     ('8 LH', '8 LH'),
-    #     ('9 SW', '9 SW'),
-    #     ('9 LH', '9 LH'),
-    #     ('9S SW', '9S SW'),
-    #     ('9S LH', '9S LH'),
-    # )
-    # dureza = (
-    #     ('GD', 'Geral'),
-    #     ('HD', 'Pesada'),
-    #     ('SD', 'Severa'),
-    #     ('XD', 'Extrema'),
-    # )
-
     nome = CharField(max_length=30)
     equipamento = CharField(max_length=10)
     capacidade = FloatField()
@@ -168,8 +133,8 @@ class Arquivo(models.Model):
 class NumeroSerie(models.Model):
     serialNumber = CharField(max_length=15, unique=True)
     
-    os = ForeignKey(OrdemServico, unique=True, on_delete=CASCADE)
-    produto = ForeignKey(Produto, unique=True, on_delete=CASCADE)
+    os = ForeignKey(OrdemServico, on_delete=CASCADE)
+    produto = ForeignKey(Produto, on_delete=CASCADE)
     
     def __str__(self):
         return self.id

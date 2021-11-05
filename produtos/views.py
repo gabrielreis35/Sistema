@@ -2,12 +2,13 @@ import os
 import datetime
 from django.core.files.base import File
 from django.core.paginator import Paginator
+from django.forms.widgets import SelectMultiple
 from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.files.storage import FileSystemStorage
 from produtos.models import NumeroSerie, Produto, Item, Arquivo
-from produtos.forms import ItemForm, ProdutoForm, FileForm, SerialNumberForm, WorkOrderForm
+from produtos.forms import CategoryForm, ClassProductForm, ItemForm, ProdutoForm, FileForm, SegmentForm, SerialNumberForm, TipForm, WorkOrderForm
 
 def Products(request):
     search = request.GET.get('search')
@@ -33,6 +34,9 @@ def Products(request):
         products = paginator.get_page(page)
     return render(request, 'produtos/Products.html', {'products' : products})
 
+def AddAllProduct(request):
+    return render(request, 'produtos/AddAll.html')
+
 def NewProduct(request):
     productForm = ProdutoForm()
     if request.method == 'POST':
@@ -45,6 +49,54 @@ def NewProduct(request):
         productForm = ProdutoForm()
         
     return render(request, 'produtos/NewProduct.html', {'productForm' : productForm})
+
+def NewSegment(request):
+    segmentForm = SegmentForm()
+    if request.method == 'POST':
+        segmentForm = SegmentForm(request.POST or None)
+        if segmentForm.is_valid():
+            segmentForm.save()
+            return redirect('/products')
+        
+    else:
+        segmentForm = SegmentForm()
+    return render(request, 'produtos/NewSegment.html', {'segmentForm' : segmentForm})
+
+def NewProductTip(request):
+    tipForm = TipForm()
+    if request.method == 'POST':
+        tipForm = TipForm(request.POST or None)
+        if tipForm.is_valid():
+            tipForm.save()
+            return redirect('/products')
+        
+    else:
+        tipForm = TipForm()
+    return render(request, 'produtos/NewProductTip.html', {'tipForm' : tipForm})
+
+def NewCategory(request):
+    categoryForm = CategoryForm()
+    if request.method == 'POST':
+        categoryForm = CategoryForm(request.POST or None)
+        if categoryForm.is_valid():
+            categoryForm.save()
+            return redirect('/products')
+        
+    else:
+        categoryForm = CategoryForm()
+    return render(request, 'produtos/NewCategory.html', {'categoryForm' : categoryForm})
+
+def NewClass(request):
+    classProductForm = ClassProductForm()
+    if request.method == 'POST':
+        classProductForm = ClassProductForm(request.POST or None)
+        if classProductForm.is_valid():
+            classProductForm.save()
+            return redirect('/products')
+        
+    else:
+        classProductForm = ClassProductForm()
+    return render(request, 'produtos/NewClass.html', {'classProductForm' : classProductForm})
 
 def ViewProduct(request, id):
     context = []

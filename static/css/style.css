@@ -170,6 +170,10 @@ li.messages li {
 
 /* Página Produtos */
 
+h1 {
+    padding-bottom: 0.75em;
+}
+
 .product-div {
     padding: 0;
     left: -3em;
@@ -181,18 +185,14 @@ ul .messages li {
 
 /* Botão de adicionar */
 
-.add-product {
+.add-all {
     position: relative;
     text-decoration: none !important;
     margin-right: -0.3em;
     width: 5em;
 }
 
-h1 {
-    padding-bottom: 0.75em;
-}
-
-.add-div {
+.div-add-all {
     background-color: #3476e2;
     cursor: pointer;
     display: inline-block;
@@ -201,8 +201,7 @@ h1 {
     border-radius: 0.31em;
 }
 
-
-.fas.fa-plus.products {
+.fas.fa-plus.all {
     color: #fff;
     margin-right: 0.63em;
     margin-left: 0.31em;
@@ -368,7 +367,52 @@ a.download-item, a.download-file {
 }
 
 .table-items {
+    align-items: center;
     padding-bottom: 1em;
+}
+
+/* Página de Adicionar */
+
+.products {
+    margin-bottom: 1em;
+}
+
+.segment {
+    margin-bottom: 1em;
+}
+
+.product-tip {
+    margin-bottom: 1em;
+}
+
+.category {
+    margin-bottom: 1em;
+}
+
+.app-class {
+    margin-bottom: 1em;
+}
+
+.add-comum {
+    position: relative;
+    text-decoration: none !important;
+    margin-right: -0.3em;
+    width: 2em;
+}
+
+.div-comum-add {
+    background-color: #3476e2;
+    cursor: pointer;
+    display: inline-block;
+    color: #fff;
+    padding: 0.5em;
+    border-radius: 0.31em;
+}
+
+.fas.fa-plus.comum {
+    color: #fff;
+    margin-right: 0.63em;
+    margin-left: 0.31em;
 }
 
 /* Itens comuns nas páginas de Adicionar */

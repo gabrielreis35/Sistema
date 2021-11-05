@@ -3,7 +3,7 @@ from typing import Optional
 from django import forms
 from django.db.models import fields
 from django.forms import ModelForm, widgets
-from .models import Item, NumeroSerie, Produto, Arquivo
+from .models import CategoriaProduto, ClasseProduto, Item, NumeroSerie, Produto, Arquivo, Segmento, TipoProduto
 from workOrder.models import OrdemServico
 
 class produtoSelect(forms.Select):
@@ -43,6 +43,53 @@ class ProdutoForm(ModelForm):
 
         }
 
+class SegmentForm(ModelForm):
+    class Meta:
+        model = Segmento
+        fields = [
+            'nome',
+            'sigla'
+        ]
+        labels = {
+            'nome': ('Nome:'),
+            'sigla': ('Sigla:')
+        }
+
+class TipForm(ModelForm):
+    class Meta:
+        model = TipoProduto
+        fields = [
+            'nome',
+            'sigla'
+        ]
+        labels = {
+            'nome': ('Nome:'),
+            'sigla': ('Sigla:')
+        }
+        
+class CategoryForm(ModelForm):
+    class Meta:
+        model = CategoriaProduto
+        fields = [
+            'nome',
+            'sigla'
+        ]
+        labels = {
+            'nome': ('Nome:'),
+            'sigla': ('Sigla:')
+        }
+        
+class ClassProductForm(ModelForm):
+    class Meta:
+        model = ClasseProduto
+        fields = [
+            'nome',
+            'sigla'
+        ]
+        labels = {
+            'nome': ('Nome:'),
+            'sigla': ('Sigla:')
+        }
 
 class ItemForm(ModelForm):
     class Meta:

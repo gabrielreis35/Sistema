@@ -34,19 +34,7 @@
                 Segmento:
             </td>
             <td class="col-3 product-item">
-                {% if product.segmento == 'A' %}
-                    Agrícola
-                {% elif product.segmento == 'C' %}
-                    Construção
-                {% elif product.segmento == 'F' %}
-                    Florestal
-                {% elif product.segmento == 'I' %}
-                    Indústria
-                {% elif product.segmento == 'U' %}
-                    Indústria Automotiva
-                {% elif product.segmento == 'M' %}
-                    Mineiração
-                {% endif %}
+                {{ product.segmento }}
             </td>
         </tr>
         <tr>
@@ -68,39 +56,7 @@
                 Acessório:
             </td>
             <td class="col-3 product-item">
-                {% if product.codigo == 'AC' %}
-                    Acessório
-                {% elif product.codigo == 'CC' %}
-                    Carregadeira
-                {% elif product.codigo == 'CD' %}
-                    Chapa de desgaste
-                {% elif product.codigo == 'CB' %}
-                    Chock Bar
-                {% elif product.codigo == 'DF' %}
-                    Dispositivos e ferramentas
-                {% elif product.codigo == 'ER' %}
-                    Engate rápido
-                {% elif product.codigo == 'CE' %}
-                    Escavadeira
-                {% elif product.codigo == 'FP' %}
-                    Ferramenta de penetração de solo
-                {% elif product.codigo == 'GA' %}
-                    Garfo
-                {% elif product.codigo == 'CG' %}
-                    Graniteira
-                {% elif product.codigo == 'LA' %}
-                    Lâmina
-                {% elif product.codigo == 'LN' %}
-                    Lança
-                {% elif product.codigo == 'RI' %}
-                    Ripper
-                {% elif product.codigo == 'SG' %}
-                    Segmento
-                {% elif product.codigo == 'VA' %}
-                    Vala
-                {% elif product.codigo == 'SE' %}
-                    Serviço
-                {% endif %}
+                {{ product.tipoProduto }}
             </td>
             <td class="col-2 product-item-title">
                 Categoria:

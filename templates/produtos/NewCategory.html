@@ -2,19 +2,19 @@
 
 {% load crispy_forms_tags %}
 
-{% block title %}Adicionar Produtos{% endblock %}
+{% block title %}Adicionar Categoria{% endblock %}
 
 {% block content %}
 
     <div class="container title">
-        <h1>Adicionar novo produto</h1>
+        <h1>Adicionar Nova Categoria</h1>
     </div>
 
     <div class="offset-1 col-3 list-div">
         <form method="POST">
             {% csrf_token %}
-            {{ productForm|crispy }}
-            <input type="submit" class="btn btn-success" value="Criar produto">
+            {{ categoryForm|crispy }}
+            <input type="submit" class="btn btn-success" value="Adicionar">
         </form>
     </div>
 
