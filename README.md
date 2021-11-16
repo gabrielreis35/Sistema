@@ -37,7 +37,7 @@
     - Cadastro do número da OS para a relação com o produto;
 
   # 04/11/2021:
-    - "Lâmina" = "Expessura"
-    - Cadastro e edição de categoria
-    - "Código" = "Tipo de Produto" - Cadastro e edição
-    - Cadastro e edição de classes
+    - "Lâmina" = "Expessura"; OK
+    - Cadastro e edição de categoria; OK
+    - "Código" = "Tipo de Produto" - Cadastro e edição; OK
+    - Cadastro e edição de classes; OK
