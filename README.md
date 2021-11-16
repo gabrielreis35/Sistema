@@ -34,7 +34,7 @@
     - Número de série relaciona uma OS ao produto;
     - Histórico de OS aberta para "X" número de série;
     - Tabela na aba Número de série específica para tal;
-    - Cadastro do número da OS para a relação com o produto;
+    - Cadastro do número da OS para a relação com o produto; OK
 
   # 04/11/2021:
     - "Lâmina" = "Expessura"; OK

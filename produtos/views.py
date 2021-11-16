@@ -197,34 +197,38 @@ def GenerateSerial(request):
 
 def GenerateSerialSingle(request, id):
     serialNumberForm = SerialNumberForm()
+    
     if request.method == 'POST':
         serialNumberForm = SerialNumberForm(request.POST or None)
+        
         if serialNumberForm.is_valid():
             os = serialNumberForm.save(commit=False)
             Produto.numeroSerie = NumeroSerie.id
             os.numeroSerie = id
             lastProduct = NumeroSerie.objects.last()
+            
             if lastProduct == None:
                 prefix = datetime.date.today().year
-                # fix = Produto.nome[3:6]
-                fix = 'nome'
+                fix = NumeroSerie.produto.nome[3:6]
                 sufix = Produto.id
                 var = 100
                 NumeroSerie.serialNumber = str(prefix) + fix + str(sufix) + str(var)
                 
-            elif lastProduct[0, 1, 2, 3] != datetime.today().year:
-                prefix = datetime.today().year
-                # fix = Produto.nome[3:6]
-                fix = 'nome'
+            elif int(lastProduct.serialNumber[0:3]) != datetime.date.today().year:
+                prefix = datetime.date.today().year
+                fix = NumeroSerie.produto.nome[3:6]
                 sufix = Produto.id
                 var = 100
                 NumeroSerie.serialNumber = str(prefix) + fix + str(sufix) + str(var)
+           
             else:
                 prefix = datetime.today().year
-                fix = Produto.nome[3:6]
+                fix = NumeroSerie.produto.nome[3:6]
                 sufix = Produto.id
                 var = (lastProduct) =+ 1
                 NumeroSerie.serialNumber = prefix + fix + sufix + var
+            
+            os.save()
             
     else:
         serialNumberForm = SerialNumberForm()
