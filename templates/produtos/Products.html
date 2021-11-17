@@ -60,7 +60,8 @@
                     <th scope="col">Segmento</th>
                     <th scope="col">Volume</th>
                     <th scope="col">Largura</th>
-                    <th scope="col">Lâmina</th>
+                    <th scope="col">Espessura</th>
+                    <th scope="col">Descontinuado</th>
                     <th scope="col" class="col-sm-1">Visualizar</th>
                 </tr>
             </thead>
@@ -89,7 +90,10 @@
                         {{product.largura}}
                     </td>
                     <td>
-                        {{product.lamina}}
+                        {{product.espessura}}
+                    </td>
+                    <td>
+                        N
                     </td>
                     <td>
                         <a href="{% url 'products:View_Product' product.id %}" class="icon view-product">

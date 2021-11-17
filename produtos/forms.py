@@ -1,5 +1,4 @@
 from os import name
-from typing import Optional
 from django import forms
 from django.db.models import fields
 from django.forms import ModelForm, widgets
@@ -14,6 +13,7 @@ class produtoSelect(forms.Select):
         return super().create_option(name, value, label, selected, index, subindex=subindex, attrs=attrs)
 
 class ProdutoForm(ModelForm):
+    categoria = fields.CharField(blank=True)
     class Meta:
         model = Produto
         fields = [
@@ -22,7 +22,7 @@ class ProdutoForm(ModelForm):
             'equipamento',
             'capacidade',
             'largura',
-            'lamina',
+            'espessura',
             'peso',
             'tipoProduto',
             'categoria',
@@ -33,10 +33,10 @@ class ProdutoForm(ModelForm):
             'segmento': ('Segmento'),
             'nome': ('Nome'),
             'equipamento': ('Equipamento'),
-            'capacidade': ('Capacidade'),
-            'largura': ('Largura'),
-            'lamina': ('Lâmina'),
-            'peso': ('Peso'),
+            'capacidade': ('Capacidade (Ton)'),
+            'largura': ('Largura (mm)'),
+            'espessura': ('Espessura (mm)'),
+            'peso': ('Peso (Kg)'),
             'tipoProduto': ('Tipo de Produto'),
             'categoria': ('Categoria'),
             'classeAplicacao': ('Classe se Aplicação'),

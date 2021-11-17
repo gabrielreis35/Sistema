@@ -25,7 +25,7 @@
     <tbody>
         <tr>
             <td class=" col-2 product-item-title">
-                Número de Série:
+                Número:
             </td>
             <td class="col-3 product-item">
                 {{ product.numeroSerie }}
@@ -62,7 +62,11 @@
                 Categoria:
             </td>
             <td class="col-3 product-item">
-                {{ product.categoria }}
+                {% if product.categoria == '' %}
+                    0
+                {% else %}
+                    {{ product.categoria }}
+                {% endif %}
             </td>
         </tr>
         <tr>
@@ -81,10 +85,10 @@
         </tr>
         <tr>
             <td class="col-2 product-item-title">
-                Lâmina:
+                Espessua:
             </td>
             <td class="col-2 product-item">
-                {{ product.lamina }}
+                {{ product.espessura }}
             </td>
             <td class="col-2 product-item-title">
                 Peso:

@@ -40,7 +40,7 @@ class Produto(models.Model):
     equipamento = CharField(max_length=10)
     capacidade = FloatField()
     largura = IntegerField()
-    lamina = IntegerField()
+    espessura = IntegerField()
     peso = IntegerField()
     
     dateCriacao = DateTimeField(auto_now_add=True)
@@ -48,7 +48,7 @@ class Produto(models.Model):
 
     segmento = ForeignKey(Segmento, null=True, on_delete=SET_NULL)
     tipoProduto = ForeignKey(TipoProduto, null=True, on_delete=SET_NULL)
-    categoria = ForeignKey(CategoriaProduto, null=True, on_delete=SET_NULL)
+    categoria = ForeignKey(CategoriaProduto, null=True, blank=True, on_delete=SET_NULL)
     classeAplicacao = ForeignKey(ClasseProduto, null=True, on_delete=SET_NULL)
     responsavel = ForeignKey(Colaborador, null=True, on_delete=SET_NULL)
 
