@@ -9,9 +9,15 @@
     </div>
     
     <div class="offset-1 col-10 add-all-div">
-        <a href="{% url 'products:Add_All_Products' %}" class="add-all"> 
+        <a href="{% url 'products:Add_All_Products' %}" class="add-all">
             <div class="col-2 div-add-all">
                 <i class="fas fa-plus all"></i>Adicionar
+            </div>
+        </a>
+
+        <a href="{% url 'products:Update_All_Product' %}" class="edit-main">
+            <div class="edit-main-div">
+                <i class="fas fa-edit"></i>Editar
             </div>
         </a>
 
@@ -93,7 +99,11 @@
                         {{product.espessura}}
                     </td>
                     <td>
-                        N
+                        {% if product.descontinuado == 1 %}
+                            Não
+                        {% else %}
+                            Sim
+                        {% endif %}
                     </td>
                     <td>
                         <a href="{% url 'products:View_Product' product.id %}" class="icon view-product">

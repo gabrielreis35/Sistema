@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}Classes{% endblock %}
+
+{% block content %}
+
+    <div class="container title">
+        <h1>Classes de Aplicação</h1>
+    </div>
+
+    <div class="offset-1 col-9 class-div">
+
+        <table class="table table-striped table-hover table-bordered tab-comum">
+            <thead>
+                <tr>
+                    {% comment %} <th scope="col">Num. Série</th> {% endcomment %}
+                    <th scope="col">Sigla</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Data de Criação</th>
+                    <th scope="col" class="col-sm-1">Editar</th>
+                    <th scope="col" class="col-sm-1">Deletar</th>
+                </tr>
+            </thead>
+            <tbody id="class-table">
+                {% for class in classes %}
+                <tr scope="row">
+                    <td>
+                        {{class.sigla}}
+                    </td>
+                    <td>
+                        {{class.nome}}
+                    </td>
+                    <td>
+                        {{class.dateCriacao}}
+                    </td>
+                    <td>
+                        <a href="{% url 'products:Update_Class_Products' class.id %}" class="icon">
+                            <div class="col">
+                                <i class="far fa-edit"></i>
+                            </div>
+                        </a>
+                    <td>
+                        <a href="#" class="icon">
+                            <div class="col">
+                                <i class="fas fa-trash"></i>
+                            </div>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

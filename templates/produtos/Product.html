@@ -25,10 +25,14 @@
     <tbody>
         <tr>
             <td class=" col-2 product-item-title">
-                Número:
+                Ativo:
             </td>
             <td class="col-3 product-item">
-                {{ product.numeroSerie }}
+                {% if product.descontinuado == 1 %}
+                    Sim
+                {% else %}
+                    Não
+                {% endif %}
             </td>
             <td class="col-2 product-item-title">
                 Segmento:
@@ -62,10 +66,10 @@
                 Categoria:
             </td>
             <td class="col-3 product-item">
-                {% if product.categoria == '' %}
-                    0
-                {% else %}
+                {% if product.categoria %}
                     {{ product.categoria }}
+                {% else %}
+                    Sem categoria
                 {% endif %}
             </td>
         </tr>
@@ -74,13 +78,13 @@
                 Capacidade:
             </td>
             <td class="col-2 product-item">
-                {{ product.capacidade }}
+                {{ product.capacidade }} Ton
             </td>
             <td class="col-2 product-item-title ">
                 Largura:
             </td>
             <td class="col-2 product-item">
-                {{ product.largura }}
+                {{ product.largura }} mm
             </td>
         </tr>
         <tr>
@@ -88,13 +92,13 @@
                 Espessua:
             </td>
             <td class="col-2 product-item">
-                {{ product.espessura }}
+                {{ product.espessura }} mm
             </td>
             <td class="col-2 product-item-title">
                 Peso:
             </td>
             <td class="col-2 product-item">
-                {{ product.peso }}
+                {{ product.peso }} Kg
             </td>
         </tr>
         <tr>

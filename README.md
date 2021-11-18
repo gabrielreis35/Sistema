@@ -43,10 +43,10 @@
     - Cadastro e edição de classes; OK
 
   # 17/11/2021:
-    - Remover e editar Segmentos, Tipo de Produto, Categoria e Classe de Aplicação;
-    - Unidade de medida;
-    - Trocar o nome "Lâmina" para Expessura;
-    - Categoria pode ser Nulo;
+    - Remover e editar Segmentos, Tipo de Produto, Categoria e Classe de Aplicação; OK
+    - Unidade de medida; OK
+    - Trocar o nome "Lâmina" para Expessura; OK
+    - Categoria pode ser Nulo; OK
     - Caixa de diálogo para Deletar e Editar Produto;
     - Em "Número de Série" a Ordem de Serviço deve ser digitável e não lista;
     - O mesmo para o Produto;

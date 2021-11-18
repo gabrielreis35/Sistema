@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}Editar Tipo de Categoria{% endblock %}
+
+{% block content %}
+
+    <div class="container title">
+        <h1>Editar Tipo de Categoria</h1>
+    </div>
+
+    <div class="offset-1 col-3 list-div">
+        <form method="POST">
+            {% csrf_token %}
+            {{ productTipForm|crispy }}
+            <input type="submit" class="btn btn-success" value="Editar produto">
+        </form>
+    </div>
+
+
+{% endblock %}

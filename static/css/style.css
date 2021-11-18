@@ -183,8 +183,6 @@ ul .messages li {
     text-decoration: none;
 }
 
-/* Botão de adicionar */
-
 .add-all {
     position: relative;
     text-decoration: none !important;
@@ -207,6 +205,30 @@ ul .messages li {
     margin-left: 0.31em;
 }
 
+a.edit-main {
+    width: 6.5em;
+}
+
+a.edit-main:hover {
+    text-decoration: none;
+}
+
+.edit-main-div {
+    background-color: #039444;
+    cursor: pointer;
+    color: #fff;
+    display: inline-block;
+    padding: 0.5em;
+    border: 0.2em solid #fff;
+    border-radius: 0.5em;
+}
+
+.fas.fa-edit {
+    color: #fff;
+    margin-right: 5px;
+    margin-left: 10px;
+}
+
 .fas.fa-search {
     position: absolute;
     cursor: pointer;
@@ -217,7 +239,7 @@ ul .messages li {
 .search-div {
     padding: 0;
     margin-top: 1em;
-    margin-left: 45em;
+    margin-left: 32em;
     margin-bottom: 1em;
     display: inline-block;
 }
@@ -419,6 +441,52 @@ a.download-item, a.download-file {
 
 .btn.btn-success{
     margin-bottom: 3em;
+}
+
+/* Página de Editar */
+
+.segment-update {
+    margin-bottom: 1em;
+}
+
+.product-tip-update {
+    margin-bottom: 1em;
+}
+
+.category-update {
+    margin-bottom: 1em;
+}
+
+.app-class-update {
+    margin-bottom: 1em;
+}
+
+.update-comum {
+    position: relative;
+    text-decoration: none !important;
+    margin-right: -0.3em;
+    width: 2em;
+}
+
+.div-comum-update {
+    background-color: #039444;
+    cursor: pointer;
+    display: inline-block;
+    color: #fff;
+    padding: 0.5em;
+    border-radius: 0.31em;
+}
+
+.fas.fa-plus.comum {
+    color: #fff;
+    margin-right: 0.63em;
+    margin-left: 0.31em;
+}
+
+/* Comum nas páginas de edição */
+
+.tab-comum {
+    padding-bottom: 2em;
 }
 
 /* Página de Adicionar Item */

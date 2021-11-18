@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}Segmentos{% endblock %}
+
+{% block content %}
+
+    <div class="container title">
+        <h1>Segmentos</h1>
+    </div>
+
+    <div class="offset-1 col-9 segment-div">
+
+        <table class="table table-striped table-hover table-bordered tab-comum">
+            <thead>
+                <tr>
+                    {% comment %} <th scope="col">Num. Série</th> {% endcomment %}
+                    <th scope="col">Sigla</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Data de Criação</th>
+                    <th scope="col" class="col-sm-1">Editar</th>
+                    <th scope="col" class="col-sm-1">Deletar</th>
+                </tr>
+            </thead>
+            <tbody id="segment-table">
+                {% for segment in segments %}
+                <tr scope="row">
+                    <td>
+                        {{segment.sigla}}
+                    </td>
+                    <td>
+                        {{segment.nome}}
+                    </td>
+                    <td>
+                        {{segment.dateCriacao}}
+                    </td>
+                    <td>
+                        <a href="{% url 'products:Update_Segment_Products' segment.id %}" class="icon">
+                            <div class="col">
+                                <i class="far fa-edit"></i>
+                            </div>
+                        </a>
+                    <td>
+                        <a href="#" class="icon">
+                            <div class="col">
+                                <i class="fas fa-trash"></i>
+                            </div>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

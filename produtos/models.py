@@ -1,7 +1,7 @@
 import os
 from django.db.models.base import Model
 from django.db.models.deletion import CASCADE, PROTECT, SET, SET_NULL
-from django.db.models.fields import  CharField, DateTimeField, IntegerField, FloatField
+from django.db.models.fields import  BooleanField, CharField, DateTimeField, IntegerField, FloatField
 from django.db import models
 from django.db.models.fields.related import ForeignKey
 from colaborator.models import Colaborador
@@ -11,13 +11,17 @@ class Segmento(models.Model):
     nome = CharField(max_length=20, unique=True)
     sigla = CharField(max_length=20, unique=True)
     
+    dateCriacao = DateTimeField(auto_now_add=True)
+
     def __str__(self):
         return self.nome
     
 class TipoProduto(models.Model):
     nome = CharField(max_length=40, unique=True)
     sigla = CharField(max_length=3, unique=True)
-        
+    
+    dateCriacao = DateTimeField(auto_now_add=True)
+    
     def __str__(self):
         return self.nome
 
@@ -25,12 +29,16 @@ class CategoriaProduto(models.Model):
     nome = CharField(max_length=10, unique=True)
     sigla = CharField(max_length=5, unique=True)
     
+    dateCriacao = DateTimeField(auto_now_add=True)
+    
     def __str__(self):
         return self.nome
     
 class ClasseProduto(models.Model):
     nome = CharField(max_length=10, unique=True)
     sigla = CharField(max_length=3, unique=True)
+    
+    dateCriacao = DateTimeField(auto_now_add=True)
     
     def __str__(self):
         return self.nome
@@ -42,6 +50,7 @@ class Produto(models.Model):
     largura = IntegerField()
     espessura = IntegerField()
     peso = IntegerField()
+    descontinuado = BooleanField()
     
     dateCriacao = DateTimeField(auto_now_add=True)
     dateUpdate = DateTimeField(auto_now=True)

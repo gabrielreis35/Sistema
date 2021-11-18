@@ -7,8 +7,8 @@ from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.files.storage import FileSystemStorage
-from produtos.models import NumeroSerie, Produto, Item, Arquivo
-from produtos.forms import CategoryForm, ClassProductForm, ItemForm, ProdutoForm, FileForm, SegmentForm, SerialNumberForm, TipForm, WorkOrderForm
+from produtos.models import CategoriaProduto, ClasseProduto, NumeroSerie, Produto, Item, Arquivo, Segmento, TipoProduto
+from produtos.forms import CategoryForm, ClassProductForm, ItemForm, ProdutoForm, FileForm, SegmentForm, SerialNumberForm, TipForm, WorkOrderForm, produtoSelect
 
 def Products(request):
     search = request.GET.get('search')
@@ -36,6 +36,9 @@ def Products(request):
 
 def AddAllProduct(request):
     return render(request, 'produtos/AddAll.html')
+
+def UpdateAllProduct(request):
+    return render(request, 'produtos/UpdateAll.html')
 
 def NewProduct(request):
     productForm = ProdutoForm()
@@ -97,6 +100,82 @@ def NewClass(request):
     else:
         classProductForm = ClassProductForm()
     return render(request, 'produtos/NewClass.html', {'classProductForm' : classProductForm})
+
+def ViewSegment(request):
+    segments = Segmento.objects.all().order_by('-dateCriacao')
+
+    return render(request, 'produtos/ViewSegment.html', {'segments' : segments})
+
+def ViewProductTip(request):
+    productTipes = TipoProduto.objects.all().order_by('-dateCriacao')
+
+    return render(request, 'produtos/ViewProductTip.html', {'productTipes' : productTipes})
+
+def ViewCategory(request):
+    categories = CategoriaProduto.objects.all().order_by('-dateCriacao')
+
+    return render(request, 'produtos/ViewCategory.html', {'categories' : categories})
+
+def ViewClass(request):
+    classes = ClasseProduto.objects.all().order_by('-dateCriacao')
+
+    return render(request, 'produtos/ViewClass.html', {'classes' : classes})
+
+def UpdateSegment(request, id):
+    segment = get_object_or_404(Segmento, id = id)
+    segmentForm = SegmentForm(instance = segment)
+    if request.method == 'POST':
+        segmentForm = SegmentForm(request.POST or None, instance = segment)
+        if segmentForm.is_valid():
+            segmentForm.save()
+            return redirect('../')
+        else:
+            return render(request, 'produtos/UpdateSegment.html', {'segmentForm' : segmentForm, 'segment' : segment})
+
+    else:    
+        return render(request, 'produtos/UpdateSegment.html')
+
+def UpdateProductTip(request, id):
+    productTip = get_object_or_404(TipoProduto, id = id)
+    productTipForm = TipForm(instance = productTip)
+    if request.method == 'POST':
+        productTipForm = TipForm(request.POST or None, instance = productTip)
+        if productTipForm.is_valid():
+            productTipForm.save()
+            return redirect('../')
+        else:
+            return render(request, 'produtos/UpdateProductTip.html', {'productTipForm' : productTipForm, 'productTip' : productTip})
+
+    else:    
+        return render(request, 'produtos/UpdateProductTip.html')
+
+def UpdateCategory(request, id):
+    category = get_object_or_404(CategoriaProduto, id = id)
+    categoryForm = CategoryForm(instance = category)
+    if request.method == 'POST':
+        categoryForm = CategoryForm(request.POST or None, instance = category)
+        if categoryForm.is_valid():
+            categoryForm.save()
+            return redirect('../')
+        else:
+            return render(request, 'produtos/UpdateCategory.html', {'categoryForm' : categoryForm, 'category' : category})
+
+    else:    
+        return render(request, 'produtos/UpdateCategory.html')
+
+def UpdateClass(request, id):
+    classProduct = get_object_or_404(ClasseProduto, id = id)
+    classForm = ClassProductForm(instance = classProduct)
+    if request.method == 'POST':
+        classForm = ClassProductForm(request.POST or None, instance = classProduct)
+        if classForm.is_valid():
+            classForm.save()
+            return redirect('../')
+        else:
+            return render(request, 'produtos/UpdateClass.html', {'classForm' : classForm, 'classProduct' : classProduct})
+
+    else:    
+        return render(request, 'produtos/UpdateClass.html')
 
 def ViewProduct(request, id):
     context = []
