@@ -98,7 +98,7 @@ if not DEBUG:
             'NAME':'innova',
             'USER': 'gabriel',
             'PASSWORD': 'gabriel',
-            'HOST': 'db_innova',
+            'HOST': 'database',
             'PORT': '5432',
         }
     }
