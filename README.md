@@ -32,8 +32,8 @@
   # 29/10/2021:
     - Número de série contém um produto; OK
     - Número de série relaciona uma OS ao produto; OK
-    - Histórico de OS aberta para "X" número de série;
-    - Tabela na aba Número de série específica para tal;
+    - Histórico de OS aberta para "X" número de série; OK
+    - Tabela na aba Número de série específica para tal; OK
     - Cadastro do número da OS para a relação com o produto; OK
 
   # 04/11/2021:
@@ -51,8 +51,22 @@
     - Em "Número de Série" a Ordem de Serviço deve ser digitável e não lista;
     - O mesmo para o Produto;
     - Selecionar quantos números de série por produto e OS;
-    - Em "Produtos" criar coluna Descontinuado;
+    - Em "Produtos" criar coluna Descontinuado; OK
 
     - Dashboard:
       - Ter a quantidade de produtos cadastrados e cadastrados por segmento;
       - Relatório por tipo de produto também;
+
+  # 22/11/2021:
+    - Página inicial: "Este software não substitui o Asana. serve apenas como controle de arquivos: SLDW, PDF, DXF, NOS, PN e NS"
+    - Gerar botão de PartNumber;
+    - Preços server AWS;
+    - Botão BackUp;
+    - Relatório de Produtos que foi feito BackUp;
+    - Filtro de BackUp;
+    - PartNumber:
+      - Botão número de PN do fabricante e quantidade;
+      - Botão de selecionar o produto;
+      - Botão de quantidade de itens;
+    
+    - Relatório do PartNumber (Acertar os detalhes assim que acabar as demandas que faltam): 
