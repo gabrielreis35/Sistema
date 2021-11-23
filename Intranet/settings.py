@@ -95,11 +95,11 @@ if not DEBUG:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME':'dbinnova',
-            'USER': 'innova',
-            'PASSWORD': 'Host1015',
-            'HOST': 'localhost',
-            'PORT': '',
+            'NAME':'innova',
+            'USER': 'gabriel',
+            'PASSWORD': 'gabriel',
+            'HOST': 'database',
+            'PORT': '5432',
         }
     }
 else:
