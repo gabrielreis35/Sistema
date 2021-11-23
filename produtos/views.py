@@ -45,7 +45,9 @@ def NewProduct(request):
     if request.method == 'POST':
         productForm = ProdutoForm(request.POST or None)
         if productForm.is_valid():
-            productForm.save()
+            product = productForm.save(commit = False)
+            product.descontinuado = False
+            product.save()
             return redirect('/products')
         
     else:
