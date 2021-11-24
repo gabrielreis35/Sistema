@@ -7,6 +7,10 @@ $(document).ready(function(){
     });
 });
 
+workorder
+$(document).on('click', '.confirm-delete', function(){
+    return confirm("Tem certeza que deseja apagar este produto?");
+
 function confirmButton() {
     var confirm = confirm("Deseja continuar com a ação?");
     if (confirm == true) {

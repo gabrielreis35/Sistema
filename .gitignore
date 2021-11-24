@@ -2,4 +2,6 @@ venv
 .env
 media
 db.sqlite3
+db.sqbpro
+*.pyc
 __pycache__

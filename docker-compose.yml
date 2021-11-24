@@ -3,10 +3,10 @@ version: '3.7'
 services:
   django:
     container_name: django
-    # image: ogabrielreis35/innova
-    build:
-      context: ./
-      dockerfile: Dockerfile
+    image: ogabrielreis35/innova:latest
+    # build:
+    #   context: ./
+    #   dockerfile: Dockerfile
     command: bash -c "cd /code && python manage.py migrate && python manage.py collectstatic --noinput && python manage.py runserver 0.0.0.0:8000"
     restart: unless-stopped
     volumes:
