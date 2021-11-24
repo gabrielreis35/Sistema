@@ -32,7 +32,10 @@ def Products(request):
         paginator = Paginator(productsList, 20)
         page = request.GET.get('page')
         products = paginator.get_page(page)
-    return render(request, 'produtos/Products.html', {'products' : products})
+        context = {
+            'products' : products
+        }
+    return render(request, 'produtos/Products.html', context)
 
 def AddAllProduct(request):
     return render(request, 'produtos/AddAll.html')
@@ -41,67 +44,91 @@ def UpdateAllProduct(request):
     return render(request, 'produtos/UpdateAll.html')
 
 def NewProduct(request):
-    productForm = ProdutoForm()
+    createProduct = ProdutoForm()
     if request.method == 'POST':
-        productForm = ProdutoForm(request.POST or None)
-        if productForm.is_valid():
-            product = productForm.save(commit = False)
+        createProduct = ProdutoForm(request.POST or None)
+        if createProduct.is_valid():
+            product = createProduct.save(commit = False)
             product.descontinuado = False
             product.save()
-            return redirect('/products')
+            return redirect('../../')
         
     else:
-        productForm = ProdutoForm()
-        
-    return render(request, 'produtos/NewProduct.html', {'productForm' : productForm})
+        createProduct = ProdutoForm()
+    
+    context = {
+        'createProduct' : createProduct
+    }
+            
+    return render(request, 'produtos/NewProduct.html', context)
 
 def NewSegment(request):
-    segmentForm = SegmentForm()
+    createSegment = SegmentForm()
     if request.method == 'POST':
-        segmentForm = SegmentForm(request.POST or None)
-        if segmentForm.is_valid():
-            segmentForm.save()
+        createSegment = SegmentForm(request.POST or None)
+        if createSegment.is_valid():
+            createSegment.save()
             return redirect('/products')
         
     else:
-        segmentForm = SegmentForm()
-    return render(request, 'produtos/NewSegment.html', {'segmentForm' : segmentForm})
+        createSegment = SegmentForm()
+    
+    context = {
+        'createSegment' : createSegment
+    }
+    
+    return render(request, 'produtos/NewSegment.html', context)
 
 def NewProductTip(request):
-    tipForm = TipForm()
+    createTip = TipForm()
     if request.method == 'POST':
-        tipForm = TipForm(request.POST or None)
-        if tipForm.is_valid():
-            tipForm.save()
+        createTip = TipForm(request.POST or None)
+        if createTip.is_valid():
+            createTip.save()
             return redirect('/products')
         
     else:
-        tipForm = TipForm()
-    return render(request, 'produtos/NewProductTip.html', {'tipForm' : tipForm})
+        createTip = TipForm()
+    
+    context = {
+        'createTip' : createTip
+    }
+    
+    return render(request, 'produtos/NewProductTip.html', context)
 
 def NewCategory(request):
-    categoryForm = CategoryForm()
+    createCategory = CategoryForm()
     if request.method == 'POST':
-        categoryForm = CategoryForm(request.POST or None)
-        if categoryForm.is_valid():
-            categoryForm.save()
+        createCategory = CategoryForm(request.POST or None)
+        if createCategory.is_valid():
+            createCategory.save()
             return redirect('/products')
         
     else:
-        categoryForm = CategoryForm()
-    return render(request, 'produtos/NewCategory.html', {'categoryForm' : categoryForm})
+        createCategory = CategoryForm()
+    
+    context = {
+        'createCategory' : createCategory
+    }
+    
+    return render(request, 'produtos/NewCategory.html', context)
 
 def NewClass(request):
-    classProductForm = ClassProductForm()
+    createClassProduct = ClassProductForm()
     if request.method == 'POST':
-        classProductForm = ClassProductForm(request.POST or None)
-        if classProductForm.is_valid():
-            classProductForm.save()
+        createClassProduct = ClassProductForm(request.POST or None)
+        if createClassProduct.is_valid():
+            createClassProduct.save()
             return redirect('/products')
         
     else:
-        classProductForm = ClassProductForm()
-    return render(request, 'produtos/NewClass.html', {'classProductForm' : classProductForm})
+        createClassProduct = ClassProductForm()
+        
+    context = {
+        'createClassProduct' : createClassProduct
+    }
+    
+    return render(request, 'produtos/NewClass.html', context)
 
 def ViewSegment(request):
     segments = Segmento.objects.all().order_by('-dateCriacao')
@@ -125,56 +152,72 @@ def ViewClass(request):
 
 def UpdateSegment(request, id):
     segment = get_object_or_404(Segmento, id = id)
-    segmentForm = SegmentForm(instance = segment)
+    updateSegment = SegmentForm(instance = segment)
     if request.method == 'POST':
-        segmentForm = SegmentForm(request.POST or None, instance = segment)
-        if segmentForm.is_valid():
-            segmentForm.save()
+        updateSegment = SegmentForm(request.POST or None, instance = segment)
+        if updateSegment.is_valid():
+            updateSegment.save()
             return redirect('../')
         else:
-            return render(request, 'produtos/UpdateSegment.html', {'segmentForm' : segmentForm, 'segment' : segment})
+            context = {
+                'updateSegment' : updateSegment,
+                'segment' : segment
+            }
+            return render(request, 'produtos/UpdateSegment.html', context)
 
     else:    
         return render(request, 'produtos/UpdateSegment.html')
 
 def UpdateProductTip(request, id):
     productTip = get_object_or_404(TipoProduto, id = id)
-    productTipForm = TipForm(instance = productTip)
+    updateTip = TipForm(instance = productTip)
     if request.method == 'POST':
-        productTipForm = TipForm(request.POST or None, instance = productTip)
-        if productTipForm.is_valid():
-            productTipForm.save()
+        updateTip = TipForm(request.POST or None, instance = productTip)
+        if updateTip.is_valid():
+            updateTip.save()
             return redirect('../')
         else:
-            return render(request, 'produtos/UpdateProductTip.html', {'productTipForm' : productTipForm, 'productTip' : productTip})
+            context = {
+                'updateTip' : updateTip,
+                'productTip' : productTip
+            }
+            return render(request, 'produtos/UpdateProductTip.html', context)
 
     else:    
         return render(request, 'produtos/UpdateProductTip.html')
 
 def UpdateCategory(request, id):
     category = get_object_or_404(CategoriaProduto, id = id)
-    categoryForm = CategoryForm(instance = category)
+    updateCategory = CategoryForm(instance = category)
     if request.method == 'POST':
-        categoryForm = CategoryForm(request.POST or None, instance = category)
-        if categoryForm.is_valid():
-            categoryForm.save()
+        updateCategory = CategoryForm(request.POST or None, instance = category)
+        if updateCategory.is_valid():
+            updateCategory.save()
             return redirect('../')
         else:
-            return render(request, 'produtos/UpdateCategory.html', {'categoryForm' : categoryForm, 'category' : category})
+            context = {
+                'updateCategory' : updateCategory,
+                'category' : category
+            }
+            return render(request, 'produtos/UpdateCategory.html', context)
 
     else:    
         return render(request, 'produtos/UpdateCategory.html')
 
 def UpdateClass(request, id):
     classProduct = get_object_or_404(ClasseProduto, id = id)
-    classForm = ClassProductForm(instance = classProduct)
+    updateClassProduct = ClassProductForm(instance = classProduct)
     if request.method == 'POST':
-        classForm = ClassProductForm(request.POST or None, instance = classProduct)
-        if classForm.is_valid():
-            classForm.save()
+        updateClassProduct = ClassProductForm(request.POST or None, instance = classProduct)
+        if updateClassProduct.is_valid():
+            updateClassProduct.save()
             return redirect('../')
         else:
-            return render(request, 'produtos/UpdateClass.html', {'classForm' : classForm, 'classProduct' : classProduct})
+            context = {
+                'updateClassProduct' : updateClassProduct,
+                'classProduct' : classProduct
+            }
+            return render(request, 'produtos/UpdateClass.html', context)
 
     else:    
         return render(request, 'produtos/UpdateClass.html')
@@ -193,17 +236,25 @@ def ViewProduct(request, id):
 
 def UpdateProduct(request, id):
     product = get_object_or_404(Produto, id = id)
-    productForm = ProdutoForm(instance = product)
+    updateProduct = ProdutoForm(instance = product)
     if request.method == 'POST':
-        productForm = ProdutoForm(request.POST or None, instance = product)
-        if productForm.is_valid():
-            productForm.save()
+        updateProduct = ProdutoForm(request.POST or None, instance = product)
+        if updateProduct.is_valid():
+            updateProduct.save()
             return redirect('../')
         else:
-            return render(request, 'produtos/UpdateProduct.html', {'productForm' : productForm, 'product' : product})
+            context = {
+                'updateProduct' : updateProduct,
+                'product' : product
+            }
+            return render(request, 'produtos/UpdateProduct.html', context)
 
-    else:    
-        return render(request, 'produtos/UpdateProduct.html', {'productForm' : productForm, 'product' : product})
+    else:
+        context = {
+            'updateProduct' : updateProduct,
+            'product' : product
+        }
+        return render(request, 'produtos/UpdateProduct.html', context)
 
 
 def DeleteProduct(request, id):
@@ -214,17 +265,22 @@ def DeleteProduct(request, id):
 
 
 def NewItem(request):
-    itemForm = ItemForm()
+    createItem = ItemForm()
     if request.method == 'POST':
-        itemForm = ItemForm(request.POST, request.FILES)
-        if itemForm.is_valid():
-            item = itemForm.save(commit=False)
+        createItem = ItemForm(request.POST, request.FILES)
+        if createItem.is_valid():
+            item = createItem.save(commit=False)
             item.tipo = 'Zip'
             item.save()
             return redirect('/products/')
     else:
         itemForm = ItemForm()
-    return render(request, 'produtos/NewItem.html', {'itemForm' : itemForm})
+    
+    context = {
+        'createItem' : createItem
+    }
+    
+    return render(request, 'produtos/NewItem.html', context)
 
 # def DownloadItem(request, path):
 #     filePath = os.path.join(settings.MEDIA_ROOT, path)
@@ -262,7 +318,8 @@ def DeleteFile(request, id):
     return redirect('/products')
 
 def SerialNumber(request):
-    return render(request, 'produtos/SerialNumber.html')
+    serialNumber = NumeroSerie.objects.all()
+    return render(request, 'produtos/SerialNumber.html', {'serialNumber' : serialNumber})
 
 def GenerateSerial(request):
     productsList = Produto()

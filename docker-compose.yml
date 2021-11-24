@@ -46,7 +46,7 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: /home/${USER}/app/server/
+      device: /home/${USER}/Sistema/
       o: bind
   # database:
   #   driver: local

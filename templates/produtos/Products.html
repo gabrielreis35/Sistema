@@ -42,8 +42,6 @@
             </ul>
         {% endif %}
 
-        {% if products|length > 0 %}
-
         <form method="GET">
             <label for="order">Ordenar por:</label>
 
@@ -113,17 +111,13 @@
                         </a>
                     </td>
                 </tr>
+                {% empty %}
+                    <li>Nenhum produto cadastrado.</li>
                 {% endfor %}
             </tbody>
         </table>
 
-        {% else %}
-            
-            <div class="sem-produtos">
-                Nenhum produto cadastrado!
-            </div>
 
-        {% endif %}
 
         <div class="pagination">
             <span class="step-links">
