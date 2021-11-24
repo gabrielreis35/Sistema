@@ -7,18 +7,18 @@ $(document).ready(function(){
     });
 });
 
-workorder
-$(document).on('click', '.confirm-delete', function(){
-    return confirm("Tem certeza que deseja apagar este produto?");
+// $(document).on('click', '.confirm-delete', function(){
+//     return confirm("Tem certeza que deseja apagar este produto?");
+// };
 
-function confirmButton() {
-    var confirm = confirm("Deseja continuar com a ação?");
-    if (confirm == true) {
-        document.write("Ação feita com sucesso!");
-        return true;
-    }
-    else {
-        document.write("Ação cancelada com sucesso!");
-        return false;
-    }
-}
+// function confirmButton() {
+//     var confirm = confirm("Deseja continuar com a ação?");
+//     if (confirm == true) {
+//         document.write("Ação feita com sucesso!");
+//         return true;
+//     }
+//     else {
+//         document.write("Ação cancelada com sucesso!");
+//         return false;
+//     }
+// }
