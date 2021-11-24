@@ -7,10 +7,9 @@ $(document).ready(function(){
     });
 });
 
-function confirmButton() {
-    confirm("Tem certeza?");
-}
-
+$(document).on('click', '.confirm-delete', function(){
+    return confirm("Tem certeza que deseja apagar este produto?");
+})
 // function searchFunction() {
 //     var input, filter, table, tr, td, i, txtValue;
 //     input = document.getElementById('search');
