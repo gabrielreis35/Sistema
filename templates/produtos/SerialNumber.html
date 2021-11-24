@@ -17,6 +17,34 @@
             </a>
         </div>
 
+            <table class="table table-striped table-hover table-bordered tab-serialNumber">
+                <thead>
+                    <tr>
+                        {% comment %} <th scope="col">Num. Série</th> {% endcomment %}
+                        <th scope="col">Número de Série</th>
+                        <th scope="col">Ordem de Serviço</th>
+                        <th scope="col">Produto</th>
+                    </tr>
+                </thead>
+                <tbody id="tab-body-serialNumber">
+                    {% for serialNumbers in serialNumber %}
+                    <tr scope="row">
+                        <td>
+                            {{serialNumber.serialNumber}}
+                        </td>
+                        <td>
+                            {{serialNumber.os}}
+                        </td>
+                        <td>
+                            {{serialNumber.produto}}
+                        </td>
+                    </tr>
+                    {% empty %}
+                        <p>Nenhum produto cadastrado.</p>
+                    {% endfor %}
+                </tbody>
+            </table>
+
         {% comment %} One table for Serial Number relation product & OS {% endcomment %}
     </div>
 

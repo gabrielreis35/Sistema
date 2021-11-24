@@ -10,4 +10,12 @@
         <h1>Editar Categoria</h1>
     </div>
 
+    <div class="offset-1 col-3 list-div">
+        <form method="POST">
+            {% csrf_token %}
+            {{ updateCategory|crispy }}
+            <input type="submit" class="btn btn-success" value="Editar produto">
+        </form>
+    </div>
+
 {% endblock %}

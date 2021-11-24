@@ -8,24 +8,13 @@ $(document).ready(function(){
 });
 
 function confirmButton() {
-    confirm("Tem certeza?");
+    var confirm = confirm("Deseja continuar com a ação?");
+    if (confirm == true) {
+        document.write("Ação feita com sucesso!");
+        return true;
+    }
+    else {
+        document.write("Ação cancelada com sucesso!");
+        return false;
+    }
 }
-
-// function searchFunction() {
-//     var input, filter, table, tr, td, i, txtValue;
-//     input = document.getElementById('search');
-//     filter = input.value.toUpperCase();
-//     table = document.getElementById('tab-products');
-//     tr = ul.getElementsByTagName('tr');
-
-//     for (i = 0; i < td.length; i++) {
-//         td = tr[i].getElementsByTagName("td")[0];
-//         txtValue = td.textContent || td.innerText;
-//         if (txtValue.toUpperCase().indexOf(filter) > -1) {
-//             tr[i].style.display = "";
-//         }
-//         else {
-//             tr[i].style.display = "none";
-//         }
-//     }
-// }

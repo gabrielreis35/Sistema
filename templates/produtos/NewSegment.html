@@ -13,7 +13,7 @@
     <div class="offset-1 col-3 list-div">
         <form method="POST">
             {% csrf_token %}
-            {{ segmentForm|crispy }}
+            {{ createSegment|crispy }}
             <input type="submit" class="btn btn-success" value="Adicionar">
         </form>
     </div>
