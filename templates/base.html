@@ -49,15 +49,20 @@
                     <span class="link_name">Ordem de Serviço</span>
                 </a>
             </li> 
-
             <li>
-                <a href="{%url 'colaborators:Home_Colaborator'%}">
+                <a href="{% url 'clients:Home_Clients' %}">
+                    <i class="fas fa-address-book"></i>
+                    <span class="link_name">Clientes</span>
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'colaborators:Home_Colaborator' %}">
                     <i class="fas fa-user"></i>
                     <span class="link_name">Usuários</span>
                 </a>
             </li>
             <li>
-                <a href="{%url 'departments:Home_Departments'%}">
+                <a href="{% url 'departments:Home_Departments' %}">
                     <i class="fas fa-building"></i>
                     <span class="link_name">Departamentos</span>
                 </a>

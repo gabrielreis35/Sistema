@@ -2,7 +2,7 @@ from os import name
 from django import forms
 from django.db.models import fields
 from django.forms import ModelForm, widgets
-from .models import CategoriaProduto, ClasseProduto, Item, NumeroSerie, Produto, Arquivo, Segmento, TipoProduto
+from .models import CategoriaProduto, ClasseProduto, Item, NumeroSerie, Produto, Arquivo, ProdutoCliente, Segmento, TipoProduto
 from workOrder.models import OrdemServico
 
 class produtoSelect(forms.Select):
@@ -13,7 +13,12 @@ class produtoSelect(forms.Select):
         return super().create_option(name, value, label, selected, index, subindex=subindex, attrs=attrs)
 
 class ProdutoForm(ModelForm):
-    categoria = fields.CharField(blank=True)
+    segmento = fields.CharField(
+        help_text='Segmento'
+    )
+    categoria = fields.CharField(
+        blank=True
+        )
     class Meta:
         model = Produto
         fields = [
@@ -156,3 +161,21 @@ class WorkOrderForm(ModelForm):
         fields = [
             'OS'
         ]
+        
+class CustomerProductsForm(ModelForm):
+    numeroSerie = fields.CharField (blank=True)
+    class Meta:
+        model = ProdutoCliente
+        fields = [
+            'numeroSerie',
+            'produto',
+            'cliente',
+            'file'
+        ]
+        
+        labels = {
+            'numeroSerie': ('Número de Série'),
+            'produto': ('Produto'),
+            'cliente': ('Cliente'),
+            'file': ('Arquivo')
+        }

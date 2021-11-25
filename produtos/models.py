@@ -1,9 +1,11 @@
 import os
 from django.db.models.base import Model
 from django.db.models.deletion import CASCADE, PROTECT, SET, SET_NULL
-from django.db.models.fields import  BooleanField, CharField, DateTimeField, IntegerField, FloatField
+from django.db.models.fields import  BooleanField, CharField, DateField, DateTimeField, IntegerField, FloatField
 from django.db import models
+from django.db.models.fields.files import FileField
 from django.db.models.fields.related import ForeignKey
+from clients.models import Cliente
 from colaborator.models import Colaborador
 from workOrder.models import OrdemServico
 
@@ -145,6 +147,21 @@ class NumeroSerie(models.Model):
     os = ForeignKey(OrdemServico, on_delete=CASCADE)
     produto = ForeignKey(Produto, on_delete=CASCADE)
     
+    dateCriacao = DateTimeField(auto_now_add=True)
     def __str__(self):
+        return self.id
+    
+class ProdutoCliente(models.Model):
+    def filePath(produto, file):
+        return os.path.join('produtos', produto, file) 
+    
+    numeroSerie = CharField(max_length=30, null=True)
+    produto = CharField(max_length=30)
+    file = FileField(upload_to=filePath)
+    
+    cliente = ForeignKey(Cliente, on_delete=CASCADE)
+    dateCriacao = DateTimeField(auto_now_add=True)
+    
+    def __self__(self):
         return self.id
     

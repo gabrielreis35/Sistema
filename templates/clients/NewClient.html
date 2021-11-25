@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}Adicionar Cliente{% endblock %}
+
+{% block content %}
+
+    <div class="container title">
+        <h1>Cadastrar Cliente</h1>
+    </div>
+    
+    <div class="offset-1 col-3">
+        <form method="POST">
+            {% csrf_token %}
+            {{ createClient|crispy }}
+            <input type="submit" class="btn btn-success" value="Adicionar">
+        </form>
+    </div>
+{% endblock %}

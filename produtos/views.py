@@ -7,8 +7,8 @@ from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.files.storage import FileSystemStorage
-from produtos.models import CategoriaProduto, ClasseProduto, NumeroSerie, Produto, Item, Arquivo, Segmento, TipoProduto
-from produtos.forms import CategoryForm, ClassProductForm, ItemForm, ProdutoForm, FileForm, SegmentForm, SerialNumberForm, TipForm, WorkOrderForm, produtoSelect
+from produtos.models import CategoriaProduto, ClasseProduto, NumeroSerie, Produto, Item, Arquivo, ProdutoCliente, Segmento, TipoProduto
+from produtos.forms import CategoryForm, ClassProductForm, CustomerProductsForm, ItemForm, ProdutoForm, FileForm, SegmentForm, SerialNumberForm, TipForm, WorkOrderForm, produtoSelect
 
 def Products(request):
     search = request.GET.get('search')
@@ -373,3 +373,24 @@ def GenerateSerialSingle(request, id):
         serialNumberForm = SerialNumberForm()
     
     return render(request, 'produtos/SerialNumberid.html', {'serialNumberForm': serialNumberForm})
+
+def CustomerProducts(request):
+    customerProduct = ProdutoCliente.objects.all()
+    context = {'customerProduct' : customerProduct}
+    return render(request, 'produtos/CustomerProducts.html', context)
+
+def NewCustomerProducts(request):
+    createCustomerProducts = CustomerProductsForm()
+    if request.method == 'POST':
+        createCustomerProducts = CustomerProductsForm(request.POST or None)
+        if createCustomerProducts.is_valid():
+            createCustomerProducts.save()
+            return redirect('/products')
+        
+    else:
+        createCustomerProducts = CustomerProductsForm()
+        
+    context = {
+        'createCustomerProducts' : createCustomerProducts
+    }
+    return render(request, 'produtos/NewCustomerProducts.html', context)

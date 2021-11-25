@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}Banco de dados Terceiros{% endblock %}
+
+{% block content %}
+
+    <div class="container title">
+        <h1>Banco de Dados de Produtos de Terceiros</h1>
+    </div>
+    
+    <div class="offset-1 col-10 add-all-div">
+
+        <a href="{% url 'products:New_Customer_Products' %}" class="add-all">
+            <div class="col-2 div-add-all">
+                <i class="fas fa-plus all"></i>Adicionar
+            </div>
+        </a>
+    
+        <table class="table table-striped table-hover table-bordered tab-products">
+            <thead>
+                <tr>
+                    <th scope="col">Cliente</th>
+                    <th scope="col">Produto</th>
+                    <th scope="col">Número de Série</th>
+                </tr>
+            </thead>
+            <tbody id="product-table">
+                {% for customerProduct in customerProducts %}
+                <tr scope="row">
+                    <td>
+                        {{customerProduct.cliente.nome}}
+                    </td>
+                    <td>
+                        {{customerProduct.produto}}
+                    </td>
+                    <td>
+                        {{customerProduct.numeroSerie}}
+                    </td>
+                </tr>
+                {% empty %}
+                    <p>Nenhum produto cadastrado.</p>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

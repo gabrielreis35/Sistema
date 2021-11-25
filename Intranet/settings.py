@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'colaborator',
     'departments',
     'workOrder',
+    'clients',
 ]
 
 MIDDLEWARE = [

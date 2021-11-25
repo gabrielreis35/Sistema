@@ -38,5 +38,8 @@ urlpatterns = [
     
     path('serialNumber/', views.SerialNumber, name = 'Serial_Number'),
     path('newSerialNumber/', views.GenerateSerial, name = 'Generate_SerialNumber'),
-    path("serialNumberid/<int:id>", views.GenerateSerialSingle , name="Generate_Single_SerialNumber")    
+    path("serialNumberid/<int:id>", views.GenerateSerialSingle , name="Generate_Single_SerialNumber"),
+    
+    path('customerProducts/', views.CustomerProducts, name="Customer_Products"),
+    path('NewCustomerProducts/', views.NewCustomerProducts, name="New_Customer_Products")
 ]
