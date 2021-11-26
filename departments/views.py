@@ -1,20 +1,23 @@
 from django.contrib.auth.decorators import login_required
-from django.views.generic.edit import CreateView
-from django.views.generic.list import ListView
-from departments.models import Departamento
+from departments.forms import DepartmentForm
+from django.shortcuts import redirect, render
+from .models import Departamento
 
-class Department(ListView):
-    model = Departamento
-    fields = ['nome']
+def HomeDepartment(request):
+    departments = Departamento.objects.all()
+    context = {'departments' : departments}
+    return render(request, 'departments/Departments.html', context)
 
-    def get_queryset(self):
-        return Departamento.objects.all
-
-
-class CreateDepartment(CreateView):
-    model = Departamento
-    fields = ['nome']
-
-    def form_valid(self, form):
-        form.save(commit = True)
-        return super(CreateDepartment, self).form_valid(form)
+def CreateDepartment(request):
+    createDepartment = DepartmentForm()
+    
+    if request.method == 'POST':
+        createDepartment = DepartmentForm(request.POST or None)
+        if createDepartment.is_valid():
+            createDepartment.save()
+            return redirect('../')
+    else:
+        createDepartment = DepartmentForm()
+    
+    context = {'createDepartment': createDepartment}
+    return render(request, 'departments/NewDepartment.html', context)

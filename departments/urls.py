@@ -1,9 +1,9 @@
 from django.urls import path
-from .views import Department, CreateDepartment
+from .views import CreateDepartment, HomeDepartment
 
 app_name = 'departments'
 
 urlpatterns = [
-    path('', Department.as_view(template_name= 'departments/departments.html'), name = 'Home_Departments'),
-    path('newDepartment', CreateDepartment.as_view(template_name = 'departments/NewDepartment.html'), name = 'New_Department'),
+    path('', HomeDepartment, name = 'Home_Departments'),
+    path('newDepartment', CreateDepartment, name = 'New_Department'),
 ]

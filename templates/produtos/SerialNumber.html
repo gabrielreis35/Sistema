@@ -27,7 +27,7 @@
                     </tr>
                 </thead>
                 <tbody id="tab-body-serialNumber">
-                    {% for serialNumbers in serialNumber %}
+                    {% for serialNumber in serialNumbers %}
                     <tr scope="row">
                         <td>
                             {{serialNumber.serialNumber}}
@@ -40,7 +40,7 @@
                         </td>
                     </tr>
                     {% empty %}
-                        <p>Nenhum produto cadastrado.</p>
+                        <p>Nenhum número de série cadastrado.</p>
                     {% endfor %}
                 </tbody>
             </table>

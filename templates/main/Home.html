@@ -3,13 +3,46 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-     <div class="title">
-        <h1>Página inicial</h1>
-     </div>
 
-     <div class="container">
-        <h3>
-            Bem vindo {{user.username}}
-        </h3> 
-     </div>
+   <div class="title">
+     <h1>Página inicial</h1>
+   </div>
+
+   <div class="offset-1 col-10 add-all-div">
+
+      <h3>
+         Bem vindo {{user.username}}
+      </h3>
+
+      <p>
+         Este Software não substitui o Asana. A função dele é apenas controlar arquivos (SLDWKS, PDF, DXF, NOS, PN, NS)
+      </p>
+      <p class="text-main">
+         <b>O número de produtos no catálo é {{ countProduct }}</b>
+      </p>
+      
+      <div class="offset-1 col-4 tip-product-div">
+         <table class="table table-hover table-bordered tab-products">
+            <thead>
+               <tr>
+                  <th scope="col">Tipo de produto</th>
+                  <th scope="col">Quantidade</th>
+               </tr>
+            </thead>
+
+            <tbody>
+               <tr>
+                  <td>
+                     Graniteira
+                  </td>
+                  <td>
+                     {{tipProduct}}
+                  </td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+
+   </div>
+
 {% endblock %}

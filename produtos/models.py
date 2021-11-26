@@ -50,6 +50,8 @@ class Produto(models.Model):
     equipamento = CharField(max_length=10)
     capacidade = FloatField()
     largura = IntegerField()
+    comprimento = IntegerField()
+    volume = IntegerField()
     espessura = IntegerField()
     peso = IntegerField()
     descontinuado = BooleanField()

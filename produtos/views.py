@@ -274,7 +274,7 @@ def NewItem(request):
             item.save()
             return redirect('/products/')
     else:
-        itemForm = ItemForm()
+        createItem = ItemForm()
     
     context = {
         'createItem' : createItem
@@ -318,8 +318,9 @@ def DeleteFile(request, id):
     return redirect('/products')
 
 def SerialNumber(request):
-    serialNumber = NumeroSerie.objects.all()
-    return render(request, 'produtos/SerialNumber.html', {'serialNumber' : serialNumber})
+    serialNumbers = NumeroSerie.objects.all()
+    context = {'serialNumbers' : serialNumbers}
+    return render(request, 'produtos/SerialNumber.html', context)
 
 def GenerateSerial(request):
     productsList = Produto()

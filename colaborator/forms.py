@@ -13,7 +13,7 @@ class SignupForm(UserCreationForm):
     departamento = forms.CharField(max_length=30, required=True)
 
     class Meta:
-        model = User
+        model = Colaborador
         fields = [
             'username',
             'nome',

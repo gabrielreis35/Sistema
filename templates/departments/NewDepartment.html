@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
+
 {% load crispy_forms_tags %}
+
 {% block title %}Novo departamento{% endblock %}
 
 {% block content %}
@@ -11,7 +13,7 @@
     <div class="offset-1 col-3">
         <form method="POST">
             {% csrf_token %}
-            {{ form|crispy }}
+            {{ createDepartment|crispy }}
             <button type="submit" class="btn btn-success">Criar departamento</button>
         </form>
     </div>

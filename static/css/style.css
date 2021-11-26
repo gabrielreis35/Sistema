@@ -119,12 +119,19 @@ body {
     font-size: 0.75em;
 }
 
+.profile .version {
+    display: flex;
+    font-size: 0.75em;
+    background: #ADADAD;
+}
+
 .profile #logout {
     position: absolute;
     left: 88%;
-    bottom: 0.31em;
+    top: -0.2em;
+    bottom: 0.2em;
     transform: translateX(-50%);
-    min-width: 3.3em;
+    min-width: 1em;
     line-height: 3.13em;
     font-size: 1.25;
     border-radius: 0.75em;
@@ -613,6 +620,7 @@ a.download-item, a.download-file {
     color: #fff;
     padding: 0.5em;
     border-radius: 0.31em;
+    margin-bottom: 1em;
 }
 
 /* Página de Gerar Número de Série */
