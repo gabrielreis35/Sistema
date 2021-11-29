@@ -336,6 +336,34 @@ def DeleteFile(request, id):
     context = {'file' : file}
     return render(request, 'produtos/DeleteFile.html', context)
 
+def DeleteSegment(request, id):
+    segment = get_object_or_404(Segmento, id = id)
+    if request.method == 'POST':
+        segment.delete()
+    context = {'segment' : segment}
+    return render(request, 'produtos/DeleteSegment.html', context)
+
+def DeleteProductTip(request, id):
+    productTip = get_object_or_404(TipoProduto, id = id)
+    if request.method == 'POST':
+        productTip.delete()
+    context = {'productTip' : productTip}
+    return render(request, 'produtos/DeleteProductTip.html', context)
+
+def DeleteCategory(request, id):
+    category = get_object_or_404(CategoriaProduto, id = id)
+    if request.method == 'POST':
+        category.delete()
+    context = {'category' : category}
+    return render(request, 'produtos/DeleteCategory.html', context)
+
+def DeleteClassProduct(request, id):
+    classProduct = get_object_or_404(ClasseProduto, id = id)
+    if request.method == 'POST':
+        classProduct.delete()
+    context = {'classProduct' : classProduct}
+    return render(request, 'produtos/DeleteClassProduct.html', context)
+
 def SerialNumber(request):
     productsList = Produto.objects.all()
     serialNumbers = NumeroSerie.objects.all()

@@ -2,13 +2,13 @@
 
 {% load crispy_forms_tags %}
 
-{% block title %}Excluir Arquivo{% endblock %}
+{% block title %}Excluir Categoria{% endblock %}
 
 {% block content %}
     
     <form method="POST">
         {% csrf_token %}
-        <h1 class="title-form">Deseja excluir o arquivo "{{file.nome}}"?</h1>
+        <h1 class="title-form">Deseja excluir a categoria "{{category.nome}}"?</h1>
         <p class="confirm-delete">
             <input type="submit" value="Sim"/>
             <a href="../">Não</a>
