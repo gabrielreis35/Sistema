@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}Excluir Produto{% endblock %}
+
+{% block content %}
+    
+    <form method="POST">
+        {% csrf_token %}
+        <h1 class="title-form">Deseja excluir o produto "{{product.nome}}"?</h1>
+        <p class="confirm-delete">
+            <input type="submit" value="Sim"/>
+            <a href="../">Não</a>
+        </p>
+
+{% endblock %}

@@ -526,6 +526,22 @@ a.download-item, a.download-file {
     padding-bottom: 2em;
 }
 
+/* Página de excluir produto */
+
+.title-form {
+    font-size: 2em !important;
+    padding: 30px;
+    position: relative;
+    text-align: center;
+}
+.confirm-delete {
+    font-size: 1em !important;
+    /* padding: 30px; */
+    position: relative;
+    text-align: center;
+}
+
+
 /* Página de Adicionar Item */
 
 .document {

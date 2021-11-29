@@ -62,6 +62,37 @@ def NewProduct(request):
             
     return render(request, 'produtos/NewProduct.html', context)
 
+def NewItem(request):
+    createItem = ItemForm()
+    if request.method == 'POST':
+        createItem = ItemForm(request.POST, request.FILES)
+        if createItem.is_valid():
+            item = createItem.save(commit=False)
+            item.tipo = 'Zip'
+            item.save()
+            return redirect('/products/')
+    else:
+        createItem = ItemForm()
+    
+    context = {
+        'createItem' : createItem
+    }
+    
+    return render(request, 'produtos/NewItem.html', context)
+
+def NewFile(request):
+    fileForm = FileForm()
+    if request.method == 'POST':
+        fileForm = FileForm(request.POST, request.FILES)
+        if fileForm.is_valid():
+            fileForm.save()
+            return redirect('/products/')
+        
+    else:
+        fileForm = FileForm()
+        
+    return render(request, 'produtos/NewFile.html', {'fileForm' : fileForm})
+
 def NewSegment(request):
     createSegment = SegmentForm()
     if request.method == 'POST':
@@ -130,6 +161,19 @@ def NewClass(request):
     
     return render(request, 'produtos/NewClass.html', context)
 
+def ViewProduct(request, id):
+    context = []
+    items = Item.objects.all().filter(produto_id = id).order_by('-revisao')
+    files = Arquivo.objects.all().filter(produto_id = id).order_by('-revisao')
+    product = get_object_or_404(Produto, id = id)
+    context = {
+        'product': product,
+        'items': items,
+        'files': files,
+    }
+    return render(request, 'produtos/Product.html', context)
+
+
 def ViewSegment(request):
     segments = Segmento.objects.all().order_by('-dateCriacao')
 
@@ -149,90 +193,6 @@ def ViewClass(request):
     classes = ClasseProduto.objects.all().order_by('-dateCriacao')
 
     return render(request, 'produtos/ViewClass.html', {'classes' : classes})
-
-def UpdateSegment(request, id):
-    segment = get_object_or_404(Segmento, id = id)
-    updateSegment = SegmentForm(instance = segment)
-    if request.method == 'POST':
-        updateSegment = SegmentForm(request.POST or None, instance = segment)
-        if updateSegment.is_valid():
-            updateSegment.save()
-            return redirect('../')
-        else:
-            context = {
-                'updateSegment' : updateSegment,
-                'segment' : segment
-            }
-            return render(request, 'produtos/UpdateSegment.html', context)
-
-    else:    
-        return render(request, 'produtos/UpdateSegment.html')
-
-def UpdateProductTip(request, id):
-    productTip = get_object_or_404(TipoProduto, id = id)
-    updateTip = TipForm(instance = productTip)
-    if request.method == 'POST':
-        updateTip = TipForm(request.POST or None, instance = productTip)
-        if updateTip.is_valid():
-            updateTip.save()
-            return redirect('../')
-        else:
-            context = {
-                'updateTip' : updateTip,
-                'productTip' : productTip
-            }
-            return render(request, 'produtos/UpdateProductTip.html', context)
-
-    else:    
-        return render(request, 'produtos/UpdateProductTip.html')
-
-def UpdateCategory(request, id):
-    category = get_object_or_404(CategoriaProduto, id = id)
-    updateCategory = CategoryForm(instance = category)
-    if request.method == 'POST':
-        updateCategory = CategoryForm(request.POST or None, instance = category)
-        if updateCategory.is_valid():
-            updateCategory.save()
-            return redirect('../')
-        else:
-            context = {
-                'updateCategory' : updateCategory,
-                'category' : category
-            }
-            return render(request, 'produtos/UpdateCategory.html', context)
-
-    else:    
-        return render(request, 'produtos/UpdateCategory.html')
-
-def UpdateClass(request, id):
-    classProduct = get_object_or_404(ClasseProduto, id = id)
-    updateClassProduct = ClassProductForm(instance = classProduct)
-    if request.method == 'POST':
-        updateClassProduct = ClassProductForm(request.POST or None, instance = classProduct)
-        if updateClassProduct.is_valid():
-            updateClassProduct.save()
-            return redirect('../')
-        else:
-            context = {
-                'updateClassProduct' : updateClassProduct,
-                'classProduct' : classProduct
-            }
-            return render(request, 'produtos/UpdateClass.html', context)
-
-    else:    
-        return render(request, 'produtos/UpdateClass.html')
-
-def ViewProduct(request, id):
-    context = []
-    items = Item.objects.all().filter(produto_id = id).order_by('-revisao')
-    files = Arquivo.objects.all().filter(produto_id = id).order_by('-revisao')
-    product = get_object_or_404(Produto, id = id)
-    context = {
-        'product': product,
-        'items': items,
-        'files': files,
-    }
-    return render(request, 'produtos/Product.html', context)
 
 def UpdateProduct(request, id):
     product = get_object_or_404(Produto, id = id)
@@ -256,31 +216,94 @@ def UpdateProduct(request, id):
         }
         return render(request, 'produtos/UpdateProduct.html', context)
 
-
-def DeleteProduct(request, id):
-    product = get_object_or_404(Produto, id = id)
-    product.delete()
-    messages.info(request, 'Produto excluído')
-    return redirect('/products')
-
-
-def NewItem(request):
-    createItem = ItemForm()
+def UpdateSegment(request, id):
+    segment = get_object_or_404(Segmento, id = id)
+    updateSegment = SegmentForm(instance = segment)
     if request.method == 'POST':
-        createItem = ItemForm(request.POST, request.FILES)
-        if createItem.is_valid():
-            item = createItem.save(commit=False)
-            item.tipo = 'Zip'
-            item.save()
-            return redirect('/products/')
+        updateSegment = SegmentForm(request.POST or None, instance = segment)
+        if updateSegment.is_valid():
+            updateSegment.save()
+            return redirect('../')
+        else:
+            context = {
+                'updateSegment' : updateSegment,
+                'segment' : segment
+            }
+            return render(request, 'produtos/UpdateSegment.html', context)
+    
     else:
-        createItem = ItemForm()
-    
-    context = {
-        'createItem' : createItem
-    }
-    
-    return render(request, 'produtos/NewItem.html', context)
+        context = {
+            'updateSegment' : updateSegment,
+            'segment' : segment
+        }
+        return render(request, 'produtos/UpdateSegment.html', context)
+
+def UpdateProductTip(request, id):
+    productTip = get_object_or_404(TipoProduto, id = id)
+    updateTip = TipForm(instance = productTip)
+    if request.method == 'POST':
+        updateTip = TipForm(request.POST or None, instance = productTip)
+        if updateTip.is_valid():
+            updateTip.save()
+            return redirect('../')
+        else:
+            context = {
+                'updateTip' : updateTip,
+                'productTip' : productTip
+            }
+            return render(request, 'produtos/UpdateProductTip.html', context)
+
+    else:
+        context = {
+            'updateTip' : updateTip,
+            'productTip' : productTip
+        }
+        return render(request, 'produtos/UpdateProductTip.html', context)
+
+def UpdateCategory(request, id):
+    category = get_object_or_404(CategoriaProduto, id = id)
+    updateCategory = CategoryForm(instance = category)
+    if request.method == 'POST':
+        updateCategory = CategoryForm(request.POST or None, instance = category)
+        if updateCategory.is_valid():
+            updateCategory.save()
+            return redirect('../')
+        else:
+            context = {
+                'updateCategory' : updateCategory,
+                'category' : category
+            }
+            return render(request, 'produtos/UpdateCategory.html', context)
+
+    else:
+        context = {
+            'updateCategory' : updateCategory,
+            'category' : category
+        }
+        return render(request, 'produtos/UpdateCategory.html', context)
+
+def UpdateClass(request, id):
+    classProduct = get_object_or_404(ClasseProduto, id = id)
+    updateClassProduct = ClassProductForm(instance = classProduct)
+    if request.method == 'POST':
+        updateClassProduct = ClassProductForm(request.POST or None, instance = classProduct)
+        if updateClassProduct.is_valid():
+            updateClassProduct.save()
+            return redirect('../')
+        else:
+            context = {
+                'updateClassProduct' : updateClassProduct,
+                'classProduct' : classProduct
+            }
+            return render(request, 'produtos/UpdateClass.html', context)
+
+    else:
+        context = {
+            'updateClassProduct' : updateClassProduct,
+            'classProduct' : classProduct
+        }
+        return render(request, 'produtos/UpdateClass.html', context)
+
 
 # def DownloadItem(request, path):
 #     filePath = os.path.join(settings.MEDIA_ROOT, path)
@@ -289,37 +312,34 @@ def NewItem(request):
 #             response = HttpResponse(mimetype='application/force-download')
     #filePath = '/media/produtos'
 
+def DeleteProduct(request, id):
+    product = get_object_or_404(Produto, id = id)
+    if request.method == 'POST':
+        product.delete()
+        return redirect('../')
+    
+    context = {'product' : product}
+    return render(request, 'produtos/DeleteProduct.html', context)
 
 def DeleteItem(request, id):
     item = get_object_or_404(Item, id = id)
-    item.delete()
-    messages.info(request, 'Item excluído')
-    return redirect('/products')
-
-
-def NewFile(request):
-    fileForm = FileForm()
     if request.method == 'POST':
-        fileForm = FileForm(request.POST, request.FILES)
-        if fileForm.is_valid():
-            fileForm.save()
-            return redirect('/products/')
-        
-    else:
-        fileForm = FileForm()
-        
-    return render(request, 'produtos/NewFile.html', {'fileForm' : fileForm})
-
+        item.delete()
+        return redirect('../')
+    context = {'item' : item}
+    return render(request, 'produtos/DeleteItem.html', context)
 
 def DeleteFile(request, id):
     file = get_object_or_404(Arquivo, id = id)
-    file.delete()
-    messages.info(request, 'Arquivo excluído')
-    return redirect('/products')
+    if request.method == 'POST':
+        file.delete()
+    context = {'file' : file}
+    return render(request, 'produtos/DeleteFile.html', context)
 
 def SerialNumber(request):
+    productsList = Produto.objects.all()
     serialNumbers = NumeroSerie.objects.all()
-    context = {'serialNumbers' : serialNumbers}
+    context = {'serialNumbers' : serialNumbers, 'productsList' : productsList}
     return render(request, 'produtos/SerialNumber.html', context)
 
 def GenerateSerial(request):
