@@ -13,7 +13,7 @@
 
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-            {{ itemForm|crispy }}
+            {{ createItem|crispy }}
 
             <!-- <input type="file" class="document" name="documentItem"> -->
             <input type="submit" class="btn btn-success" value="Criar item">
