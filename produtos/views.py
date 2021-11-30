@@ -63,12 +63,14 @@ def NewProduct(request):
     return render(request, 'produtos/NewProduct.html', context)
 
 def NewItem(request):
+    product = Produto()
     createItem = ItemForm()
     if request.method == 'POST':
         createItem = ItemForm(request.POST, request.FILES)
         if createItem.is_valid():
             item = createItem.save(commit=False)
             item.tipo = 'Zip'
+            item.produto = product
             item.save()
             return redirect('/products/')
     else:
@@ -81,11 +83,14 @@ def NewItem(request):
     return render(request, 'produtos/NewItem.html', context)
 
 def NewFile(request):
+    product = Produto()
     fileForm = FileForm()
     if request.method == 'POST':
         fileForm = FileForm(request.POST, request.FILES)
         if fileForm.is_valid():
-            fileForm.save()
+            file = fileForm.save(commit=False)
+            file.produto = product
+            file.save()
             return redirect('/products/')
         
     else:
@@ -385,49 +390,42 @@ def GenerateSerial(request):
 def GenerateSerialSingle(request, id):
     serialNumberForm = SerialNumberForm()
     product = Produto.objects.get(id=id)
+    # repeat = request.GET.get("repeat")
     
-    i=1
-    if request.method == 'GET':
-        repetition = request.GET.get('repeat')
-        i=0
-    for i in repetition:
-    
-        if request.method == 'POST':
-            serialNumberForm = SerialNumberForm(request.POST or None)
+    if request.method == 'POST':
+        serialNumberForm = SerialNumberForm(request.POST or None)
+        
+        if serialNumberForm.is_valid():
+            os = serialNumberForm.save(commit=False)
+            os.numeroSerie = id
+            os.produto = product
+            lastProduct = NumeroSerie.objects.last()
             
-            if serialNumberForm.is_valid():
-                os = serialNumberForm.save(commit=False)
-                os.numeroSerie = id
-                os.produto = product
-                lastProduct = NumeroSerie.objects.last()
+            if lastProduct == None:
+                prefix = datetime.date.today().year
+                fix = product.tipoProduto.sigla
+                sufix = product.id
+                var = 100
+                os.serialNumber = str(prefix) + fix + str(sufix) + str(var)
                 
-                if lastProduct == None:
-                    prefix = datetime.date.today().year
-                    fix = product.tipoProduto.sigla
-                    sufix = product.id
-                    var = 100
-                    os.serialNumber = str(prefix) + fix + str(sufix) + str(var)
-                    
-                elif int(lastProduct.serialNumber[0:4]) != int(datetime.date.today().year):
-                    prefix = datetime.date.today().year
-                    fix = product.tipoProduto.sigla
-                    sufix = product.id
-                    var = 100
-                    os.serialNumber = str(prefix) + fix + str(sufix) + str(var)
+            elif int(lastProduct.serialNumber[0:4]) != int(datetime.date.today().year):
+                prefix = datetime.date.today().year
+                fix = product.tipoProduto.sigla
+                sufix = product.id
+                var = 100
+                os.serialNumber = str(prefix) + fix + str(sufix) + str(var)
+        
+            else:
+                prefix = datetime.date.today().year
+                fix = product.tipoProduto.sigla
+                sufix = product.id
+                var = int(lastProduct.serialNumber[7:10])
+                var += 1
+                os.serialNumber = str(prefix) + fix + str(sufix) + str(var)
             
-                else:
-                    prefix = datetime.date.today().year
-                    fix = product.tipoProduto.sigla
-                    sufix = product.id
-                    var = int(lastProduct.serialNumber[7:10])
-                    var += 1
-                    os.serialNumber = str(prefix) + fix + str(sufix) + str(var)
-                
-                os.save()
-                
-        else:
-            serialNumberForm = SerialNumberForm()
-        i += 1
+            os.save()
+    else:
+        serialNumberForm = SerialNumberForm()
     return render(request, 'produtos/SerialNumberid.html', {'serialNumberForm': serialNumberForm})
 
 def CustomerProducts(request):
