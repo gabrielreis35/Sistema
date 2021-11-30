@@ -396,23 +396,23 @@ def GenerateSerialSingle(request, id):
             
             if lastProduct == None:
                 prefix = datetime.date.today().year
-                fix = product.nome[3:6]
+                fix = product.tipoProduto.sigla
                 sufix = product.id
                 var = 100
                 os.serialNumber = str(prefix) + fix + str(sufix) + str(var)
                 
             elif int(lastProduct.serialNumber[0:4]) != int(datetime.date.today().year):
                 prefix = datetime.date.today().year
-                fix = product.nome[3:6]
+                fix = product.tipoProduto.sigla
                 sufix = product.id
                 var = 100
                 os.serialNumber = str(prefix) + fix + str(sufix) + str(var)
            
             else:
                 prefix = datetime.date.today().year
-                fix = product.nome[3:6]
+                fix = product.tipoProduto.sigla
                 sufix = product.id
-                var = int(lastProduct.serialNumber[8:11])
+                var = int(lastProduct.serialNumber[7:10])
                 var += 1
                 os.serialNumber = str(prefix) + fix + str(sufix) + str(var)
             
