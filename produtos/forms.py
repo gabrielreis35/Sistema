@@ -150,13 +150,11 @@ class SerialNumberForm(ModelForm):
     class Meta:
         model = NumeroSerie
         fields = [
-            'os',
-            'produto',
+            'os'
         ]
         
         labels = {
-            'os': ('Ordem de Serviço relacionada:'),
-            'produto': ('Produto relacionado:')
+            'os': ('Ordem de Serviço relacionada:')
         }
 
 class WorkOrderForm(ModelForm):

@@ -392,6 +392,7 @@ def GenerateSerialSingle(request, id):
         if serialNumberForm.is_valid():
             os = serialNumberForm.save(commit=False)
             os.numeroSerie = id
+            os.produto = product
             lastProduct = NumeroSerie.objects.last()
             
             if lastProduct == None:
