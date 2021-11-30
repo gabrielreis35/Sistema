@@ -385,7 +385,7 @@ def GenerateSerial(request):
 def GenerateSerialSingle(request, id):
     serialNumberForm = SerialNumberForm()
     product = Produto.objects.get(id=id)
-    
+        
     if request.method == 'POST':
         serialNumberForm = SerialNumberForm(request.POST or None)
         
@@ -408,7 +408,7 @@ def GenerateSerialSingle(request, id):
                 sufix = product.id
                 var = 100
                 os.serialNumber = str(prefix) + fix + str(sufix) + str(var)
-           
+        
             else:
                 prefix = datetime.date.today().year
                 fix = product.tipoProduto.sigla

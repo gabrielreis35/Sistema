@@ -10,6 +10,9 @@
         <h1>Adicionar novo produto</h1>
     </div>
     <div class="offset-1 col-3 list-div">
+        <form method="GET">
+            <input id="repeat" type="number" name="repeat" placeholder="Quantidade a ser gerado:">
+        </form>
         <form method="POST">
             {% csrf_token %}
             {{ serialNumberForm|crispy }}
