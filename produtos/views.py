@@ -390,8 +390,7 @@ def GenerateSerial(request):
 def GenerateSerialSingle(request, id):
     serialNumberForm = SerialNumberForm()
     product = Produto.objects.get(id=id)
-    # repeat = request.GET.get("repeat")
-    
+
     if request.method == 'POST':
         serialNumberForm = SerialNumberForm(request.POST or None)
         
