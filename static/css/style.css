@@ -645,6 +645,11 @@ a.download-item, a.download-file {
 
 /* Página de Gerar Número de Série */
 
+.repeat{
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
 .btn.btn-success.generate {
     margin-top: 1em;
 }

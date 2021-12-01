@@ -104,7 +104,6 @@ class ItemForm(ModelForm):
     class Meta:
         model = Item
         fields = [
-            'produto',
             'nome',
             'revisao',
             'partNumber',
@@ -113,7 +112,6 @@ class ItemForm(ModelForm):
         ]
 
         labels = {
-            'produto': ('Produto relacionado'),
             'nome': ('Nome'),
             'tipo': ('Tipo'),
             'revisao': ('Revisão'),
@@ -127,7 +125,6 @@ class FileForm(ModelForm):
     class Meta:
         model = Arquivo
         fields = [
-            'produto',
             'nome',
             'tipo',
             'revisao',
@@ -137,7 +134,6 @@ class FileForm(ModelForm):
         ]
 
         labels = {
-            'produto': ('Produto relacionado'),
             'nome': ('Nome'),
             'tipo': ('Tipo'),
             'revisao': ('Revisão'),
