@@ -152,6 +152,10 @@ body {
     padding: 0;
 }
 
+.tip-product-div {
+    position: relative;
+}
+
 /* Comum de todas as páginas */
 
 .asteriskField {

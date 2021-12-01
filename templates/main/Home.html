@@ -31,15 +31,182 @@
             </thead>
 
             <tbody>
-               <tr>
-                  {% if tipProduct %}{% endif %}
-                  <td>
-                     Graniteira
-                  </td>
-                  <td>
-                     {{tipProduct}}
-                  </td>
-               </tr>
+               {% if acessorio != 0 %}
+                  <tr>
+                     <td>
+                        Acessório
+                     </td>
+                     <td>
+                        {{ acessorio }}
+                     </td>
+                  </tr>
+               {% endif %}
+
+               {% if carregadeira != 0 %}
+                  <tr>
+                     <td>
+                        Carregadeira
+                     </td>
+                     <td>
+                        {{ carregadeira }}
+                     </td>
+                  </tr>
+               {% endif %}
+               
+               {% if chapaDesgaste != 0 %}
+                  <tr>
+                     <td>
+                        Chapa de desgaste
+                     </td>
+                     <td>
+                        {{ chapaDesgaste }}
+                     </td>
+                  </tr>
+               {% endif %}
+
+               {% if chockBar != 0 %}
+                  <tr>
+                     <td>
+                        Chock bar
+                     </td>
+                     <td>
+                        {{ chapaDesgaste }}
+                     </td>
+                  </tr>
+               {% endif %}
+
+               {% if graniteira != 0 %}
+                  <tr>
+                     <td>
+                        Graniteira
+                     </td>
+                     <td>
+                        {{ graniteira }}
+                     </td>
+                  </tr>
+               {% endif %}
+               
+               {% if dispFer != 0 %}
+                  <tr>
+                     <td>
+                        Dispositivos e ferramentas
+                     </td>
+                     <td>
+                        {{ dispFer }}
+                     </td>
+                  </tr>
+               {% endif %}
+
+               {% if engate != 0 %}
+                  <tr>
+                     <td>
+                        Engate Rápido
+                     </td>
+                     <td>
+                        {{ engate }}
+                     </td>
+                  </tr>
+               {% endif %}
+
+               {% if escavadeira != 0 %}
+                  <tr>
+                     <td>
+                        Escavadeira
+                     </td>
+                     <td>
+                        {{ escavadeira }}
+                     </td>
+                  </tr>
+               {% endif %}
+
+               {% if ferramentaSolo != 0 %}
+                  <tr>
+                     <td>
+                        Ferramenta de penetração de Solo
+                     </td>
+                     <td>
+                        {{ ferramentaSolo }}
+                     </td>
+                  </tr>
+               {% endif %}
+
+               {% if garfo != 0 %}
+                  <tr>
+                     <td>
+                        Garfo
+                     </td>
+                     <td>
+                        {{ garfo }}
+                     </td>
+                  </tr>
+               {% endif %}
+
+               {% if lamina != 0 %}
+                  <tr>
+                     <td>
+                        Lâmina
+                     </td>
+                     <td>
+                        {{ lamina }}
+                     </td>
+                  </tr>
+               {% endif %}
+
+               {% if lanca != 0 %}
+                  <tr>
+                     <td>
+                        Lança
+                     </td>
+                     <td>
+                        {{ lanca }}
+                     </td>
+                  </tr>
+               {% endif %}
+
+               {% if ripper != 0 %}
+                  <tr>
+                     <td>
+                        Ripper
+                     </td>
+                     <td>
+                        {{ ripper }}
+                     </td>
+                  </tr>
+               {% endif %}
+
+               {% if segmento != 0 %}
+                  <tr>
+                     <td>
+                        Segmento
+                     </td>
+                     <td>
+                        {{ segmento }}
+                     </td>
+                  </tr>
+               {% endif %}
+
+               {% if vala != 0 %}
+                  <tr>
+                     <td>
+                        Vala
+                     </td>
+                     <td>
+                        {{ vala }}
+                     </td>
+                  </tr>
+               {% endif %}
+
+               {% if servico != 0 %}
+                  <tr>
+                     <td>
+                        Serviço
+                     </td>
+                     <td>
+                        {{ servico }}
+                     </td>
+                  </tr>
+               {% endif %}
+               
             </tbody>
          </table>
       </div>
