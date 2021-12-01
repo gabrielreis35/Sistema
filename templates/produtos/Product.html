@@ -7,6 +7,7 @@
 <div class="title">
     <h1>{{ product.nome }}</h1>
 </div>
+
 <div class="container" id="edit-container">
     <a href="{% url 'products:Update_Product' product.id %}" class="edit-product">
         <div class="edit-div">
@@ -164,6 +165,11 @@
                 <th scope="col">Tipo de fabricação</th>
                 <th scope="col">Data de Criação</th>
                 <th scope="col">
+                    <div class="col partnumber-div">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                </th>
+                <th scope="col">
                     <div class="col download-div">
                         <i class="fas fa-download download-button"></i>
                     </div>
@@ -195,6 +201,9 @@
                     </td>
                     <td>
                         {{ item.dateCriacao }}
+                    </td>
+                    <td>
+                        <i class="fas fa-clipboard-check"></i>
                     </td>
                     <td>
                         <a href="#" class="download-item" download="{{ item.nome }}">
@@ -232,6 +241,9 @@
                     </td>
                     <td>
                         {{ file.dateCriacao }}
+                    </td>
+                    <td>
+                        <i class="fas fa-clipboard-check"></i>
                     </td>
                     <td>
                         <a href="#" class="download-file" download="{{ file.nome }}">
