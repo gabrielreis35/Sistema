@@ -8,7 +8,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.files.storage import FileSystemStorage
 from produtos.models import CategoriaProduto, ClasseProduto, NumeroSerie, Produto, Item, Arquivo, ProdutoCliente, Segmento, TipoProduto
-from produtos.forms import CategoryForm, ClassProductForm, CustomerProductsForm, ItemForm, ProdutoForm, FileForm, SegmentForm, SerialNumberForm, TipForm, WorkOrderForm, produtoSelect
+from produtos.forms import CategoryForm, ClassProductForm, CustomerProductsForm, ItemForm, PartNumberForm, ProdutoForm, FileForm, SegmentForm, SerialNumberForm, TipForm, WorkOrderForm, produtoSelect
 
 def Products(request):
     search = request.GET.get('search')
@@ -165,6 +165,37 @@ def NewClass(request):
     }
     
     return render(request, 'produtos/NewClass.html', context)
+
+def NewCustomerProducts(request):
+    createCustomerProducts = CustomerProductsForm()
+    if request.method == 'POST':
+        createCustomerProducts = CustomerProductsForm(request.POST or None)
+        if createCustomerProducts.is_valid():
+            createCustomerProducts.save()
+            return redirect('/products')
+        
+    else:
+        createCustomerProducts = CustomerProductsForm()
+        
+    context = {
+        'createCustomerProducts' : createCustomerProducts
+    }
+    return render(request, 'produtos/NewCustomerProducts.html', context)
+
+def NewPartNumber(request):
+    createPartNumber = PartNumberForm()
+    if request.method == "POST":
+        createPartNumber = PartNumberForm(request.POST or None)
+        if createPartNumber.is_valid():
+            createPartNumber.save()
+            return redirect('../')
+    else:
+        createPartNumber = PartNumberForm()
+    
+    context = {
+        'createPartNumber' : createPartNumber
+    }
+    return render(request, 'produtos/NewPartNumber.html', context)
 
 def ViewProduct(request, id):
     context = []
@@ -431,19 +462,3 @@ def CustomerProducts(request):
     customerProduct = ProdutoCliente.objects.all()
     context = {'customerProduct' : customerProduct}
     return render(request, 'produtos/CustomerProducts.html', context)
-
-def NewCustomerProducts(request):
-    createCustomerProducts = CustomerProductsForm()
-    if request.method == 'POST':
-        createCustomerProducts = CustomerProductsForm(request.POST or None)
-        if createCustomerProducts.is_valid():
-            createCustomerProducts.save()
-            return redirect('/products')
-        
-    else:
-        createCustomerProducts = CustomerProductsForm()
-        
-    context = {
-        'createCustomerProducts' : createCustomerProducts
-    }
-    return render(request, 'produtos/NewCustomerProducts.html', context)

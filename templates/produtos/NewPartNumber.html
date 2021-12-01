@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}Novo PartNumber{% endblock %}
+
+{% block content %}
+        
+    <div class="container title">
+        <h1>Novo PartNumber</h1>
+    </div>
+
+    <div class="offset-1 col-3 add-partnumber">
+        <form method="POST">
+                {% csrf_token %}
+                {{ createPartNumber|crispy }}
+                <input type="submit" class="btn btn-success" value="Gerar PartNumber">
+        </form>
+    <div>
+
+{% endblock %}

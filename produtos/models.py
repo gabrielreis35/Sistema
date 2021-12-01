@@ -167,3 +167,9 @@ class ProdutoCliente(models.Model):
     def __self__(self):
         return self.id
     
+class PartNumber(models.Model):
+    partNumber = CharField(max_length=30)
+    
+    dateCriacao = DateTimeField(auto_now_add=True)
+    
+    produto = ForeignKey(Produto, on_delete=CASCADE)

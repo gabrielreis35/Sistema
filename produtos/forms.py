@@ -2,7 +2,7 @@ from os import name
 from django import forms
 from django.db.models import fields
 from django.forms import ModelForm, widgets
-from .models import CategoriaProduto, ClasseProduto, Item, NumeroSerie, Produto, Arquivo, ProdutoCliente, Segmento, TipoProduto
+from .models import CategoriaProduto, ClasseProduto, Item, NumeroSerie, PartNumber, Produto, Arquivo, ProdutoCliente, Segmento, TipoProduto
 from workOrder.models import OrdemServico
 
 class produtoSelect(forms.Select):
@@ -177,3 +177,10 @@ class CustomerProductsForm(ModelForm):
             'cliente': ('Cliente'),
             'file': ('Arquivo')
         }
+        
+class PartNumberForm(ModelForm):
+    class Meta:
+        model = PartNumber
+        fields = ['partNumber']
+        
+        labels = {'partNumber' : ('PartNumber')}

@@ -15,6 +15,7 @@ urlpatterns = [
     path("newProductTip/", views.NewProductTip, name="New_Product_Tip"),
     path("newCategory/", views.NewCategory, name="New_Category"),
     path("newClass/", views.NewClass, name="New_Class"),
+    path("newPartNumber/", views.NewPartNumber, name="New_PartNumber"),
     
     path('viewSegment/', views.ViewSegment, name = 'View_Segment_Products'),
     path('viewProductTip/', views.ViewProductTip, name = 'View_ProductTip_Products'),
