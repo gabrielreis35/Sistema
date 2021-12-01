@@ -152,8 +152,9 @@ body {
     padding: 0;
 }
 
-.tip-product-div {
+.table .table-hover .table-bordered .tip-products-tab {
     position: relative;
+    padding: 1em;
 }
 
 /* Comum de todas as páginas */
@@ -257,6 +258,10 @@ a.edit-main:hover {
 
 .ordenar {
     margin-bottom: 0.31em !important;
+}
+
+.customer-products-main-div {
+    margin-bottom: 0.7em;
 }
 
 a.customer-products-main {
