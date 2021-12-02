@@ -69,7 +69,6 @@
         <table class="table table-striped table-hover table-bordered tab-products">
             <thead>
                 <tr>
-                    {% comment %} <th scope="col">Num. Série</th> {% endcomment %}
                     <th scope="col">Produto</th>
                     <th scope="col">Equipamento</th>
                     <th scope="col">Código</th>
@@ -84,9 +83,6 @@
             <tbody id="product-table">
                 {% for product in products %}
                 <tr scope="row">
-                    {% comment %} <td>
-                        {{product.numeroSerie}}
-                    </td> {% endcomment %}
                     <td>
                         {{product.nome}}
                     </td>
