@@ -106,17 +106,12 @@ class ItemForm(ModelForm):
         fields = [
             'nome',
             'revisao',
-            'partNumber',
-            'tipoFabricacao',
             'file'
         ]
 
         labels = {
             'nome': ('Nome'),
-            'tipo': ('Tipo'),
             'revisao': ('Revisão'),
-            'partNumber': ('PartNumber'),
-            'tipoFabricacao': ('Tipo de Fabricação'),
             'file': ('Arquivo')
         }
 

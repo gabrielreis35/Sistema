@@ -73,27 +73,11 @@ class Item(models.Model):
     def filePath(produto, file):
         return os.path.join('produtos', produto.nome, file)
     
-    tipoFabricacaoChoice = (
-        ('Montagem Geral', 'Montagem Geral'),
-        ('Montagem', 'Montagem'),
-        ('Usinagem', 'Usinagem'),
-        ('Soldado', 'Conjunto Soldado'),
-        ('CNC', 'Corte CNC'),
-        ('CNC / Dobra', 'Corte CNC com Dobra'),
-        ('CNC / Usinagem', 'Corte CNC com Usinagem'),
-        ('CNC / Dobra / Usinagem', 'Corte CNC com Dobra e Usinagem'),
-        ('Manual', 'Corte Manual'),
-        ('Manual / Dobra', 'Corte Manual com Dobra'),
-        ('Manual / Usinagem', 'Corte Manual com Usinagem'),
-        ('Manual / Dobra / Usinagem', 'Corte Manual com Dobra e Usinagem')
-    )
-
+    
     revisao = IntegerField()
     nome = CharField(max_length=30)
     tipo = CharField(max_length=8)
-    partNumber = CharField(max_length=16, null=True)
-    tipoFabricacao = CharField(max_length=25, choices=tipoFabricacaoChoice)
-
+    
     file = models.FileField(upload_to=filePath)
 
     dateCriacao = DateTimeField(auto_now_add=True)

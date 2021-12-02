@@ -62,14 +62,13 @@ def NewProduct(request):
             
     return render(request, 'produtos/NewProduct.html', context)
 
-def NewItem(request):
-    product = Produto()
+def NewItem(request, id):
+    product = get_object_or_404(Produto, id=id)
     createItem = ItemForm()
     if request.method == 'POST':
         createItem = ItemForm(request.POST, request.FILES)
         if createItem.is_valid():
             item = createItem.save(commit=False)
-            item.tipo = 'Zip'
             item.produto = product
             item.save()
             return redirect('/products/')
@@ -77,13 +76,14 @@ def NewItem(request):
         createItem = ItemForm()
     
     context = {
-        'createItem' : createItem
+        'createItem' : createItem,
+        'product' : product,
     }
     
     return render(request, 'produtos/NewItem.html', context)
 
-def NewFile(request):
-    product = Produto()
+def NewFile(request, id):
+    product = get_object_or_404(Produto, id=id)
     fileForm = FileForm()
     if request.method == 'POST':
         fileForm = FileForm(request.POST, request.FILES)

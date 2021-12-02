@@ -9,8 +9,8 @@ urlpatterns = [
     path("addAll/", views.AddAllProduct, name="Add_All_Products"),
     
     path('newProduct/', views.NewProduct, name = 'New_Products'),
-    path('newitem', views.NewItem, name = 'New_Item'),
-    path('newfile', views.NewFile, name = 'New_File'),
+    path('newitem/<int:id>', views.NewItem, name = 'New_Item'),
+    path('newfile/<int:id>', views.NewFile, name = 'New_File'),
     path("newSegment/", views.NewSegment, name="New_Segment"),
     path("newProductTip/", views.NewProductTip, name="New_Product_Tip"),
     path("newCategory/", views.NewCategory, name="New_Category"),

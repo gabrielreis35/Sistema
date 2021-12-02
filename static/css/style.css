@@ -339,31 +339,23 @@ a.customer-products-main:hover {
 
 /* Página Produto */
 
-#edit-container {
-    width: 100% !important;
-    text-align: center;
-}
-
-a.edit-product a.del-product {
-    display: inline-block !important;
-}
-
 a.edit-product {
-    width: 6.5em;
+    width: 6em;
 }
 
 a.edit-product:hover {
     text-decoration: none;
 }
 
-.edit-div {
+.edit-product {
     background-color: #039444;
     cursor: pointer;
     color: #fff;
     display: inline-block;
-    padding: 0.5em;
-    border: 0.2em solid #fff;
-    border-radius: 1em;
+    padding: 0.4em;
+    border-radius: 0.8em;
+    margin-left: 5em;
+    margin-bottom: 1em;
 }
 
 .fas.fa-edit {
@@ -373,15 +365,12 @@ a.edit-product:hover {
 }
 
 .del-product-div {
-    display: inline-block;
     background-color: #ff0000;
     cursor: pointer;
     color: #fff;
-    
-    padding: 0.5em;
-    bottom: 2.7em;
-    margin-left: 60em;
-    border-radius: 1em;
+    display: inline-block;
+    padding: 0.4em;
+    border-radius: 0.8em;
 }
 
 a.del-product:hover {
@@ -399,10 +388,6 @@ a.del-product:hover {
     border: solid 2px #ddd;
 }
 
-.add {  
-    margin-top: 2em;
-}
-
 a.download-div:hover {
     text-decoration: none;
 }
@@ -413,18 +398,20 @@ a.download-div:hover {
     display: inline-block;
     color: #fff;
     padding: 0.5em;
-    border-radius: 1em;
+    border-radius: 0.8em;
+    margin-left: 7em;
+    margin-right: 0.5em;
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
 }
 
 .file-div {
     background-color: #3476e2;
     cursor: pointer;
-    color: #fff;
-    bottom: 2.5em;
-    padding: 0.5em;
-    margin-left: 12em;
-    border-radius: 1em;
     display: inline-block;
+    color: #fff;
+    padding: 0.5em;
+    border-radius: 0.8em;
 }
 
 .fas.fa-plus.add-item-button, .fas.fa-plus.add-file-button, .fas.fa-trash.del-product-button {
