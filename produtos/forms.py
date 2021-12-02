@@ -176,6 +176,14 @@ class CustomerProductsForm(ModelForm):
 class PartNumberForm(ModelForm):
     class Meta:
         model = PartNumber
-        fields = ['partNumber']
+        fields = [
+            'partNumber',
+            'terceiro',
+            'produto'
+        ]
         
-        labels = {'partNumber' : ('PartNumber')}
+        labels = {
+            'partNumber' : ('PartNumber'),
+            'terceiro' : ('PartNumber do fabricante:'),
+            'produto' : ('Produto relacionado')
+            }
