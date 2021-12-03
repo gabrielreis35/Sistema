@@ -402,7 +402,7 @@ def DeleteClassProduct(request, id):
 
 def SerialNumber(request):
     productsList = Produto.objects.all()
-    serialNumbers = NumeroSerie.objects.all()
+    serialNumbers = NumeroSerie.objects.all().order_by('-dateCriacao')
     context = {'serialNumbers' : serialNumbers, 'productsList' : productsList}
     return render(request, 'produtos/SerialNumber.html', context)
 

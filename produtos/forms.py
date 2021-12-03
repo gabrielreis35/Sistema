@@ -186,4 +186,4 @@ class PartNumberForm(ModelForm):
             'partNumber' : ('PartNumber'),
             'terceiro' : ('PartNumber do fabricante:'),
             'produto' : ('Produto relacionado')
-            }
+        }

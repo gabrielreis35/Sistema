@@ -5,5 +5,5 @@ app_name = 'colaborators'
 
 urlpatterns = [
     path('users/', ColaboratorView, name = 'Home_Colaborator'),
-    path('signup/', ColaboratorRegister.as_view(template_name = 'colaborator/Signup.html'), name = 'Signup_Colaborator'),
+    path('signup/', ColaboratorRegister, name='Signup_Colaborator')
 ]
