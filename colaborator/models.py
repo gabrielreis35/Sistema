@@ -1,8 +1,9 @@
 from django.db import models
 from django.db.models.fields import CharField, DateTimeField, EmailField
-from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser, User
 from django.db.models.fields.related import ForeignKey, ManyToManyField, OneToOneField
 from django.db.models.fields.reverse_related import ManyToManyRel, ManyToOneRel
+from django.forms.widgets import PasswordInput
 from django.urls.base import reverse
 from departments.models import Departamento
 
