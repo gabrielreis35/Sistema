@@ -651,6 +651,12 @@ a.download-item, a.download-file {
     margin-bottom: 1em;
 }
 
+.table .table-striped .table-hover .table-bordered .tab-serialNumber {
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+}
+
+
 /* Página de Gerar Número de Série */
 
 .repeat{

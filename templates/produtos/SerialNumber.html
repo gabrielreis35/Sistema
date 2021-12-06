@@ -49,6 +49,24 @@
                 </tbody>
             </table>
 
+            <div class="pagination">
+                <span class="step-links">
+                    {% if serialNumbers.has_previous %}
+                        <a href="?page={{serialNumbers.previous_page_number}}" class="fas fa-arrow-left"></a>
+                    {% endif %}
+                    
+                    {% if serialNumbers.paginator.num_pages %}
+                    <span class="current">
+                        {{serialNumbers.number}} de {{serialNumbers.paginator.num_pages}}
+                    </span>
+                    {% endif %}
+    
+                    {% if serialNumbers.has_next %}
+                        <a href="?page={{serialNumbers.next_page_number}}" class="fas fa-arrow-right"></a>
+                    {% endif %}
+                </span>
+            </div>
+
         {% comment %} One table for Serial Number relation product & OS {% endcomment %}
     </div>
 

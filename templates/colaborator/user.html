@@ -43,6 +43,24 @@
                 {% endfor %}
             </tbody>
         </table>
+
+        <div class="pagination">
+            <span class="step-links">
+                {% if colaborators.has_previous %}
+                    <a href="?page={{colaborators.previous_page_number}}" class="fas fa-arrow-left"></a>
+                {% endif %}
+                
+                {% if colaborators.paginator.num_pages %}
+                <span class="current">
+                    {{colaborators.number}} de {{colaborators.paginator.num_pages}}
+                </span>
+                {% endif %}
+
+                {% if colaborators.has_next %}
+                    <a href="?page={{colaborators.next_page_number}}" class="fas fa-arrow-right"></a>
+                {% endif %}
+            </span>
+        </div>
     </div>
 
 

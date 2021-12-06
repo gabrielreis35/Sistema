@@ -27,10 +27,10 @@
                 {% for client in clients %}
                 <tr scope="row">
                     <td>
-                        {{client.nome}}
+                        {{client.cnpj}}
                     </td>
                     <td>
-                        {{client.cnpj}}
+                        {{client.nome}}
                     </td>
                 </tr>
                 {% empty %}
@@ -38,5 +38,22 @@
                 {% endfor %}
             </tbody>
         </table>
+        <div class="pagination">
+            <span class="step-links">
+                {% if clients.has_previous %}
+                    <a href="?page={{clients.previous_page_number}}" class="fas fa-arrow-left"></a>
+                {% endif %}
+                
+                {% if clients.paginator.num_pages %}
+                <span class="current">
+                    {{clients.number}} de {{clients.paginator.num_pages}}
+                </span>
+                {% endif %}
+
+                {% if clients.has_next %}
+                    <a href="?page={{clients.next_page_number}}" class="fas fa-arrow-right"></a>
+                {% endif %}
+            </span>
+        </div>
     </div>
 {% endblock %}

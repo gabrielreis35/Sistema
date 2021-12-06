@@ -14,7 +14,10 @@ def Products(request):
     search = request.GET.get('search')
     
     if search:
-        products = Produto.objects.filter(nome__icontains = search)
+        productsList = Produto.objects.filter(nome__icontains = search)
+        paginator = Paginator(productsList, 10)
+        page = request.GET.get('page')
+        products = paginator.get_page(page)
     else:
         productsList = Produto.objects.all().order_by('-dateCriacao')
         order = request.GET.get('order')
@@ -29,12 +32,12 @@ def Products(request):
             elif order == 'Segmento':
                 productsList = Produto.objects.all().order_by('segmento')
         
-        paginator = Paginator(productsList, 20)
+        paginator = Paginator(productsList, 10)
         page = request.GET.get('page')
         products = paginator.get_page(page)
-        context = {
-            'products' : products
-        }
+    context = {
+        'products' : products
+    }
     return render(request, 'produtos/Products.html', context)
 
 def AddAllProduct(request):
@@ -71,7 +74,7 @@ def NewItem(request, id):
             item = createItem.save(commit=False)
             item.produto = product
             item.save()
-            return redirect('/products/')
+            return redirect('../')
     else:
         createItem = ItemForm()
     
@@ -402,21 +405,28 @@ def DeleteClassProduct(request, id):
 
 def SerialNumber(request):
     productsList = Produto.objects.all()
-    serialNumbers = NumeroSerie.objects.all().order_by('-dateCriacao')
+    serialNumbersList = NumeroSerie.objects.all().order_by('-dateCriacao')
+    
+    paginator = Paginator(serialNumbersList, 10)
+    page = request.GET.get('page')
+    serialNumbers = paginator.get_page(page)
+   
     context = {'serialNumbers' : serialNumbers, 'productsList' : productsList}
     return render(request, 'produtos/SerialNumber.html', context)
 
 def GenerateSerial(request):
-    productsList = Produto()
+    productsList = Produto.objects.all()
     generate = request.GET.get('generate')
     if generate:
         productsList = Produto.objects.filter(nome__icontains = generate)
-    productsList = Produto.objects.all()
     
-    # paginator = Paginator(productsList, 10)
-    # page = request.GET.get('page')
-    # productsList = paginator.get_page(page)
-    return render(request, 'produtos/NewSerialNumber.html', {'products': productsList})
+    paginator = Paginator(productsList, 10)
+    page = request.GET.get('page')
+    products = paginator.get_page(page)
+    context = {
+        'products' : products
+    }
+    return render(request, 'produtos/NewSerialNumber.html', context)
 
 def GenerateSerialSingle(request, id):
     serialNumberForm = SerialNumberForm()

@@ -36,6 +36,24 @@
             </tbody>
         </table>
 
+        <div class="pagination">
+            <span class="step-links">
+                {% if workOrders.has_previous %}
+                    <a href="?page={{workOrders.previous_page_number}}" class="fas fa-arrow-left"></a>
+                {% endif %}
+                
+                {% if workOrders.paginator.num_pages %}
+                <span class="current">
+                    {{workOrders.number}} de {{workOrders.paginator.num_pages}}
+                </span>
+                {% endif %}
+
+                {% if workOrders.has_next %}
+                    <a href="?page={{workOrders.next_page_number}}" class="fas fa-arrow-right"></a>
+                {% endif %}
+            </span>
+        </div>
+
     </div>
     
 {% endblock %}

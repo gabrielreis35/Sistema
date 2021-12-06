@@ -1,11 +1,20 @@
 from django.shortcuts import redirect, render
 from produtos.forms import WorkOrderForm
+from django.core.paginator import Paginator
+
 
 from workOrder.models import OrdemServico
 
 def WorkOrderHome(request):
-    workOrders = OrdemServico.objects.all().order_by('-dateCriacao')
-    return render(request, 'workOrder/WorkOrder.html', {'workOrders' : workOrders})
+    workOrdersList = OrdemServico.objects.all().order_by('-dateCriacao')
+    
+    paginator = Paginator(workOrdersList, 10)
+    page = request.GET.get('page')
+    workOrders = paginator.get_page(page)
+    context = {
+        'workOrders' : workOrders
+    }
+    return render(request, 'workOrder/WorkOrder.html', context)
 
 def NewWorkOrder(request):
     workOrderForm = WorkOrderForm()

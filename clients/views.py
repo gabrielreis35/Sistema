@@ -1,10 +1,14 @@
 from django.shortcuts import redirect, render
-
+from django.core.paginator import Paginator
 from clients.forms import ClientForm
 from .models import Cliente
 
 def HomeClients(request):
-    clients = Cliente.objects.all().order_by('-dateCriacao')
+    clientsList = Cliente.objects.all().order_by('-dateCriacao')
+    
+    paginator = Paginator(clientsList, 10)
+    page = request.GET.get('page')
+    clients = paginator.get_page(page)
     context = {'clients' : clients }
     return render(request, 'clients/HomeClients.html', context)
 
