@@ -1,8 +1,12 @@
 import os
 import datetime
+from django.conf import settings
+from django.http import HttpResponse
 from django.core.files.base import File
 from django.core.paginator import Paginator
 from django.forms.widgets import SelectMultiple
+from django.http import response
+from django.http.response import Http404
 from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -22,15 +26,14 @@ def Products(request):
         productsList = Produto.objects.all().order_by('-dateCriacao')
         order = request.GET.get('order')
         
-        if order:
-            if order == 'Produto':
-                productsList = Produto.objects.all().order_by('nome')
-            elif order == 'Equipamento':
-                productsList = Produto.objects.all().order_by('equipamento')
-            elif order == 'Codigo':
-                productsList = Produto.objects.all().order_by('codigo')
-            elif order == 'Segmento':
-                productsList = Produto.objects.all().order_by('segmento')
+        if order == 'Produto':
+            productsList = Produto.objects.all().order_by('nome')
+        elif order == 'Equipamento':
+            productsList = Produto.objects.all().order_by('equipamento')
+        elif order == 'Codigo':
+            productsList = Produto.objects.all().order_by('codigo')
+        elif order == 'Segmento':
+            productsList = Produto.objects.all().order_by('segmento')
         
         paginator = Paginator(productsList, 10)
         page = request.GET.get('page')
@@ -344,12 +347,14 @@ def UpdateClass(request, id):
         return render(request, 'produtos/UpdateClass.html', context)
 
 
-# def DownloadItem(request, path):
-#     filePath = os.path.join(settings.MEDIA_ROOT, path)
-#     if os.path.exists(filePath):
-#         with open(filePath, 'rb') as fh:
-#             response = HttpResponse(mimetype='application/force-download')
-    #filePath = '/media/produtos'
+def DownloadItem(request, path):
+    filePath = os.path.join(settings.MEDIA_ROOT, path)
+    if os.path.exists(filePath):
+        with open(filePath, 'rb') as fh:
+            response = HttpResponse(fh.read(), content_type="application/foce-download")
+            response['Content-Disposition'] = 'inline; filename=' + os.path.basename(filePath);
+            return response
+    raise Http404
 
 def DeleteProduct(request, id):
     product = get_object_or_404(Produto, id = id)

@@ -37,7 +37,7 @@ urlpatterns = [
     path('deleteCategory/<int:id>', views.DeleteCategory, name = 'Delete_Category_Product'),
     path('deleteClassProduct/<int:id>', views.DeleteClassProduct, name = 'Delete_Class_Product'),
 
-    # path('downloaditem/<int:id>', views.DownloadItem, name = 'Download_Item'),
+    path('downloaditem/<int:id>', views.DownloadItem, name = 'Download_Item'),
 
     path('serialNumber/', views.SerialNumber, name = 'Serial_Number'),
     path('newSerialNumber/', views.GenerateSerial, name = 'Generate_SerialNumber'),
