@@ -25,7 +25,6 @@ def Products(request):
     else:
         productsList = Produto.objects.all().order_by('-dateCriacao')
         order = request.GET.get('order')
-        
         if order == 'Produto':
             productsList = Produto.objects.all().order_by('nome')
         elif order == 'Equipamento':
@@ -34,7 +33,7 @@ def Products(request):
             productsList = Produto.objects.all().order_by('codigo')
         elif order == 'Segmento':
             productsList = Produto.objects.all().order_by('segmento')
-        
+            
         paginator = Paginator(productsList, 10)
         page = request.GET.get('page')
         products = paginator.get_page(page)
@@ -58,14 +57,11 @@ def NewProduct(request):
             product.descontinuado = False
             product.save()
             return redirect('../../')
-        
     else:
         createProduct = ProdutoForm()
-    
     context = {
         'createProduct' : createProduct
     }
-            
     return render(request, 'produtos/NewProduct.html', context)
 
 def NewItem(request, id):
@@ -80,12 +76,10 @@ def NewItem(request, id):
             return redirect('../')
     else:
         createItem = ItemForm()
-    
     context = {
         'createItem' : createItem,
         'product' : product,
     }
-    
     return render(request, 'produtos/NewItem.html', context)
 
 def NewFile(request, id):
@@ -97,11 +91,9 @@ def NewFile(request, id):
             file = fileForm.save(commit=False)
             file.produto = product
             file.save()
-            return redirect('/products/')
-        
+            return redirect('/products/')  
     else:
         fileForm = FileForm()
-        
     return render(request, 'produtos/NewFile.html', {'fileForm' : fileForm})
 
 def NewSegment(request):
@@ -111,14 +103,11 @@ def NewSegment(request):
         if createSegment.is_valid():
             createSegment.save()
             return redirect('/products')
-        
     else:
         createSegment = SegmentForm()
-    
     context = {
         'createSegment' : createSegment
     }
-    
     return render(request, 'produtos/NewSegment.html', context)
 
 def NewProductTip(request):
@@ -128,14 +117,11 @@ def NewProductTip(request):
         if createTip.is_valid():
             createTip.save()
             return redirect('/products')
-        
     else:
         createTip = TipForm()
-    
     context = {
         'createTip' : createTip
     }
-    
     return render(request, 'produtos/NewProductTip.html', context)
 
 def NewCategory(request):
@@ -145,14 +131,11 @@ def NewCategory(request):
         if createCategory.is_valid():
             createCategory.save()
             return redirect('/products')
-        
     else:
         createCategory = CategoryForm()
-    
     context = {
         'createCategory' : createCategory
     }
-    
     return render(request, 'produtos/NewCategory.html', context)
 
 def NewClass(request):
@@ -162,10 +145,8 @@ def NewClass(request):
         if createClassProduct.is_valid():
             createClassProduct.save()
             return redirect('/products')
-        
     else:
         createClassProduct = ClassProductForm()
-        
     context = {
         'createClassProduct' : createClassProduct
     }
@@ -179,10 +160,8 @@ def NewCustomerProducts(request):
         if createCustomerProducts.is_valid():
             createCustomerProducts.save()
             return redirect('/products')
-        
     else:
         createCustomerProducts = CustomerProductsForm()
-        
     context = {
         'createCustomerProducts' : createCustomerProducts
     }
@@ -197,7 +176,6 @@ def NewPartNumber(request):
             return redirect('../')
     else:
         createPartNumber = PartNumberForm()
-    
     context = {
         'createPartNumber' : createPartNumber
     }
@@ -218,22 +196,18 @@ def ViewProduct(request, id):
 
 def ViewSegment(request):
     segments = Segmento.objects.all().order_by('-dateCriacao')
-
     return render(request, 'produtos/ViewSegment.html', {'segments' : segments})
 
 def ViewProductTip(request):
     productTipes = TipoProduto.objects.all().order_by('-dateCriacao')
-
     return render(request, 'produtos/ViewProductTip.html', {'productTipes' : productTipes})
 
 def ViewCategory(request):
     categories = CategoriaProduto.objects.all().order_by('-dateCriacao')
-
     return render(request, 'produtos/ViewCategory.html', {'categories' : categories})
 
 def ViewClass(request):
     classes = ClasseProduto.objects.all().order_by('-dateCriacao')
-
     return render(request, 'produtos/ViewClass.html', {'classes' : classes})
 
 def UpdateProduct(request, id):
@@ -250,7 +224,6 @@ def UpdateProduct(request, id):
                 'product' : product
             }
             return render(request, 'produtos/UpdateProduct.html', context)
-
     else:
         context = {
             'updateProduct' : updateProduct,
@@ -272,7 +245,6 @@ def UpdateSegment(request, id):
                 'segment' : segment
             }
             return render(request, 'produtos/UpdateSegment.html', context)
-    
     else:
         context = {
             'updateSegment' : updateSegment,
@@ -294,7 +266,6 @@ def UpdateProductTip(request, id):
                 'productTip' : productTip
             }
             return render(request, 'produtos/UpdateProductTip.html', context)
-
     else:
         context = {
             'updateTip' : updateTip,
@@ -316,7 +287,6 @@ def UpdateCategory(request, id):
                 'category' : category
             }
             return render(request, 'produtos/UpdateCategory.html', context)
-
     else:
         context = {
             'updateCategory' : updateCategory,
@@ -338,7 +308,6 @@ def UpdateClass(request, id):
                 'classProduct' : classProduct
             }
             return render(request, 'produtos/UpdateClass.html', context)
-
     else:
         context = {
             'updateClassProduct' : updateClassProduct,
@@ -351,7 +320,7 @@ def DownloadItem(request, path):
     filePath = os.path.join(settings.MEDIA_ROOT, path)
     if os.path.exists(filePath):
         with open(filePath, 'rb') as fh:
-            response = HttpResponse(fh.read(), content_type="application/foce-download")
+            response = HttpResponse(fh.read(), content_type="application/file")
             response['Content-Disposition'] = 'inline; filename=' + os.path.basename(filePath);
             return response
     raise Http404
@@ -361,7 +330,6 @@ def DeleteProduct(request, id):
     if request.method == 'POST':
         product.delete()
         return redirect('../')
-    
     context = {'product' : product}
     return render(request, 'produtos/DeleteProduct.html', context)
 
@@ -377,6 +345,7 @@ def DeleteFile(request, id):
     file = get_object_or_404(Arquivo, id = id)
     if request.method == 'POST':
         file.delete()
+        return redirect('../')
     context = {'file' : file}
     return render(request, 'produtos/DeleteFile.html', context)
 
@@ -411,11 +380,9 @@ def DeleteClassProduct(request, id):
 def SerialNumber(request):
     productsList = Produto.objects.all()
     serialNumbersList = NumeroSerie.objects.all().order_by('-dateCriacao')
-    
     paginator = Paginator(serialNumbersList, 10)
     page = request.GET.get('page')
     serialNumbers = paginator.get_page(page)
-   
     context = {'serialNumbers' : serialNumbers, 'productsList' : productsList}
     return render(request, 'produtos/SerialNumber.html', context)
 
@@ -424,7 +391,6 @@ def GenerateSerial(request):
     generate = request.GET.get('generate')
     if generate:
         productsList = Produto.objects.filter(nome__icontains = generate)
-    
     paginator = Paginator(productsList, 10)
     page = request.GET.get('page')
     products = paginator.get_page(page)
@@ -436,30 +402,25 @@ def GenerateSerial(request):
 def GenerateSerialSingle(request, id):
     serialNumberForm = SerialNumberForm()
     product = Produto.objects.get(id=id)
-
     if request.method == 'POST':
         serialNumberForm = SerialNumberForm(request.POST or None)
-        
         if serialNumberForm.is_valid():
             os = serialNumberForm.save(commit=False)
             os.numeroSerie = id
             os.produto = product
             lastProduct = NumeroSerie.objects.last()
-            
             if lastProduct == None:
                 prefix = datetime.date.today().year
                 fix = product.tipoProduto.sigla
                 sufix = product.id
                 var = 100
                 os.serialNumber = str(prefix) + fix + str(sufix) + str(var)
-                
             elif int(lastProduct.serialNumber[0:4]) != int(datetime.date.today().year):
                 prefix = datetime.date.today().year
                 fix = product.tipoProduto.sigla
                 sufix = product.id
                 var = 100
                 os.serialNumber = str(prefix) + fix + str(sufix) + str(var)
-        
             else:
                 prefix = datetime.date.today().year
                 fix = product.tipoProduto.sigla
@@ -467,7 +428,6 @@ def GenerateSerialSingle(request, id):
                 var = int(lastProduct.serialNumber[7:10])
                 var += 1
                 os.serialNumber = str(prefix) + fix + str(sufix) + str(var)
-            
             os.save()
     else:
         serialNumberForm = SerialNumberForm()

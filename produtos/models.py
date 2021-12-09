@@ -69,21 +69,15 @@ class Produto(models.Model):
         return self.nome
 
 class Item(models.Model):
-
     def filePath(produto, file):
         return os.path.join('produtos', produto.nome, file)
-    
     
     revisao = IntegerField()
     nome = CharField(max_length=30)
     tipo = CharField(max_length=8)
-    
     file = models.FileField(upload_to=filePath)
-
     dateCriacao = DateTimeField(auto_now_add=True)
-
     produto = ForeignKey(Produto, on_delete=CASCADE)
-
     def __str__(self):
         return self.nome
 

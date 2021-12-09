@@ -2,6 +2,8 @@ import debug_toolbar
 from django.conf import settings
 from django.contrib import admin
 from django.conf.urls.static import static
+from django.conf.urls import url
+from django.views.static import serve
 from django.urls import path, include
 
 import clients
@@ -14,7 +16,8 @@ urlpatterns = [
     path('colaborator/', include('colaborator.urls', namespace='colaborators')),
     path('departments/', include('departments.urls', namespace='departments')),
     path("workOrder/", include('workOrder.urls', namespace="workOrder")),
-    path("clients/", include('clients.urls', namespace="clients"))
+    path("clients/", include('clients.urls', namespace="clients")),
+    url(r'^download/(?P<path>.*)$',serve,{'document_root':settings.MEDIA_ROOT})
 ]
 
 if settings.DEBUG:
