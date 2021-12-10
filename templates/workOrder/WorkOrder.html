@@ -29,7 +29,7 @@
                             {{ workOrder.OS }}
                         </td>
                         <td>
-                            {{ workOrder.dateCriacao }}
+                            {{ workOrder.dateCriacao|date:"d/m/Y" }}
                         </td>
                     </tr>
                 {% endfor %}

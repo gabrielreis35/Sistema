@@ -84,14 +84,12 @@ class Item(models.Model):
 class Arquivo(models.Model):
     def filePath(produto, file):
         return os.path.join('produtos', produto.nome, file)
-
     tipoArquivo = (
         ('DWG', 'DWG' ),
         ('DXF', 'DXF'),
         ('eDRA', 'eDrawing'),
         ('PDF', 'PDF')
     )
-    
     tipoFabricacaoChoice = (
         ('Montagem Geral', 'Montagem Geral'),
         ('Montagem', 'Montagem'),
@@ -106,11 +104,15 @@ class Arquivo(models.Model):
         ('Manual / Usinagem', 'Corte Manual com Usinagem'),
         ('Manual / Dobra / Usinagem', 'Corte Manual com Dobra e Usinagem')
     )
-
+    tipoArquivoSLD = (
+        ('M', 'Montagem'),
+        ('P', 'Peça')
+    )
     revisao = IntegerField()
     nome = CharField(max_length=30)
     tipo = CharField(max_length=4, choices=tipoArquivo)
-    partNumber = CharField(max_length=16, null=True)
+    tipoArquivo = CharField(max_length=15, choices=tipoArquivoSLD)
+    partNumber = CharField(max_length=16, null=True, blank=True)
     tipoFabricacao = CharField(max_length=25, choices=tipoFabricacaoChoice)
     file = models.FileField(upload_to=filePath)
 
@@ -148,7 +150,5 @@ class ProdutoCliente(models.Model):
 class PartNumber(models.Model):
     partNumber = CharField(max_length=30)
     terceiro = CharField(max_length=30, blank=True)
-    
     dateCriacao = DateTimeField(auto_now_add=True)
-    
     produto = ForeignKey(Produto, on_delete=CASCADE)

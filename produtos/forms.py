@@ -122,6 +122,7 @@ class FileForm(ModelForm):
         fields = [
             'nome',
             'tipo',
+            'tipoArquivo',
             'revisao',
             'partNumber',
             'tipoFabricacao',
@@ -131,6 +132,7 @@ class FileForm(ModelForm):
         labels = {
             'nome': ('Nome'),
             'tipo': ('Tipo'),
+            'tipoArquivo': ('Tipo de Arquivo SLD'),
             'revisao': ('Revisão'),
             'partNumber': ('PartNumber'),
             'tipoFabricacao': ('Tipo de Fabricação'),

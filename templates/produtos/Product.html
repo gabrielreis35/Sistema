@@ -170,7 +170,7 @@
                         <th scope="col">Nome</th>
                         <th scope="col">Tipo</th>
                         <th scope="col">PartNumber</th>
-                        <th scope="col">Tipo de fabricação</th>
+                        <th scope="col">Fabricação</th>
                         <th scope="col">Data de Criação</th>
                         <th scope="col">
                             <div class="col partnumber-div">
@@ -199,7 +199,7 @@
                                 {{ item.nome }}
                             </td>
                             <td>
-                                -
+                                Zip
                             </td>
                             <td>
                                 -
@@ -208,10 +208,10 @@
                                 -
                             </td>
                             <td>
-                                {{ item.dateCriacao }}
+                                {{ item.dateCriacao|date:"d/m/Y" }}
                             </td>
                             <td>
-                                <i class="fas fa-clipboard-check"></i>
+                                -
                             </td>
                             <td>
                                 <a href="{{ item.file.url }}" class="download-item" download="{{ item.file.url }}">
@@ -242,16 +242,24 @@
                                 {{ file.tipo }}
                             </td>
                             <td>
-                                {{ file.partNumber }}
+                                {% if file.partnumber %}
+                                    {{ file.partNumber }}
+                                {% else %}
+                                    -
+                                {% endif %}
                             </td>
                             <td>
                                 {{ file.tipoFabricacao }}
                             </td>
                             <td>
-                                {{ file.dateCriacao }}
+                                {{ file.dateCriacao|date:"d/m/Y" }}
                             </td>
                             <td>
-                                <i class="fas fa-clipboard-check"></i>
+                                <a href="{% url 'products:PartNumber' file.id%}" class="get-partnumber">
+                                    <div class="col get-partnumber-div">
+                                        <i class="fas fa-clipboard-check"></i>
+                                    </div>
+                                </a>
                             </td>
                             <td>
                                 <a href="{{ file.file.url }}" class="download-file" download="{{ file.file.url }}">

@@ -11,7 +11,7 @@ from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.files.storage import FileSystemStorage
-from produtos.models import CategoriaProduto, ClasseProduto, NumeroSerie, Produto, Item, Arquivo, ProdutoCliente, Segmento, TipoProduto
+from produtos.models import CategoriaProduto, ClasseProduto, NumeroSerie, Produto, Item, Arquivo, ProdutoCliente, Segmento, TipoProduto, PartNumber
 from produtos.forms import CategoryForm, ClassProductForm, CustomerProductsForm, ItemForm, PartNumberForm, ProdutoForm, FileForm, SegmentForm, SerialNumberForm, TipForm, WorkOrderForm, produtoSelect
 
 def Products(request):
@@ -166,20 +166,6 @@ def NewCustomerProducts(request):
         'createCustomerProducts' : createCustomerProducts
     }
     return render(request, 'produtos/NewCustomerProducts.html', context)
-
-def NewPartNumber(request):
-    createPartNumber = PartNumberForm()
-    if request.method == "POST":
-        createPartNumber = PartNumberForm(request.POST or None)
-        if createPartNumber.is_valid():
-            createPartNumber.save()
-            return redirect('../')
-    else:
-        createPartNumber = PartNumberForm()
-    context = {
-        'createPartNumber' : createPartNumber
-    }
-    return render(request, 'produtos/NewPartNumber.html', context)
 
 def ViewProduct(request, id):
     context = []
@@ -431,7 +417,25 @@ def GenerateSerialSingle(request, id):
             os.save()
     else:
         serialNumberForm = SerialNumberForm()
-    return render(request, 'produtos/SerialNumberid.html', {'serialNumberForm': serialNumberForm})
+    context = {'serialNumberForm': serialNumberForm}
+    return render(request, 'produtos/SerialNumberid.html', context)
+
+def GetPartNumber(request, id):
+    partnumberForm = PartNumberForm()
+    file = Arquivo.objects.get(id=id)
+    if request.method == 'POST':
+        partnumberForm = PartNumberForm(request.POST or None)
+        if partnumberForm.is_valid():
+            pt = partnumberForm.save(commit=False)
+            productTip = 'GC'
+            sldTip = file.tipoArquivo
+            cod = PartNumber.objects.get()
+            year = datetime.date.today().year
+            pt = str(productTip) + str(sldTip) + str(cod) + '-' + str(year)
+            pt.save()
+    context={'partnumberForm':partnumberForm}
+    return render(request, 'produtos/NewPartNumber.html', context)
+
 
 def CustomerProducts(request):
     customerProduct = ProdutoCliente.objects.all()
