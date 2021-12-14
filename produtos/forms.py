@@ -179,13 +179,9 @@ class PartNumberForm(ModelForm):
     class Meta:
         model = PartNumber
         fields = [
-            'partNumber',
-            'terceiro',
-            'produto'
+            'terceiro'
         ]
         
         labels = {
-            'partNumber' : ('PartNumber'),
-            'terceiro' : ('PartNumber do fabricante:'),
-            'produto' : ('Produto relacionado')
+            'terceiro' : ('PartNumber do fabricante:')
         }

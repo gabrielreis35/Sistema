@@ -151,4 +151,5 @@ class PartNumber(models.Model):
     partNumber = CharField(max_length=30)
     terceiro = CharField(max_length=30, blank=True)
     dateCriacao = DateTimeField(auto_now_add=True)
+    arquivo = ForeignKey(Arquivo, on_delete=CASCADE)
     produto = ForeignKey(Produto, on_delete=CASCADE)

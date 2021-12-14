@@ -421,21 +421,30 @@ def GenerateSerialSingle(request, id):
     return render(request, 'produtos/SerialNumberid.html', context)
 
 def GetPartNumber(request, id):
-    partnumberForm = PartNumberForm()
+    createPartNumber = PartNumberForm()
     file = Arquivo.objects.get(id=id)
+    product = file.produto
     if request.method == 'POST':
-        partnumberForm = PartNumberForm(request.POST or None)
-        if partnumberForm.is_valid():
-            pt = partnumberForm.save(commit=False)
-            productTip = 'GC'
+        createPartNumber = PartNumberForm(request.POST or None)
+        if createPartNumber.is_valid():
+            pt = createPartNumber.save(commit=False)
+            productTip = product.tipoProduto.sigla
             sldTip = file.tipoArquivo
-            cod = PartNumber.objects.get()
+            code = PartNumber.objects.last()
+            if code == None:
+                codeNumber = 000
+            elif code.arquivo == file:
+                codeNumber = int(code.partNumber[4:6])
+                codeNumber += 1
+            else:
+                codeNumber = 000
             year = datetime.date.today().year
-            pt = str(productTip) + str(sldTip) + str(cod) + '-' + str(year)
+            pt.partNumber = str(productTip) + str(sldTip) + '-' + str(codeNumber) + '-' + str(year)
+            pt.produto = product
+            pt.arquivo = file
             pt.save()
-    context={'partnumberForm':partnumberForm}
+    context={'createPartNumber':createPartNumber}
     return render(request, 'produtos/NewPartNumber.html', context)
-
 
 def CustomerProducts(request):
     customerProduct = ProdutoCliente.objects.all()
