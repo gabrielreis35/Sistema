@@ -431,8 +431,6 @@ def GetPartNumber(request, id):
             productTip = product.tipoProduto.sigla
             sldTip = file.tipoArquivo
             code = PartNumber.objects.last()
-            if code == None:
-                codeNumber = 000
             elif code.arquivo == file:
                 codeNumber = int(code.partNumber[4:6])
                 codeNumber += 1
