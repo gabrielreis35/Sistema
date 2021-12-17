@@ -184,4 +184,4 @@ class PartNumberForm(ModelForm):
         
         labels = {
             'terceiro' : ('PartNumber do fabricante:')
-        }
+        } 

@@ -169,6 +169,7 @@ def NewCustomerProducts(request):
 
 def ViewProduct(request, id):
     context = []
+    partNumber = PartNumber.objects.all().filter(produto_id = id)
     items = Item.objects.all().filter(produto_id = id).order_by('-revisao')
     files = Arquivo.objects.all().filter(produto_id = id).order_by('-revisao')
     product = get_object_or_404(Produto, id = id)
@@ -176,6 +177,7 @@ def ViewProduct(request, id):
         'product': product,
         'items': items,
         'files': files,
+        'partNumber': partNumber,
     }
     return render(request, 'produtos/Product.html', context)
 
@@ -430,14 +432,27 @@ def GetPartNumber(request, id):
             pt = createPartNumber.save(commit=False)
             productTip = product.tipoProduto.sigla
             sldTip = file.tipoArquivo
-            code = PartNumber.objects.last()
-            if code.arquivo == file:
-                codeNumber = int(code.partNumber[4:6])
-                codeNumber += 1
+            
+            codeNumber=file.produto.id
+            if len(str(codeNumber)) == 1:
+                codeNumber = '00' + str(codeNumber)
+            elif len(str(codeNumber)) == 2:
+                codeNumber = '0' + str(codeNumber)
             else:
-                codeNumber = 000
-            year = datetime.date.today().year
-            pt.partNumber = str(productTip) + str(sldTip) + '-' + str(codeNumber) + '-' + str(year)
+                codeNumber = codeNumber
+            review=file.revisao
+            if len(str(review)) < 2:
+                review = '0' + str(review)
+                
+            # if code is None:
+            #     partnumber = idpartnumber.partnumber
+            #     var=int(partnumber[:3])
+            #     var+=1
+            # else:
+            #     var=100
+            
+            year = datetime.date.today().strftime("%y")
+            pt.partNumber = str(productTip) + str(sldTip) + '-' + str(codeNumber) + '-' + str(year) + str(review) + '-' + str(var)
             pt.produto = product
             pt.arquivo = file
             pt.save()

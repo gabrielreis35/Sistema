@@ -208,7 +208,7 @@
                                 -
                             </td>
                             <td>
-                                {{ item.dateCriacao|date:"d/m/Y" }}
+                                {{ item.dateCriacao|date:"d / m / Y" }}
                             </td>
                             <td>
                                 -
@@ -242,8 +242,10 @@
                                 {{ file.tipo }}
                             </td>
                             <td>
-                                {% if file.partnumber %}
+                                {% if file.partNumber %}
                                     {{ file.partNumber }}
+                                {% elif file.partNumber is None and partNumber.partNumber %}
+                                    {{ partNumber.partNumber }}
                                 {% else %}
                                     -
                                 {% endif %}
@@ -252,7 +254,7 @@
                                 {{ file.tipoFabricacao }}
                             </td>
                             <td>
-                                {{ file.dateCriacao|date:"d/m/Y" }}
+                                {{ file.dateCriacao|date:"d / m /Y" }}
                             </td>
                             <td>
                                 <a href="{% url 'products:PartNumber' file.id%}" class="get-partnumber">
