@@ -444,12 +444,13 @@ def GetPartNumber(request, id):
             if len(str(review)) < 2:
                 review = '0' + str(review)
                 
-            # if code is None:
-            #     partnumber = idpartnumber.partnumber
-            #     var=int(partnumber[:3])
-            #     var+=1
-            # else:
-            #     var=100
+            if file.product.id :
+                
+                var = 1
+                #var=int(partnumber[:3])
+                #var+=1
+            else:
+                var=100
             
             year = datetime.date.today().strftime("%y")
             pt.partNumber = str(productTip) + str(sldTip) + '-' + str(codeNumber) + '-' + str(year) + str(review) + '-' + str(var)
