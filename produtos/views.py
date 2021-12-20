@@ -432,7 +432,7 @@ def GetPartNumber(request, id):
             pt = createPartNumber.save(commit=False)
             productTip = product.tipoProduto.sigla
             sldTip = file.tipoArquivo
-            
+            year=datetime.date.today().strftime("%y")
             codeNumber=file.produto.id
             if len(str(codeNumber)) == 1:
                 codeNumber = '00' + str(codeNumber)
@@ -443,19 +443,20 @@ def GetPartNumber(request, id):
             review=file.revisao
             if len(str(review)) < 2:
                 review = '0' + str(review)
-                
-            if file.product.id :
-                
-                var = 1
-                #var=int(partnumber[:3])
-                #var+=1
+            check=PartNumber.objects.filter(produto=product).exists()
+            if check == True:
+                partnumber=PartNumber.objects.get(produto=product)
+                # if partnumber[2] == sldTip:
+                var=int(partnumber.partNumber[13:])
+                var+=1
+                # else:
+                #     var=100
             else:
                 var=100
-            
-            year = datetime.date.today().strftime("%y")
-            pt.partNumber = str(productTip) + str(sldTip) + '-' + str(codeNumber) + '-' + str(year) + str(review) + '-' + str(var)
-            pt.produto = product
-            pt.arquivo = file
+                
+            pt.partNumber=str(productTip) + str(sldTip) + '-' + str(codeNumber) + '-' + str(year) + str(review) + '-' + str(var)
+            pt.produto=product
+            pt.arquivo=file
             pt.save()
     context={'createPartNumber':createPartNumber}
     return render(request, 'produtos/NewPartNumber.html', context)
