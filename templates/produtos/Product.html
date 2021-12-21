@@ -208,7 +208,7 @@
                                 -
                             </td>
                             <td>
-                                {{ item.dateCriacao|date:"d / m / Y" }}
+                                {{ item.dateCriacao|date:"d/m/Y" }}
                             </td>
                             <td>
                                 -
@@ -244,17 +244,15 @@
                             <td>
                                 {% if file.partNumber %}
                                     {{ file.partNumber }}
-                                {% elif file.partNumber is None and partNumber.partNumber %}
-                                    {{ partNumber.partNumber }}
                                 {% else %}
-                                    -
+                                    {{ partNumber.partNumber }}
                                 {% endif %}
                             </td>
                             <td>
                                 {{ file.tipoFabricacao }}
                             </td>
                             <td>
-                                {{ file.dateCriacao|date:"d / m /Y" }}
+                                {{ file.dateCriacao|date:"d/m/Y" }}
                             </td>
                             <td>
                                 <a href="{% url 'products:PartNumber' file.id%}" class="get-partnumber">
@@ -279,9 +277,26 @@
                             </td>
                         </tr>
                     {% endfor %}
-                </tbody>
-                
+                </tbody>        
             </table>
+        </div>
+        
+        <div class="pagination">
+            <span class="step-links">
+                {% if files.has_previous %}
+                    <a href="?page={{files.previous_page_number}}" class="fas fa-arrow-left"></a>
+                {% endif %}
+                
+                {% if files.paginator.num_pages %}
+                <span class="current">
+                    {{files.number}} de {{files.paginator.num_pages}}
+                </span>
+                {% endif %}
+
+                {% if products.has_next %}
+                    <a href="?page={{files.next_page_number}}" class="fas fa-arrow-right"></a>
+                {% endif %}
+            </span>
         </div>
     </div>
 

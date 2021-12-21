@@ -68,6 +68,13 @@ class Item(models.Model):
     produto = ForeignKey(Produto, on_delete=CASCADE)
     def __str__(self):
         return self.nome
+    
+class PartNumber(models.Model):
+    partNumber = CharField(max_length=30, unique=True)
+    terceiro = CharField(max_length=30, blank=True)
+    dateCriacao = DateTimeField(auto_now_add=True)
+    def __self__(self):
+        return self.id
 
 class Arquivo(models.Model):
     def filePath(produto, file):
@@ -102,7 +109,7 @@ class Arquivo(models.Model):
     tipoArquivo = CharField(max_length=8, choices=tipoArquivoSLD)
     tipoFabricacao = CharField(max_length=25, choices=tipoFabricacaoChoice)
     file = models.FileField(upload_to=filePath)
-    partNumber = CharField(max_length=16, unique=True, null=True, blank=True)
+    partNumber = models.OneToOneField(PartNumber, on_delete=models.CASCADE)
     dateCriacao = DateTimeField(auto_now_add=True)
     produto = ForeignKey(Produto, null=True, blank=True, on_delete=CASCADE)
     def __str__(self):
@@ -124,14 +131,5 @@ class ProdutoCliente(models.Model):
     file = FileField(upload_to=filePath)
     cliente = ForeignKey(Cliente, on_delete=CASCADE)
     dateCriacao = DateTimeField(auto_now_add=True)
-    def __self__(self):
-        return self.id
-    
-class PartNumber(models.Model):
-    partNumber = CharField(max_length=30)
-    terceiro = CharField(max_length=30, blank=True)
-    dateCriacao = DateTimeField(auto_now_add=True)
-    arquivo = OneToOneField(Arquivo, on_delete=CASCADE)
-    produto = ForeignKey(Produto, on_delete=CASCADE)
     def __self__(self):
         return self.id

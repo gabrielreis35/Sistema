@@ -169,10 +169,13 @@ def NewCustomerProducts(request):
 
 def ViewProduct(request, id):
     context = []
-    partNumber = PartNumber.objects.all().filter(produto_id = id)
+    partNumber = PartNumber.objects.all().filter(produto = id)
     items = Item.objects.all().filter(produto_id = id).order_by('-revisao')
-    files = Arquivo.objects.all().filter(produto_id = id).order_by('-revisao')
+    filesList = Arquivo.objects.all().filter(produto_id = id).order_by('-revisao')
     product = get_object_or_404(Produto, id = id)
+    paginator = Paginator(filesList, 10)
+    page = request.GET.get('page')
+    files = paginator.get_page(page)
     context = {
         'product': product,
         'items': items,
@@ -445,12 +448,9 @@ def GetPartNumber(request, id):
                 review = '0' + str(review)
             check=PartNumber.objects.filter(produto=product).exists()
             if check == True:
-                partnumber=PartNumber.objects.get(produto=product)
-                # if partnumber[2] == sldTip:
+                partnumber=PartNumber.objects.filter(produto=product).last()
                 var=int(partnumber.partNumber[13:])
                 var+=1
-                # else:
-                #     var=100
             else:
                 var=100
                 
