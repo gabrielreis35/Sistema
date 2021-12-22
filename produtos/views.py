@@ -169,7 +169,6 @@ def NewCustomerProducts(request):
 
 def ViewProduct(request, id):
     context = []
-    partNumber = PartNumber.objects.all().filter(produto = id)
     items = Item.objects.all().filter(produto_id = id).order_by('-revisao')
     filesList = Arquivo.objects.all().filter(produto_id = id).order_by('-revisao')
     product = get_object_or_404(Produto, id = id)
@@ -180,7 +179,6 @@ def ViewProduct(request, id):
         'product': product,
         'items': items,
         'files': files,
-        'partNumber': partNumber,
     }
     return render(request, 'produtos/Product.html', context)
 
@@ -453,11 +451,13 @@ def GetPartNumber(request, id):
                 var+=1
             else:
                 var=100
-                
             pt.partNumber=str(productTip) + str(sldTip) + '-' + str(codeNumber) + '-' + str(year) + str(review) + '-' + str(var)
             pt.produto=product
-            pt.arquivo=file
             pt.save()
+            file.partNumber_id = pt.id
+            file.save()
+            
+            return redirect('../')
     context={'createPartNumber':createPartNumber}
     return render(request, 'produtos/NewPartNumber.html', context)
 

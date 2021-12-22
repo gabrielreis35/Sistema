@@ -70,9 +70,10 @@ class Item(models.Model):
         return self.nome
     
 class PartNumber(models.Model):
-    partNumber = CharField(max_length=30, unique=True)
+    partNumber = CharField(max_length=30)
     terceiro = CharField(max_length=30, blank=True)
     dateCriacao = DateTimeField(auto_now_add=True)
+    produto = ForeignKey(Produto, on_delete=CASCADE)
     def __self__(self):
         return self.id
 
@@ -109,8 +110,8 @@ class Arquivo(models.Model):
     tipoArquivo = CharField(max_length=8, choices=tipoArquivoSLD)
     tipoFabricacao = CharField(max_length=25, choices=tipoFabricacaoChoice)
     file = models.FileField(upload_to=filePath)
-    partNumber = models.OneToOneField(PartNumber, on_delete=models.CASCADE)
     dateCriacao = DateTimeField(auto_now_add=True)
+    partNumber = OneToOneField(PartNumber, null=True, on_delete=models.CASCADE)
     produto = ForeignKey(Produto, null=True, blank=True, on_delete=CASCADE)
     def __str__(self):
         return self.nome

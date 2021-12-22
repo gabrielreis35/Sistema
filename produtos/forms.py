@@ -124,7 +124,6 @@ class FileForm(ModelForm):
             'tipo',
             'tipoArquivo',
             'revisao',
-            'partNumber',
             'tipoFabricacao',
             'file'
         ]
@@ -134,7 +133,6 @@ class FileForm(ModelForm):
             'tipo': ('Tipo'),
             'tipoArquivo': ('Tipo de Arquivo SLD'),
             'revisao': ('Revisão'),
-            'partNumber': ('PartNumber'),
             'tipoFabricacao': ('Tipo de Fabricação'),
             'file': ('Arquivo')
         }
