@@ -1,4 +1,5 @@
 FROM python:3.9
+
 ENV PYTHONUNBUFFERED 1
 
 # Configura o locale para pt_BR.UTF-8
