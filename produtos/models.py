@@ -10,7 +10,7 @@ from colaborator.models import Colaborador
 from workOrder.models import OrdemServico
 
 class Segmento(models.Model):
-    nome = CharField(max_length=20, unique=True)
+    nome = CharField(max_length=25, unique=True)
     sigla = CharField(max_length=20, unique=True)
     dateCriacao = DateTimeField(auto_now_add=True)
     def __str__(self):
@@ -24,14 +24,14 @@ class TipoProduto(models.Model):
         return self.nome
 
 class CategoriaProduto(models.Model):
-    nome = CharField(max_length=10, unique=True)
+    nome = CharField(max_length=25, unique=True)
     sigla = CharField(max_length=5, unique=True)
     dateCriacao = DateTimeField(auto_now_add=True)
     def __str__(self):
         return self.nome
     
 class ClasseProduto(models.Model):
-    nome = CharField(max_length=10, unique=True)
+    nome = CharField(max_length=25, unique=True)
     sigla = CharField(max_length=3, unique=True)
     dateCriacao = DateTimeField(auto_now_add=True)
     def __str__(self):
@@ -61,7 +61,7 @@ class Item(models.Model):
     def filePath(produto, file):
         return os.path.join('produtos', produto.nome, file)
     revisao = IntegerField()
-    nome = CharField(max_length=30)
+    nome = CharField(max_length=40)
     tipo = CharField(max_length=8)
     file = models.FileField(upload_to=filePath)
     dateCriacao = DateTimeField(auto_now_add=True)

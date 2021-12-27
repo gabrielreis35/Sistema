@@ -4,11 +4,18 @@ from clients.forms import ClientForm
 from .models import Cliente
 
 def HomeClients(request):
-    clientsList = Cliente.objects.all().order_by('-dateCriacao')
+    search = request.GET.get('search')
     
-    paginator = Paginator(clientsList, 10)
-    page = request.GET.get('page')
-    clients = paginator.get_page(page)
+    if search:
+        clientsList = Cliente.objects.filter(nome__icontains = search)
+        paginator = Paginator(clientsList, 10)
+        page = request.GET.get('page')
+        clients = paginator.get_page(page)
+    else:    
+        clientsList = Cliente.objects.all().order_by('-dateCriacao')
+        paginator = Paginator(clientsList, 10)
+        page = request.GET.get('page')
+        clients = paginator.get_page(page)
     context = {'clients' : clients }
     return render(request, 'clients/HomeClients.html', context)
 

@@ -42,7 +42,7 @@
             </ul>
         {% endif %}
 
-        <form method="GET">
+        <form method="GET" id="order-product" style="margin-bottom: 1em;">
             <label for="order">Ordenar por:</label>
 
             <select id="order">
@@ -53,12 +53,6 @@
             </select>
             <input type="submit" class="btn btn-success ordenar" id="order" value="Ordenar">
         </form>
-
-        <a href="{% url 'products:Customer_Products' %}" class="customer-products-main">
-            <div class="customer-products-main-div">
-                <i class="fas fa-archive products"></i>Produto de Cliente
-            </div>
-        </a>
 
         <table class="table table-striped table-hover table-bordered tab-products">
             <thead>
