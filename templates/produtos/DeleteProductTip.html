@@ -6,6 +6,9 @@
 
 {% block content %}
     
+    <a href="#">
+        <i class="far fa-arrow-alt-circle-left"></i>
+    </a>
     <form method="POST">
         {% csrf_token %}
         <h1 class="title-form">Deseja excluir o tipo de produto "{{productTip.nome}}"?</h1>

@@ -180,6 +180,10 @@ li.messages li {
     text-align: center;
 }
 
+.far.fa-arrow-alt-circle-left {
+    margin-left: 2em;
+}
+
 /* Página Produtos */
 
 h1 {
