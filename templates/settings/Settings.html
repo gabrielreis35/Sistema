@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}Configurações{% endblock %}
+
+{% block content %}
+
+    <a href="{% url 'main:Home_Main' %}">
+        <i class="far fa-arrow-alt-circle-left fa-2x"></i>
+    </a>        
+    <div class="container title">
+        <h1>Configurações</h1>
+    </div>
+
+    <div class="offset-1 col-10 add-all-div">
+        <a href="{% url 'settings:Product_Settings' %}" class="settings">
+            <div class="col-2 div-settings-all">
+                <i class="fas fa-plus all"></i>Produtos
+            </div>
+        </a>
+        <a href="#" class="settings">
+            <div class="col-2 div-settings-all">
+                <i class="fas fa-plus all"></i>Número de Série
+            </div>
+        </a>
+        <a href="#" class="settings">
+            <div class="col-2 div-settings-all">
+                <i class="fas fa-plus all"></i>Ordem de Serviço
+            </div>
+        </a>
+        <a href="#" class="settings">
+            <div class="col-2 div-settings-all">
+                <i class="fas fa-plus all"></i>Usuários
+            </div>
+        </a>
+        <a href="#" class="settings">
+            <div class="col-2 div-settings-all">
+                <i class="fas fa-plus all"></i>Departamentos
+            </div>
+        </a>
+    </div>
+
+{% endblock %}

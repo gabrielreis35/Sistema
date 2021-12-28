@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'departments',
     'workOrder',
     'clients',
+    'settings',
 ]
 
 MIDDLEWARE = [

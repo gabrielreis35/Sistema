@@ -17,6 +17,7 @@ urlpatterns = [
     path('departments/', include('departments.urls', namespace='departments')),
     path("workOrder/", include('workOrder.urls', namespace="workOrder")),
     path("clients/", include('clients.urls', namespace="clients")),
+    path("settings/", include('settings.urls', namespace="settings")),
     url(r'^download/(?P<path>.*)$',serve,{'document_root':settings.MEDIA_ROOT})
 ]
 

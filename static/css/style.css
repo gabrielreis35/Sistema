@@ -180,6 +180,10 @@ li.messages li {
     text-align: center;
 }
 
+.icon-goback {
+    margin-top: 3em;
+}
+
 .far.fa-arrow-alt-circle-left {
     margin-left: 2em;
 }
@@ -695,3 +699,38 @@ a.download-item, a.download-file {
 .tab-clients {
     margin-top: 2em;
 }
+
+
+/* Settings */
+
+.settings {
+    position: relative;
+    text-decoration: none !important;
+    margin-right: -0.3em;
+    width: 5em;
+}
+
+.div-settings-all {
+    background-color: #3476e2;
+    cursor: pointer;
+    display: inline-block;
+    color: #fff;
+    padding: 0.5em;
+    border-radius: 0.31em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+}
+
+.fas.fa-plus.all {
+    color: #fff;
+    margin-right: 0.63em;
+    margin-left: 0.31em;
+}
+
+.tab-tipproducts-settings {
+    margin-top: 3em;
+}
+
+
+
+/* Fim da página */
