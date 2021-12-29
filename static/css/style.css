@@ -717,8 +717,8 @@ a.download-item, a.download-file {
     color: #fff;
     padding: 0.5em;
     border-radius: 0.31em;
-    margin-left: 0.5em;
-    margin-right: 0.5em;
+    margin-left: 0.3em;
+    margin-right: 0.3em;
 }
 
 .fas.fa-plus.all {
@@ -727,10 +727,21 @@ a.download-item, a.download-file {
     margin-left: 0.31em;
 }
 
-.tab-tipproducts-settings {
-    margin-top: 3em;
+.offset-1.col-4.settings-segment {
+    display: inline-block;
 }
 
+.offset-1.col-4.settings-tip-products {
+    display: inline-block;
+}
 
+.offset-1.col-4.settings-category {
+    margin-top: 5em;
+    display: inline-block;
+}
 
+.offset-1.col-4.settings-class {
+    margin-top: 5em;
+    display: inline-block;
+}
 /* Fim da página */

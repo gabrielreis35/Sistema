@@ -11,7 +11,8 @@
         <h1>Configurações de Produtos</h1>
     </div>
     
-    <div class="offset-1 col-4">
+    <div class="offset-1 col-4 settings-segment">
+        <h3>Segmento</h3>
         <table class="table table-striped table-hover table-bordered tab-segment-settings">
             <thead>
                 <tr>
@@ -20,7 +21,7 @@
                     <th scope="col" class="col-sm-1">Editar</th>
                 </tr>
             </thead>
-            <tbody id="#">
+            <tbody>
                 {% for settingsSegment in settingsSegments %}
                 <tr scope="row">
                     <td>
@@ -59,7 +60,8 @@
         </div>
     </div>
 
-    <div class="offset-1 col-4">
+    <div class="offset-1 col-4 settings-tip-products">
+        <h3>Tipo de Produto</h3>
         <table class="table table-striped table-hover table-bordered tab-tipproducts-settings">
             <thead>
                 <tr>
@@ -68,17 +70,17 @@
                     <th scope="col" class="col-sm-1">Editar</th>
                 </tr>
             </thead>
-            <tbody id="#">
+            <tbody>
                 {% for settingsTipProduct in settingsTipProducts %}
                 <tr scope="row">
                     <td>
-                        {{ settingsTipProducts.nome }}
+                        {{ settingsTipProduct.nome }}
                     </td>
                     <td>
-                        {{ settingsTipProducts.sigla }}
+                        {{ settingsTipProduct.sigla }}
                     </td>
                     <td>
-                        <a href="{% url 'products:products:Update_ProductTip_Products' settingsTipProducts.id %}" class="icon">
+                        <a href="{% url 'products:Update_ProductTip_Products' settingsTipProduct.id %}" class="icon">
                             <div class="col">
                                 <i class="far fa-edit"></i>
                             </div>
@@ -88,11 +90,12 @@
                 {% endfor %}
             </tbody>
         </table>
+    
 
-        {% comment %} <div class="pagination">
+        <div class="pagination">
             <span class="step-links">
                 {% if settingsTipProducts.has_previous %}
-                    <a href="?page={{settingsTipProducts.previous_page_number}}" class="fas fa-arrow-left"></a>
+                    <a href="?page2={{settingsTipProducts.previous_page_number}}" class="fas fa-arrow-left"></a>
                 {% endif %}
                 
                 {% if settingsTipProducts.paginator.num_pages %}
@@ -102,12 +105,112 @@
                 {% endif %}
 
                 {% if settingsTipProducts.has_next %}
-                    <a href="?page={{settingsTipProducts.next_page_number}}" class="fas fa-arrow-right"></a>
+                    <a href="?page2={{settingsTipProducts.next_page_number}}" class="fas fa-arrow-right"></a>
                 {% endif %}
             </span>
-        </div> {% endcomment %}
+        </div>
     </div>
 
+    <div class="offset-1 col-4 settings-category">
+        <h3>Categorias</h3>
+        <table class="table table-striped table-hover table-bordered tab-category-settings">
+            <thead>
+                <tr>
+                    <th scope="col">nome</th>
+                    <th scope="col">sigla</th>
+                    <th scope="col" class="col-sm-1">Editar</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for settingsCategory in settingsCategories %}
+                <tr scope="row">
+                    <td>
+                        {{ settingsCategory.nome }}
+                    </td>
+                    <td>
+                        {{ settingsCategory.sigla }}
+                    </td>
+                    <td>
+                        <a href="{% url 'products:Update_Category_Products' settingsCategory.id %}" class="icon">
+                            <div class="col">
+                                <i class="far fa-edit"></i>
+                            </div>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    
 
+        <div class="pagination">
+            <span class="step-links">
+                {% if settingsCategories.has_previous %}
+                    <a href="?page3={{settingsCategories.previous_page_number}}" class="fas fa-arrow-left"></a>
+                {% endif %}
+                
+                {% if settingsCategories.paginator.num_pages %}
+                <span class="current">
+                    {{settingsCategories.number}} de {{settingsCategories.paginator.num_pages}}
+                </span>
+                {% endif %}
+
+                {% if settingsCategories.has_next %}
+                    <a href="?page3={{settingsCategories.next_page_number}}" class="fas fa-arrow-right"></a>
+                {% endif %}
+            </span>
+        </div>
+    </div>
+
+    <div class="offset-1 col-4 settings-class">
+        <h3>Classes</h3>
+        <table class="table table-striped table-hover table-bordered tab-classes-settings">
+            <thead>
+                <tr>
+                    <th scope="col">nome</th>
+                    <th scope="col">sigla</th>
+                    <th scope="col" class="col-sm-1">Editar</th>
+                </tr>
+            </thead>
+            <tbody id="#">
+                {% for settingsClass in settingsClasses %}
+                <tr scope="row">
+                    <td>
+                        {{ settingsClass.nome }}
+                    </td>
+                    <td>
+                        {{ settingsClass.sigla }}
+                    </td>
+                    <td>
+                        <a href="{% url 'products:Update_Class_Products' settingsClass.id %}" class="icon">
+                            <div class="col">
+                                <i class="far fa-edit"></i>
+                            </div>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    
+
+        <div class="pagination">
+            <span class="step-links">
+                {% if settingsClasses.has_previous %}
+                    <a href="?page4={{settingsClasses.previous_page_number}}" class="fas fa-arrow-left"></a>
+                {% endif %}
+                
+                {% if settingsClasses.paginator.num_pages %}
+                <span class="current">
+                    {{settingsClasses.number}} de {{settingsClasses.paginator.num_pages}}
+                </span>
+                {% endif %}
+
+                {% if settingsClasses.has_next %}
+                    <a href="?page4={{settingsClasses.next_page_number}}" class="fas fa-arrow-right"></a>
+                {% endif %}
+            </span>
+        </div>
+    </div>
 
 {% endblock %}
