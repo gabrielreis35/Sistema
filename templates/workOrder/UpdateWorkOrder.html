@@ -2,22 +2,22 @@
 
 {% load crispy_forms_tags %}
 
-{% block title %}Adicionar Produtos{% endblock %}
+{% block title %}Editar Segmento{% endblock %}
 
 {% block content %}
 
-    <a href="{% url 'products:Home_Products' %}">
+    <a href="{% url 'settings:WorkOder_Settings' %}">
         <i class="far fa-arrow-alt-circle-left fa-2x"></i>
     </a>
     <div class="container title">
-        <h1>Adicionar novo produto</h1>
+        <h1>Editar Ordem de Serviço</h1>
     </div>
 
     <div class="offset-1 col-3 list-div">
         <form method="POST">
             {% csrf_token %}
-            {{ createProduct|crispy }}
-            <input type="submit" class="btn btn-success" value="Criar produto">
+            {{ updateWorkOrder|crispy }}
+            <input type="submit" class="btn btn-success" value="Editar Ordem de Serviço">
         </form>
     </div>
 

@@ -6,7 +6,6 @@ app_name = 'products'
 urlpatterns = [
     path('', views.Products, name = 'Home_Products'),
     path('product/<int:id>', views.ViewProduct, name = 'View_Product'),
-    path("addAll/", views.AddAllProduct, name="Add_All_Products"),
     
     path('newProduct/', views.NewProduct, name = 'New_Products'),
     path('newitem/<int:id>', views.NewItem, name = 'New_Item'),
@@ -21,7 +20,6 @@ urlpatterns = [
     path('viewCategory/', views.ViewCategory, name = 'View_Category_Products'),
     path('viewClass/', views.ViewClass, name = 'View_Class_Products'),
     
-    path("UpdateAll/", views.UpdateAllProduct, name="Update_All_Product"),
     path('update/<int:id>', views.UpdateProduct, name = 'Update_Product'),
     path('updateSegment/<int:id>', views.UpdateSegment, name = 'Update_Segment_Products'),
     path('updateProductTip/<int:id>', views.UpdateProductTip, name = 'Update_ProductTip_Products'),

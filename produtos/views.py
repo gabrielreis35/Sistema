@@ -42,12 +42,6 @@ def Products(request):
     }
     return render(request, 'produtos/Products.html', context)
 
-def AddAllProduct(request):
-    return render(request, 'produtos/AddAll.html')
-
-def UpdateAllProduct(request):
-    return render(request, 'produtos/UpdateAll.html')
-
 def NewProduct(request):
     createProduct = ProdutoForm()
     if request.method == 'POST':
