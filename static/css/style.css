@@ -584,6 +584,15 @@ a.download-item, a.download-file {
     margin-top: 2em;
 }
 
+.lb-create-account {
+    margin-top: 0.7em;
+}
+
+.btn.btn-success.btn-create-account {
+    margin-top: 1.5em;
+    border-radius: 0.5em;
+}
+
 /* Página de Departamentos */
 
 .add-department-full {

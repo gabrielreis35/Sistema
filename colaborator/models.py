@@ -9,11 +9,11 @@ from departments.models import Departamento
 
 class Colaborador(models.Model):
     nome = CharField(max_length=120)
-    cargo = CharField(max_length=30)
     email = EmailField(null=True)
-    user = OneToOneField(User, on_delete=models.CASCADE)
+    cargo = CharField(max_length=30)
     departamento = ForeignKey(Departamento, on_delete=models.CASCADE)
 
+    user = OneToOneField(User, on_delete=models.CASCADE)
     dateCriacao = DateTimeField(auto_now_add=True)
     def get_absolute_url(self):
         return reverse('Home_Colaborator')
