@@ -12,6 +12,8 @@
     <div class="title">
         <h1>Adicionar novo usuário</h1>
     </div>
+
+    {% include 'partials/_alerts.html' %}
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -19,31 +21,44 @@
                     <form action="" method="POST">
                         {% csrf_token %}
                         <div class="col-12 col-lg-6">
-                            <label for="name"><strong>Nome</strong></label>
+                            <label for="name" class="lb-create-account"><strong>Nome</strong></label>
                             <input type="text" class="form-control" name="name" placeholder="Ex.: João" required>
                         </div>
                         <div class="col-12 col-lg-6">
-                            <label for="lastName"><strong>Sobrenome</strong></label>
-                            <input type="text" class="form-control" name="lastName" placeholder="Ex.: Silva" required>
+                            <label for="lastname" class="lb-create-account"><strong>Sobrenome</strong></label>
+                            <input type="text" class="form-control" name="lastname" placeholder="Ex.: Silva" required>
                         </div>
                         <div class="col-12 col-lg-6">
-                            <label for="email"><strong>Email</strong></label>
+                            <label for="office" class="lb-create-account"><strong>Cargo</strong></label>
+                            <input type="text" class="form-control" name="office" placeholder="Cargo exercido" required>
+                        </div>
+                        <div class="col-12 col-lg-6">
+                            <label for="department" class="lb-create-account"><strong>Departamento</strong></label>
+                            <select name="department" class="select-department" id="department">
+                                <option value="">Escolha um departamento</option>
+                                {% for department in departments %}
+                                    <option value="{{department.id}}">{{department.nome}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-12 col-lg-6">
+                            <label for="email" class="lb-create-account"><strong>Email</strong></label>
                             <input type="email" class="form-control" name="email" placeholder="Ex.: joao.silva@innova.vix.br" required>
                         </div>
                         <div class="col-12 col-lg-6">
-                            <label for="email2"><strong>Confirme o email</strong></label>
-                            <input type="email" class="form-control" name="email2" placeholder="Repita o email" required>
+                            <label for="email2" class="lb-create-account"><strong>Confirme o email</strong></label>
+                            <input type="email" class="form-control" name="email2" placeholder="Confirme o email" required>
                         </div>
                         <div class="col-12 col-lg-6">
-                            <label for="password"><strong>Senha</strong></label>
+                            <label for="password" class="lb-create-account"><strong>Senha</strong></label>
                             <input type="password" class="form-control" name="password" placeholder="Digite a senha" required>
                         </div>
                         <div class="col-12 col-lg-6">
-                            <label for="password2"><strong>Confirme a Senha</strong></label>
+                            <label for="password2" class="lb-create-account"><strong>Confirme a Senha</strong></label>
                             <input type="password" class="form-control" name="password2" placeholder="Confirme a senha" required>
                         </div>
                         <div class="col-12 text-center">
-                            <button class="btn btn-btn-success" type="submit">Criar Conta</button>
+                            <button class="btn btn-success btn-create-account" type="submit">Criar Conta</button>
                         </div>
                     </form>
                 </div>

@@ -25,24 +25,26 @@
                 <th scope="col">Nome</th>
                 <th scope="col">E-mail</th>
                 <th scope="col">Cargo</th>
-                <th scope="col">departamento</th>
+                <th scope="col">Departamento</th>
             </thead>
             <tbody>
                 {% for colaborator in colaborators %}
-                    <tr scope="row">
-                        <td>
-                            {{colaborator.nome}}
-                        </td>
-                        <td>
-                            {{colaborator.email}}
-                        </td>
-                        <td>
-                            {{colaborator.cargo}}
-                        </td>
-                        <td>
-                            {{colaborator.departamento}}
-                        </td>
-                    </tr>
+                    {% if colaborator.is_active == True %}
+                        <tr scope="row">
+                            <td>
+                                {{colaborator.first_name}} {{colaborator.last_name}}
+                            </td>
+                            <td>
+                                {{colaborator.email}}
+                            </td>
+                            <td>
+                                {{colaborator.cargo}}
+                            </td>
+                            <td>
+                                {{colaborator.departamento}}
+                            </td>
+                        </tr>
+                    {% endif %}
                 {% endfor %}
             </tbody>
         </table>
