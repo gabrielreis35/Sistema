@@ -29,20 +29,22 @@
             </thead>
             <tbody>
                 {% for colaborator in colaborators %}
-                    <tr scope="row">
-                        <td>
-                            {{colaborator.first_name}} {{colaborator.last_name}}
-                        </td>
-                        <td>
-                            {{colaborator.email}}
-                        </td>
-                        <td>
-                            {{colaborator.cargo}}
-                        </td>
-                        <td>
-                            {{colaborator.departamento}}
-                        </td>
-                    </tr>
+                    {% if colaborator.is_active == True %}
+                        <tr scope="row">
+                            <td>
+                                {{colaborator.first_name}} {{colaborator.last_name}}
+                            </td>
+                            <td>
+                                {{colaborator.email}}
+                            </td>
+                            <td>
+                                {{colaborator.cargo}}
+                            </td>
+                            <td>
+                                {{colaborator.departamento}}
+                            </td>
+                        </tr>
+                    {% endif %}
                 {% endfor %}
             </tbody>
         </table>

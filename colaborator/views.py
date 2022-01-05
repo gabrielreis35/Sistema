@@ -62,14 +62,19 @@ def ColaboratorRegister(request):
         if User.objects.filter(username=name).exists():
             messages.error(request, "Usuário já cadastrado")
             return redirect('colaborators:Signup_Colaborator')
-        # selectedDepartment = Departamento.objects.get(nome=department)
-        # print(selectedDepartment.id)
-        # idDepartment = selectedDepartment
-        # print(idDepartment)
-        colaborator = Colaborador(nome=name+" "+lastname, cargo=office, department=1, email=email)
+        # try:
+        #     setDepartment = Departamento.objects.get(id=int(department))
+        # except Departamento.DoesNotExist:
+        #     setDepartment = None
         user = User.objects.create_user(username=name, first_name=name, last_name=lastname, email=email, password=password)
-        colaborator.save()
         user.save()
+        # try:
+        #     setUser = int(user.id)
+        # except:
+        #     setUser = None
+        # colaborator = Colaborador(nome=name+" "+lastname, departamento=setDepartment, cargo=office, email=email, user=setUser)
+        # print(colaborator)
+        # colaborator.save()
     context = {
         'departments': departments
     }
