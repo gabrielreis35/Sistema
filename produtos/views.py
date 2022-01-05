@@ -383,38 +383,37 @@ def GenerateSerial(request):
     return render(request, 'produtos/NewSerialNumber.html', context)
 
 def GenerateSerialSingle(request, id):
-    serialNumberForm = SerialNumberForm()
-    product = Produto.objects.get(id=id)
+    serialNumber=NumeroSerie.objects.all()
+    product=Produto.objects.get(id=id)
     if request.method == 'POST':
-        serialNumberForm = SerialNumberForm(request.POST or None)
-        if serialNumberForm.is_valid():
-            os = serialNumberForm.save(commit=False)
-            os.numeroSerie = id
-            os.produto = product
-            lastProduct = NumeroSerie.objects.last()
+        if serialNumber.is_valid():
+            os=serialNumber.save(commit=False)
+            os.numeroSerie=int(request.POST['os'])
+            os.produto=product
+            lastProduct=NumeroSerie.objects.last()
             if lastProduct == None:
-                prefix = datetime.date.today().year
-                fix = product.tipoProduto.sigla
-                sufix = product.id
-                var = 100
-                os.serialNumber = str(prefix) + fix + str(sufix) + str(var)
+                prefix=datetime.date.today().year
+                fix=product.tipoProduto.sigla
+                sufix=product.id
+                var=100
+                os.serialNumber=str(prefix)+fix+str(sufix)+str(var)
             elif int(lastProduct.serialNumber[0:4]) != int(datetime.date.today().year):
-                prefix = datetime.date.today().year
-                fix = product.tipoProduto.sigla
-                sufix = product.id
-                var = 100
-                os.serialNumber = str(prefix) + fix + str(sufix) + str(var)
+                prefix=datetime.date.today().year
+                fix=product.tipoProduto.sigla
+                sufix=product.id
+                var=100
+                os.serialNumber=str(prefix)+fix+str(sufix)+str(var)
             else:
-                prefix = datetime.date.today().year
-                fix = product.tipoProduto.sigla
-                sufix = product.id
-                var = int(lastProduct.serialNumber[7:10])
-                var += 1
-                os.serialNumber = str(prefix) + fix + str(sufix) + str(var)
+                prefix=datetime.date.today().year
+                fix=product.tipoProduto.sigla
+                sufix=product.id
+                var=int(lastProduct.serialNumber[7:10])
+                var+=1
+                os.serialNumber=str(prefix)+fix+str(sufix)+str(var)
             os.save()
     else:
-        serialNumberForm = SerialNumberForm()
-    context = {'serialNumberForm': serialNumberForm}
+        serialNumber=NumeroSerie.objects.all()
+    context = {'serialNumber': serialNumber}
     return render(request, 'produtos/SerialNumberid.html', context)
 
 def GetPartNumber(request, id):

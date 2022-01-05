@@ -18,7 +18,16 @@
         </form>
         <form method="POST">
             {% csrf_token %}
-            {{ serialNumberForm|crispy }}
+            {% comment %} {{ serialNumberForm|crispy }} {% endcomment %}
+            <div class="col-12 col-lg-6">
+                <label for="os" class="lb-create-account"><strong>Ordem de Serviço</strong></label>
+                <select name="os" class="select-workorder" id="os">
+                    <option value="">Escolha um departamento</option>
+                    {% for os in workorders %}
+                        <option value="{{os.id}}">{{os.OS}}</option>
+                    {% endfor %}
+                </select>
+            </div>
             <input type="submit" class="btn btn-success" value="Gerar Número de Série">
         </form>
     </div>
