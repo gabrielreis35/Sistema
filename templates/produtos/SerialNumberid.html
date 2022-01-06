@@ -6,7 +6,7 @@
 
 {% block content %}
 
-    <a href="{% url 'products:Generate_Single_SerialNumber' %}">
+    <a href="{% url 'products:Home_Products' %}">
         <i class="far fa-arrow-alt-circle-left fa-2x"></i>
     </a>
     <div class="container title">
@@ -19,11 +19,11 @@
         <form method="POST">
             {% csrf_token %}
             {% comment %} {{ serialNumberForm|crispy }} {% endcomment %}
-            <div class="col-12 col-lg-6">
+            <div class="col-12">
                 <label for="os" class="lb-create-account"><strong>Ordem de Serviço</strong></label>
-                <select name="os" class="select-workorder" id="os">
-                    <option value="">Escolha um departamento</option>
-                    {% for os in workorders %}
+                <select name="os" class="select-workorder" id="selectworkorder">
+                    <option value="">Ordem de Serviço</option>
+                    {% for os in workOrders %}
                         <option value="{{os.id}}">{{os.OS}}</option>
                     {% endfor %}
                 </select>

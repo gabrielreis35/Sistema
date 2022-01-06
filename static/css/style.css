@@ -674,6 +674,10 @@ a.download-item, a.download-file {
     margin-bottom: 1em;
 }
 
+.select-workorder {
+    margin-bottom: 1.5em;
+}
+
 .fas.fa-key.generate-numberSerie{
     color: #000;
 }
@@ -708,7 +712,6 @@ a.download-item, a.download-file {
 .tab-clients {
     margin-top: 2em;
 }
-
 
 /* Settings */
 

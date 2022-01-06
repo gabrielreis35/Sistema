@@ -13,6 +13,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.files.storage import FileSystemStorage
 from produtos.models import CategoriaProduto, ClasseProduto, NumeroSerie, Produto, Item, Arquivo, ProdutoCliente, Segmento, TipoProduto, PartNumber
 from produtos.forms import CategoryForm, ClassProductForm, CustomerProductsForm, ItemForm, PartNumberForm, ProdutoForm, FileForm, SegmentForm, SerialNumberForm, TipForm, WorkOrderForm, produtoSelect
+from workOrder.models import OrdemServico
 
 def Products(request):
     search = request.GET.get('search')
@@ -383,37 +384,37 @@ def GenerateSerial(request):
     return render(request, 'produtos/NewSerialNumber.html', context)
 
 def GenerateSerialSingle(request, id):
+    workOrders=OrdemServico.objects.all()
     serialNumber=NumeroSerie.objects.all()
     product=Produto.objects.get(id=id)
     if request.method == 'POST':
-        if serialNumber.is_valid():
-            os=serialNumber.save(commit=False)
-            os.numeroSerie=int(request.POST['os'])
-            os.produto=product
-            lastProduct=NumeroSerie.objects.last()
-            if lastProduct == None:
-                prefix=datetime.date.today().year
-                fix=product.tipoProduto.sigla
-                sufix=product.id
-                var=100
-                os.serialNumber=str(prefix)+fix+str(sufix)+str(var)
-            elif int(lastProduct.serialNumber[0:4]) != int(datetime.date.today().year):
-                prefix=datetime.date.today().year
-                fix=product.tipoProduto.sigla
-                sufix=product.id
-                var=100
-                os.serialNumber=str(prefix)+fix+str(sufix)+str(var)
-            else:
-                prefix=datetime.date.today().year
-                fix=product.tipoProduto.sigla
-                sufix=product.id
-                var=int(lastProduct.serialNumber[7:10])
-                var+=1
-                os.serialNumber=str(prefix)+fix+str(sufix)+str(var)
-            os.save()
+        os=request.POST['os']
+        os.numeroSerie=int(request.POST['os'])
+        os.produto=product
+        lastProduct=NumeroSerie.objects.last()
+        if lastProduct == None:
+            prefix=datetime.date.today().year
+            fix=product.tipoProduto.sigla
+            sufix=product.id
+            var=100
+            os.serialNumber=str(prefix)+fix+str(sufix)+str(var)
+        elif int(lastProduct.serialNumber[0:4]) != int(datetime.date.today().year):
+            prefix=datetime.date.today().year
+            fix=product.tipoProduto.sigla
+            sufix=product.id
+            var=100
+            os.serialNumber=str(prefix)+fix+str(sufix)+str(var)
+        else:
+            prefix=datetime.date.today().year
+            fix=product.tipoProduto.sigla
+            sufix=product.id
+            var=int(lastProduct.serialNumber[7:10])
+            var+=1
+            os.serialNumber=str(prefix)+fix+str(sufix)+str(var)
+        os.save()
     else:
         serialNumber=NumeroSerie.objects.all()
-    context = {'serialNumber': serialNumber}
+    context = {'serialNumber': serialNumber, 'workOrders':workOrders}
     return render(request, 'produtos/SerialNumberid.html', context)
 
 def GetPartNumber(request, id):
