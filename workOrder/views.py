@@ -29,12 +29,12 @@ def NewWorkOrder(request):
 
 def UpdateWorOrder(request, id):
     workOrder = get_object_or_404(OrdemServico, id = id)
-    updateWorkOrder = ProductforWorkOrderForm(instance = workOrder)
+    updateWorkOrder = WorkOrderForm(instance = workOrder)
     if request.method == 'POST':
-        updateWorkOrder = ProductforWorkOrderForm(request.POST or None, instance=workOrder)
+        updateWorkOrder = WorkOrderForm(request.POST or None, instance=workOrder)
         if updateWorkOrder.is_valid():
             updateWorkOrder.save()
-            return redirect('../')
+            return redirect('settings:WorkOder_Settings')
         else:
             context = {
                 'workOrder': workOrder,
