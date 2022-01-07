@@ -7,5 +7,5 @@ class Cliente(models.Model):
     
     dateCriacao = DateTimeField(auto_now_add=True)
     
-    def __self__(self):
+    def __str__(self):
         return self.nome

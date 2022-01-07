@@ -123,7 +123,7 @@ class NumeroSerie(models.Model):
     dateCriacao = DateTimeField(auto_now_add=True)
     def __str__(self):
         return self.id
-    
+
 class ProdutoCliente(models.Model):
     def filePath(produto, file):
         return os.path.join('produtos', produto, file) 

@@ -135,7 +135,7 @@ def NewClass(request):
 def NewCustomerProducts(request):
     createCustomerProducts = CustomerProductsForm()
     if request.method == 'POST':
-        createCustomerProducts = CustomerProductsForm(request.POST or None)
+        createCustomerProducts = CustomerProductsForm(request.POST, request.FILES)
         if createCustomerProducts.is_valid():
             createCustomerProducts.save()
             return redirect('products:Customer_Products')
