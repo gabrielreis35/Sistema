@@ -13,9 +13,6 @@ class produtoSelect(forms.Select):
         return super().create_option(name, value, label, selected, index, subindex=subindex, attrs=attrs)
 
 class ProdutoForm(ModelForm):
-    segmento = fields.CharField(
-        help_text='Segmento'
-    )
     categoria = fields.CharField(
         blank=True
         )

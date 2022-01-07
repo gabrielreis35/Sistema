@@ -37,9 +37,7 @@ def Products(request):
         paginator = Paginator(productsList, 10)
         page = request.GET.get('page')
         products = paginator.get_page(page)
-    context = {
-        'products' : products
-    }
+    context = {'products' : products}
     return render(request, 'produtos/Products.html', context)
 
 def NewProduct(request):
@@ -50,12 +48,10 @@ def NewProduct(request):
             product = createProduct.save(commit = False)
             product.descontinuado = False
             product.save()
-            return redirect('../../')
+            return redirect('products:Home_Products')
     else:
         createProduct = ProdutoForm()
-    context = {
-        'createProduct' : createProduct
-    }
+    context = {'createProduct' : createProduct}
     return render(request, 'produtos/NewProduct.html', context)
 
 def NewItem(request, id):
@@ -67,13 +63,10 @@ def NewItem(request, id):
             item = createItem.save(commit=False)
             item.produto = product
             item.save()
-            return redirect('../')
+            return redirect('produtos/View_Product', product)
     else:
         createItem = ItemForm()
-    context = {
-        'createItem' : createItem,
-        'product' : product,
-    }
+    context = {'createItem' : createItem, 'product' : product}
     return render(request, 'produtos/NewItem.html', context)
 
 def NewFile(request, id):
@@ -99,9 +92,7 @@ def NewSegment(request):
             return redirect('/products')
     else:
         createSegment = SegmentForm()
-    context = {
-        'createSegment' : createSegment
-    }
+    context = {'createSegment' : createSegment}
     return render(request, 'produtos/NewSegment.html', context)
 
 def NewProductTip(request):
@@ -113,9 +104,7 @@ def NewProductTip(request):
             return redirect('/products')
     else:
         createTip = TipForm()
-    context = {
-        'createTip' : createTip
-    }
+    context = {'createTip' : createTip}
     return render(request, 'produtos/NewProductTip.html', context)
 
 def NewCategory(request):
@@ -127,9 +116,7 @@ def NewCategory(request):
             return redirect('/products')
     else:
         createCategory = CategoryForm()
-    context = {
-        'createCategory' : createCategory
-    }
+    context = {'createCategory' : createCategory}
     return render(request, 'produtos/NewCategory.html', context)
 
 def NewClass(request):
@@ -141,9 +128,7 @@ def NewClass(request):
             return redirect('/products')
     else:
         createClassProduct = ClassProductForm()
-    context = {
-        'createClassProduct' : createClassProduct
-    }
+    context = {'createClassProduct' : createClassProduct}
     
     return render(request, 'produtos/NewClass.html', context)
 
@@ -153,12 +138,10 @@ def NewCustomerProducts(request):
         createCustomerProducts = CustomerProductsForm(request.POST or None)
         if createCustomerProducts.is_valid():
             createCustomerProducts.save()
-            return redirect('/products')
+            return redirect('products:Customer_Products')
     else:
         createCustomerProducts = CustomerProductsForm()
-    context = {
-        'createCustomerProducts' : createCustomerProducts
-    }
+    context = {'createCustomerProducts' : createCustomerProducts}
     return render(request, 'produtos/NewCustomerProducts.html', context)
 
 def ViewProduct(request, id):
@@ -202,16 +185,10 @@ def UpdateProduct(request, id):
             updateProduct.save()
             return redirect('../')
         else:
-            context = {
-                'updateProduct' : updateProduct,
-                'product' : product
-            }
+            context = {'updateProduct' : updateProduct, 'product' : product}
             return render(request, 'produtos/UpdateProduct.html', context)
     else:
-        context = {
-            'updateProduct' : updateProduct,
-            'product' : product
-        }
+        context = {'updateProduct' : updateProduct, 'product' : product}
         return render(request, 'produtos/UpdateProduct.html', context)
 
 def UpdateSegment(request, id):
@@ -221,18 +198,12 @@ def UpdateSegment(request, id):
         updateSegment = SegmentForm(request.POST or None, instance = segment)
         if updateSegment.is_valid():
             updateSegment.save()
-            return redirect('../')
+            return redirect('settings:Product_Settings')
         else:
-            context = {
-                'updateSegment' : updateSegment,
-                'segment' : segment
-            }
+            context = {'updateSegment' : updateSegment, 'segment' : segment}
             return render(request, 'produtos/UpdateSegment.html', context)
     else:
-        context = {
-            'updateSegment' : updateSegment,
-            'segment' : segment
-        }
+        context = {'updateSegment' : updateSegment, 'segment' : segment}
         return render(request, 'produtos/UpdateSegment.html', context)
 
 def UpdateProductTip(request, id):
@@ -242,18 +213,12 @@ def UpdateProductTip(request, id):
         updateTip = TipForm(request.POST or None, instance = productTip)
         if updateTip.is_valid():
             updateTip.save()
-            return redirect('../')
+            return redirect('settings:Product_Settings')
         else:
-            context = {
-                'updateTip' : updateTip,
-                'productTip' : productTip
-            }
+            context = {'updateTip' : updateTip, 'productTip' : productTip}
             return render(request, 'produtos/UpdateProductTip.html', context)
     else:
-        context = {
-            'updateTip' : updateTip,
-            'productTip' : productTip
-        }
+        context = {'updateTip' : updateTip, 'productTip' : productTip}
         return render(request, 'produtos/UpdateProductTip.html', context)
 
 def UpdateCategory(request, id):
@@ -263,18 +228,12 @@ def UpdateCategory(request, id):
         updateCategory = CategoryForm(request.POST or None, instance = category)
         if updateCategory.is_valid():
             updateCategory.save()
-            return redirect('../')
+            return redirect('settings:Product_Settings')
         else:
-            context = {
-                'updateCategory' : updateCategory,
-                'category' : category
-            }
+            context = {'updateCategory' : updateCategory, 'category' : category}
             return render(request, 'produtos/UpdateCategory.html', context)
     else:
-        context = {
-            'updateCategory' : updateCategory,
-            'category' : category
-        }
+        context = {'updateCategory' : updateCategory, 'category' : category}
         return render(request, 'produtos/UpdateCategory.html', context)
 
 def UpdateClass(request, id):
@@ -284,18 +243,12 @@ def UpdateClass(request, id):
         updateClassProduct = ClassProductForm(request.POST or None, instance = classProduct)
         if updateClassProduct.is_valid():
             updateClassProduct.save()
-            return redirect('../')
+            return redirect('settings:Product_Settings')
         else:
-            context = {
-                'updateClassProduct' : updateClassProduct,
-                'classProduct' : classProduct
-            }
+            context = {'updateClassProduct' : updateClassProduct, 'classProduct' : classProduct}
             return render(request, 'produtos/UpdateClass.html', context)
     else:
-        context = {
-            'updateClassProduct' : updateClassProduct,
-            'classProduct' : classProduct
-        }
+        context = {'updateClassProduct' : updateClassProduct, 'classProduct' : classProduct}
         return render(request, 'produtos/UpdateClass.html', context)
 
 
@@ -377,9 +330,7 @@ def GenerateSerial(request):
     paginator = Paginator(productsList, 10)
     page = request.GET.get('page')
     products = paginator.get_page(page)
-    context = {
-        'products' : products
-    }
+    context = {'products' : products}
     return render(request, 'produtos/NewSerialNumber.html', context)
 
 def GenerateSerialSingle(request, id):

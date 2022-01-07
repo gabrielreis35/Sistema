@@ -29,18 +29,18 @@
             <thead>
                 <tr>
                     {% comment %} <th scope="col">Num. Série</th> {% endcomment %}
-                    <th scope="col">CNPJ</th>
                     <th scope="col">Nome</th>
+                    <th scope="col">CNPJ</th>
                 </tr>
             </thead>
             <tbody>
                 {% for client in clients %}
                 <tr scope="row">
                     <td>
-                        {{client.cnpj}}
+                        {{client.nome}}
                     </td>
                     <td>
-                        {{client.nome}}
+                        {{client.cnpj}}
                     </td>
                 </tr>
                 {% empty %}
