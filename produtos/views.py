@@ -15,6 +15,7 @@ from produtos.models import CategoriaProduto, ClasseProduto, NumeroSerie, Produt
 from produtos.forms import CategoryForm, ClassProductForm, CustomerProductsForm, ItemForm, PartNumberForm, ProdutoForm, FileForm, SegmentForm, SerialNumberForm, TipForm, WorkOrderForm, produtoSelect
 from clients.models import Cliente
 def Products(request):
+    """  View of main page of products """
     search = request.GET.get('search')
     
     if search:
@@ -41,6 +42,7 @@ def Products(request):
     return render(request, 'produtos/Products.html', context)
 
 def NewProduct(request):
+    """  View of new product  """
     createProduct = ProdutoForm()
     if request.method == 'POST':
         createProduct = ProdutoForm(request.POST or None)
@@ -55,6 +57,7 @@ def NewProduct(request):
     return render(request, 'produtos/NewProduct.html', context)
 
 def NewItem(request, id):
+    """  View of new items for products  """
     product = get_object_or_404(Produto, id=id)
     createItem = ItemForm()
     if request.method == 'POST':
@@ -70,6 +73,7 @@ def NewItem(request, id):
     return render(request, 'produtos/NewItem.html', context)
 
 def NewFile(request, id):
+    """  view of new file  for products  """
     product = get_object_or_404(Produto, id=id)
     fileForm = FileForm()
     if request.method == 'POST':
@@ -84,6 +88,7 @@ def NewFile(request, id):
     return render(request, 'produtos/NewFile.html', {'fileForm' : fileForm})
 
 def NewSegment(request):
+    """  View of new segment  """
     createSegment = SegmentForm()
     if request.method == 'POST':
         createSegment = SegmentForm(request.POST or None)
@@ -96,6 +101,7 @@ def NewSegment(request):
     return render(request, 'produtos/NewSegment.html', context)
 
 def NewProductTip(request):
+    """  View of new product tip  """
     createTip = TipForm()
     if request.method == 'POST':
         createTip = TipForm(request.POST or None)
@@ -108,6 +114,7 @@ def NewProductTip(request):
     return render(request, 'produtos/NewProductTip.html', context)
 
 def NewCategory(request):
+    """  View of ney categories  """
     createCategory = CategoryForm()
     if request.method == 'POST':
         createCategory = CategoryForm(request.POST or None)
@@ -120,6 +127,7 @@ def NewCategory(request):
     return render(request, 'produtos/NewCategory.html', context)
 
 def NewClass(request):
+    """  View of new classes  """
     createClassProduct = ClassProductForm()
     if request.method == 'POST':
         createClassProduct = ClassProductForm(request.POST or None)
@@ -132,20 +140,8 @@ def NewClass(request):
     
     return render(request, 'produtos/NewClass.html', context)
 
-# def NewFile(request, id):
-#     fileForm = FileForm()
-#     if request.method == 'POST':
-#         fileForm = FileForm(request.POST, request.FILES)
-#         if fileForm.is_valid():
-#             file = fileForm.save(commit=False)
-#             file.produto = product
-#             file.save()
-#             return redirect('/products/')  
-#     else:
-#         fileForm = FileForm()
-#     return render(request, 'produtos/NewFile.html', {'fileForm' : fileForm})
-
 def NewCustomerProducts(request):
+    """  View of new customer products  """
     createCustomerProducts = CustomerProductsForm()
     if request.method == 'POST':
         createCustomerProducts = CustomerProductsForm(request.POST, request.FILES)
@@ -158,6 +154,7 @@ def NewCustomerProducts(request):
     return render(request, 'produtos/NewCustomerProducts.html', context)
 
 def ViewProduct(request, id):
+    """  View of single products  """
     context = []
     items = Item.objects.all().filter(produto_id = id).order_by('-revisao')
     filesList = Arquivo.objects.all().filter(produto_id = id).order_by('-revisao')
@@ -172,24 +169,28 @@ def ViewProduct(request, id):
     }
     return render(request, 'produtos/Product.html', context)
 
-
 def ViewSegment(request):
+    """  View of segments of products  """
     segments = Segmento.objects.all().order_by('-dateCriacao')
     return render(request, 'produtos/ViewSegment.html', {'segments' : segments})
 
 def ViewProductTip(request):
+    """  View of product tipes of products  """
     productTipes = TipoProduto.objects.all().order_by('-dateCriacao')
     return render(request, 'produtos/ViewProductTip.html', {'productTipes' : productTipes})
 
 def ViewCategory(request):
+    """  View of categories of products"""
     categories = CategoriaProduto.objects.all().order_by('-dateCriacao')
     return render(request, 'produtos/ViewCategory.html', {'categories' : categories})
 
 def ViewClass(request):
+    """  View of classes """
     classes = ClasseProduto.objects.all().order_by('-dateCriacao')
     return render(request, 'produtos/ViewClass.html', {'classes' : classes})
 
 def UpdateProduct(request, id):
+    """  View of update product  """
     product = get_object_or_404(Produto, id = id)
     updateProduct = ProdutoForm(instance = product)
     if request.method == 'POST':
@@ -205,6 +206,7 @@ def UpdateProduct(request, id):
         return render(request, 'produtos/UpdateProduct.html', context)
 
 def UpdateSegment(request, id):
+    """  View of segment of product  """
     segment = get_object_or_404(Segmento, id = id)
     updateSegment = SegmentForm(instance = segment)
     if request.method == 'POST':
@@ -220,6 +222,7 @@ def UpdateSegment(request, id):
         return render(request, 'produtos/UpdateSegment.html', context)
 
 def UpdateProductTip(request, id):
+    """  View of update product tip  """
     productTip = get_object_or_404(TipoProduto, id = id)
     updateTip = TipForm(instance = productTip)
     if request.method == 'POST':
@@ -235,6 +238,7 @@ def UpdateProductTip(request, id):
         return render(request, 'produtos/UpdateProductTip.html', context)
 
 def UpdateCategory(request, id):
+    """  View of update category of product  """
     category = get_object_or_404(CategoriaProduto, id = id)
     updateCategory = CategoryForm(instance = category)
     if request.method == 'POST':
@@ -250,6 +254,7 @@ def UpdateCategory(request, id):
         return render(request, 'produtos/UpdateCategory.html', context)
 
 def UpdateClass(request, id):
+    """"  View of update class of product  """
     classProduct = get_object_or_404(ClasseProduto, id = id)
     updateClassProduct = ClassProductForm(instance = classProduct)
     if request.method == 'POST':
@@ -264,8 +269,8 @@ def UpdateClass(request, id):
         context = {'updateClassProduct' : updateClassProduct, 'classProduct' : classProduct}
         return render(request, 'produtos/UpdateClass.html', context)
 
-
 def DownloadItem(request, path):
+    """  View of download item  """
     filePath = os.path.join(settings.MEDIA_ROOT, path)
     if os.path.exists(filePath):
         with open(filePath, 'rb') as fh:
@@ -275,6 +280,7 @@ def DownloadItem(request, path):
     raise Http404
 
 def DeleteProduct(request, id):
+    """  View of delete product  """
     product = get_object_or_404(Produto, id = id)
     if request.method == 'POST':
         product.delete()
@@ -283,6 +289,7 @@ def DeleteProduct(request, id):
     return render(request, 'produtos/DeleteProduct.html', context)
 
 def DeleteItem(request, id):
+    """  View of delete item  """
     item = get_object_or_404(Item, id = id)
     if request.method == 'POST':
         item.delete()
@@ -291,6 +298,7 @@ def DeleteItem(request, id):
     return render(request, 'produtos/DeleteItem.html', context)
 
 def DeleteFile(request, id):
+    """  View of delete file  """
     file = get_object_or_404(Arquivo, id = id)
     if request.method == 'POST':
         file.delete()
@@ -299,6 +307,9 @@ def DeleteFile(request, id):
     return render(request, 'produtos/DeleteFile.html', context)
 
 def DeleteSegment(request, id):
+    """
+    View of delete segment
+    """
     segment = get_object_or_404(Segmento, id = id)
     if request.method == 'POST':
         segment.delete()
@@ -306,6 +317,9 @@ def DeleteSegment(request, id):
     return render(request, 'produtos/DeleteSegment.html', context)
 
 def DeleteProductTip(request, id):
+    """
+    View of delete product tip
+    """
     productTip = get_object_or_404(TipoProduto, id = id)
     if request.method == 'POST':
         productTip.delete()
@@ -313,6 +327,9 @@ def DeleteProductTip(request, id):
     return render(request, 'produtos/DeleteProductTip.html', context)
 
 def DeleteCategory(request, id):
+    """
+        View of delete category product
+    """
     category = get_object_or_404(CategoriaProduto, id = id)
     if request.method == 'POST':
         category.delete()
@@ -320,6 +337,9 @@ def DeleteCategory(request, id):
     return render(request, 'produtos/DeleteCategory.html', context)
 
 def DeleteClassProduct(request, id):
+    """
+    View of delete class product
+    """
     classProduct = get_object_or_404(ClasseProduto, id = id)
     if request.method == 'POST':
         classProduct.delete()
@@ -327,6 +347,9 @@ def DeleteClassProduct(request, id):
     return render(request, 'produtos/DeleteClassProduct.html', context)
 
 def SerialNumber(request):
+    """
+        View of serial number main
+    """
     productsList = Produto.objects.all()
     serialNumbersList = NumeroSerie.objects.all().order_by('-dateCriacao')
     paginator = Paginator(serialNumbersList, 10)
@@ -336,6 +359,9 @@ def SerialNumber(request):
     return render(request, 'produtos/SerialNumber.html', context)
 
 def GenerateSerial(request):
+    """
+        View of choice product for generate serial number
+    """
     productsList = Produto.objects.all()
     generate = request.GET.get('generate')
     if generate:
@@ -347,6 +373,9 @@ def GenerateSerial(request):
     return render(request, 'produtos/NewSerialNumber.html', context)
 
 def GenerateSerialSingle(request, id):
+    """
+        View of generate serial number
+    """
     serialNumberForm = SerialNumberForm()
     product = Produto.objects.get(id=id)
     if request.method == 'POST':
@@ -382,6 +411,9 @@ def GenerateSerialSingle(request, id):
     return render(request, 'produtos/SerialNumberid.html', context)
 
 def GetPartNumber(request, id):
+    """
+        View of partnumber generator
+    """
     createPartNumber = PartNumberForm()
     file = Arquivo.objects.get(id=id)
     product = file.produto
@@ -420,6 +452,9 @@ def GetPartNumber(request, id):
     return render(request, 'produtos/NewPartNumber.html', context)
 
 def CustomerProducts(request):
+    """
+        View of products of customer
+    """
     customerProductsList = ProdutoCliente.objects.all()
     paginator = Paginator(customerProductsList, 10)
     page = request.GET.get('page')
