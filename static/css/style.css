@@ -709,6 +709,11 @@ a.download-item, a.download-file {
     margin-top: 2em;
 }
 
+/* Página de Banco de Dados de Produtos de Terceiros */
+
+.table.table-striped.table-hover.table-bordered.tab-customer-products {
+    margin-top: 1.5em;
+}
 
 /* Settings */
 

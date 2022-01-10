@@ -129,7 +129,7 @@ class ProdutoCliente(models.Model):
         return os.path.join('produtos', produto, file) 
     numeroSerie = CharField(max_length=30, null=True)
     produto = CharField(max_length=30)
-    file = FileField(upload_to=filePath)
+    file = FileField(upload_to=filePath, null=True, blank=True)
     cliente = ForeignKey(Cliente, on_delete=CASCADE)
     dateCriacao = DateTimeField(auto_now_add=True)
     def __self__(self):

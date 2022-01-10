@@ -13,7 +13,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.files.storage import FileSystemStorage
 from produtos.models import CategoriaProduto, ClasseProduto, NumeroSerie, Produto, Item, Arquivo, ProdutoCliente, Segmento, TipoProduto, PartNumber
 from produtos.forms import CategoryForm, ClassProductForm, CustomerProductsForm, ItemForm, PartNumberForm, ProdutoForm, FileForm, SegmentForm, SerialNumberForm, TipForm, WorkOrderForm, produtoSelect
-
+from clients.models import Cliente
 def Products(request):
     search = request.GET.get('search')
     
@@ -131,6 +131,19 @@ def NewClass(request):
     context = {'createClassProduct' : createClassProduct}
     
     return render(request, 'produtos/NewClass.html', context)
+
+# def NewFile(request, id):
+#     fileForm = FileForm()
+#     if request.method == 'POST':
+#         fileForm = FileForm(request.POST, request.FILES)
+#         if fileForm.is_valid():
+#             file = fileForm.save(commit=False)
+#             file.produto = product
+#             file.save()
+#             return redirect('/products/')  
+#     else:
+#         fileForm = FileForm()
+#     return render(request, 'produtos/NewFile.html', {'fileForm' : fileForm})
 
 def NewCustomerProducts(request):
     createCustomerProducts = CustomerProductsForm()
@@ -407,6 +420,10 @@ def GetPartNumber(request, id):
     return render(request, 'produtos/NewPartNumber.html', context)
 
 def CustomerProducts(request):
-    customerProduct = ProdutoCliente.objects.all()
-    context = {'customerProduct' : customerProduct}
+    customerProductsList = ProdutoCliente.objects.all()
+    paginator = Paginator(customerProductsList, 10)
+    page = request.GET.get('page')
+    customerProducts = paginator.get_page(page)
+    
+    context = {'customerProducts' : customerProducts}
     return render(request, 'produtos/CustomerProducts.html', context)

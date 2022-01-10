@@ -19,12 +19,17 @@
             </div>
         </a>
     
-        <table class="table table-striped table-hover table-bordered tab-products">
+        <table class="table table-striped table-hover table-bordered tab-customer-products">
             <thead>
                 <tr>
                     <th scope="col">Cliente</th>
                     <th scope="col">Produto</th>
                     <th scope="col">Número de Série</th>
+                    <th scope="col">
+                        <div class="col download-div">
+                            <i class="fas fa-download download-button"></i>
+                        </div>
+                    </th>
                 </tr>
             </thead>
             <tbody id="product-table">
@@ -39,12 +44,36 @@
                     <td>
                         {{customerProduct.numeroSerie}}
                     </td>
+                    <td>
+                        <a href="#" class="download-product-customer" download="#">
+                            <div class="col download-item-div">
+                                <i class="fas fa-download download-button"></i>
+                            </div>
+                        </a>
+                    </td>
                 </tr>
                 {% empty %}
                     <p>Nenhum produto cadastrado.</p>
                 {% endfor %}
             </tbody>
         </table>
+        <div class="pagination">
+            <span class="step-links">
+                {% if customerProducts.has_previous %}
+                    <a href="?page={{customerProducts.previous_page_number}}" class="fas fa-arrow-left"></a>
+                {% endif %}
+                
+                {% if customerProducts.paginator.num_pages %}
+                <span class="current">
+                    {{customerProducts.number}} de {{customerProducts.paginator.num_pages}}
+                </span>
+                {% endif %}
+
+                {% if customerProducts.has_next %}
+                    <a href="?page={{customerProducts.next_page_number}}" class="fas fa-arrow-right"></a>
+                {% endif %}
+            </span>
+        </div>
     </div>
 
 {% endblock %}

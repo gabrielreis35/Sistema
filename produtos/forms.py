@@ -1,7 +1,7 @@
 from os import name
 from django import forms
 from django.db.models import fields
-from django.forms import ModelForm, widgets
+from django.forms import ModelForm
 from .models import CategoriaProduto, ClasseProduto, Item, NumeroSerie, PartNumber, Produto, Arquivo, ProdutoCliente, Segmento, TipoProduto
 from workOrder.models import OrdemServico
 
@@ -153,7 +153,8 @@ class WorkOrderForm(ModelForm):
         ]
         
 class CustomerProductsForm(ModelForm):
-    numeroSerie = fields.CharField (blank=True)
+    numeroSerie = fields.CharField(null=True, blank=True)
+    file = fields.FilePathField(null=True, blank=True)
     class Meta:
         model = ProdutoCliente
         fields = [
